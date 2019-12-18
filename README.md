@@ -14,7 +14,6 @@
 |first_name_kana|string |null: false|                       <!-- 名前(カナ) -->
 |birthday       |date   |null: false|                       <!-- 誕生日 --> 
 ### Association
-has_many :prefs
 has_many :likes
 has_many :addresses
 has_many :commnets
@@ -34,7 +33,6 @@ has_many :reviews
 |building |string |                                          <!-- 建物名 任意-->
 |tell     |string |null: false, add_index, unique :true|     <!-- 電話番号 -->
 |user_id  |integer|null: false, foreign_key: true|           <!-- 外部キー-->
-|pref_id  |integer|null: false, foreign_key: true|           <!-- 外部キー-->
 ### Association
 belongt_to :user
 
