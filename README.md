@@ -22,13 +22,7 @@ has_many :items
 has_many :reviews
 
 
-## prefs テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name   |string |null: false|                               <!-- 都道府県-->
-|user_id|integer|null: false, foreign_key: true|            <!-- 外部キー-->
-### Association
-belongt_to :user
+
 
 
 ## addresses テーブル
@@ -109,7 +103,7 @@ hasmany :items
 
 
 
-## 良いね
+## likes
 |Column|Type|Options|
 |------|----|-------|              
 |item_id|integer|null false,foreign_key: true|<!-- 外部キー -->
