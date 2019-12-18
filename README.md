@@ -19,7 +19,6 @@ has_many :likes
 has_many :addresses
 has_many :commnets
 has_many :items
-has_many :items
 has_many :reviews
 
 
@@ -35,13 +34,13 @@ belongt_to :user
 ## addresses テーブル
 |Column|Type|Options|
 |------|----|-------|
-|postcode |string |null: fals|                              <!-- 郵便番号 -->
-|city     |string |null: fals|                              <!-- 市町村 -->
-|block    |string |null: fals|                              <!-- 番地 -->
-|building |string |                                         <!-- 建物名 任意-->
-|tell     |string |null: false, add_index, unique :true|    <!-- 電話番号 -->
-|user_id  |integer|null: false, foreign_key: true|          <!-- 外部キー-->
-|pref_id  |integer|null: false, foreign_key: true|          <!-- 外部キー-->
+|postcode |string |null: false|                              <!-- 郵便番号 -->
+|city     |string |null: false|                              <!-- 市町村 -->
+|block    |string |null: false|                              <!-- 番地 -->
+|building |string |                                          <!-- 建物名 任意-->
+|tell     |string |null: false, add_index, unique :true|     <!-- 電話番号 -->
+|user_id  |integer|null: false, foreign_key: true|           <!-- 外部キー-->
+|pref_id  |integer|null: false, foreign_key: true|           <!-- 外部キー-->
 ### Association
 belongt_to :user
 
@@ -50,14 +49,14 @@ belongt_to :user
 |Column|Type|Options|
 |------|----|-------|
 |name           |string |null: fals|
-|text           |text   |null: fals|             <!-- 商品説明欄-->
-|status         |integer|default: 0, null: fals| <!-- 商品状態 enum-->
-|delivery_method|integer|default: 0, null: fals| <!-- 配送方法 enum-->
-|delivery_day   |integer|default: 0, null: fals| <!-- 配送までの日数 enum-->
-|pref           |integer|default: 0, null: fals| <!-- 発送地域--> 
-|postage_selct  |integer|default: 0, null: fals| <!-- 送料負担-->
-|price          |integer|null: fals|             <!-- 価格-->
-|size           |integer|default: 0|             <!-- サイズ enum-->
+|text           |text   |null: fals|              <!-- 商品説明欄-->
+|status         |integer|default: 0, null: false| <!-- 商品状態 enum-->
+|delivery_method|integer|default: 0, null: false| <!-- 配送方法 enum-->
+|delivery_day   |integer|default: 0, null: false| <!-- 配送までの日数 enum-->
+|pref           |integer|default: 0, null: false| <!-- 発送地域--> 
+|postage_selct  |integer|default: 0, null: false| <!-- 送料負担-->
+|price          |integer|null: false|              <!-- 価格-->
+|size           |integer|default: 0|              <!-- サイズ enum-->
 |user_id        |null: false, foreign_key: true|
 |brand_id       |null: false, foreign_key: true|
 ### Association
@@ -106,7 +105,7 @@ belongs_to :item
 |------|----|-------|
 |name  |strung|           <!-- カテゴリー選択後必要なら--><!-- ブランド名-->
 ### Association
-hasmany_item :items
+hasmany :items
 
 
 
