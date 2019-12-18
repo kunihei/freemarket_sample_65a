@@ -1,0 +1,44 @@
+.header
+
+.nav
+  %ul
+    %li メルカリ　
+    %li マイページ
+
+.main
+  .container.flex
+    .container--side
+      %ul.container--side__list
+        %li= link_to "マイページ",      root_path
+        %li= link_to "お知らせ",      root_path
+        %li= link_to "やる事リスト",      root_path
+        %li= link_to "いいね！一覧",      root_path
+        %li= link_to "出品する",      root_path
+        %li= link_to "出品した商品・出品中",      root_path
+        %li= link_to "出品した商品・取引中",      root_path
+        %li= link_to "出品した商品・売却済み",      root_path
+        %li= link_to "購入した商品・取引中",      root_path
+        %li= link_to "購入した商品・過去の取引", root_path
+        %li= link_to "ニュース一覧",           root_path
+        %li= link_to "評価一案",              root_path
+        %li= link_to "ガイド",                root_path
+        %li= link_to "お問い合わせ",      root_path
+      %h3 メルペイ
+      %ul.container--side__list
+        %li= link_to "売上・振込申請", root_path
+        %li= link_to "ポイント",      root_path
+      %h3 設定
+      %ul.container--side__list
+        %li= link_to "プロフィール",      root_path
+        %li= link_to "送元・お届け先住所お届け先住所変更", root_path
+        %li= link_to "支払い方法",       root_path
+        %li= link_to "メール/パスワード", root_path
+        %li= link_to "本人情報",         root_path
+        %li= link_to "電話番号の確認",    root_path
+        %li= link_to "ログアウト",       root_path
+        %li= link_to "プロフィール",     root_path
+    .container--right
+      .mypage__top
+        =link_to
+      .mypage__news
+      .mypage__datas
