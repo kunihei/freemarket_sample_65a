@@ -1,0 +1,144 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample65a
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      .container
+        .header-top
+          .header-top__left
+            = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
+          .header-top__right
+            = form_for '#' do |f|
+              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？'
+              = f.submit 'icon',class:'header-top__right__btn'
+        .header-bottom
+          .header-bottom__left
+            = link_to '#',class:"header-bottom__left--category" do
+              カテゴリーから探す
+            = link_to '#',class:"header-bottom__left--brand" do
+              ブランドから探す
+          .header-bottom__right
+            = link_to '#',class:"header-bottom__right--user" do
+              新規会員登録
+            = link_to '#',class:"header-bottom__right--rogin" do
+              ログイン
+            
+
+         
+
+
+
+
+
+    = yield
+    
+  %footer.footer
+    .footer_nav
+      .information
+        %h2.information__title メルカリについて
+        %ul.information__title_list
+          %li  
+            = link_to "#" ,class:"item " do
+              会社概要
+          %li  
+            = link_to "#" ,class:"item " do
+              採用情報
+          %li  
+            = link_to "#" ,class:"item " do
+              プレスリリース
+          %li  
+            = link_to "#" ,class:"item " do
+              公式ブログ
+          %li  
+            = link_to "#" ,class:"item " do
+              メルカリロゴ利用ガイドライン
+
+          %li
+            =link_to "https://www.facebook.com/", class: "contents__btn" do
+              Facebook
+          
+            =link_to "https://twitter.com/", class: "contents__btn" do
+              Twitter
+          
+      .information
+        %h2.information__title ヘルプ＆ガイド
+        %ul.information__title_list
+          %li  
+            = link_to "#" ,class:"item " do
+              メルカリガイド
+          %li  
+            = link_to "#" ,class:"item " do
+              らくらくメルカリ便
+          %li  
+            = link_to "#" ,class:"item " do
+              ゆうゆうメルカリ便
+          %li  
+            = link_to "#" ,class:"item " do
+              大型メルカリ便
+          %li  
+            = link_to "#" ,class:"item " do
+              車体取引ガイド
+
+          %li  
+            = link_to "#" ,class:"item " do
+              メルカリあんしん・あんぜん宣言！
+          %li  
+            = link_to "#" ,class:"item " do
+              メルカリボックス
+
+      .privacy
+        %h2.privacy__title プライバシーと利用規約
+        .div
+          .privacy__title_item
+            %ul.privacy__title_item__list
+              %li  
+                = link_to "#" ,class:"item " do
+                  プライバシーポリシー
+              %li  
+                = link_to "#" ,class:"item " do
+                  メルカリ利用規約
+              %li  
+                = link_to "#" ,class:"item " do
+                  あんしんスマホサポート制度に関する利用特約 
+                  -# 上記の、”あんしんスマホサポート制度に関する利用特約のとこだけ下線がでてしまいます。
+              %li  
+                = link_to "#" ,class:"item " do
+                  コンプライアンスポリシー
+
+          .privacy__title_item
+            %ul.privacy__title_item__list
+              %li  
+                = link_to "#" ,class:"item " do
+                  個人データの安全管理に係る基本方針
+              %li  
+                = link_to "#" ,class:"item " do
+                  特定商取引に関する表記
+              %li  
+                = link_to "#" ,class:"item " do
+                  資金決済法に基づく表示
+              %li  
+                = link_to "#" ,class:"item " do
+                  法令順守と犯罪抑止のために
+      
+      .countory
+        %h2.countory__title 国
+        %ul.information__title__list
+          %li 
+            = link_to "#" , class:"item " do
+              日本          
+
+          %li 
+            = link_to "#" , class:"item " do
+              United States
+    .footer__last
+      .footer__last-logo
+        = link_to image_tag("fmarket_logo_red.svg",alt:"mercari",class:"mercari-image",size:"124x31"),"#"
+        %span.detail © Mercari, Inc.
+ 
+  = yield

@@ -1,3 +1,87 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.footer{
+  background-color: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 0px 20px 10px;
+}
+
+.footer_nav{
+    margin: 0px auto;
+    width: 1020px;
+    display: flex;
+  }
+
+  .information{
+    display: inline-block;
+    margin-top: 18px;
+    vertical-align: top;
+    width: auto;
+    padding: 0px 40px 0px 0px;
+  }
+    h2{
+      font-size: 16px;
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      line-height: 1.4em;
+      margin: 0px;
+      padding: 0px;
+    }
+      
+    ul{
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+    }
+     li{
+      line-height: 1.4em;
+      margin: 16px 0px 0px;
+      text-decoration: none;
+      
+      
+    }
+      .item{
+      color: rgb(255, 255, 255);
+      opacity: 0.7;
+   }
+
+
+  .privacy{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 18px;
+    padding-right: 40px;
+    width: 43%;
+
+   }
+   .div{
+
+    display: flex;
+   }
+   .privacy__title_item{
+    display: inline-block;
+    padding-right: 10px;
+    vertical-align: top;
+    width: 50%;
+     
+   }
+
+   .countory{
+    margin-top: 18px;
+    width: auto;
+   }
+
+   .footer__last{
+    width: 1020px;
+    margin: 30px auto 20px;
+   }
+   .footer__last-logo{
+     color: white;
+   }
+    .mercari-image{
+      color: inherit;
+    }
+
+    .detail{
+      text-align: center;
+      padding-left: 300px;
+    width: 75%;
+    }
