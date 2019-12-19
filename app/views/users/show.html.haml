@@ -1,132 +1,213 @@
-
-.nav
-  %ul
-    %li メルカリ　
-    %li マイページ
-
-.main
-  .container.flex
-    .container--side
-      %ul.container--side__list
-        %li= link_to "マイページ",      root_path
-        %li= link_to "お知らせ",      root_path
-        %li= link_to "やる事リスト",      root_path
-        %li= link_to "いいね！一覧",      root_path
-        %li= link_to "出品する",      root_path
-        %li= link_to "出品した商品・出品中",      root_path
-        %li= link_to "出品した商品・取引中",      root_path
-        %li= link_to "出品した商品・売却済み",      root_path
-        %li= link_to "購入した商品・取引中",      root_path
-        %li= link_to "購入した商品・過去の取引", root_path
-        %li= link_to "ニュース一覧",           root_path
-        %li= link_to "評価一案",              root_path
-        %li= link_to "ガイド",                root_path
-        %li= link_to "お問い合わせ",      root_path
-      %h3 メルペイ
-      %ul.container--side__list
-        %li= link_to "売上・振込申請", root_path
-        %li= link_to "ポイント",      root_path
-      %h3 設定
-      %ul.container--side__list
-        %li= link_to "プロフィール",      root_path
-        %li= link_to "送元・お届け先住所お届け先住所変更", root_path
-        %li= link_to "支払い方法",       root_path
-        %li= link_to "メール/パスワード", root_path
-        %li= link_to "本人情報",         root_path
-        %li= link_to "電話番号の確認",    root_path
-        %li= link_to "ログアウト",       root_path
-        %li= link_to "プロフィール",     root_path
-    .container--right
-      .mypage__top
-        = link_to root_path do
-          .mypage__top__icon
-            = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
-          %h2 
-          ユーザー名
-          .mypage__top__number 
-            評価　1　出品数 1
-      .mypage__select
-        .mypage__select__tab
-          %ul
-            %li 
-              %h3　お知らせ
-            %li
-              %h3　やることリスト
-        .mypage__select__body
-          %ul
-            %li
-              = link_to root_path do
-                = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                .mypage__select__body__text
-                  事務局から個別メッセージ『ログイン機能』
-                  .mypage__select__bod__text__time
-                    ● 21時間前
-            %li
-              = link_to root_path do
-                = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                .mypage__select__body__text
-                  事務局から個別メッセージ『ログイン機能』
-                  .mypage__select__bod__text__time
-                    ● 21時間前
-            %li
-              = link_to root_path do
-                = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                .mypage__select__body__text
-                  事務局から個別メッセージ『ログイン機能』
-                  .mypage__select__bod__text__time
-                    ● 21時間前
-            %li
-              = link_to root_path do
-                = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                .mypage__select__body__text
-                  事務局から個別メッセージ『ログイン機能』
-                  .mypage__select__bod__text__time
-                    ● 21時間前
-            %li.go__index
-              = link_to root_path  do
-                .go__index__area
-                  一覧を見る
-          %ul
-        .mypage__select__products  
-          .mypage__select__head
-            %h2.mypage__select__head__message 購入した商品
+.mypage__body
+  .nav
+    %ul
+      %li メルカリ
+      %li マイページ
+  
+  .mypage__main
+    /以下サイドバー（上部）
+    .mypage__container.flex 
+      .mypage__container--side
+        %ul.mypage__container--side__list
+          %li.mypage__container--side__list__top
+            = link_to "マイページ",      root_path 
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "お知らせ",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "やる事リスト",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "いいね！一覧",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "出品する",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "出品した商品・出品中",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "出品した商品・取引中",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "出品した商品・売却済み",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "購入した商品・取引中",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "購入した商品・過去の取引", root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "ニュース一覧",           root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "評価一案",              root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "ガイド",                root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "お問い合わせ",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+        /以下サイドバー（中部）
+        %h3 メルペイ
+        %ul.mypage__container--side__list
+          %li
+            = link_to "売上・振込申請", root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "ポイント",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+        /以下サイドバー（底部）
+        %h3 設定
+        %ul.mypage__container--side__list
+          %li
+            = link_to "プロフィール",      root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "送元・お届け先住所お届け先住所変更", root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "支払い方法",       root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "メール/パスワード", root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "本人情報",         root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "電話番号の確認",    root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "ログアウト",       root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+          %li
+            = link_to "プロフィール",     root_path
+            = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+       /メインコンテンツ（右側）
+      .mypage__container--right
+        /メインコンテンツユーザー情報
+        .mypage__top
+          = link_to root_path do
+            .mypage__top__icon
+              = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
+            %h2 
+            ユーザー名
+            .mypage__top__number 
+              評価 1 出品数 1
+        /メインコンテンツ タブ選択(お知らせ/やることリスト)
+        .mypage__select
           .mypage__select__tab
             %ul
-              %li 
-                %h3　取引中
-              %li
-                %h3　過去の取引
+              %li.mypage__item.active
+                = link_to '#'  do
+                  %h3 お知らせ
+              %li.mypage__item
+                = link_to '#' do
+                  %h3 やることリスト
+          /メインコンテンツ タブ選択(お知らせ)の内容
           .mypage__select__body
             %ul
-              %li
-                = link_to root_path do
-                  = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                  .mypage__select__body__text
-                    事務局から個別メッセージ『ログイン機能』
-                    .mypage__select__bod__text__time
-                      ● 21時間前
-              %li
-                = link_to root_path do
-                  = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                  .mypage__select__body__text
-                    事務局から個別メッセージ『ログイン機能』
-                    .mypage__select__bod__text__time
-                      ● 21時間前
-              %li
-                = link_to root_path do
-                  = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                  .mypage__select__body__text
-                    事務局から個別メッセージ『ログイン機能』
-                    .mypage__select__bod__text__time
-                      ● 21時間前
-              %li
-                = link_to root_path do
-                  = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                  .mypage__select__body__text
-                    事務局から個別メッセージ『ログイン機能』
-                    .mypage__select__bod__text__time
-                      ● 21時間前
-              %li.go__index
-                = link_to root_path  do
-                  .go__index__area
-                    一覧を見る
+              %li.mypage__content.show
+                %ul.mypage__content__list
+                  %li
+                    = link_to root_path do
+                      = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                      .mypage__select__body__text
+                        事務局から個別メッセージ『ログイン機能』
+                        .mypage__select__bod__text__time
+                          ● 21時間前
+                      = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                  %li
+                    = link_to root_path do
+                      = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                      .mypage__select__body__text
+                        事務局から個別メッセージ『ログイン機能』
+                        .mypage__select__bod__text__time
+                          ● 21時間前
+                      = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                  %li
+                    = link_to root_path do
+                      = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                      .mypage__select__body__text
+                        事務局から個別メッセージ『ログイン機能』
+                        .mypage__select__bod__text__time
+                          ● 21時間前
+                      = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                  %li
+                    = link_to root_path do
+                      = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                      .mypage__select__body__text
+                        事務局から個別メッセージ『ログイン機能』
+                        .mypage__select__bod__text__time
+                          ● 21時間前
+                      = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                  %li.go__index
+                    = link_to root_path  do
+                      .go__index__area
+                        一覧を見る
+              /メインコンテンツ タブ選択(やることリスト)の内容
+              %li.mypage__content
+                .mypage__content__no
+                  %p 現在取り扱い中の~~はありません
+          /メインコンテンツ タブ選択(取引中/過去の取引)
+          .mypage__select__products  
+            .mypage__select__head
+              %h2.mypage__select__head__message 購入した商品
+            .mypage__select__tab
+              %ul
+                %li.mypage__item__bottom.actives
+                  = link_to '#' do
+                    %h3 取引中
+                %li.mypage__item__bottom
+                  = link_to '#' do
+                    %h3 過去の取引
+            /メインコンテンツ タブ選択(取引中)の内容
+            .mypage__select__body
+              %ul
+                %li.mypage__content__bottom.show
+                  %ul.mypage__content__list
+                    %li
+                      = link_to root_path do
+                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                        .mypage__select__body__text
+                          事務局から個別メッセージ『ログイン機能』
+                          .mypage__select__bod__text__time
+                            ● 21時間前
+                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                    %li
+                      = link_to root_path do
+                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                        .mypage__select__body__text
+                          事務局から個別メッセージ『ログイン機能』
+                          .mypage__select__bod__text__time
+                            ● 21時間前
+                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                    %li
+                      = link_to root_path do
+                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                        .mypage__select__body__text
+                          事務局から個別メッセージ『ログイン機能』
+                          .mypage__select__bod__text__time
+                            ● 21時間前
+                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                    %li
+                      = link_to root_path do
+                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
+                        .mypage__select__body__text
+                          事務局から個別メッセージ『ログイン機能』
+                          .mypage__select__bod__text__time
+                            ● 21時間前
+                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
+                    %li.go__index
+                      = link_to root_path  do
+                        .go__index__area
+                          一覧を見る
+                %li.mypage__content__bottom
+                  /メインコンテンツ タブ選択(過去の取引)の内容
+                  .mypage__content__no
+                    %p 現在取り扱い中の~~はありません
+                    
