@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample65a
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      .container
+        .header-top
+          .header-top__left
+            = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
+          .header-top__right
+            = form_for '#' do |f|
+              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？'
+              = f.submit 'icon',class:'header-top__right__btn'
+        .header-bottom
+          .header-bottom__left
+            = link_to '#',class:"header-bottom__left--category" do
+              カテゴリーから探す
+            = link_to '#',class:"header-bottom__left--brand" do
+              ブランドから探す
+          .header-bottom__right
+            = link_to '#',class:"header-bottom__right--user" do
+              新規会員登録
+            = link_to '#',class:"header-bottom__right--rogin" do
+              ログイン
+            
+
+         
+
+
+
+
+
+    = yield
