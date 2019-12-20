@@ -74,6 +74,7 @@ header{
         &--dropdownfirst{
           display: none;
           background-color: #fff;
+          width:224px;
           position: absolute;
           top:36px;
           cursor: pointer;
@@ -82,14 +83,14 @@ header{
           }
           // カテゴリー検索のドロップダウン１つ目のli
           &--children1{
-            padding:3px;
+            padding:10px;
             font-size:15px;
             &:hover{
               background-color: red;
               color:white;
               .header-bottom__left--dropdownfirst--children1--dropdownsecond{
+                display:block;
                 &--children2{
-                  display:block;
                   &:hover{
                     background-color: rgb(245, 245, 245);
                   }
@@ -98,21 +99,22 @@ header{
             }
             // カテゴリー検索のドロップダウン２つ目のul
             &--dropdownsecond{
+              display:none;
               position: absolute;
-              width:200px;
+              width:224px;
+              height:602px;
               top: 0;
-              left: 186px;
+              left: 224px;
+              background-color: #fff;
               // カテゴリー検索のドロップダウン２つ目のli
               &--children2{
-                display:none;
-                background-color: #fff;
                 color:black;
                 padding:3px;
                 font-size:15px;
                 &:hover{
                   .header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird{
+                    display:block;
                     &--children3{
-                      display:block;
                       &:hover{
                         background-color: rgb(245, 245, 245);
                       }
@@ -121,14 +123,15 @@ header{
                 }
                 // カテゴリー検索のドロップダウン３つ目のul
                 &--dropdownthird{
+                  display:none;
                   position: absolute;
-                  width:200px;
+                  width:224px;
+                  height:602px;
                   top: 0;
-                  left: 186px;
+                  left: 224px;
+                  background-color: #fff;
                   // カテゴリー検索のドロップダウン３つ目のli
                   &--children3{
-                    display:none;
-                    background-color: #fff;
                     color:black;
                     padding:3px;
                     font-size:15px;
@@ -156,12 +159,13 @@ header{
           position: absolute;
           top:36px;
           left:140px;
+          width:224px;
           cursor: pointer;
           &:hover{
             display: block;
           }
           &--li{
-            padding:3px;
+            padding:10px;
             font-size:15px;
             &:hover{
               background-color: red;
