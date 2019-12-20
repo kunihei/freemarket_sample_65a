@@ -1,4 +1,5 @@
 header{
+  z-index: 1;
   width:100vw;
   background-color: #fff;
   height:100px;
@@ -72,6 +73,7 @@ header{
         }
         // カテゴリー検索のドロップダウン１つ目のul
         &--dropdownfirst{
+          z-index: 1;
           display: none;
           background-color: #fff;
           width:224px;
@@ -99,6 +101,7 @@ header{
             }
             // カテゴリー検索のドロップダウン２つ目のul
             &--dropdownsecond{
+              z-index: 1;
               display:none;
               position: absolute;
               width:224px;
@@ -123,6 +126,7 @@ header{
                 }
                 // カテゴリー検索のドロップダウン３つ目のul
                 &--dropdownthird{
+                  z-index: 1;
                   display:none;
                   position: absolute;
                   width:224px;
@@ -154,6 +158,7 @@ header{
         }
         // ブランド一覧のドロップダウン
         &--ul{
+          z-index: 1;
           display:none;
           background-color: #fff;
           position: absolute;
