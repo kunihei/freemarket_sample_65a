@@ -55,10 +55,10 @@
   %h3 設定
   %ul.mypage__container--side__list
     %li
-      = link_to "プロフィール",      root_path
+      = link_to "プロフィール",{controller: "users", action: "edit", name: "profile"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "送元・お届け先住所お届け先住所変更", root_path
+      = link_to "送元・お届け先住所お届け先住所変更",{controller: "users", action: "edit", name: "deliver_address"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
       = link_to "支払い方法",       root_path
@@ -75,6 +75,4 @@
     %li
       = link_to "ログアウト",       root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
-    %li
-      = link_to "プロフィール",     root_path
-      = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+      
