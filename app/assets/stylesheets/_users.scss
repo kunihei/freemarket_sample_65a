@@ -32,7 +32,7 @@ $FM-color-gry:#eee;
 
 /*  ナビゲーターバー */
 .nav{
-  background: #fff;
+  background: white;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   border-top: 1px solid $FM-color-gry;
 
@@ -393,7 +393,7 @@ $FM-color-gry:#eee;
     margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
-    color: #fff;
+    color: white;
     font-size: 12px;
     vertical-align: top;
 
@@ -441,7 +441,7 @@ $FM-color-gry:#eee;
           border-bottom: 1px solid $FM-color-gry;
           background: $FM-color-red;
           border: 1px solid $FM-color-red;
-          color: #fff;
+          color: white;
         }
       }
 
@@ -472,7 +472,7 @@ $FM-color-gry:#eee;
       border-bottom: 1px solid $FM-color-gry;
       background: $FM-color-red;
       border: 1px solid $FM-color-red;
-      color: #fff;
+      color: white;
     }
   }
 }
