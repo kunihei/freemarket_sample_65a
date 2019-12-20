@@ -1,0 +1,18 @@
+.profile 
+  .nav
+    %ul
+      %li 
+        メルカリ
+        = icon('fas', 'angle-right') 
+      %li 
+        マイページ
+        = icon('fas', 'angle-right')
+      %li 発送元・お届け先住所変更
+  .profile__main
+    /以下サイドバー（上部）
+    .profile__container.flex 
+      =render "sidebar"
+      .profile__right__wrap
+        .profile__right__content
+          %h2.profile__right__content__head 発送元・お届け先住所変更
+          .profile__right__content__form

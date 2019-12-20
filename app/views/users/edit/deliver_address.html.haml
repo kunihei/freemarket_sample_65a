@@ -35,30 +35,30 @@
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 郵便番号
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)123-4567'
+                %li= f.text_field :postcode, class: 'delibver__right__input', placeholder: '例)123-4567'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 都道府県
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.select  :first_name_kana, class: 'delibver__right__input', placeholder: '例)!!!!!!!!!'
+                %li= f.select  :pref, class: 'delibver__right__input', placeholder: '例)!!!!!!!!!'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 市区町村
                   %li.delibver__tag.delibver__tag__require  必須
-                %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)横浜市緑区'
+                %li= f.text_field :city , class: 'delibver__right__input', placeholder: '例)横浜市緑区'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 番地 
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)青山1-1-1'
+                %li= f.text_field :block , class: 'delibver__right__input', placeholder: '例)青山1-1-1'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 建物名 
                   %li.delibver__tag.delibver__tag__arbitrary 任意
-                %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)柳ビル103'
+                %li= f.text_field :building , class: 'delibver__right__input', placeholder: '例)柳ビル103'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 電話
                   %li.delibver__tag.delibver__tag__arbitrary 任意
-                %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)090-1234-5678'
+                %li= f.text_field :tell, class: 'delibver__right__input', placeholder: '例)090-1234-5678'
                 = f.submit '変更する', class: 'profile__right__input__send'
