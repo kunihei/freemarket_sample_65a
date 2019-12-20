@@ -450,3 +450,23 @@ h3{
     }
   }
 }
+
+/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+
+.logout__right__content__body{
+  padding: 64px;
+  height: 100%;
+
+  &__add{
+    height: 42%;
+    text-align: center;
+    font-size: 14px;
+    &__btn{
+      padding: 15px 125px;
+      border-bottom: 1px solid #eee;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+    }
+  }
+}
