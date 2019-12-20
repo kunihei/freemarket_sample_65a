@@ -27,11 +27,14 @@ h3{
 }
 
 
+$FM-color-red:#ea352d;
+$FM-color-gry:#eee;
+
 /*  ナビゲーターバー */
 .nav{
   background: #fff;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  border-top: 1px solid #eee;
+  border-top: 1px solid $FM-color-gry;
 
   ul{
     width: 1020px;
@@ -77,11 +80,11 @@ h3{
 
       &__top{
         font-weight: 600;
-        background-color: #eee;
+        background-color: $FM-color-gry;
         opacity: 1;
       }
       li{
-        border-top: 1px solid #eee;
+        border-top: 1px solid $FM-color-gry;
         line-height: 18px;
         display: flex;
         justify-content: space-between;
@@ -172,7 +175,7 @@ h3{
           display: block;
           height: 56px;
           margin: 0 auto;
-          background-color: #eee;
+          background-color: $FM-color-gry;
           line-height: 56px;
           text-align: center;
         }
@@ -196,10 +199,10 @@ h3{
 
 
   &__item{
-    background-color: #eee;
+    background-color: $FM-color-gry;
   
     &__bottom{
-      background-color: #eee;
+      background-color: $FM-color-gry;
     }
      /*  タブ選択時用(取引中/過去の取引) */
     &__bottom.actives{
@@ -209,7 +212,7 @@ h3{
       line-height: 72px;
       margin: 0;
       background-color: white;
-      border-top: 2px solid #ea352d;
+      border-top: 2px solid $FM-color-red;
     }
   }
   /*  タブ選択時用(お知らせ/やることリスト) */
@@ -220,7 +223,7 @@ h3{
     line-height: 72px;
     margin: 0;
     background-color: white;
-    border-top: 2px solid #ea352d;
+    border-top: 2px solid $FM-color-red;
   }
   /*  タブ非選択であれば非表示(お知らせ/やることリスト) */
   &__content{  
@@ -244,7 +247,7 @@ h3{
     &__list li{
       background-color: white;
       padding: 16px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid $FM-color-gry;
     }
   
     /*  タブ非選択であれば非表示(取引中/過去の取引) */
@@ -278,80 +281,82 @@ h3{
 }
 
 /*---------------------------------------ユーザー編集ページ（プロフィール）--------------------------------------- */
-  .profile{
-    background-color: #f5f5f5;
-    margin-top: 40px;
-    &__main{
-      margin: 40px auto 0;
-      width: 1024px;
+
+
+.profile{
+  background-color: #f5f5f5;
+  margin-top: 40px;
+  &__main{
+    margin: 40px auto 0;
+    width: 1024px;
+    height: 100%;
+  }
+  &__right{
+    /*  右側編集ページ */
+    &__wrap{
       height: 100%;
+      width: 700px;
+      background-color: white;
     }
-    &__right{
-      /*  右側編集ページ */
-      &__wrap{
-        height: 100%;
-        width: 700px;
-        background-color: white;
+    /*  form */
+    &__input{
+      /*  form(ニックネーム) */
+      &__nickname{
+        width: 190px;
+        padding: 10px 16px 8px;
+        height: 28px;
+        margin:  0 0 55px 8px;
+        vertical-align: middle;
+        font-size: 16px;
       }
-      /*  form */
-      &__input{
-        /*  form(ニックネーム) */
+      /*  form(自己紹介) */
+      &__introduction{
+        font-size: 16px;
+      }
+      /*  form(送信ボタン) */
+      &__send{
+        margin: 16px 0 0;
+        width: 100%;
+        background: $FM-color-red;
+        border: 1px solid $FM-color-red;
+        color: white;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+
+    &__content{
+      /*  右側最上部タイトル 'プロフィール' */
+      &__head{
+        margin: 0;
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      &__edit{
+        padding: 72px 16px 24px;
+        background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        height: 64px;
+        opacity: 0.8;
+
         &__nickname{
-          width: 190px;
-          padding: 10px 16px 8px;
-          height: 28px;
-          margin:  0 0 55px 8px;
-          vertical-align: middle;
-          font-size: 16px;
-        }
-        /*  form(自己紹介) */
-        &__introduction{
-          font-size: 16px;
-        }
-        /*  form(送信ボタン) */
-        &__send{
-          margin: 16px 0 0;
-          width: 100%;
-          background: #ea352d;
-          border: 1px solid #ea352d;
-          color: #fff;
-          height: 48px;
-          font-size: 16px;
+          display: block;
+          margin: 0 auto;
         }
       }
-
-      &__content{
-        /*  右側最上部タイトル 'プロフィール' */
-        &__head{
-          margin: 0;
-          font-size: 24px;
-          padding: 8px 24px;
-          text-align: center;
-          margin: 0 auto;
-          border-bottom: 1px solid #f5f5f5;
-        }
-
-        &__edit{
-          padding: 72px 16px 24px;
-          background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
-          background-repeat: no-repeat;
-          background-size: cover;
-          text-align: center;
-          height: 64px;
-          opacity: 0.8;
-
-          &__nickname{
-            display: block;
-            margin: 0 auto;
-          }
-        }
-        /*  右側底部タイトル padding */
-        &__bottom{
-          padding: 40px 16px;
-        }
+      /*  右側底部タイトル padding */
+      &__bottom{
+        padding: 40px 16px;
       }
     }
   }
+}
 /*--------------------------------------- ユーザー編集ページ（発送元・お届け先住所変更） --------------------------------------- */
 
 
@@ -393,7 +398,7 @@ h3{
     vertical-align: top;
 
     &__require{
-      background: #ea352d;
+      background: $FM-color-red;
       
     }
     &__arbitrary{
@@ -430,12 +435,12 @@ h3{
         margin-top: 35px;
         height: 42%;
         text-align: center;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $FM-color-gry;
         &__card{
           padding: 15px 55px;
-          border-bottom: 1px solid #eee;
-          background: #ea352d;
-          border: 1px solid #ea352d;
+          border-bottom: 1px solid $FM-color-gry;
+          background: $FM-color-red;
+          border: 1px solid $FM-color-red;
           color: #fff;
         }
       }
@@ -464,9 +469,9 @@ h3{
     font-size: 14px;
     &__btn{
       padding: 15px 125px;
-      border-bottom: 1px solid #eee;
-      background: #ea352d;
-      border: 1px solid #ea352d;
+      border-bottom: 1px solid $FM-color-gry;
+      background: $FM-color-red;
+      border: 1px solid $FM-color-red;
       color: #fff;
     }
   }
