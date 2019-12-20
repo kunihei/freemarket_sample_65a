@@ -26,6 +26,7 @@ h3{
   background-color: #f5f5f5;
 }
 
+
 /*  ナビゲーターバー */
 .nav{
   background: #fff;
@@ -288,14 +289,14 @@ h3{
   &__right{
 
     &__wrap{
-      height: 568px;
+      height: 100%;
       width: 700px;
       background-color: white;
     }
     
     &__input{
       
-      &__name{
+      &__nickname{
         width: 190px;
         padding: 10px 16px 8px;
         height: 28px;
@@ -314,6 +315,7 @@ h3{
         border: 1px solid #ea352d;
         color: #fff;
         height: 48px;
+        font-size: 16px;
       }
     }
 
@@ -324,7 +326,8 @@ h3{
         font-size: 24px;
         padding: 8px 24px;
         text-align: center;
-         margin: 0 auto;
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
       }
 
       &__edit{
@@ -336,7 +339,7 @@ h3{
         height: 64px;
         opacity: 0.8;
 
-        &__name{
+        &__nickname{
           display: block;
           margin: 0 auto;
         }
@@ -346,5 +349,62 @@ h3{
         padding: 40px 16px;
       }
     }
+  }
+}
+/*--------------------------------------- ユーザー編集ページ（発送元・お届け先住所変更） --------------------------------------- */
+
+
+
+
+.delibver{
+
+  &__right{
+
+  
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+    }
+    &__content{
+
+      &__group{
+        text-align: center;
+        margin-top: 32px;
+        &__top{
+        }
+        &__name{
+          font-weight: 600;
+          font-size: 15px;
+        }
+        
+      }
+    }
+  }
+  &__tag{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+
+    &__require{
+      background: #ea352d;
+      
+    }
+    &__arbitrary{
+      background: #ccc;
+    }
+  }
+}
+
+.profile__right__content__form{
+  form{
+    padding: 40px 40px 64px;
+    max-width: 343px;
+    margin: 0 auto;
   }
 }
