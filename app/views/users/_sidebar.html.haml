@@ -61,18 +61,18 @@
       = link_to "送元・お届け先住所お届け先住所変更",{controller: "users", action: "edit", name: "deliver_address"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "支払い方法",       root_path
+      = link_to "支払い方法",{controller: "users", action: "edit", name: "card"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "メール/パスワード", root_path
+      = link_to "メール/パスワード",{controller: "users", action: "edit", name: "email_password"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "本人情報",         root_path
+      = link_to "本人情報",{controller: "users", action: "edit", name: "identification"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "電話番号の確認",    root_path
+      = link_to "電話番号の確認",{controller: "users", action: "edit", name: "phone_confirm"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "ログアウト",       root_path
+      = link_to "ログアウト",{controller: "users", action: "edit", name: "logout"}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
-      
+     
