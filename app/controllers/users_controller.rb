@@ -6,4 +6,8 @@ class UsersController < ApplicationController
   def show
 
   end
+
+  def edit
+    render "users/edit/#{params[:name]}"
+  end
 end

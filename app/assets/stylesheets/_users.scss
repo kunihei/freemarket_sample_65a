@@ -18,6 +18,13 @@ h3{
   margin: 0;
 }
 
+.flex{
+  display: flex;
+}
+
+.body{
+  background-color: #f5f5f5;
+}
 
 
 /*  ナビゲーターバー */
@@ -47,10 +54,7 @@ h3{
 .mypage__main{
   margin: 40px auto 0;
   width:1024px;
-
-
-  
-  height: 2000px;
+  height: 100%;
 }
 /*  サイドバー */
 .mypage__container{
@@ -273,10 +277,196 @@ h3{
   }
 }
 
+/*---------------------------------------ユーザー編集ページ（プロフィール）--------------------------------------- */
+.profile{
+  background-color: #f5f5f5;
+  margin-top: 40px;
+  &__main{
+    margin: 40px auto 0;
+    width: 1024px;
+    height: 100%;
+  }
+  &__right{
+
+    &__wrap{
+      height: 100%;
+      width: 700px;
+      background-color: white;
+    }
+    
+    &__input{
+      
+      &__nickname{
+        width: 190px;
+        padding: 10px 16px 8px;
+        height: 28px;
+        margin:  0 0 55px 8px;
+        vertical-align: middle;
+        font-size: 16px;
+      }
+
+      &__introduction{
+        font-size: 16px;
+      }
+      &__send{
+        margin: 16px 0 0;
+        width: 100%;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+
+    &__content{
+      
+      &__head{
+        margin: 0;
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      &__edit{
+        padding: 72px 16px 24px;
+        background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        height: 64px;
+        opacity: 0.8;
+
+        &__nickname{
+          display: block;
+          margin: 0 auto;
+        }
+      }
+
+      &__bottom{
+        padding: 40px 16px;
+      }
+    }
+  }
+}
+/*--------------------------------------- ユーザー編集ページ（発送元・お届け先住所変更） --------------------------------------- */
 
 
 
 
+.delibver{
+
+  &__right{
+
+  
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+    }
+    &__content{
+
+      &__group{
+        text-align: center;
+        margin-top: 32px;
+        &__top{
+        }
+        &__name{
+          font-weight: 600;
+          font-size: 15px;
+        }
+        
+      }
+    }
+  }
+  &__tag{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+
+    &__require{
+      background: #ea352d;
+      
+    }
+    &__arbitrary{
+      background: #ccc;
+    }
+  }
+}
+
+.profile__right__content__form{
+  form{
+    padding: 40px 40px 64px;
+    max-width: 343px;
+    margin: 0 auto;
+  }
+}
 
 
+/*--------------------------------------- ユーザー編集ページ（支払い方法追加） --------------------------------------- */
 
+.card__right{
+
+  &__content{
+    
+    &__body{
+      padding: 64px;
+      height: 180px;
+      &__head{
+        display: block;
+        width: 320px;
+        margin: 0 auto;
+      }
+
+      &__add{
+        margin-top: 35px;
+        height: 42%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        &__card{
+          padding: 15px 55px;
+          border-bottom: 1px solid #eee;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+        }
+      }
+
+      &__payment{
+        margin-top: 40px;
+        float: right;
+        font-size: 13px;
+        a{
+          color: #0099e8;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+
+.logout__right__content__body{
+  padding: 64px;
+  height: 100%;
+
+  &__add{
+    height: 42%;
+    text-align: center;
+    font-size: 14px;
+    &__btn{
+      padding: 15px 125px;
+      border-bottom: 1px solid #eee;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+    }
+  }
+}

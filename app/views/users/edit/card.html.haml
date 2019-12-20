@@ -1,0 +1,26 @@
+.profile 
+  .nav
+    %ul
+      %li 
+        メルカリ
+        = icon('fas', 'angle-right') 
+      %li 
+        マイページ
+        = icon('fas', 'angle-right')
+      %li 支払い方法
+  .profile__main
+    /以下サイドバー（上部）
+    .profile__container.flex 
+      =render "sidebar"
+      .profile__right__wrap
+        .profile__right__content
+          %h2.profile__right__content__head 支払い方法
+          .card__right__content__body
+            .card__right__content__body__head
+              %h3 クレジットカード一覧
+            .card__right__content__body__add
+              =link_to '#', class: 'card__right__content__body__add__card' do
+                クレジットカードを追加する
+            .card__right__content__body__payment
+              #card__right__content__body__payment__link
+                =link_to '支払い方法について ＞'
