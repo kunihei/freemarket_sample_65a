@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render "users/#{params[:name]}", locals: {user: current_user }
+    render "users/edit/#{params[:name]}"
   end
 end
