@@ -418,8 +418,8 @@ $FM-color-gry:#eee;
 
 /*--------------------------------------- ユーザー編集ページ（支払い方法追加） --------------------------------------- */
 
+/*  右側コンテンツ */
 .card__right{
-
   &__content{
     
     &__body{
@@ -430,7 +430,7 @@ $FM-color-gry:#eee;
         width: 320px;
         margin: 0 auto;
       }
-
+      /*  追加ボタン */
       &__add{
         margin-top: 35px;
         height: 42%;
@@ -444,7 +444,7 @@ $FM-color-gry:#eee;
           color: white;
         }
       }
-
+      /*  支払い支払い方法について（link） */
       &__payment{
         margin-top: 40px;
         float: right;
