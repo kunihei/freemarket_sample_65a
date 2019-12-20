@@ -1,12 +1,17 @@
 header{
   width:100vw;
-  .container{
+  background-color: #fff;
+  height:100px;
+  box-sizing: border-box;
+  padding-top: 15px;
+  .header-container{
     width:1020px;
     margin:0 auto;
     .header-top{
       display: flex;
       width:100%;
       box-sizing: border-box;
+      padding-bottom: 5px;
       &__left{
         width:134px;
         padding-right:10px;
@@ -16,12 +21,24 @@ header{
         position: relative;
         &__message{
           width:97%;
-          padding:10px;
+          padding:12px;
+          font-size: 16px;
+          border:1px solid;
+          border-color:rgb(204, 204, 204);
+          border-radius: 5px;
+          background-color: rgb(245, 245, 245);
         }
         &__btn{
           position: absolute;
-          top:8px;
-          right:7px;
+          top:10px;
+          right:10px;
+          cursor: pointer;
+          border: none;
+          background-color: rgb(245, 245, 245);
+          outline: none;
+          .icon-search{
+            font-size: 18px;
+          }
         }
       }
     }
@@ -31,16 +48,109 @@ header{
       width:100%;
       box-sizing: border-box;
       &__left{
+        display: flex;
+        position: relative;
         &--category{
           text-decoration: none;
           padding-right:10px;
+          padding-bottom:20px;
+          font-size:15px;
           font-weight: bold;
           color:black;
+          &:hover + .header-bottom__left--ca{
+            display: block;
+          }
+        }
+        &--ca{
+          display: none;
+          background-color: #fff;
+          position: absolute;
+          top:36px;
+          cursor: pointer;
+          &:hover{
+            display: block;
+          }
+          &--te{
+            padding:3px;
+            font-size:15px;
+            &:hover{
+              background-color: red;
+              color:white;
+              .header-bottom__left--ca--te--go{
+                &--ry{
+                  display:block;
+                  &:hover{
+                    background-color: rgb(245, 245, 245);
+                  }
+                }
+              }
+            }
+            &--go{
+              position: absolute;
+              width:200px;
+              top: 0;
+              left: 186px;
+              &--ry{
+                display:none;
+                background-color: #fff;
+                color:black;
+                padding:3px;
+                font-size:15px;
+                &:hover{
+                  .header-bottom__left--ca--te--go--ry--12{
+                    &--34{
+                      display:block;
+                      &:hover{
+                        background-color: rgb(245, 245, 245);
+                      }
+                    }
+                  }
+                }
+                &--12{
+                  position: absolute;
+                  width:200px;
+                  top: 0;
+                  left: 186px;
+                  &--34{
+                    display:none;
+                    background-color: #fff;
+                    color:black;
+                    padding:3px;
+                    font-size:15px;
+                  }
+                }
+              }
+            }
+          }
         }
         &--brand{
           text-decoration: none;
+          padding-bottom:20px;
+          font-size:15px;
           font-weight: bold;
           color:black;
+          &:hover + .header-bottom__left--ul{
+            display: block;
+          }
+        }
+        &--ul{
+          display:none;
+          background-color: #fff;
+          position: absolute;
+          top:36px;
+          left:140px;
+          cursor: pointer;
+          &:hover{
+            display: block;
+          }
+          &--li{
+            padding:3px;
+            font-size:15px;
+            &:hover{
+              background-color: red;
+              color:white;
+            }
+          }
         }
       }
       &__right{
@@ -63,4 +173,7 @@ header{
       }
     }
   }
+}
+body{
+  margin:0;
 }

@@ -9,20 +9,83 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
-      .container
+      .header-container
         .header-top
           .header-top__left
             = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
           .header-top__right
             = form_for '#' do |f|
-              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？'
-              = f.submit 'icon',class:'header-top__right__btn'
+              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？' 
+              %button.header-top__right__btn
+                = icon('fas', 'search', class: 'icon-search')
         .header-bottom
           .header-bottom__left
             = link_to '#',class:"header-bottom__left--category" do
               カテゴリーから探す
+            %ul.header-bottom__left--ca
+              %li.header-bottom__left--ca--te
+                レディース
+                %ul.header-bottom__left--ca--te--go
+                  %li.header-bottom__left--ca--te--go--ry
+                    トップス
+                    %ul.header-bottom__left--ca--te--go--ry--12
+                      %li.header-bottom__left--ca--te--go--ry--12--34
+                        Tシャツ1
+                      %li.header-bottom__left--ca--te--go--ry--12--34
+                        Tシャツ2
+                  %li.header-bottom__left--ca--te--go--ry
+                    ジャケット/アウター
+                    %ul.header-bottom__left--ca--te--go--ry--12
+                      %li.header-bottom__left--ca--te--go--ry--12--34
+                        Tシャツ3
+                      %li.header-bottom__left--ca--te--go--ry--12--34
+                        Tシャツ4
+              %li.header-bottom__left--ca--te
+                メンズ
+                %ul.header-bottom__left--ca--te--go
+                  %li.header-bottom__left--ca--te--go--ry
+                    トップス2
+                  %li.header-bottom__left--ca--te--go--ry
+                    ジャケット/アウター2
+              %li.header-bottom__left--ca--te
+                ベビー・キッズ
+              %li.header-bottom__left--ca--te
+                インテリア・住まい・小物
+              %li.header-bottom__left--ca--te
+                本・音楽・・ゲーム
+              %li.header-bottom__left--ca--te
+                おもちゃ・ホビー・グッズ
+              %li.header-bottom__left--ca--te
+                コスメ・香水・美容
+              %li.header-bottom__left--ca--te
+                家電・スマホ・カメラ
+              %li.header-bottom__left--ca--te
+                スポーツ・レジャー
+              %li.header-bottom__left--ca--te
+                ハンドメイド
+              %li.header-bottom__left--ca--te
+                チケット
+              %li.header-bottom__left--ca--te
+                自動車・オートバイ
+              %li.header-bottom__left--ca--te
+                その他
+              %li.header-bottom__left--ca--te
+                カテゴリー一覧
             = link_to '#',class:"header-bottom__left--brand" do
               ブランドから探す
+            %ul.header-bottom__left--ul
+              %li.header-bottom__left--ul--li
+                シャネル
+              %li.header-bottom__left--ul--li
+                ナイキ
+              %li.header-bottom__left--ul--li
+                ルイ ヴィトン
+              %li.header-bottom__left--ul--li
+                シュプリーム
+              %li.header-bottom__left--ul--li
+                アディダス
+              %li.header-bottom__left--ul--li
+                ブランド一覧
           .header-bottom__right
             = link_to '#',class:"header-bottom__right--user" do
               新規会員登録
