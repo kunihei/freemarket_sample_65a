@@ -1,0 +1,26 @@
+.profile 
+  .nav
+    %ul
+      %li 
+        メルカリ
+        = icon('fas', 'angle-right') 
+      %li 
+        マイページ
+        = icon('fas', 'angle-right')
+      %li プロフィール
+  .profile__main
+    /以下サイドバー（上部）
+    .profile__container.flex 
+      =render "sidebar"
+      .profile__right__wrap
+        .profile__right__content
+          %h2.profile__right__content__head プロフィール
+          = form_for '#' do |f|
+            .profile__right__content__edit
+              .profile__right__content__edit__name.flex
+                = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
+                = f.text_field :name, class: 'profile__right__input__name'
+            .profile__right__content__bottom
+              .profile__right__content__profile
+                = f.text_area :introduction, class: 'profile__right__input__introduction', size: "81x16", placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+                = f.submit '変更する', class: 'profile__right__input__send'
