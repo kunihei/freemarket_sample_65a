@@ -408,3 +408,45 @@ h3{
     margin: 0 auto;
   }
 }
+
+
+/*--------------------------------------- ユーザー編集ページ（支払い方法追加） --------------------------------------- */
+
+.card__right{
+
+  &__content{
+    
+    &__body{
+      padding: 64px;
+      height: 180px;
+      &__head{
+        display: block;
+        width: 320px;
+        margin: 0 auto;
+      }
+
+      &__add{
+        margin-top: 35px;
+        height: 42%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        &__card{
+          padding: 15px 55px;
+          border-bottom: 1px solid #eee;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+        }
+      }
+
+      &__payment{
+        margin-top: 40px;
+        float: right;
+        font-size: 13px;
+        a{
+          color: #0099e8;
+        }
+      }
+    }
+  }
+}
