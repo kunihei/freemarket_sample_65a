@@ -9,70 +9,80 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
+      -# ヘッダーの中クラス
       .header-container
+        -# ヘッダーの中の上のやつ     
         .header-top
+          -# 左のメルカリのアイコン
           .header-top__left-icon
             = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
+          -# 右のフォーム
           .header-top__right-form
             = form_for '#' do |f|
               = f.text_field '#',class:'header-top__right-form__message',placeholder: '何かお探しですか？' 
               %button.header-top__right-form__btn
+                -# 検索画面のアイコン
                 = icon('fas', 'search', class: 'icon-search')
+        -# ヘッダーの中の下のやつ
         .header-bottom
+          -# カテゴリーから探すとブランドから探すの親要素
           .header-bottom__left
+            -# カテゴリーから探すボタン
             = link_to '#',class:"header-bottom__left--category" do
               カテゴリーから探す
-            %ul.header-bottom__left--ca
-              %li.header-bottom__left--ca--te
+            %ul.header-bottom__left--dropdownfirst
+              %li.header-bottom__left--dropdownfirst--children1
                 レディース
-                %ul.header-bottom__left--ca--te--go
-                  %li.header-bottom__left--ca--te--go--ry
+                %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
                     トップス
-                    %ul.header-bottom__left--ca--te--go--ry--12
-                      %li.header-bottom__left--ca--te--go--ry--12--34
+                    %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
                         Tシャツ1
-                      %li.header-bottom__left--ca--te--go--ry--12--34
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
                         Tシャツ2
-                  %li.header-bottom__left--ca--te--go--ry
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
                     ジャケット/アウター
-                    %ul.header-bottom__left--ca--te--go--ry--12
-                      %li.header-bottom__left--ca--te--go--ry--12--34
+                    %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
                         Tシャツ3
-                      %li.header-bottom__left--ca--te--go--ry--12--34
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
                         Tシャツ4
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 メンズ
-                %ul.header-bottom__left--ca--te--go
-                  %li.header-bottom__left--ca--te--go--ry
+                %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
                     トップス2
-                  %li.header-bottom__left--ca--te--go--ry
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
                     ジャケット/アウター2
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 ベビー・キッズ
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 インテリア・住まい・小物
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 本・音楽・・ゲーム
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 おもちゃ・ホビー・グッズ
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 コスメ・香水・美容
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 家電・スマホ・カメラ
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 スポーツ・レジャー
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 ハンドメイド
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 チケット
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 自動車・オートバイ
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 その他
-              %li.header-bottom__left--ca--te
+              %li.header-bottom__left--dropdownfirst--children1
                 カテゴリー一覧
+            -# ブランドから探すボタン
             = link_to '#',class:"header-bottom__left--brand" do
               ブランドから探す
+
             %ul.header-bottom__left--ul
               %li.header-bottom__left--ul--li
                 シャネル
@@ -86,6 +96,7 @@
                 アディダス
               %li.header-bottom__left--ul--li
                 ブランド一覧
+          -# ユーザーの会員登録とログイン
           .header-bottom__right
             = link_to '#',class:"header-bottom__right--user" do
               新規会員登録

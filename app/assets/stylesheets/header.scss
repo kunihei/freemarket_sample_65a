@@ -7,18 +7,22 @@ header{
   .header-container{
     width:1020px;
     margin:0 auto;
+    // ヘッダーの中の上
     .header-top{
       display: flex;
       width:100%;
       box-sizing: border-box;
       padding-bottom: 5px;
+      // メルカリのアイコン
       &__left-icon{
         width:134px;
         padding-right:10px;
       }
+      // フォームの親
       &__right-form{
         width:100%;
         position: relative;
+        // 検索の箱
         &__message{
           width:97%;
           padding:12px;
@@ -28,6 +32,7 @@ header{
           border-radius: 5px;
           background-color: rgb(245, 245, 245);
         }
+        // 検索ボタン
         &__btn{
           position: absolute;
           top:10px;
@@ -36,20 +41,24 @@ header{
           border: none;
           background-color: rgb(245, 245, 245);
           outline: none;
+          // フォントオーサム
           .icon-search{
             font-size: 18px;
           }
         }
       }
     }
+    // ヘッダーの中の下の方のやつの横並びの親
     .header-bottom{
       display: flex;
       justify-content: space-between;
       width:100%;
       box-sizing: border-box;
+      // カテゴリー一覧とブランド一覧の親
       &__left{
         display: flex;
         position: relative;
+        // カテゴリー一覧
         &--category{
           text-decoration: none;
           padding-right:10px;
@@ -57,11 +66,12 @@ header{
           font-size:15px;
           font-weight: bold;
           color:black;
-          &:hover + .header-bottom__left--ca{
+          &:hover + .header-bottom__left--dropdownfirst{
             display: block;
           }
         }
-        &--ca{
+        // カテゴリー検索のドロップダウン１つ目のul
+        &--dropdownfirst{
           display: none;
           background-color: #fff;
           position: absolute;
@@ -70,14 +80,15 @@ header{
           &:hover{
             display: block;
           }
-          &--te{
+          // カテゴリー検索のドロップダウン１つ目のli
+          &--children1{
             padding:3px;
             font-size:15px;
             &:hover{
               background-color: red;
               color:white;
-              .header-bottom__left--ca--te--go{
-                &--ry{
+              .header-bottom__left--dropdownfirst--children1--dropdownsecond{
+                &--children2{
                   display:block;
                   &:hover{
                     background-color: rgb(245, 245, 245);
@@ -85,20 +96,22 @@ header{
                 }
               }
             }
-            &--go{
+            // カテゴリー検索のドロップダウン２つ目のul
+            &--dropdownsecond{
               position: absolute;
               width:200px;
               top: 0;
               left: 186px;
-              &--ry{
+              // カテゴリー検索のドロップダウン２つ目のli
+              &--children2{
                 display:none;
                 background-color: #fff;
                 color:black;
                 padding:3px;
                 font-size:15px;
                 &:hover{
-                  .header-bottom__left--ca--te--go--ry--12{
-                    &--34{
+                  .header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird{
+                    &--children3{
                       display:block;
                       &:hover{
                         background-color: rgb(245, 245, 245);
@@ -106,12 +119,14 @@ header{
                     }
                   }
                 }
-                &--12{
+                // カテゴリー検索のドロップダウン３つ目のul
+                &--dropdownthird{
                   position: absolute;
                   width:200px;
                   top: 0;
                   left: 186px;
-                  &--34{
+                  // カテゴリー検索のドロップダウン３つ目のli
+                  &--children3{
                     display:none;
                     background-color: #fff;
                     color:black;
@@ -123,6 +138,7 @@ header{
             }
           }
         }
+        // ブランド一覧
         &--brand{
           text-decoration: none;
           padding-bottom:20px;
@@ -133,6 +149,7 @@ header{
             display: block;
           }
         }
+        // ブランド一覧のドロップダウン
         &--ul{
           display:none;
           background-color: #fff;
@@ -153,6 +170,7 @@ header{
           }
         }
       }
+      // ユーザーの会員登録とログインの親
       &__right{
         box-sizing: border-box;
         &--user{
