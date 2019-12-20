@@ -11,12 +11,12 @@
     %header
       .header-container
         .header-top
-          .header-top__left
+          .header-top__left-icon
             = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
-          .header-top__right
+          .header-top__right-form
             = form_for '#' do |f|
-              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？' 
-              %button.header-top__right__btn
+              = f.text_field '#',class:'header-top__right-form__message',placeholder: '何かお探しですか？' 
+              %button.header-top__right-form__btn
                 = icon('fas', 'search', class: 'icon-search')
         .header-bottom
           .header-bottom__left

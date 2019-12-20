@@ -12,11 +12,11 @@ header{
       width:100%;
       box-sizing: border-box;
       padding-bottom: 5px;
-      &__left{
+      &__left-icon{
         width:134px;
         padding-right:10px;
       }
-      &__right{
+      &__right-form{
         width:100%;
         position: relative;
         &__message{
@@ -169,6 +169,10 @@ header{
           padding: 6px;
           color:blue;
           border-radius: 5px;
+          &:hover{
+            color:white;
+            background-color: blue;
+          }
         }
       }
     }
