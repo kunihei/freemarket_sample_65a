@@ -476,3 +476,70 @@ $FM-color-gry:#eee;
     }
   }
 }
+
+
+/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+
+.identification{
+
+  &__right{
+
+  
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+    }
+    &__content{
+      &__middle{
+        p{
+          margin: 0;
+          font-size: 14px;
+          margin-top: 8px;
+        }
+        a{
+          justify-content: right;
+          color: #0099e8;
+          float: right;
+          margin-top: 8px;
+        }
+        i{
+          line-height: 37px;
+        }
+      }
+      &__group{
+        margin-top: 32px;
+        font-size: 12px;
+        &__name{
+          font-weight: 600;
+          line-height: 22px;
+        }
+        
+      }
+    }
+  }
+  &__tag{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    vertical-align: top;
+    &__require{
+      background: $FM-color-red;
+      
+    }
+    &__arbitrary{
+      background: #ccc;
+    }
+  }
+}
+
+.identification__right__content__form{
+  form{
+    padding: 64px;
+    margin: 0 auto;
+  }
+}
