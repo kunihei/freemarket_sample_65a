@@ -1,0 +1,23 @@
+.profile 
+  /ナビゲーションバー
+  .nav
+    %ul
+      %li 
+        メルカリ
+        = icon('fas', 'angle-right') 
+      %li 
+        マイページ
+        = icon('fas', 'angle-right')
+      %li ログアウト
+  /以下右側要素
+  .profile__main
+    .profile__container.flex 
+      /以下サイドバー（render）
+      =render "sidebar"
+      .profile__right__wrap
+        .logout__right__content__body
+          /ログアウトボタン
+          .logout__right__content__body__add
+            =link_to '#', class: 'logout__right__content__body__add__btn' do
+              ログアウト
+          
