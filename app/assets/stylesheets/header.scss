@@ -70,6 +70,9 @@ header{
           &:hover + .header-bottom__left--dropdownfirst{
             display: block;
           }
+          .icon-list{
+            color:red;
+          }
         }
         // カテゴリー検索のドロップダウン１つ目のul
         &--dropdownfirst{
@@ -154,6 +157,9 @@ header{
           color:black;
           &:hover + .header-bottom__left--ul{
             display: block;
+          }
+          .icon-tag{
+            color:red;
           }
         }
         // ブランド一覧のドロップダウン

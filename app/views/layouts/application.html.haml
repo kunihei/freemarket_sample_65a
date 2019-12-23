@@ -29,6 +29,7 @@
           .header-bottom__left
             -# カテゴリーから探すボタン
             = link_to '#',class:"header-bottom__left--category" do
+              = icon('fas', 'list', class: 'icon-list')
               カテゴリーから探す
             %ul.header-bottom__left--dropdownfirst
               %li.header-bottom__left--dropdownfirst--children1
@@ -81,6 +82,7 @@
                 カテゴリー一覧
             -# ブランドから探すボタン
             = link_to '#',class:"header-bottom__left--brand" do
+              = icon('fas', 'tag', class: 'icon-tag')
               ブランドから探す
 
             %ul.header-bottom__left--ul
