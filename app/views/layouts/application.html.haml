@@ -37,7 +37,29 @@
 
 
     = yield
+  %aside.aside
+    .aside1
+      .aside2
+        .text1 スマホでかんたんフリマアプリ
+        .text2 今すぐ無料ダウンロード！
+        .images 
+          = link_to image_tag("logo_red.svg",alt:"mercari",class:"mercari-image2",size:"124x31"),"#"
+
+          = link_to "#" ,class:"images-image " do
+            = link_to image_tag("264-2640344_try-sam-app-store-and-google-play-icons.png",alt:"mercari",class:"mercari-image3",size:"124x31"),"#"
+
+          = link_to "#" ,class:"images-image" do
+            = link_to image_tag("https://krispykreme.jp/cms/wp-content/uploads/2018/10/btn_googleplay.png",alt:"mercari",class:"mercari-image3",size:"124x31"),"#"
+
+      .aside3
+        = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png",alt:"mercari",class:"mercari-image4",size:"124x31"),"#"
+
     
+    
+
+
+
+
   %footer.footer
     .footer_nav
       .information
@@ -59,12 +81,12 @@
             = link_to "#" ,class:"item " do
               メルカリロゴ利用ガイドライン
 
-          %li
-            =link_to "https://www.facebook.com/", class: "contents__btn" do
-              Facebook
           
-            =link_to "https://twitter.com/", class: "contents__btn" do
-              Twitter
+          =link_to "https://twitter.com/", class: "contents__btn" do
+            = icon( 'fab fa-twitter',class: "contents__btn--icon")
+        
+          =link_to "https://twitter.com/", class: "contents__btn" do
+            = icon('fab fa-facebook-square', class: "contents__btn--icon")
           
       .information
         %h2.information__title ヘルプ＆ガイド
