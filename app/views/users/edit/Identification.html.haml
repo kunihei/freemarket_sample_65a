@@ -1,0 +1,63 @@
+.profile 
+  .nav
+    %ul
+      %li 
+        メルカリ
+        = icon('fas', 'angle-right') 
+      %li 
+        マイページ
+        = icon('fas', 'angle-right')
+      %li 発送元・お届け先住所変更
+  .profile__main
+    /以下サイドバー（上部）
+    .profile__container.flex
+      =render "sidebar"
+      .profile__right__wrap
+        .profile__right__content
+          %h2.profile__right__content__head 本人情報の登録
+          .identification__right__content__form
+            = form_for '#' do |f|
+              .identification__right__content__middle
+                %p お客さまの本人情報をご登録ください。
+                %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+                = link_to '#',class: 'flex'  do
+                  %p 本人確認書類のアップロードについて 
+                  = icon('fas', 'angle-right', class: 'identification__right__content__icon') 
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name お名前
+                メルカリ
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name お名前カナ
+                太郎
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 生年月日
+                2020/01/01
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 郵便番号
+                  %li.identification__tag.identification__tag__arbitrary 任意
+                %li= f.text_field :postcode, class: 'identification__right__input', placeholder: '例)123-4567'
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 都道府県
+                  %li.identification__tag.identification__tag__arbitrary 任意
+                %li= f.select  :pref, class: 'identification__right__input', placeholder: '例)!!!!!!!!!'
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 市区町村
+                  %li.identification__tag.identification__tag__arbitrary 任意
+                %li= f.text_field :city , class: 'identification__right__input', placeholder: '例)横浜市緑区'
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 番地 
+                  %li.identification__tag.identification__tag__arbitrary 任意
+                %li= f.text_field :block , class: 'identification__right__input', placeholder: '例)青山1-1-1'
+              .identification__right__content__group
+                %ul.identification__right__content__group__top.flex
+                  %li.identification__right__content__group__name 建物名 
+                  %li.identification__tag.identification__tag__arbitrary 任意
+                %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103'
+                = f.submit '変更する', class: 'profile__right__input__send'
