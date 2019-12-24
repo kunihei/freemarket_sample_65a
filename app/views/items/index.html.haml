@@ -1,2 +1,193 @@
-.wrapper
-  = render 'body'
+.toppage-body
+  .toppage-slider
+    = link_to root_path, target: "_blank", class: "toppage__slider__link" do
+      = image_tag "image1.jpeg", size: "1450x390"
+    .toppage-slider__messages
+      .toppage-slider__messages__message1
+        スマホで  かんたん
+        %br
+        フリマアプリ
+      .toppage-slider__messages__message2
+        フリマはスマホカメラからすぐに出品できる
+        %br
+        購入時も安心な独自システムのアプリです
+      .toppage-slider__messages__message3
+        = link_to "https://apps.apple.com/jp/app/id667861049?l=ja", target: "_blank", class: "toppage-slider__messages__message3__apple" do
+          = image_tag "apple.png", size: "200x80"
+      .toppage-slider__messages__message4
+        = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank", class: "toppage-slider__messages__message4__google" do
+          = image_tag "google-play.png", size: "200x80"
+
+
+  .toppage__category
+    .toppage__category__heading
+      人気のカテゴリー
+    .toppage__category__type
+      =link_to "レディース", '#', class: "toppage__category__type__btn"
+      =link_to "メンズ", '#', class: "toppage__category__type__btn"
+      =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__type__btn"
+      =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__type__btn"
+  .toppage-list
+    .toppage__items
+      .toppage__items__name
+        レディース新着アイテム
+      =link_to "もっと見る ＞", '#', class: "toppage__items__name__button"
+    .toppage__block
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+    .toppage__block
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+
+  .toppage__category
+    .toppage__category__heading
+      人気のブランド
+    .toppage__category__type2
+      =link_to "シャネル", '#', class: "toppage__category__type2__btn"
+      =link_to "ルイヴィトン", '#', class: "toppage__category__type2__btn"
+      =link_to "シュプリーム", '#', class: "toppage__category__type2__btn"
+      =link_to "ナイキ", '#', class: "toppage__category__type2__btn"
+  .toppage-list
+    .toppage__items
+      .toppage__items__name
+        シャネル新着アイテム
+      =link_to "もっと見る ＞", '#', class: "toppage__items__name__button"
+    .toppage__block
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+    .toppage__block
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+      .toppage__block2__goods
+        = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__image"
+          .toppage__block2__goods__words
+            カバン
+        .toppage__block2__goods__price
+          ¥100,000
+      .toppage__block__goods
+        = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+          = image_tag "image4.jpg", size: "60×60", class: "toppage__block__goods__image"
+          .toppage__block__goods__words
+            カバン
+        .toppage__block__goods__price
+          ¥100,000
+

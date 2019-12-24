@@ -1,14 +1,12 @@
 .toppage-body{
   background-color: rgb(245, 245, 245);
   width: 100vw;
-  height: calc(100vh - 100px);
   position: relative;
   .toppage-slider{
     display: block;
     cursor: pointer;
     height: 360px;
     width: 100vw;
-    z-index: 1;
     position: relative;
     #slick-next{
       position: absolute;
