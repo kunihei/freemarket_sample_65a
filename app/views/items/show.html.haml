@@ -1,0 +1,319 @@
+%body
+  -# 外の大枠
+  .show-container
+    -# コメントまでの枠
+    .showcontent-main
+      %h1.item-name
+        新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン
+      %p.item-wording
+        『新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン』は、295回の取引実績を持つみかんさんから出品されました。フェリシモ（マフラー/ショール/レディース）の商品で、岐阜県から1~2日で発送されます。
+      -# 画像とテーブルの親
+      .item-main-content
+        -# 画像
+        .item-main-content__photo
+          = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"250x300"
+          -# 下の複数画像
+          .photo
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+        -# テーブル
+        %table.item-main-content__table
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              出品者
+            %td.item-main-content__table__row--data
+              みかん
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              カテゴリー
+            %td.item-main-content__table__row--data
+              レディース
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              ブランド
+            %td.item-main-content__table__row--data
+              フェリシモ
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              商品の状態
+            %td.item-main-content__table__row--data
+              新品、未使用
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              配送料の負担
+            %td.item-main-content__table__row--data
+              送料込み(出品者負担)
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              配送の方法
+            %td.item-main-content__table__row--data
+              ゆうゆうメルカリ便
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              配送元地域
+            %td.item-main-content__table__row--data
+              岐阜県
+          %tr.item-main-content__table__row
+            %th.item-main-content__table__row--title
+              発送日の目安
+            %td.item-main-content__table__row--data
+              1~2日で発送
+
+      -# 値段
+      .item-price
+        %span.item-price__fee
+          ¥2,400
+        %span.item-price__taxin
+          (税込)
+        %span.item-price__taxin2
+          送料込み
+
+      -# 購入画面に進むボタン
+      .item-buy
+        = link_to '#',class:"item-buy__buying" do
+          購入画面に進む
+      %p.sipping-message
+        この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+      -# 商品の説明
+      .item-description
+        新品未使用
+
+        フェリシモ スロウ
+        三角形 の 手編み ニット の
+        フリンジ ストール です。
+
+        ●フリンジの無い辺（フリンジを含めず）184
+        上記の辺から三角形の頂点まで （同上）77
+        フリンジの長さ 16
+        センチくらいです。
+
+        ●カラーは 優しい モスグリーン です。
+
+        中くらいの毛糸で編まれていて、
+        ふっくら優しい網目模様が素敵です(*´꒳`*)
+
+
+
+        自宅での保管です事、ご理解ください。
+
+
+
+        他のお品も出品してます！
+      -# 下のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
+      .item-button
+        .item-button__left
+          = link_to '#' ,class:"item-button__left__like" do
+            = icon('fas' ,'heart',class:"icon-heart")
+            %span.item-button__left__like--good
+              いいね！
+            %span.item-button__left__like--number
+              10000
+          = link_to '#' ,class:"item-button__left__reports" do
+            = icon('fas' ,'flag',class:"icon-flag")
+            %span.item-button__left__reports--report
+              不適切な商品の報告
+        .item-button__right
+          = link_to '#' ,class:"item-button__right__safety" do
+            = icon('fas' ,'lock',class:"icon-lock")
+            %span.item-button__right__safety--word
+              あんしん・あんぜんへの取り組み
+
+    -# 商品に対する顧客のコメント
+    .comment-item-container
+      %ul.item-contents
+        %li.item-comments__comment
+          = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"30x30",class:"item-comments__comment--imagephoto"
+          .item-comments__comment__body
+            .item-comments__comment__body--text
+              出品者がコメントを削除しました
+            %time.item-comments__comment__body__time
+              = icon('fas' ,'clock',class:"icon-clock")
+              %span.item-comments__comment__body__time--date
+                10000日前
+        %li.item-comments__comment
+          = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"30x30",class:"item-comments__comment--imagephoto"
+          .item-comments__comment__body
+            .item-comments__comment__body--text
+              出品者がコメントを削除しました
+            %time.item-comments__comment__body__time
+              = icon('fas' ,'clock',class:"icon-clock")
+              %span.item-comments__comment__body__time--date
+                10000日前
+
+    -# 左、右ボタン
+    %ul.nav-item
+      %li.nav-item__left
+        = link_to '#' ,class:"nav-item__left__tereport-le" do
+          = icon('fas' ,'arrow-left')
+          左
+      %li.nav-item__right
+        = link_to '#' ,class:"nav-item__right__tereport-ri" do
+          右
+          = icon('fas' ,'arrow-right')
+          
+    -# Twitterなどのアイコン
+    .media-box
+      %ul.media-box__container
+        %li.media-box__container__item
+          = link_to '#',class:".media-box__container__item--facebook" do
+            = icon('fab' ,'facebook-square',class:"icon-facebook")
+        %li.media-box__container__item
+          = link_to '#',class:".media-box__container__item--twitter" do
+            = icon('fab' ,'twitter-square',class:"icon-twitter")
+        %li.media-box__container__item
+          = link_to '#',class:".media-box__container__item--pinterest" do
+            = icon('fab' ,'pinterest-square',class:"icon-pinterest")
+
+    -# 商品出品者のその他の商品
+    .other-items-container
+      .other-items-title
+        = link_to '#',class:"other-items-title__word" do
+          みかんさんのその他の商品
+      .user-other-items
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box.item-middle
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box.item-middle
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+
+    -# 関連商品
+    .other-items-container
+      .other-items-title
+        = link_to '#',class:"other-items-title__word" do
+          フェリシモのマフラー/ショール その他の商品
+      .user-other-items
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box.item-middle
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box.item-middle
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        .user-other-items__box
+          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
+          .user-other-items__box__body
+            .user-other-items__box__body--name
+              新品未使用
+            .user-other-items__box__body--price
+              ¥10,000
+              .user-other-items__box__body--price--heart
+                = icon('fas' ,'heart',class:"icon-heart")
+                10
+        
+    -# ページ最下部のボタン
+    .bottom-item
+      %ul.bottom-button
+        %li.bottom-button--mercari
+          = link_to '#' do
+            メルカリ
+          >
+        %li 新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン
+        
+
+
+
+        
