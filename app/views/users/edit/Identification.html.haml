@@ -44,7 +44,10 @@
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 都道府県
                   %li.identification__tag.identification__tag__arbitrary 任意
-                %li= f.select  :pref, class: 'identification__right__input', placeholder: '例)!!!!!!!!!'
+                %li
+                  = f.label :pref_id  do
+                    = f.collection_select :pref_id, Prefecture.all, :id, :name, class: 'identification__right__input'
+                    = icon('fas', 'angle-down', class: 'identification__rarrow_bottom')
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 市区町村
@@ -60,4 +63,4 @@
                   %li.identification__right__content__group__name 建物名 
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103'
-                = f.submit '変更する', class: 'profile__right__input__send'
+                = f.submit '変更する', class: 'identification__right__input__send'

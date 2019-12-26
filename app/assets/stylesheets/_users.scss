@@ -106,9 +106,17 @@ $FM-color-gry:#eee;
       }
     }
   }
-
 }
 
+.mypage__container--side__icon{
+  padding-right: 16px;
+  transition: all 0.5s;
+  opacity: 0.3;
+  font-size: 20px;
+  line-height: 50px;
+  display: block;
+  padding-top: 15px;
+}
 
 .mypage{
   /*  ユーザー情報 */
@@ -478,7 +486,7 @@ $FM-color-gry:#eee;
 }
 
 
-/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+/*--------------------------------------- ユーザー編集ページ（本人確認） --------------------------------------- */
 
 .identification{
 
@@ -489,8 +497,20 @@ $FM-color-gry:#eee;
       width: 100%;
       margin: 8px 0 0;
       height: 26px;
-      padding: 10px 16px 8px;
+      padding: 10px 0 8px;
       font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+
+      &__send{
+        margin: 30px 0 0;
+        width: 100%;
+        background: $FM-color-red;
+        border: 1px solid $FM-color-red;
+        color: white;
+        height: 48px;
+        font-size: 16px;
+      }
     }
     &__content{
       &__middle{
@@ -541,5 +561,39 @@ $FM-color-gry:#eee;
   form{
     padding: 64px;
     margin: 0 auto;
+  }
+}
+
+
+
+.identification__rarrow_bottom{
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  z-index: 2;
+  color: #888;
+  font-size: 25px;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.identification__right__content__group{
+  select{
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+  }
+
+  li{
+    position: relative;
   }
 }
