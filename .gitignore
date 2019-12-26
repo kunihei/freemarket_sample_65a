@@ -35,3 +35,5 @@ config/routes.rb
 app/assets/stylesheets/_users.scss
 app/controllers/users_controller.rb
 config/routes.rb
+*.scss
+app/assets/stylesheets/_users.scss
