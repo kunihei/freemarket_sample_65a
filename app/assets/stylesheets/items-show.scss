@@ -1,0 +1,245 @@
+// 外の大枠
+.show-container{
+  width:100%;
+  height:calc(100vh - 100px);
+  background-color: #f5f5f5;
+  padding-top:1px;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+// コメントまでの枠
+.showcontent-main{
+  width:700px;
+  background-color: #fff;
+  margin:0 auto;
+  margin-top:40px;
+  padding: 30px;
+  .item-name{
+    margin:0 auto;
+    text-align: center;
+    font-size:25px;
+  }
+  .item-wording{
+    color:#888;
+  }
+}
+
+// 画像とテーブルの親
+.item-main-content{
+  display:flex;
+  justify-content: space-around;
+  &__photo{
+    position: relative;
+  }
+  &__table{
+    border:1px solid #f5f5f5;
+    &__row{
+      height:40px;
+      font-size: 15px;
+      &--title{
+        background-color:#fafafa;
+        padding:15px;
+        width: 100px;
+        text-align: left;
+      }
+      &--data{
+        border:1px solid #f5f5f5;
+        width:200px;
+      }
+    }
+  }
+}
+
+// 画像下の複数の画像
+.photo{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width:250px;
+  top:300px;
+  left:0;
+}
+.photo1{
+  display: block;
+}
+
+// 値段
+.item-price{
+  text-align: center;
+  margin-top:70px;
+  &__fee{
+    font-size:40px;
+    font-weight: bold;
+  }
+  &__taxin{
+    font-size:3px;
+  }
+}
+
+// 購入画面に進むボタン
+.item-buy{
+  text-align: center;
+  margin:10px;
+  width:100%;
+  &__buying{
+    background-color: red;
+    color:white;
+    font-size:20px;
+    font-weight: bold;
+    padding:15px;
+    display: block;
+  }
+}
+
+// 購入画面に進むボタン下のメッセージ
+.sipping-message{
+  color: red;
+  text-align: center;
+}
+
+// 商品の説明
+.item-description{
+  font-size:20px;
+}
+
+// 下のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
+.item-button{
+  display: flex;
+  justify-content: space-between;
+  &__left{
+    &__like{
+      background-color: #f5f5f5;
+      padding:7px;
+      border-radius: 50px;
+      margin-right:15px;
+    }
+    &__reports{
+      background-color: #f5f5f5;
+      padding:7px;
+      border-radius: 50px;
+    }
+  }
+  &__right{
+    &__safety{
+      color:skyblue;
+    }
+  }
+}
+
+// 商品に対する顧客のコメント
+.comment-item-container{
+  width:700px;
+  background-color: #fff;
+  margin:0 auto;
+  margin-top:40px;
+  padding: 30px;
+  .item-comments__comment{
+    &--imagephoto{
+      border-radius: 50px;
+    }
+    &__body{
+      width:600px;
+      background-color: #eef0f4;
+      padding:30px;
+      border-radius: 50px;
+      &__time{
+        color:#aaa;
+      }
+    }
+  }
+}
+
+// 左、右ボタン
+.nav-item{
+  display: flex;
+  justify-content: space-around;
+  &__left{
+    &__tereport-le{
+      color: skyblue;
+    }
+  }
+  &__right{
+    &__tereport-ri{
+      color:skyblue;
+    }
+  }
+}
+
+// Twitterなどのアイコン
+.media-box{
+  width:700px;
+  background-color: #fff;
+  margin:0 auto;
+  margin-top:40px;
+  padding: 30px;
+  &__container{
+    display: flex;
+    justify-content: center;
+    &__item{
+      .icon-facebook{
+        font-size:50px;
+        color: blue;
+      }
+      .icon-twitter{
+        font-size: 50px;
+        margin:0 5px;
+        color:skyblue;
+      }
+      .icon-pinterest{
+        font-size: 50px;
+        color:brown;
+      }
+    }
+  }
+}
+
+// 商品出品者のその他の商品,関連商品
+.other-items-container{
+  width:760px;
+  margin:0 auto;
+  margin-top:40px;
+  .other-items-title{
+    font-size:20px;
+    &__word{
+      color:blue;
+    }
+  }
+  .user-other-items{
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    &__box{
+      margin-bottom: 20px;
+      &--image{
+        display: block;
+      }
+      &__body{
+        background-color: #fff;
+        &--price{
+          position: relative;
+          &--heart{
+            position: absolute;
+            right:0;
+            top:0;
+          }
+        }
+      }
+    }
+  }
+  // 商品の２個目、５個目
+  .item-middle{
+    margin:0 50px;
+  }
+}
+
+// ページ最下部のボタン
+.bottom-item{
+  border-top:1px solid #888;
+  .bottom-button{
+    display: flex;
+    width:1020px;
+    margin:0 auto;
+    margin-bottom:10px;
+  }
+}
