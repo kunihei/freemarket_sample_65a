@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_022309) do
+ActiveRecord::Schema.define(version: 2019_12_26_074738) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 2019_12_26_022309) do
     t.datetime "updated_at", null: false
     t.integer "pref_id"
     t.index ["tell"], name: "index_addresses_on_tell", unique: true
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "text", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "delivery_method", default: 0, null: false
+    t.integer "delivery_day", default: 0, null: false
+    t.integer "pref", default: 0, null: false
+    t.integer "postage_selct", default: 0, null: false
+    t.integer "price", null: false
+    t.integer "size", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
