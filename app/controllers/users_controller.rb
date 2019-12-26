@@ -18,4 +18,8 @@ class UsersController < ApplicationController
   def edit
     render "users/edit/#{params[:name]}"
   end
+
+  def new
+    render "users/new/#{params[:name]}"
+  end
 end
