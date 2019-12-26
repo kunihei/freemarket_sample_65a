@@ -1,0 +1,62 @@
+.purchase-main
+  .purchase-header
+    .purchase-header__block
+      = link_to root_path, class: "purchase-header__block__link" do
+        = image_tag "fmarket_logo_red.svg", size: "200x55"
+  .purchase-body
+    .purchase-body__list
+      .purchase-body__verification
+        購入内容の確認
+      .purchase-body__payment
+        = image_tag "miniature-d.jpg", size: "60x80"
+        .purchase-body__payment__info
+          .purchase-body__payment__info__brand
+            NIKE
+          .purchase-body__payment__info__money
+            ¥15,000  (税込)  送料込み
+      .purchase-body__total
+        .purchase-body__total__price
+          支払い金額
+        .purchase-body__total__moeny2
+          ¥15,000
+      .purchase-body__checkbox
+        = check_box_tag :test1
+        = label_tag :test1, "ポイントを使用(所持ポイント:P0)" 
+      .purchase-body__total2
+        .purchase-body__total2__method
+          支払い方法
+        .purchase-body__total2__register
+          = link_to "#", class: "purchase-body__total2__register__link" do
+            = icon("fas", "plus-circle")
+            .purchase-body__total2__register__link__word
+              登録してください
+      .purchase-body__delivery
+        .purchase-body__delivery__area
+          配送先
+        = link_to "#", class: "purchase-body__delivery__change" do
+          変更する
+      .purchase-body__address
+        〒553-2222
+        %br
+        大阪府 大阪市中央区 豊洲4-14-2４
+        %br
+        瀬尾　誠
+      .purchase-body__buy
+        = link_to "#", class: "purchase-body__buy__btn" do
+          .purchase-body__buy__btn__button
+            購入する
+  .purchase-footer
+    .purchase-footer__list
+      = link_to "#", class: "purchase-footer__list__privacy" do
+        .purchase-footer__message
+          プライバシーポリシー
+      = link_to "#", class: "purchase-footer__list__privacy" do
+        .purchase-footer__message
+          メルカリ利用規約
+      = link_to "#", class: "purchase-footer__list__privacy" do
+        .purchase-footer__message
+          特定商取引に関する表記
+    = link_to root_path, class: "purchase-footer__logo" do
+      = image_tag "logo_gray.svg", size: "200x90", class: "purchase-footer__logo__icon"
+    .purchase-footer__company
+      © Fmarket, Inc.

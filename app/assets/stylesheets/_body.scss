@@ -1,12 +1,89 @@
 .toppage-body{
   background-color: rgb(245, 245, 245);
   width: 100vw;
-  height: calc(100vw - 100px);
+  position: relative;
   .toppage-slider{
-    height: 380px;
+    display: block;
+    cursor: pointer;
+    height: 360px;
     width: 100vw;
-    background-color: slateblue;
+    position: relative;
+    #slick-next{
+      position: absolute;
+      right: 60px;
+      top: 180px;
+      color: #ffffff;
+      font-size: 40px;
+      z-index: 50;
+    }
+    #slick-prev{
+      position: absolute;
+      top: 180px;
+      left: 60px;
+      font-size: 40px;
+      z-index: 50;
+      color: #ffffff;
+    }
+    &__messages{
+      height: 390px;
+      width: 100vw;
+      background-image: url(image2.jpeg);
+      background-size: 1450px 390px;
+      cursor: pointer;
+      &__message1{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -70px;
+        left: -140px;
+        font-size: 60px;
+        font-weight: bold;
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+      }
+      
+      &__message2{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -60px;
+        left: -195px;
+        font-size: 19px;
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+      }
+      &__message3{
+        pointer-events:auto;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -130px;
+        left: -300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+      }
+      &__message4{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -130px;
+        left: -110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+      }
+    }
   }
+   
   .toppage__category{
     width: 100vw;
     top: 0px;
@@ -56,18 +133,17 @@
   }
   .toppage-list{
     height: 100vh;
-    width: 80vw;
-    margin: 0  100px 0 100px;
     .toppage__items{
       height: 50px;
       width: 100vw;
       display: flex;
-      margin: 0 100px 0 50px;
       padding-top: 40px;
+      position: relative;
       &__name{
-        padding-left: 55px;
         position: relative;
-        font-size: 23px;
+        left: 155px;
+        padding-left: 55px;
+        font-size: 24px;
         font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         font-weight: bold;
       }
@@ -83,9 +159,8 @@
       }
     }
     .toppage__block{
-      margin: 0 100px 20px 110px;
+      margin: 0 0 20px 220px;
       display: flex;
-      width: 100vw;
       &__goods{
         width: 190px;
         height: 250px;

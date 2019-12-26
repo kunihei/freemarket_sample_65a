@@ -1,4 +1,54 @@
+.aside{
+  height: 260px;
+  color: rgb(255, 255, 255);
+  background-image: url(621_08.jpg);
+  background-size: 1450px 390px;
+  background-position: center center
+}
+
+  .aside1{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 750px;
+    margin: 0px auto;
+  }
+    .aside2{
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+    }
+      .text1{
+        color: rgb(255, 255, 255);
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        margin-top: 40px;
+      }
+      .text2{
+        color: rgb(255, 255, 255);
+        font-size: 35px;
+        margin-bottom: 20px;
+      }
+      .mercari-image2{
+        height: 68px;
+        margin-right: 20px;
+        width: 68px;
+      }
+        .mercari-image3{
+          height: 40px;
+          margin-right: 8px;
+          width: 144px
+        }
+
+        .mercari-image4{
+          height: 260px;
+          width: 300px;
+        }
+
 .footer{
+  bottom: 0;
   background-color: rgb(34, 34, 34);
   color: rgb(255, 255, 255);
   font-size: 12px;
@@ -10,7 +60,13 @@
     width: 1020px;
     display: flex;
   }
+  
 
+
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
   .information{
     display: inline-block;
     margin-top: 18px;
@@ -43,6 +99,19 @@
       opacity: 0.7;
    }
 
+   .contents__btn{
+    display: inline-block;
+    margin-top: 30px;
+   
+    margin-right: 20px;
+   
+   &--icon{
+    padding-right:20px;
+    height: 40px;
+  }
+     
+    }
+   
 
   .privacy{
     display: inline-block;
