@@ -9,13 +9,15 @@
         = icon('fas', 'angle-right')
       %li 発送元・お届け先住所変更
   .profile__main
-    /以下サイドバー（上部）
+    /以下サイドバー
     .profile__container.flex
+      /以下サイドバーrender
       =render "sidebar"
       .profile__right__wrap
         .profile__right__content
           %h2.profile__right__content__head 本人情報の登録
           .identification__right__content__form
+            /以下form欄
             = form_for '#' do |f|
               .identification__right__content__middle
                 %p お客さまの本人情報をご登録ください。
@@ -23,23 +25,28 @@
                 = link_to '#',class: 'flex'  do
                   %p 本人確認書類のアップロードについて 
                   = icon('fas', 'angle-right', class: 'identification__right__content__icon') 
+              /名前
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name お名前
                 メルカリ
+              /名前カナ
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name お名前カナ
                 太郎
+              /生年月日
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 生年月日
                 2020/01/01
+              /郵便番号
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 郵便番号
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li= f.text_field :postcode, class: 'identification__right__input', placeholder: '例)123-4567'
+              /都道府県選択
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 都道府県
@@ -48,19 +55,23 @@
                   = f.label :pref_id  do
                     = f.collection_select :pref_id, Prefecture.all, :id, :name, class: 'identification__right__input'
                     = icon('fas', 'angle-down', class: 'identification__rarrow_bottom')
+              /市町村
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 市区町村
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li= f.text_field :city , class: 'identification__right__input', placeholder: '例)横浜市緑区'
+              /番地
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 番地 
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li= f.text_field :block , class: 'identification__right__input', placeholder: '例)青山1-1-1'
+              /建物名
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 建物名 
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103'
+                /送信ボタン
                 = f.submit '変更する', class: 'identification__right__input__send'
