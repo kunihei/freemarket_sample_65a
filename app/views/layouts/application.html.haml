@@ -5,24 +5,100 @@
     %title FreemarketSample65a
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
     %header
-      .container
+      -# ヘッダーの中クラス
+      .header-container
+        -# ヘッダーの中の上のやつ     
         .header-top
-          .header-top__left
+          -# 左のメルカリのアイコン
+          .header-top__left-icon
             = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
-          .header-top__right
+          -# 右のフォーム
+          .header-top__right-form
             = form_for '#' do |f|
-              = f.text_field '#',class:'header-top__right__message',placeholder: '何かお探しですか？'
-              = f.submit 'icon',class:'header-top__right__btn'
+              = f.text_field '#',class:'header-top__right-form__message',placeholder: '何かお探しですか？' 
+              %button.header-top__right-form__btn
+                -# 検索画面のアイコン
+                = icon('fas', 'search', class: 'icon-search')
+        -# ヘッダーの中の下のやつ
         .header-bottom
+          -# カテゴリーから探すとブランドから探すの親要素
           .header-bottom__left
+            -# カテゴリーから探すボタン
             = link_to '#',class:"header-bottom__left--category" do
+              = icon('fas', 'list', class: 'icon-list')
               カテゴリーから探す
+            %ul.header-bottom__left--dropdownfirst
+              %li.header-bottom__left--dropdownfirst--children1
+                レディース
+                %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                    トップス
+                    %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
+                        Tシャツ1
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
+                        Tシャツ2
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                    ジャケット/アウター
+                    %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
+                        Tシャツ3
+                      %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
+                        Tシャツ4
+              %li.header-bottom__left--dropdownfirst--children1
+                メンズ
+                %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                    トップス2
+                  %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                    ジャケット/アウター2
+              %li.header-bottom__left--dropdownfirst--children1
+                ベビー・キッズ
+              %li.header-bottom__left--dropdownfirst--children1
+                インテリア・住まい・小物
+              %li.header-bottom__left--dropdownfirst--children1
+                本・音楽・・ゲーム
+              %li.header-bottom__left--dropdownfirst--children1
+                おもちゃ・ホビー・グッズ
+              %li.header-bottom__left--dropdownfirst--children1
+                コスメ・香水・美容
+              %li.header-bottom__left--dropdownfirst--children1
+                家電・スマホ・カメラ
+              %li.header-bottom__left--dropdownfirst--children1
+                スポーツ・レジャー
+              %li.header-bottom__left--dropdownfirst--children1
+                ハンドメイド
+              %li.header-bottom__left--dropdownfirst--children1
+                チケット
+              %li.header-bottom__left--dropdownfirst--children1
+                自動車・オートバイ
+              %li.header-bottom__left--dropdownfirst--children1
+                その他
+              %li.header-bottom__left--dropdownfirst--children1
+                カテゴリー一覧
+            -# ブランドから探すボタン
             = link_to '#',class:"header-bottom__left--brand" do
+              = icon('fas', 'tag', class: 'icon-tag')
               ブランドから探す
+
+            %ul.header-bottom__left--ul
+              %li.header-bottom__left--ul--li
+                シャネル
+              %li.header-bottom__left--ul--li
+                ナイキ
+              %li.header-bottom__left--ul--li
+                ルイ ヴィトン
+              %li.header-bottom__left--ul--li
+                シュプリーム
+              %li.header-bottom__left--ul--li
+                アディダス
+              %li.header-bottom__left--ul--li
+                ブランド一覧
+          -# ユーザーの会員登録とログイン
           .header-bottom__right
             = link_to '#',class:"header-bottom__right--user" do
               新規会員登録
@@ -37,6 +113,7 @@
 
 
     = yield
+
   %aside.aside
     .aside1
       .aside2
@@ -54,12 +131,19 @@
       .aside3
         = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png",alt:"mercari",class:"mercari-image4",size:"124x31"),"#"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 491991e38e02edb73a40a5013e3e5250dbe98a29
+
     
     
 
 
 
 
+>>>>>>> 491991e38e02edb73a40a5013e3e5250dbe98a29
   %footer.footer
     .footer_nav
       .information
@@ -80,7 +164,6 @@
           %li  
             = link_to "#" ,class:"item " do
               メルカリロゴ利用ガイドライン
-
           
           =link_to "https://twitter.com/", class: "contents__btn" do
             = icon( 'fab fa-twitter',class: "contents__btn--icon")
@@ -163,4 +246,3 @@
         = link_to image_tag("fmarket_logo_red.svg",alt:"mercari",class:"mercari-image",size:"124x31"),"#"
         %span.detail © Mercari, Inc.
  
-  = yield

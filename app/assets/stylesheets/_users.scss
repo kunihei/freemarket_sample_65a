@@ -1,0 +1,545 @@
+
+
+a{
+  text-decoration: none;
+  color: #333;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}
+
+h3{
+  margin: 0;
+}
+
+.flex{
+  display: flex;
+}
+
+.body{
+  background-color: #f5f5f5;
+}
+
+
+$FM-color-red:#ea352d;
+$FM-color-gry:#eee;
+
+/*  ナビゲーターバー */
+.nav{
+  background: white;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  border-top: 1px solid $FM-color-gry;
+
+  ul{
+    width: 1020px;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+  }
+
+  li{
+    line-height: 48px;
+  }
+
+}
+.mypage__body{
+  background: #f5f5f5;
+  color: #333;
+}
+
+
+.mypage__main{
+  margin: 40px auto 0;
+  width:1024px;
+  height: 100%;
+}
+/*  サイドバー */
+.mypage__container{
+  display: flex;
+  &--side{
+    width: 280px;
+    margin-right: 40px;
+
+    &__icon{
+      padding-right: 16px;
+      line-height: 50px;
+      transition: all 0.5s;
+      opacity: 0.5;
+    }
+    &__list{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      background-color: white;
+
+      &__top{
+        font-weight: 600;
+        background-color: $FM-color-gry;
+        opacity: 1;
+      }
+      li{
+        border-top: 1px solid $FM-color-gry;
+        line-height: 18px;
+        display: flex;
+        justify-content: space-between;
+      }
+      /*  サイドバー(ホバー時の(>)のアクション) */
+      li:hover{
+        background-color: rgb(248, 248, 248);
+        .mypage__container--side__icon{
+          transform: translate(5px,0);
+          opacity: 1;
+        }
+      }
+      a{
+        color: #333;
+        display: block;
+        text-decoration: none;
+        height: 18px;
+        padding: 16px;
+      }
+    }
+  }
+
+}
+
+
+.mypage{
+  /*  ユーザー情報 */
+  &__top{
+    width: 700px;
+    height: 200px;
+    background-color: rgb(218, 177, 218);
+    background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    a{
+      display: block;
+      padding: 16px;
+    }
+    &__icon{
+      margin: 0 auto;
+    }
+    h2{
+      margin: 8px 0 0;
+      font-size: 14px;
+    }
+    &__number{
+      margin: 8px 0 0;
+    }
+  }
+  /*  ユーザーアイコンの形 */
+  &__icon{
+    border-radius: 50px;
+  }
+  /*  タブ選択 */
+  &__select{
+    &__tab{
+      ul{
+        display: flex;
+        text-align: center;
+      }
+
+      li{
+        display: block;
+        width: 50%;
+        font-size: 16px;
+        line-height: 72px;
+        margin: 0;
+      }
+    }
+    /*  タブ内容（お知らせ/やることリスト）  */
+    &__body{
+      .news__icon{
+        background-color: rgb(192, 179, 179);
+      }
+
+      a{
+        display: flex;
+        position: relative;
+      }
+      
+      &__text{
+        margin: 0 40px 0 20px;
+      }
+      /*  タブ内容最下、一覧タグ  */
+      .go__index{
+        a{
+          display: block;
+          height: 56px;
+          margin: 0 auto;
+          background-color: $FM-color-gry;
+          line-height: 56px;
+          text-align: center;
+        }
+      }
+    }
+
+    /*  タブ（取引中/過去の取引）親要素  */
+    &__products{
+      margin: 40px 0 0 ;
+    }
+
+    /*  タブ（取引中/過去の取引）親要素  */
+    &__head__message{
+      background-color: #fafafa;
+      margin: 0;
+      font-size: 16px;
+      line-height: 72px;
+      padding: 0 16px
+    }
+  }
+
+
+  &__item{
+    background-color: $FM-color-gry;
+  
+    &__bottom{
+      background-color: $FM-color-gry;
+    }
+     /*  タブ選択時用(取引中/過去の取引) */
+    &__bottom.actives{
+      display: block;
+      width: 50%;
+      font-size: 16px;
+      line-height: 72px;
+      margin: 0;
+      background-color: white;
+      border-top: 2px solid $FM-color-red;
+    }
+  }
+  /*  タブ選択時用(お知らせ/やることリスト) */
+  &__item.active{
+    display: block;
+    width: 50%;
+    font-size: 16px;
+    line-height: 72px;
+    margin: 0;
+    background-color: white;
+    border-top: 2px solid $FM-color-red;
+  }
+  /*  タブ非選択であれば非表示(お知らせ/やることリスト) */
+  &__content{  
+    display: none;
+  
+    &__list{
+      /*  タブ用アイコン(>)のposition用の親要素とする */
+      a{         
+        position: relative;
+      }
+      /*  タブ用アイコン(>) */
+      &__icon{   
+        position: absolute;
+        right: 0;
+        top: 50%;
+        font-size: 20px;
+      }
+    }
+  
+  
+    &__list li{
+      background-color: white;
+      padding: 16px;
+      border-bottom: 1px solid $FM-color-gry;
+    }
+  
+    /*  タブ非選択であれば非表示(取引中/過去の取引) */
+    &__bottom{   
+      display: none;
+      }
+  
+    /*  タブ内容無し用 */
+    &__no{    
+      background-color: white;
+      height: 236px;
+      width: 700px;
+      /*  タブ内容無しのメッセージ */
+      p{        
+        margin: 0;
+        font-size: 16px;
+        line-height: 236px;
+        text-align: center;
+        color: #cccccc;
+      }
+    }
+    /*  タブが選択であれば表示(取引中/過去の取引) */
+    &__bottom.show{  
+      display: block;
+    }
+  }
+  /*  タブが選択であれば表示(お知らせ/やることリスト) */
+  &__content.show{  
+    display: block;
+  }
+}
+
+/*---------------------------------------ユーザー編集ページ（プロフィール）--------------------------------------- */
+
+
+.profile{
+  background-color: #f5f5f5;
+  margin-top: 40px;
+  &__main{
+    margin: 40px auto 0;
+    width: 1024px;
+    height: 100%;
+  }
+  &__right{
+    /*  右側編集ページ */
+    &__wrap{
+      height: 100%;
+      width: 700px;
+      background-color: white;
+    }
+    /*  form */
+    &__input{
+      /*  form(ニックネーム) */
+      &__nickname{
+        width: 190px;
+        padding: 10px 16px 8px;
+        height: 28px;
+        margin:  0 0 55px 8px;
+        vertical-align: middle;
+        font-size: 16px;
+      }
+      /*  form(自己紹介) */
+      &__introduction{
+        font-size: 16px;
+      }
+      /*  form(送信ボタン) */
+      &__send{
+        margin: 16px 0 0;
+        width: 100%;
+        background: $FM-color-red;
+        border: 1px solid $FM-color-red;
+        color: white;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+
+    &__content{
+      /*  右側最上部タイトル 'プロフィール' */
+      &__head{
+        margin: 0;
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      &__edit{
+        padding: 72px 16px 24px;
+        background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        height: 64px;
+        opacity: 0.8;
+
+        &__nickname{
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      /*  右側底部タイトル padding */
+      &__bottom{
+        padding: 40px 16px;
+      }
+    }
+  }
+}
+/*--------------------------------------- ユーザー編集ページ（発送元・お届け先住所変更） --------------------------------------- */
+
+
+
+
+.delibver{
+
+  &__right{
+
+  
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+    }
+    &__content{
+
+      &__group{
+        text-align: center;
+        margin-top: 32px;
+        &__top{
+        }
+        &__name{
+          font-weight: 600;
+          font-size: 15px;
+        }
+        
+      }
+    }
+  }
+  &__tag{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    vertical-align: top;
+
+    &__require{
+      background: $FM-color-red;
+      
+    }
+    &__arbitrary{
+      background: #ccc;
+    }
+  }
+}
+
+.profile__right__content__form{
+  form{
+    padding: 40px 40px 64px;
+    max-width: 343px;
+    margin: 0 auto;
+  }
+}
+
+
+/*--------------------------------------- ユーザー編集ページ（支払い方法追加） --------------------------------------- */
+
+/*  右側コンテンツ */
+.card__right{
+  &__content{
+    
+    &__body{
+      padding: 64px;
+      height: 180px;
+      &__head{
+        display: block;
+        width: 320px;
+        margin: 0 auto;
+      }
+      /*  追加ボタン */
+      &__add{
+        margin-top: 35px;
+        height: 42%;
+        text-align: center;
+        border-bottom: 1px solid $FM-color-gry;
+        &__card{
+          padding: 15px 55px;
+          border-bottom: 1px solid $FM-color-gry;
+          background: $FM-color-red;
+          border: 1px solid $FM-color-red;
+          color: white;
+        }
+      }
+      /*  支払い支払い方法について（link） */
+      &__payment{
+        margin-top: 40px;
+        float: right;
+        font-size: 13px;
+        a{
+          color: #0099e8;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+
+.logout__right__content__body{
+  padding: 64px;
+  height: 100%;
+
+  &__add{
+    height: 42%;
+    text-align: center;
+    font-size: 14px;
+    &__btn{
+      padding: 15px 125px;
+      border-bottom: 1px solid $FM-color-gry;
+      background: $FM-color-red;
+      border: 1px solid $FM-color-red;
+      color: white;
+    }
+  }
+}
+
+
+/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+
+.identification{
+
+  &__right{
+
+  
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+    }
+    &__content{
+      &__middle{
+        p{
+          margin: 0;
+          font-size: 14px;
+          margin-top: 8px;
+        }
+        a{
+          justify-content: right;
+          color: #0099e8;
+          float: right;
+          margin-top: 8px;
+        }
+        i{
+          line-height: 37px;
+        }
+      }
+      &__group{
+        margin-top: 32px;
+        font-size: 12px;
+        &__name{
+          font-weight: 600;
+          line-height: 22px;
+        }
+        
+      }
+    }
+  }
+  &__tag{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    vertical-align: top;
+    &__require{
+      background: $FM-color-red;
+      
+    }
+    &__arbitrary{
+      background: #ccc;
+    }
+  }
+}
+
+.identification__right__content__form{
+  form{
+    padding: 64px;
+    margin: 0 auto;
+  }
+}
