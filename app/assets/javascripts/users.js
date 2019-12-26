@@ -37,7 +37,7 @@ $(function()  {
   function tabSwitch() {
 
     
-    // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
+    // 全てのactiveクラスのうち、最初の要素を削除
     $(".actives").removeClass("actives");
 
     // クリックしたタブにactiveクラスを追加
@@ -56,4 +56,12 @@ $(function()  {
   });
   // タブがクリックされたらtabSwitch関数を呼び出す
   tabs.click(tabSwitch);    
+});
+
+$(function(){
+    $('.newuser__body__content__reveal__space').toggle();
+  $('#check1').click(function(){
+    $('.newuser__body__content__reveal__space').toggle();
+  });
+
 });
