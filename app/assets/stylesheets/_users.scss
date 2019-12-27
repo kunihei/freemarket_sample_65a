@@ -106,9 +106,17 @@ $FM-color-gry:#eee;
       }
     }
   }
-
 }
 
+.mypage__container--side__icon{
+  padding-right: 16px;
+  transition: all 0.5s;
+  opacity: 0.3;
+  font-size: 20px;
+  line-height: 50px;
+  display: block;
+  padding-top: 15px;
+}
 
 .mypage{
   /*  ユーザー情報 */
@@ -371,7 +379,7 @@ $FM-color-gry:#eee;
       width: 100%;
       margin: 8px 0 0;
       height: 26px;
-      padding: 10px 16px 8px;
+      padding: 10px 0 8px;
       font-size: 16px;
     }
     &__content{
@@ -379,6 +387,27 @@ $FM-color-gry:#eee;
       &__group{
         text-align: center;
         margin-top: 32px;
+        select{
+          width: 100%;
+          position: relative;
+          z-index: 2;
+          height: 48px;
+          padding: 0 26px;
+          border: 1px solid #ccc;
+          background: 0;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+          -webkit-appearance: none;
+        }
+        i{
+          position: absolute;
+          bottom: -5px;
+          right: 0;
+        }
+        &__icon{
+          position: relative;
+        }
         &__top{
         }
         &__name{
@@ -390,12 +419,12 @@ $FM-color-gry:#eee;
     }
   }
   &__tag{
-    margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
     color: white;
     font-size: 12px;
     vertical-align: top;
+    margin-left: 10px;
 
     &__require{
       background: $FM-color-red;
@@ -478,19 +507,29 @@ $FM-color-gry:#eee;
 }
 
 
-/*--------------------------------------- ユーザー編集ページ（ログアウト） --------------------------------------- */
+/*--------------------------------------- ユーザー編集ページ（本人確認） --------------------------------------- */
 
 .identification{
 
   &__right{
-
-  
     &__input{
       width: 100%;
       margin: 8px 0 0;
       height: 26px;
-      padding: 10px 16px 8px;
+      padding: 10px 0 8px;
       font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+
+      &__send{
+        margin: 30px 0 0;
+        width: 100%;
+        background: $FM-color-red;
+        border: 1px solid $FM-color-red;
+        color: white;
+        height: 48px;
+        font-size: 16px;
+      }
     }
     &__content{
       &__middle{
@@ -516,7 +555,31 @@ $FM-color-gry:#eee;
           font-weight: 600;
           line-height: 22px;
         }
-        
+        select{
+          width: 100%;
+          position: relative;
+          z-index: 2;
+          height: 48px;
+          padding: 0 16px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: 0;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+      
+          -webkit-appearance: none;
+        }
+      
+        li{
+          position: relative;
+        }
+      }
+      &__form{
+        form{
+          padding: 64px;
+          margin: 0 auto;
+        }
       }
     }
   }
@@ -535,11 +598,284 @@ $FM-color-gry:#eee;
       background: #ccc;
     }
   }
+  &__rarrow_bottom{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    z-index: 2;
+    color: #888;
+    font-size: 25px;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
 }
 
-.identification__right__content__form{
-  form{
-    padding: 64px;
-    margin: 0 auto;
+
+/*--------------------------------------- ユーザー新規登録ページ/ウィザード(会員情報入力) --------------------------------------- */
+
+.newuser{
+  background-color: #f5f5f5;
+  &__header{
+    height: 128px;
+    &__wrap{
+      width: 750px;
+      margin: 0 auto;
+    }
+    &--left{
+      margin: 40px 0 0;
+      font-size: 30px;
+    }
+    &--right{
+      margin: 20px 30px 0;
+
+      ul{
+        padding-top: 15px;
+      }
+
+      li{
+        position: relative;
+        font-size: 12px;
+        margin: 0 10px 0 0;
+        p{
+          width: 100px;
+          text-align: center;
+        }
+      }
+      &__progress-a{
+        background-color: red;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        text-align: center;
+        z-index: 3;
+        margin: 8px auto 0;
+      }
+      &__progress-a::after{
+        display: block;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: #ccc;
+        position: absolute;
+        bottom: 5px;
+        left: 56px;
+      }
+      &__progress-b{
+        background-color: #ccc;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        margin: 8px auto 0;
+      }
+      &__progress-b::before{
+        display: block;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: #ccc;
+        position: absolute;
+        bottom: 5px;
+        left: -60px;
+        z-index: 0;
+        left: -16px;
+      }
+      &__progress-ab{
+        background-color: #ccc;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        z-index: 3;
+        margin: 8px auto 0;
+      }
+      &__progress-ab::before{
+        display: block;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: #ccc;
+        position: absolute;
+        bottom: 5px;
+        left: -60px;
+        z-index: 0;
+        left: -16px;
+      }
+      &__progress-ab::after{
+        display: block;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: #ccc;
+        position: absolute;
+        bottom: 5px;
+        z-index: 0;
+        left:12px;
+        left: 56px;
+      }
+    }
   }
+
+  &__body{
+    width: 700px;
+    background-color: white;
+    margin: 0 auto;
+
+    &__flex{
+      justify-content: end;
+    }
+    &__input{
+      width: 100%;
+      margin: 8px 0 0;
+      height: 26px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+
+      &__flex{
+        width: 80%;
+        height: 26px;
+        padding: 10px 7px 8px;
+        font-size: 16px;
+      }
+      &__send{
+        margin-top: 32px;
+        width: 100%;
+        background: $FM-color-red;
+        border: 1px solid $FM-color-red;
+        color: white;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+    &__content{
+    
+      &__group{
+        text-align: center;
+        margin-top: 32px;
+        &__name{
+          font-weight: 600;
+          font-size: 14px;
+        }
+        &__birth{
+          max-width: 343px;;
+          height: 50px;
+          text-align: left;
+        }
+        
+        h1{
+          margin-top: 15px;
+          font-size: 16px;
+          font-weight: 600;
+          text-align: left;
+        }
+        p{
+          font-size: 14px;
+          text-align: left;
+        }
+      }
+      &__reveal__pass{
+        margin-top: 10px;
+        text-align: left;
+      }
+      &__reveal__space{
+        margin-top: 10px;
+        margin-left: -280px;
+        display: inline-block;
+        background-color: #f5f5f5;
+      }
+      &__terms{
+        margin-top: 30px;
+        font-size: 14px;
+
+        a{
+          color: #0099e8;
+        }
+      }
+
+      &__bottom{
+        margin-top: 25px;
+        color: #0099e8;
+        font-size: 14px;
+        text-align: right;
+      }
+
+      &__privacymessage{
+        margin-top: 30px;
+        font-size: 12px;
+        background-color: #f5f5f5;
+        padding: 8px 16px;
+        a{
+          color: #0099e8;
+        }
+      }
+    }
+
+
+    &__content{
+      &__head{
+        font-size: 24px;
+        padding: 32px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
+        font-weight: 600;
+        
+      &__form{
+        form{
+          padding: 40px 40px 64px;
+        }
+      }
+    }
+    select{
+      width: 22%;
+      position: relative;
+      z-index: 2;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+      -webkit-appearance: none;
+      left: 0;
+    }
+  }
+}
+}
+.newuser__body__content__form__wrap{
+  max-width: 343px;
+  margin: 0 auto;
+}
+
+.gry__message{
+  margin: 8px 0 0;
+  line-height: 1.5;
+  color: #888;
+  text-align: left;
+}
+
+/*--------------------------------------- ユーザー新規登録ページ/ウィザード(お届け先住所入力) --------------------------------------- */
+
+#top3_1::after{
+  background-color: red;
+}
+
+#top3_2{
+  background-color: red;
+}
+
+#top3_2::before{
+  background-color: red;
+}
+
+#top3_2::after{
+  background-color: red;
+}
+
+#top3_3{
+  background-color: red;
+}
+
+#top3_3::before{
+  background-color: red;
 }
