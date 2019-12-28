@@ -52,6 +52,21 @@
         }
         &__limit {
           font-size: 10px;
+          margin-top: 8px;
+        }
+        &__upload {
+          height: 162px;
+          width: 620px;
+          margin-top: 16px;
+          background-color: #F5F5F5;
+          border: 1px dashed #ccc;
+          &__text {
+            height: 82px;
+            font-size: 14px;
+            text-align: center;
+            padding: 40px;
+            margin-top: 20px;
+          }
         }
       }
       &__product {
@@ -64,12 +79,15 @@
             &__list {
               display: flex;
               &__description {
-                font-size: 16px;
+                height: 14px;
+                font-size: 14px;
               }
               &__explanation {
-
+                height: 14px;
+                font-size: 14px;
+                margin-top: 40px;
               }
-              &--required {
+              &--required-a {
                 height: 19px;
                 width: 32px;
                 margin-left: 8px;
@@ -80,17 +98,31 @@
                 vertical-align: top;
                 background: #ea352d;
               }
+              &--required-b {
+                height: 19px;
+                width: 32px;
+                margin-left: 8px;
+                padding-left: 7px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+                background: #ea352d;
+                margin-top: 40px;
+              }
             }
           }
           &__form {
             width: 620px;
             margin: 8px 0px 0px;
-            &--a {
-              height: 48px;
+            .description {
+              height: 26px;
+              width: 584px;
               padding: 10px 16px 8px;
             }
-            &--b {
-              height: 142px;
+            .explanation {
+              height: 110px;
+              width: 596px;
               padding: 10px;
             }
           }
@@ -138,7 +170,18 @@
             }
             &__form {
               height: 48px;
-              padding: 0px 16px;
+              .category {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+              }
+              .condition {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+              }
             }
           }
         }
@@ -191,7 +234,24 @@
             }
             &__form {
               height: 48px;
-              padding: 0px 16px;
+              .postage {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+              }
+              .area {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+              }
+              .days {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+              }
             }
           }
         }
@@ -231,23 +291,30 @@
               }
             }
             &__fee {
-              height: 63px;
+              height: 15px;
+              width: 400px;
+              padding: 24px 0px;
+              font-size: 14px;
+              .value_1 {
+                font-size: 14px;
+                float: right;
+              }
             }
             &__profit {
-              height: 83px;
+              height: 35px;
+              width: 400px;
+              padding: 24px 0px;
+              .value_2 {
+                font-size: 34px;
+                float: right;
+              }
             }
             &__form {
-              &--a {
-                height: 48px;
-                width: 160px;
+              .price_calc {
+                height: 26px;
+                width: 124px;
+                padding: 10px 16px 8px;
               }
-              &--b {
-                
-              }
-              &--c {
-                
-              }
-
             }
             &--a {
               display: flex;
@@ -272,8 +339,20 @@
         box-sizing: border-box;
         padding: 40px;
         font-size: 14px;
-        &__text {
-
+        &__text-a{
+          .link {
+            color: #0099E8;
+          }
+        }
+        &__text-b{
+          .link {
+            color: #0099E8;
+          }
+        }
+        &__text-c{
+          .link {
+            color: #0099E8;
+          }
         }
         &__button-red {
           margin-top: 40px;
