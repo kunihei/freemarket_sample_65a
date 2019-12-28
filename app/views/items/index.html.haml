@@ -1,22 +1,25 @@
 .toppage-body
   .toppage-slider
-    = link_to root_path, target: "_blank", class: "toppage__slider__link" do
-      = image_tag "image1.jpeg", size: "1450x390"
-    .toppage-slider__messages
-      .toppage-slider__messages__message1
-        スマホで  かんたん
-        %br
-        フリマアプリ
-      .toppage-slider__messages__message2
-        フリマはスマホカメラからすぐに出品できる
-        %br
-        購入時も安心な独自システムのアプリです
-      .toppage-slider__messages__message3
-        = link_to "https://apps.apple.com/jp/app/id667861049?l=ja", target: "_blank", class: "toppage-slider__messages__message3__apple" do
-          = image_tag "apple.png", size: "200x80"
-      .toppage-slider__messages__message4
-        = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank", class: "toppage-slider__messages__message4__google" do
-          = image_tag "google-play.png", size: "200x80"
+    .slider-images
+      = image_tag "image2.jpeg", size: "1500x500"
+      .slider-images__messages
+        .slider-images__messages__message1
+          スマホで  かんたん
+          %br
+          フリマアプリ
+        .slider-images__messages__message2
+          フリマはスマホカメラからすぐに出品できる
+          %br
+          購入時も安心な独自システムのアプリです
+        .slider-images__messages__message3
+          = link_to "https://apps.apple.com/jp/app/id667861049?l=ja", target: "_blank", class: "toppage-app" do
+            = image_tag "apple.png", size: "200x80", class: "toppage-logo"
+          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank", class: "toppage-app" do
+            = image_tag "google-play.png", size: "200x80", class: "toppge-logo"
+    .slider-images
+      = link_to "#", target: "_blank" do
+        = image_tag "image1.jpeg",size: "1500x500"
+
 
 
   .toppage__category
