@@ -14,25 +14,30 @@
             必須
         .exhibit__contents__center__image__limit
           最大10枚までアップロードできます
+        .exhibit__contents__center__image__upload
+          .exhibit__contents__center__image__upload__text
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
       .exhibit__contents__center__product
         %ul.exhibit__contents__center__product__group
           %li.exhibit__contents__center__product__group__name
             %ul.exhibit__contents__center__product__group__name__list
               %li.exhibit__contents__center__product__group__name__list__description
                 商品名
-              %li.exhibit__contents__center__product__group__name__list--required
+              %li.exhibit__contents__center__product__group__name__list--required-a
                 必須
-          %li.exhibit__contents__center__product__group__form--a
-            フォーム
+          %li.exhibit__contents__center__product__group__form
+            %input.description{placeholder: "商品名（必須 40文字まで)", maxlength:'40'}
         %ul.exhibit__contents__center__product__group
           %li.exhibit__contents__center__product__group__name
             %ul.exhibit__contents__center__product__group__name__list
               %li.exhibit__contents__center__product__group__name__list__explanation
                 商品説明
-              %li.exhibit__contents__center__product__group__name__list--required
+              %li.exhibit__contents__center__product__group__name__list--required-b
                 必須
-          %li.exhibit__contents__center__product__group__form--b
-            フォーム
+          %li.exhibit__contents__center__product__group__form
+            %input.explanation{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength:'1000'}
       .exhibit__contents__center__detail
         .exhibit__contents__center__detail__information
           商品の詳細
@@ -45,7 +50,21 @@
                 %li.exhibit__contents__center__detail__list-group__group__name__list--required
                   必須
             %li.exhibit__contents__center__detail__list-group__group__form
-              フォーム
+              %select.category
+                %option ---
+                %option レディース
+                %option メンズ
+                %option ベビー・キッズ
+                %option インテリア・住まい・小物
+                %option 本・音楽・ゲーム
+                %option おもちゃ・ホビー・グッズ
+                %option コスメ・香水・美容
+                %option 家電・スマホ・カメラ
+                %option スポーツ・レジャー
+                %option ハンドメイド
+                %option チケット
+                %option 自動車・オートバイ
+                %option その他
           %ul.exhibit__contents__center__detail__list-group__group--b
             %li.exhibit__contents__center__detail__list-group__group__name
               %ul.exhibit__contents__center__detail__list-group__group__name__list
@@ -54,7 +73,14 @@
                 %li.exhibit__contents__center__detail__list-group__group__name__list--required
                   必須
             %li.exhibit__contents__center__detail__list-group__group__form
-              フォーム
+              %select.condition
+                %option ---
+                %option 新品・未使用
+                %option 未使用に近い
+                %option 目立った傷や汚れなし
+                %option やや傷や汚れあり
+                %option 傷や汚れあり
+                %option 全体的に状態が悪い
       .exhibit__contents__center__delivery
         .exhibit__contents__center__delivery__information
           配送について
@@ -67,7 +93,10 @@
                 %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                   必須
             %li.exhibit__contents__center__delivery__list-group__group__form
-              フォーム
+              %select.postage
+                %option ---
+                %option 送料込み(出品者負担)
+                %option 着払い(購入者負担)
           %ul.exhibit__contents__center__delivery__list-group__group--b
             %li.exhibit__contents__center__delivery__list-group__group__name
               %ul.exhibit__contents__center__delivery__list-group__group__name__list
@@ -76,7 +105,10 @@
                 %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                   必須
             %li.exhibit__contents__center__delivery__list-group__group__form
-              フォーム
+              %select.area
+                %option ---
+                %option 北海道
+                %option メンズ
           %ul.exhibit__contents__center__delivery__list-group__group--c
             %li.exhibit__contents__center__delivery__list-group__group__name
               %ul.exhibit__contents__center__delivery__list-group__group__name__list
@@ -85,7 +117,11 @@
                 %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                   必須
             %li.exhibit__contents__center__delivery__list-group__group__form
-              フォーム
+              %select.days
+                %option ---
+                %option 1~2日で発送
+                %option 2~3日で発送
+                %option 4~7日で発送
       .exhibit__contents__center__price
         .exhibit__contents__center__price__information
           販売価格(300〜9,999,999)
@@ -97,27 +133,33 @@
                   価格
                 %li.exhibit__contents__center__price__list-group__group__name__list--required
                   必須
-            %li.exhibit__contents__center__price__list-group__group__form--a
-              フォーム
+            %li.exhibit__contents__center__price__list-group__group__form
+              ¥
+              %input.price_calc{placeholder: "例) 300", type: "number"}
           %ul.exhibit__contents__center__price__list-group__group--b
             %li.exhibit__contents__center__price__list-group__group__fee
               販売手数料 (10%)
-            %li.exhibit__contents__center__price__list-group__group__form--b
-              フォーム
+              .value_1
           %ul.exhibit__contents__center__price__list-group__group--c
             %li.exhibit__contents__center__price__list-group__group__profit
               販売利益
-            %li.exhibit__contents__center__price__list-group__group__form--c
-              フォーム
+              = form_for '#' do |f|
+                = f.number_field :price, style: "display: none", id: "price"
+                .value_2
       .exhibit__contents__center__bottom
-        .exhibit__contents__center__bottom__text
-          禁止されている出品、行為を必ずご確認ください。
-          %br
-          またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
-          %br
-          り処罰される可能性があります。
-          %br
-          また、出品をもちまして加盟店規約に同意したことになります。
+        %p.exhibit__contents__center__bottom__text-a
+          = link_to "禁止されている出品", "＃", class: "link"
+          、
+          = link_to "行為", "＃", class: "link"
+          を必ずご確認ください。
+        %p.exhibit__contents__center__bottom__text-b
+          またブランド品でシリアルナンバー等がある場合はご記載ください。
+          = link_to "偽ブランドの販売", "＃", class: "link"
+          は犯罪であり処罰される可能性があります。
+        %p.exhibit__contents__center__bottom__text-c
+          また、出品をもちまして
+          = link_to "加盟店規約", "＃", class: "link"
+          に同意したことになります。
         .exhibit__contents__center__bottom__button-red
           出品する
         .exhibit__contents__center__bottom__button-gray
@@ -126,14 +168,13 @@
   .exhibit__footer
     .exhibit__footer__text
       .exhibit__footer__text--left
-        プライバシーポリシー
+        = link_to "プライバシーポリシー", "#", class: "footer-link"
       .exhibit__footer__text--center
-        メルカリ利用規約
+        = link_to "メルカリ利用規約", "#", class: "footer-link"
       .exhibit__footer__text--right
-        特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "#", class: "footer-link"
     .exhibit__footer__image
       = link_to "#", class: "exhibit__footer__image__link" do
         = image_tag 'logo_gray.svg', class: "exhibit__footer__image__logo"
     .exhibit__footer__character
       © Mercari,Inc.
-
