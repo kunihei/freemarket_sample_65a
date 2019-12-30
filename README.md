@@ -128,3 +128,5 @@ belongs_to :item
 |user_id    |integer|null false,foreign_key: true|<!-- user外部キー -->
 ### Association
 belongs_to :user
+
+
