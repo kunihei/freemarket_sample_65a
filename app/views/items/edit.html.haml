@@ -1,8 +1,10 @@
 .purchase-main
+  //ヘッダー部分
   .purchase-header
     .purchase-header__block
       = link_to root_path, class: "purchase-header__block__link" do
         = image_tag "fmarket_logo_red.svg", size: "200x55"
+  //ボディーの部分
   .purchase-body
     .purchase-body__list
       .purchase-body__verification
@@ -45,6 +47,7 @@
         = link_to "#", class: "purchase-body__buy__btn" do
           .purchase-body__buy__btn__button
             購入する
+  //フッターの部分
   .purchase-footer
     .purchase-footer__list
       = link_to "#", class: "purchase-footer__list__privacy" do

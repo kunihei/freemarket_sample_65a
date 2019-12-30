@@ -1,5 +1,4 @@
 .purchase-main{
-  // height: calc(100vh - 128px);
   width: 100vw;
   background-color: rgb(245, 245, 245);
   //ヘッダーの記述
@@ -171,6 +170,7 @@
   }
   //フッターの部分
   .purchase-footer{
+    text-align: center;
     height: 200px;
     &__list{
       display: flex;
@@ -187,11 +187,8 @@
       }
     }
     &__logo{
-      margin: 0 auto;
       &__icon{
         padding-top: 50px;
-        display: block;
-        margin: 0 auto;
       }
     }
     &__company{

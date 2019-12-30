@@ -4,10 +4,10 @@
   position: relative;
   .toppage-slider{
     display: block;
-    cursor: pointer;
     height: 360px;
     width: 100vw;
     position: relative;
+    cursor: pointer;
     #slick-next{
       position: absolute;
       right: 60px;
@@ -24,62 +24,41 @@
       z-index: 50;
       color: #ffffff;
     }
-    &__messages{
-      height: 390px;
-      width: 100vw;
-      background-image: url(image2.jpeg);
-      background-size: 1450px 390px;
+    .slider-images{
+      object-fit: cover;
       cursor: pointer;
-      &__message1{
-        width: 100%;
-        height: 100%;
+      position: relative;
+      &__messages{
+        height: 390px;
+        width: 100vw;
+        cursor: pointer;
         position: absolute;
-        top: -70px;
-        left: -140px;
-        font-size: 60px;
-        font-weight: bold;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-      }
-      
-      &__message2{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: -60px;
-        left: -195px;
-        font-size: 19px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-      }
-      &__message3{
-        pointer-events:auto;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: -130px;
-        left: -300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-      }
-      &__message4{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: -130px;
-        left: -110px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
+        top: 35px;
+        left: 350px;
+        &__message1{
+          font-size: 60px;
+          font-weight: bold;
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        }
+        
+        &__message2{
+          font-size: 19px;
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        }
+        &__message3{
+          position: absolute;
+          left: -15px;
+          display: flex;
+          .toopage-app{
+            outline: none;
+            .toppage-logo{
+              object-fit: cover;
+              height: 50px;
+              width: 200px;
+              margin-right: 10px;
+            }
+          }
+        }
       }
     }
   }
