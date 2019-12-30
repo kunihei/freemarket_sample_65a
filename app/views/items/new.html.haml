@@ -4,166 +4,152 @@
       = image_tag 'fmarket_logo_red.svg', class: "exhibit__header__image"
   .exhibit__contents
     .exhibit__contents__center
-      .exhibit__contents__center__information
-        商品の情報を入力
-      .exhibit__contents__center__image
-        .exhibit__contents__center__image__group
-          .exhibit__contents__center__image__group__name
-            出品画像
-          .exhibit__contents__center__image__group--required
-            必須
-        .exhibit__contents__center__image__limit
-          最大10枚までアップロードできます
-        .exhibit__contents__center__image__upload
-          .exhibit__contents__center__image__upload__text
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
-      .exhibit__contents__center__product
-        %ul.exhibit__contents__center__product__group
-          %li.exhibit__contents__center__product__group__name
-            %ul.exhibit__contents__center__product__group__name__list
-              %li.exhibit__contents__center__product__group__name__list__description
-                商品名
-              %li.exhibit__contents__center__product__group__name__list--required-a
-                必須
-          %li.exhibit__contents__center__product__group__form
-            %input.description{placeholder: "商品名（必須 40文字まで)", maxlength:'40'}
-        %ul.exhibit__contents__center__product__group
-          %li.exhibit__contents__center__product__group__name
-            %ul.exhibit__contents__center__product__group__name__list
-              %li.exhibit__contents__center__product__group__name__list__explanation
-                商品説明
-              %li.exhibit__contents__center__product__group__name__list--required-b
-                必須
-          %li.exhibit__contents__center__product__group__form
-            %input.explanation{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength:'1000'}
-      .exhibit__contents__center__detail
-        .exhibit__contents__center__detail__information
-          商品の詳細
-        .exhibit__contents__center__detail__list-group
-          %ul.exhibit__contents__center__detail__list-group__group--a
-            %li.exhibit__contents__center__detail__list-group__group__name
-              %ul.exhibit__contents__center__detail__list-group__group__name__list
-                %li.exhibit__contents__center__detail__list-group__group__name__list__category
-                  カテゴリー
-                %li.exhibit__contents__center__detail__list-group__group__name__list--required
+      = form_for '#' do |f|
+        .exhibit__contents__center__information
+          商品の情報を入力
+        .exhibit__contents__center__image
+          .exhibit__contents__center__image__group
+            .exhibit__contents__center__image__group__name
+              出品画像
+            .exhibit__contents__center__image__group--required
+              必須
+          .exhibit__contents__center__image__limit
+            最大10枚までアップロードできます
+          .exhibit__contents__center__image__upload
+            = f.label :image, class: 'exhibit__contents__center__image__upload' do
+              .exhibit__contents__center__image__upload__text
+                .exhibit__contents__center__image__upload__text--a
+                  ドラッグアンドドロップ
+                .exhibit__contents__center__image__upload__text--b
+                  またはクリックしてファイルをアップロード
+            = f.file_field :image, class: 'exhibit__contents__center__image__file'
+        .exhibit__contents__center__product
+          %ul.exhibit__contents__center__product__group
+            %li.exhibit__contents__center__product__group__name
+              %ul.exhibit__contents__center__product__group__name__list
+                %li.exhibit__contents__center__product__group__name__list__description
+                  商品名
+                %li.exhibit__contents__center__product__group__name__list--required-a
                   必須
-            %li.exhibit__contents__center__detail__list-group__group__form
-              %select.category
-                %option ---
-                %option レディース
-                %option メンズ
-                %option ベビー・キッズ
-                %option インテリア・住まい・小物
-                %option 本・音楽・ゲーム
-                %option おもちゃ・ホビー・グッズ
-                %option コスメ・香水・美容
-                %option 家電・スマホ・カメラ
-                %option スポーツ・レジャー
-                %option ハンドメイド
-                %option チケット
-                %option 自動車・オートバイ
-                %option その他
-          %ul.exhibit__contents__center__detail__list-group__group--b
-            %li.exhibit__contents__center__detail__list-group__group__name
-              %ul.exhibit__contents__center__detail__list-group__group__name__list
-                %li.exhibit__contents__center__detail__list-group__group__name__list__condition
-                  商品の状態
-                %li.exhibit__contents__center__detail__list-group__group__name__list--required
+            %li.exhibit__contents__center__product__group__form
+              %input.description{placeholder: "商品名（必須 40文字まで)", maxlength:'40'}
+          %ul.exhibit__contents__center__product__group
+            %li.exhibit__contents__center__product__group__name
+              %ul.exhibit__contents__center__product__group__name__list
+                %li.exhibit__contents__center__product__group__name__list__explanation
+                  商品説明
+                %li.exhibit__contents__center__product__group__name__list--required-b
                   必須
-            %li.exhibit__contents__center__detail__list-group__group__form
-              %select.condition
-                %option ---
-                %option 新品・未使用
-                %option 未使用に近い
-                %option 目立った傷や汚れなし
-                %option やや傷や汚れあり
-                %option 傷や汚れあり
-                %option 全体的に状態が悪い
-      .exhibit__contents__center__delivery
-        .exhibit__contents__center__delivery__information
-          配送について
-        .exhibit__contents__center__delivery__list-group
-          %ul.exhibit__contents__center__delivery__list-group__group--a
-            %li.exhibit__contents__center__delivery__list-group__group__name
-              %ul.exhibit__contents__center__delivery__list-group__group__name__list
-                %li.exhibit__contents__center__delivery__list-group__group__name__list__postage
-                  配送料の負担
-                %li.exhibit__contents__center__delivery__list-group__group__name__list--required
-                  必須
-            %li.exhibit__contents__center__delivery__list-group__group__form
-              %select.postage
-                %option ---
-                %option 送料込み(出品者負担)
-                %option 着払い(購入者負担)
-          %ul.exhibit__contents__center__delivery__list-group__group--b
-            %li.exhibit__contents__center__delivery__list-group__group__name
-              %ul.exhibit__contents__center__delivery__list-group__group__name__list
-                %li.exhibit__contents__center__delivery__list-group__group__name__list__area
-                  発送元の地域
-                %li.exhibit__contents__center__delivery__list-group__group__name__list--required
-                  必須
-            %li.exhibit__contents__center__delivery__list-group__group__form
-              %select.area
-                %option ---
-                %option 北海道
-                %option メンズ
-          %ul.exhibit__contents__center__delivery__list-group__group--c
-            %li.exhibit__contents__center__delivery__list-group__group__name
-              %ul.exhibit__contents__center__delivery__list-group__group__name__list
-                %li.exhibit__contents__center__delivery__list-group__group__name__list__days
-                  発送までの日数
-                %li.exhibit__contents__center__delivery__list-group__group__name__list--required
-                  必須
-            %li.exhibit__contents__center__delivery__list-group__group__form
-              %select.days
-                %option ---
-                %option 1~2日で発送
-                %option 2~3日で発送
-                %option 4~7日で発送
-      .exhibit__contents__center__price
-        .exhibit__contents__center__price__information
-          販売価格(300〜9,999,999)
-        .exhibit__contents__center__price__list-group
-          %ul.exhibit__contents__center__price__list-group__group--a
-            %li.exhibit__contents__center__price__list-group__group__name
-              %ul.exhibit__contents__center__price__list-group__group__name__list
-                %li.exhibit__contents__center__price__list-group__group__name__list__root
-                  価格
-                %li.exhibit__contents__center__price__list-group__group__name__list--required
-                  必須
-            %li.exhibit__contents__center__price__list-group__group__form
-              ¥
-              %input.price_calc{placeholder: "例) 300", type: "number"}
-          %ul.exhibit__contents__center__price__list-group__group--b
-            %li.exhibit__contents__center__price__list-group__group__fee
-              販売手数料 (10%)
-              .value_1
-          %ul.exhibit__contents__center__price__list-group__group--c
-            %li.exhibit__contents__center__price__list-group__group__profit
-              販売利益
-              = form_for '#' do |f|
+            %li.exhibit__contents__center__product__group__form
+              %textarea.explanation{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength:'1000'}
+        .exhibit__contents__center__detail
+          .exhibit__contents__center__detail__information
+            商品の詳細
+          .exhibit__contents__center__detail__list-group
+            %ul.exhibit__contents__center__detail__list-group__group--a
+              %li.exhibit__contents__center__detail__list-group__group__name
+                %ul.exhibit__contents__center__detail__list-group__group__name__list
+                  %li.exhibit__contents__center__detail__list-group__group__name__list__category
+                    カテゴリー
+                  %li.exhibit__contents__center__detail__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :category do
+                  = f.select :category,[["---","0"],["メンズ","1"],["レディース","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","6"],["コスメ・香水・美容","7"],["家電・スマホ・カメラ","8"],["スポーツ・レジャー","9"],["ハンドメイド","10"],["チケット","11"],["自動車・オートバイ","12"],["その他","13"]]
+                  = icon('fas', 'angle-down', class: 'form-btn')
+            %ul.exhibit__contents__center__detail__list-group__group--b
+              %li.exhibit__contents__center__detail__list-group__group__name
+                %ul.exhibit__contents__center__detail__list-group__group__name__list
+                  %li.exhibit__contents__center__detail__list-group__group__name__list__condition
+                    商品の状態
+                  %li.exhibit__contents__center__detail__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :condition do
+                  = f.select :condition,[["---","0"],["新品・未使用","1"],["未使用品に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]]
+                  = icon('fas', 'angle-down', class: 'form-btn')
+        .exhibit__contents__center__delivery
+          .exhibit__contents__center__delivery__information
+            配送について
+            = link_to "#", class: "question-link" do
+              = icon('fas', 'question-circle', class: 'question-btn')
+          .exhibit__contents__center__delivery__list-group
+            %ul.exhibit__contents__center__delivery__list-group__group--a
+              %li.exhibit__contents__center__delivery__list-group__group__name
+                %ul.exhibit__contents__center__delivery__list-group__group__name__list
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list__postage
+                    配送料の負担
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :postage do
+                  = f.select :postage,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
+                  = icon('fas', 'angle-down', class: 'form-btn')
+            %ul.exhibit__contents__center__delivery__list-group__group--b
+              %li.exhibit__contents__center__delivery__list-group__group__name
+                %ul.exhibit__contents__center__delivery__list-group__group__name__list
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list__area
+                    発送元の地域
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :area do
+                  = f.collection_select :pref_id, Prefecture.all, :id, :name
+                  = icon('fas', 'angle-down', class: 'form-btn')
+            %ul.exhibit__contents__center__delivery__list-group__group--c
+              %li.exhibit__contents__center__delivery__list-group__group__name
+                %ul.exhibit__contents__center__delivery__list-group__group__name__list
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list__days
+                    発送までの日数
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :days do
+                  = f.select :category,[["---","0"],["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]]
+                  = icon('fas', 'angle-down', class: 'form-btn')
+        .exhibit__contents__center__price
+          .exhibit__contents__center__price__information
+            販売価格(300〜9,999,999)
+            = link_to "#", class: "question-link" do
+              = icon('fas', 'question-circle', class: 'question-btn')
+          .exhibit__contents__center__price__list-group
+            %ul.exhibit__contents__center__price__list-group__group--a
+              %li.exhibit__contents__center__price__list-group__group__name
+                %ul.exhibit__contents__center__price__list-group__group__name__list
+                  %li.exhibit__contents__center__price__list-group__group__name__list__root
+                    価格
+                  %li.exhibit__contents__center__price__list-group__group__name__list--required
+                    必須
+              %li.exhibit__contents__center__price__list-group__group__form
+                ¥
+                = f.text_field :price, placeholder: "例) 300", class: "price_calc"
+            %ul.exhibit__contents__center__price__list-group__group--b
+              %li.exhibit__contents__center__price__list-group__group__fee
+                販売手数料 (10%)
+                .value_1
+            %ul.exhibit__contents__center__price__list-group__group--c
+              %li.exhibit__contents__center__price__list-group__group__profit
+                販売利益
                 = f.number_field :price, style: "display: none", id: "price"
                 .value_2
-      .exhibit__contents__center__bottom
-        %p.exhibit__contents__center__bottom__text-a
-          = link_to "禁止されている出品", "＃", class: "link"
-          、
-          = link_to "行為", "＃", class: "link"
-          を必ずご確認ください。
-        %p.exhibit__contents__center__bottom__text-b
-          またブランド品でシリアルナンバー等がある場合はご記載ください。
-          = link_to "偽ブランドの販売", "＃", class: "link"
-          は犯罪であり処罰される可能性があります。
-        %p.exhibit__contents__center__bottom__text-c
-          また、出品をもちまして
-          = link_to "加盟店規約", "＃", class: "link"
-          に同意したことになります。
-        .exhibit__contents__center__bottom__button-red
-          出品する
-        .exhibit__contents__center__bottom__button-gray
-          戻る
+        .exhibit__contents__center__bottom
+          %p.exhibit__contents__center__bottom__text-a
+            = link_to "禁止されている出品", "＃", class: "link"
+            、
+            = link_to "行為", "＃", class: "link"
+            を必ずご確認ください。
+          %p.exhibit__contents__center__bottom__text-b
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            = link_to "偽ブランドの販売", "＃", class: "link"
+            は犯罪であり処罰される可能性があります。
+          %p.exhibit__contents__center__bottom__text-c
+            また、出品をもちまして
+            = link_to "加盟店規約", "＃", class: "link"
+            に同意したことになります。
+          .exhibit__contents__center__bottom__button-red
+            = f.submit '出品する', class: 'exhibit-btn'
+          .exhibit__contents__center__bottom__button-gray
+            = f.submit '戻る', class: 'return-btn'
 
   .exhibit__footer
     .exhibit__footer__text
