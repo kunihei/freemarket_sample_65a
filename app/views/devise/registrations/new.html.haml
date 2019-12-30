@@ -1,0 +1,96 @@
+.newuser
+  .newuser__header
+    .newuser__header__wrap.flex
+      .newuser__header--left.flex
+        = image_tag "logo_red.svg", alt: "アイコン",size: "50x50", class: 'mypage__icon'
+        = link_to 'Fmarket', root_path
+      .newuser__header--right
+        %ul.flex
+          %li.newuser__header--right__list
+            %p 会員情報
+            .newuser__header--right__progress-a
+          %li.newuser__header--right__list
+            %p 電話番号認証
+            .newuser__header--right__progress-ab
+          %li.newuser__header--right__list
+            %p お届け先住所入力
+            .newuser__header--right__progress-ab
+          %li.newuser__header--right__list
+            %p 支払い方法
+            .newuser__header--right__progress-ab
+          %li.newuser__header--right__list
+            %p 完了
+            .newuser__header--right__progress-b
+
+  .newuser__body
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+    .newuser__body__content
+      %h2.newuser__body__content__head 会員情報入力
+      .newuser__body__content__form
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .newuser__body__content__form__wrap
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name ニックネーム
+                %li.delibver__tag.delibver__tag__require 必須
+              %ul
+                %li= f.text_field :nickname,  class: 'newuser__body__input', placeholder: '例)メルカリ太郎'
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name メールアドレス
+                %li.delibver__tag.delibver__tag__require 必須
+              %ul
+                %li= f.text_field :email,  class: 'newuser__body__input', placeholder: 'PC・携帯どちらでも可'
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name パスワード
+                %li.delibver__tag.delibver__tag__require 必須
+              %li= f.text_field :password, class: 'newuser__body__input', placeholder: '７文字以上の半角英数字', id:'input'
+              %p.gry__message ※ 英字と数字の両方を含めて設定してください
+              .newuser__body__content__reveal__pass
+                =check_box_tag :check1
+                パスワードを表示する
+              .newuser__body__content__reveal__space
+                %h2#output
+              %h1 本人確認
+              %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+              
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name お名前(全角)
+                %li.delibver__tag.delibver__tag__require  必須
+              %ul.newuser__body__flex.flex
+                %li= f.text_field :last_name , class: 'newuser__body__input__flex', id: 'm-right', placeholder: '例)山田'
+                %li= f.text_field :first_name,  class: 'newuser__body__input__flex', placeholder: '例)彩'
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name お名前カナ(全角) 
+                %li.delibver__tag.delibver__tag__require 必須
+              %ul.newuser__body__flex.flex
+                %li= f.text_field :last_name_kana , class: 'newuser__body__input__flex', id: 'm-right', placeholder: '例)ヤマダ'
+                %li= f.text_field :first_name_kana,  class: 'newuser__body__input__flex', placeholder: '例)アヤ'
+            .newuser__body__content__group
+              %ul.newuser__body__content__group__top.flex
+                %li.newuser__body__content__group__name 生年月日
+                %li.delibver__tag.delibver__tag__require 必須
+              .newuser__body__content__group__birth
+                %li= f.date_select(:birthday, { use_month_numbers: true })
+              %p.gry__message ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+              .newuser__body__content__terms
+                「次へ進む」のボタンを押すことにより,
+                = link_to '利用規約' 
+                に同意したものとみなします
+              = f.submit '次へ進む', class: 'newuser__body__input__send'
+
+              .newuser__body__content__bottom
+                =link_to '本人情報の登録について ＞' 
+              .newuser__body__content__privacymessage
+                This site is protected by reCAPTCHA and the Google
+                =link_to 'Privacy Policy '
+                and 
+                =link_to 'Terms of Service '
+                apply.
+
+  
