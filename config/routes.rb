@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, ]
   get 'users/edit/:name', controller: 'users', action: 'edit'
+  get 'users/new/:name', controller: 'users', action: 'new'
 end
