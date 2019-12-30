@@ -128,3 +128,68 @@ belongs_to :item
 |user_id    |integer|null false,foreign_key: true|<!-- user外部キー -->
 ### Association
 belongs_to :user
+
+
+
+
+
+
+class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_sign_up_params, only: [:create]
+
+  def new 
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(sign_up_params)
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render :new and return
+    end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @number = PhoneNumber.new
+    render :new_tellphone
+  end
+
+
+  def create_tellphone
+    @number = PhoneNumber.new(user_params)
+    session["devise.regist_data2"] = {phoneNumber: @number.attributes}
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = @user.build_address
+    render :new_address
+  end
+  
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_address(@address.attributes)
+    @user.save
+    render :new_payment
+  end
+
+  
+  def create_payment
+    render :new_finish
+  end
+
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end    
+
+  def user_params
+    params.require(:phone_number).permit(:number)
+  end
+
+  def address_params
+    params.require(:address).permit(:postcode, :city, :block, :building, :tell)
+  end
