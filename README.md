@@ -130,3 +130,35 @@ belongs_to :item
 belongs_to :user
 
 
+//フッター部分
+.payment-footer{
+  text-align: center;
+  height: 300px;
+  &__list{
+    padding-top: 30px;
+    &__privacy{
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      margin: 30px 0;
+      box-sizing: border-box;
+      font-size: 12px;
+      &__message{
+        margin: 10px;
+        &:hover{
+          border-bottom: 1px solid;
+          width: fit-content;
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+  &__logo{
+    &__icon{
+      padding-top: 30px;
+    }
+  }
+  &__company{
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+}
