@@ -32,6 +32,7 @@ app/controllers/users_controller.rb
 app/views/layouts/application.html.haml
 config/routes.rb
 config/routes.rb
+
 # *.rb
 app/assets/stylesheets/_users.scss
 app/controllers/users_controller.rb
