@@ -32,8 +32,7 @@
                 %li.exhibit__contents__center__product__group__name__list--required-a
                   必須
             %li.exhibit__contents__center__product__group__form
-              %input.description{placeholder: "商品名（必須 40文字まで)", maxlength:'40'}
-          %ul.exhibit__contents__center__product__group
+              = f.text_field :description, placeholder: "商品名（必須 40文字まで)", class: "description", maxlength: "40"
             %li.exhibit__contents__center__product__group__name
               %ul.exhibit__contents__center__product__group__name__list
                 %li.exhibit__contents__center__product__group__name__list__explanation
@@ -41,7 +40,7 @@
                 %li.exhibit__contents__center__product__group__name__list--required-b
                   必須
             %li.exhibit__contents__center__product__group__form
-              %textarea.explanation{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength:'1000'}
+              = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "explanation", maxlength: "1000"
         .exhibit__contents__center__detail
           .exhibit__contents__center__detail__information
             商品の詳細
