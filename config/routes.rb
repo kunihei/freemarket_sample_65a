@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
-  # devise_for :users, controllers: {
-  #   registrations: 'users/registrations',
-  # }
-  # devise_scope :user do
-  #   get 'addresses', to: 'users/registrations#new_address'
-  #   post 'addresses', to: 'users/registrations#create_address'
-  # end
+
+=======
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'tellphone', to: 'users/registrations#new_tellphone'
+    post 'tellphone', to: 'users/registrations#create_tellphone'
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+    get 'payment', to: 'users/registrations#new_payment'
+    post 'payment', to: 'users/registrations#create_payment'
+    get 'finish', to: 'users/registrations#new_finish'
+    post 'finish', to: 'users/registrations#create_finish'
+  end
+
   root to: 'items#index'
 
   resources :items, only: [:show, :edit, :new]
@@ -14,8 +23,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new]
   get 'users/new/:name',controller: 'users', action: 'new'
 
-
-  
 
   resources :users, only: [:index, :show]
   get 'users/new/:name', controller: 'users', action: 'create'

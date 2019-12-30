@@ -2,6 +2,7 @@
 .payment-main{
   width: 100vw;
   background-color: rgb(245, 245, 245);
+}
 
 //ヘッダー部分
 .payment-header{
@@ -12,130 +13,129 @@
     padding-top: 20px;
   }
 }
-  //お支払い方法の全体
-  .payment-body{
-    margin:  0 auto;
-    height: 580px;
-    width: 350px;
-    background-color: white;  
-      //お支払い方法
-      .payment-word{
-        height: 100px;
-        border-bottom: 1px solid rgb(245, 245, 245);
-        line-height: 100px;
-        text-align: center;
-        font-size: 30px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-      }
-      //クレジットカードの情報入力欄
-      .payment-info{
-        padding-top: 30px;
-        &__nam{
-          display: flex;
-          padding: 0 0 5px 30px;
-          &__required{
-            background-color: red;
-            color: white;
-            margin-left: 10px;
-            padding: 1px 2px;
-            width: fit-content;
-          }
-        }
-        &__input{
-          height: 40px;
-          width: 285px;
-          margin-left: 30px;
-          padding-left: 10px;
-          box-sizing: border-box;
-          border-radius: 5px;
-          border: 1px solid gray;
-        }
-        &__image{
-          padding-left: 20px;
-          box-sizing: border-box;
-        }
-        &__expiration{
-          padding: 0 0 5px 30px;
-          display: flex;
-        }
-        &__month{
-          padding: 0 0 5px 30px;
-        .month{
-          height: 40px;
-          width: 80px;
-        }
-      }
-      &__year{
-        padding-left: 30px;
-        .year{
-          height: 40px;
-          width: 80px;
-        }
-      }
-      &__security{
-        padding: 40px 0 5px 30px;
+//お支払い方法の全体
+.payment-body{
+  margin:  0 auto;
+  height: 580px;
+  width: 350px;
+  background-color: white;  
+    //お支払い方法
+    .payment-word{
+      height: 100px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      line-height: 100px;
+      text-align: center;
+      font-size: 30px;
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    }
+    //クレジットカードの情報入力欄
+    .payment-info{
+      padding-top: 30px;
+      &__nam{
         display: flex;
-      }
-      &__question{
-        display: flex;
-        color: blue;
-        padding-top: 7px;
-        margin-left: 140px;
-        &:hover{
-          color: rgb(6, 91, 248);
-          border-bottom: 1px solid rgb(6, 91, 248);
+        padding: 0 0 5px 30px;
+        &__required{
+          background-color: red;
+          color: white;
+          margin-left: 10px;
+          padding: 1px 2px;
           width: fit-content;
         }
       }
-      &__botton{
-        cursor: pointer;
-        margin: 20px auto;
-        padding-top: 20px;
+      &__input{
+        height: 40px;
+        width: 285px;
+        margin-left: 30px;
+        padding-left: 10px;
         box-sizing: border-box;
-        background-color: red;
-        color: white;
-        width: 290px;
-        height: 50px;
-        &__link{
-          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-          box-sizing: border-box;
-          font-size: 13px;
-          text-align: center;
-          display: block;
+        border-radius: 5px;
+        border: 1px solid gray;
+      }
+      &__image{
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+      &__expiration{
+        padding: 0 0 5px 30px;
+        display: flex;
+      }
+      &__month{
+        padding: 0 0 5px 30px;
+      .month{
+        height: 40px;
+        width: 80px;
+      }
+    }
+    &__year{
+      padding-left: 30px;
+      .year{
+        height: 40px;
+        width: 80px;
+      }
+    }
+    &__security{
+      padding: 40px 0 5px 30px;
+      display: flex;
+    }
+    &__question{
+      display: flex;
+      color: blue;
+      padding-top: 7px;
+      margin-left: 140px;
+      &:hover{
+        color: rgb(6, 91, 248);
+        border-bottom: 1px solid rgb(6, 91, 248);
+        width: fit-content;
+      }
+    }
+    &__botton{
+      cursor: pointer;
+      margin: 20px auto;
+      padding-top: 20px;
+      box-sizing: border-box;
+      background-color: red;
+      color: white;
+      width: 290px;
+      height: 50px;
+      &__link{
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        box-sizing: border-box;
+        font-size: 13px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}
+//フッター部分
+.payment-footer{
+  text-align: center;
+  height: 300px;
+  &__list{
+    padding-top: 30px;
+    &__privacy{
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      margin: 30px 0;
+      box-sizing: border-box;
+      font-size: 12px;
+      &__message{
+        margin: 10px;
+        &:hover{
+          border-bottom: 1px solid;
+          width: fit-content;
+          margin: 10px auto;
         }
       }
     }
   }
-  //フッター部分
-  .payment-footer{
-    text-align: center;
-    height: 300px;
-    &__list{
+  &__logo{
+    &__icon{
       padding-top: 30px;
-      &__privacy{
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        margin: 30px 0;
-        box-sizing: border-box;
-        font-size: 12px;
-        &__message{
-          margin: 10px;
-          &:hover{
-            border-bottom: 1px solid;
-            width: fit-content;
-            margin: 10px auto;
-          }
-        }
-      }
     }
-    &__logo{
-      &__icon{
-        padding-top: 30px;
-      }
-    }
-    &__company{
-      text-align: center;
-      font-size: 13px;
-      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    }
+  }
+  &__company{
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   }
 }
