@@ -107,6 +107,9 @@ $FM-color-gry:#eee;
     }
   }
 }
+#side_title{
+  margin-top: 15px;
+}
 
 .mypage__container--side__icon{
   padding-right: 16px;
@@ -293,7 +296,6 @@ $FM-color-gry:#eee;
 
 .profile{
   background-color: #f5f5f5;
-  margin-top: 40px;
   &__main{
     margin: 40px auto 0;
     width: 1024px;
