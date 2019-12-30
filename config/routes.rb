@@ -3,8 +3,14 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   devise_scope :user do
+    get 'tellphone', to: 'users/registrations#new_tellphone'
+    post 'tellphone', to: 'users/registrations#create_tellphone'
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
+    get 'payment', to: 'users/registrations#new_payment'
+    post 'payment', to: 'users/registrations#create_payment'
+    get 'finish', to: 'users/registrations#new_finish'
+    post 'finish', to: 'users/registrations#create_finish'
   end
   root to: 'items#index'
 

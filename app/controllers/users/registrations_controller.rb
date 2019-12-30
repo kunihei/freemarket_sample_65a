@@ -15,10 +15,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    session["devise.regist_data"][:user]["birthday"] = params[:user][:birthday]
+    @number = PhoneNumber.new
+    render :new_tellphone
+  end
+
+
+
+  
+
+  def create_tellphone
+    @number = PhoneNumber.new(user_params)
+    session["devise.regist_data2"] = {phoneNumber: @number.attributes}
+    @user = User.new(session["devise.regist_data"]["user"])
     @address = @user.build_address
     render :new_address
   end
+
+  
 
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
@@ -29,16 +42,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_address(@address.attributes)
     @user.save
-    sign_in(:user, @user)
+    render :new_payment
   end
 
-
+  def create_payment
+    render :new_finish
+  end
 
   protected
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   end    
+
+  def user_params
+    params.require(:phone_number).permit(:number)
+  end
 
   def address_params
     params.require(:address).permit(:postcode, :city, :block, :building, :tell)
