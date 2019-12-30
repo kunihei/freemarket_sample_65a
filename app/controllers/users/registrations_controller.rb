@@ -20,9 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-
-  
-
   def create_tellphone
     @number = PhoneNumber.new(user_params)
     session["devise.regist_data2"] = {phoneNumber: @number.attributes}
@@ -30,7 +27,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @address = @user.build_address
     render :new_address
   end
-
   
 
   def create_address
@@ -45,6 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_payment
   end
 
+  
   def create_payment
     render :new_finish
   end
