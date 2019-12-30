@@ -19,9 +19,9 @@
           .payment-info__nam__required
             必須
         .payment-info__month
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '月'
+          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '月'
         .payment-info__year
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:year,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
         .payment-info__security
           セキュリティコード
           .payment-info__nam__required

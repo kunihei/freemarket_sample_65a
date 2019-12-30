@@ -26,6 +26,7 @@
       height: 150px;
       border-bottom: 1px solid rgb(245, 245, 245);
       &__message{
+        padding-bottom: 10px;
         font-size: 14px;
         font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
       }
@@ -37,7 +38,6 @@
         background-color: rgb(0, 102, 255);
         box-sizing: border-box;
         color: white;
-        margin-top: 10px;
         padding: 10px 120px 10px 120px;
         font-size: 15px;
         }
@@ -50,8 +50,8 @@
       &__fakebook{
         padding-top: 30px;
         box-sizing: border-box;
-        color: white;
         &__logo{
+          color: white;
           margin: 0 auto;
           width: 320px;
           background-color: navy;
@@ -60,6 +60,7 @@
           padding: 10px 0 10px 15px;
           font-size: 30px;
           &__word{
+            color: white;
             font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
             box-sizing: border-box;
             font-size: 13px;
@@ -130,6 +131,7 @@
           color: white;
           width: 320px;
           height: 50px;
+          cursor: pointer;
           &__link{
             font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
             box-sizing: border-box;
@@ -143,12 +145,13 @@
           font-size: 14px;
           margin-left: 70px;
           line-height: 40px;
-          color: rgb(33, 169, 223);
-          box-sizing: border-box;
           &:hover{
             color: rgb(141, 204, 230);
             display: inline-block;
             border-bottom: 1px solid rgb(141, 204, 230);
+          }
+          &__link{
+            color: rgb(33, 169, 223);
           }
         }
       }
