@@ -65,154 +65,146 @@
    
   .toppage__category{
     width: 100vw;
-    top: 0px;
-    position: relative;
+    height: 150px;
     background-color: white;
     &__heading{
-      height: 170px;
       text-align: center;
       font-size: 28px;
       color: black;
       font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-      line-height: 150px;
+      box-sizing: border-box;
+      padding-top: 30px;
       font-weight: bold;
-    }
-    &__type{
-      position: absolute;
-      left: 430px;
-      bottom: 30px;
-      &__btn{
-        font-size: 14px;
-        font-weight: bold;
-        margin: 0 4px 0 4px;
-        padding: 6px 14px 6px 14px;
-        background-color: rgb(239, 239, 239);
-        text-decoration: none;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        border-radius: 20px;
-        color: black;
-      }
-    }
-    &__type2{
-      position: absolute;
-      left: 500px;
-      bottom: 30px;
-      &__btn{
-        font-size: 14px;
-        font-weight: bold;
-        margin: 0 4px 0 4px;
-        padding: 6px 14px 6px 14px;
-        background-color: gainsboro;
-        text-decoration: none;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        border-radius: 20px;
-        color: black;
+      &__type{
+        margin-top: 20px;
+        box-sizing: border-box;
+        &__btn{
+          font-size: 14px;
+          font-weight: bold;
+          margin: 0 4px 0 4px;
+          padding: 6px 14px 6px 14px;
+          background-color: rgb(239, 239, 239);
+          text-decoration: none;
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          border-radius: 20px;
+          color: black;
+        }
       }
     }
   }
   .toppage-list{
     height: 100vh;
-    .toppage__items{
-      height: 50px;
-      width: 100vw;
-      display: flex;
-      padding-top: 40px;
-      position: relative;
-      &__name{
-        position: relative;
-        left: 155px;
-        padding-left: 55px;
-        font-size: 24px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-weight: bold;
-      }
-      &__name__button{
-        position: absolute;
-        right: 200px;
-        padding-top: 15px;
-        color: skyblue;
-        text-decoration: none;
-        font-weight: bold;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-size: 14px;
-      }
-    }
-    .toppage__block{
-      margin: 0 0 20px 220px;
-      display: flex;
-      &__goods{
-        width: 190px;
-        height: 250px;
-        background-color: white;
-        box-shadow: 3px 3px 3px 3px rgba(0.1,0.1,0.1,0.1);
-        position: relative;
-        &__image{
-          height: 200px;
-          width: 190px;
+    width: 100%;
+    .tppage-container{
+      width: 1040px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      .toppage__items{
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 40px;
+        &__name{
+          font-size: 24px;
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          font-weight: bold;
         }
-        &__link{
+        &__button{
+          padding-top: 10px;
+          color: skyblue;
           text-decoration: none;
-          color: black;
-          text-align: center;;
+          font-weight: bold;
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          font-size: 14px;
         }
-        &__price{
-          -webkit-box-align: center;
-          bottom: 60px;
-          align-items: center;
-          background: rgba(0,0,0,.4);
-          border-radius: 0 14px 14px 0;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          color: #fff;
-          display: -webkit-inline-box;
-          display: -ms-inline-flexbox;
-          display: inline-flex;
-          font-size: 17px;
-          height: 32px;
-          height: 28px;
-          letter-spacing: .02em;
-          margin: 0;
-          padding: 0 12px;
-          position: absolute;
-          z-index: 2;
+      }
+      .toppage__block{
+        width: 1040px;
+        flex-wrap: wrap;
+        display: flex;
+        &__goods{
+          width: 190px;
+          height: 250px;
+          background-color: white;
+          box-shadow: 3px 3px 3px 3px rgba(0.1,0.1,0.1,0.1);
+          position: relative;
+          margin: 0 20px 20px 0;
+          &__link{
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            &__image{
+              height: 200px;
+              width: 190px;
+            }
+            &__words{
+              padding-top: 10px;
+              box-sizing: border-box;
+            }
+          }
+          &__price{
+            -webkit-box-align: center;
+            bottom: 60px;
+            align-items: center;
+            background: rgba(0,0,0,.4);
+            border-radius: 0 14px 14px 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #fff;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            font-size: 17px;
+            height: 32px;
+            height: 28px;
+            letter-spacing: .02em;
+            margin: 0;
+            padding: 0 12px;
+            position: absolute;
+            z-index: 2;
+          }
         }
       }
     }
     .toppage__block2__goods{
-        width: 185px;
-        height: 250px;
-        margin: 0 20px 0 20px;
-        background-color: white;
-        box-shadow: 3px 3px 3px 3px rgba(0.1,0.1,0.1,0.1);
-        position: relative;
+      width: 185px;
+      height: 250px;
+      margin-right: 20px;
+      background-color: white;
+      box-shadow: 3px 3px 3px 3px rgba(0.1,0.1,0.1,0.1);
+      position: relative;
+      &__link{
+        text-decoration: none;
+        color: black;
+        text-align: center;
         &__image{
           height: 200px;
           width: 185px;
         }
-        &__link{
-          text-decoration: none;
-          color: black;
-          text-align: center;;
-        }
-        &__price{
-          -webkit-box-align: center;
-          bottom: 60px;
-          align-items: center;
-          background: rgba(0,0,0,.4);
-          border-radius: 0 14px 14px 0;
-          -webkit-box-sizing: border-box;
+        &__words{
+          padding-top: 10px;
           box-sizing: border-box;
-          color: #fff;
-          display: inline-flex;
-          font-size: 17px;
-          height: 32px;
-          height: 28px;
-          letter-spacing: .02em;
-          margin: 0;
-          padding: 0 12px;
-          position: absolute;
-          z-index: 2;
         }
+      }
+      &__price{
+        -webkit-box-align: center;
+        bottom: 60px;
+        align-items: center;
+        background: rgba(0,0,0,.4);
+        border-radius: 0 14px 14px 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #fff;
+        display: inline-flex;
+        font-size: 17px;
+        height: 32px;
+        height: 28px;
+        letter-spacing: .02em;
+        margin: 0;
+        padding: 0 12px;
+        position: absolute;
+        z-index: 2;
       }
     }
   }
+}
