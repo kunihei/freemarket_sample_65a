@@ -64,3 +64,32 @@
     background-color:red;
   }
 }
+
+.login-footer{
+  text-align: center;
+  height: 200px;
+  &__list{
+    display: flex;
+    justify-content: center;
+    &__privacy{
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      line-height: 5px;
+      padding: 50px 3px 0 3px;
+      box-sizing: border-box;
+      font-size: 12px;
+      &:hover{
+        border-bottom: 1px solid;
+      }
+    }
+  }
+  &__logo{
+    &__icon{
+      padding-top: 30px;
+    }
+  }
+  &__company{
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+}
