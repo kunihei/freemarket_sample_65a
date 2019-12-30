@@ -55,6 +55,7 @@ header{
       justify-content: space-between;
       width:100%;
       box-sizing: border-box;
+      margin-top:10px;
       // カテゴリー一覧とブランド一覧の親
       &__left{
         display: flex;
