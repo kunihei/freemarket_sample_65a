@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :address
   has_one :phone_number
+  has_many :cards
 end
