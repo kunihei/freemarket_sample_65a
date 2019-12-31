@@ -12,14 +12,14 @@
           カード番号
           .payment-info__nam__required
             必須
-        = f.text_field :postcode, class: 'payment-info__input', placeholder: '半角数字のみ'
+        = f.text_field :postcode, class: 'payment-info__input', placeholder: '半角数字のみ', id: 'card_number'
         = image_tag 'cards.jpg',  height: '35px', width: '300px', class: "payment-info__image"
         .payment-info__expiration
           有効期限
           .payment-info__nam__required
             必須
         .payment-info__month
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '月'
+          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, id: 'exp_month', date_separator:'%s'),'月') + '月'
         .payment-info__year
           != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:year,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
         .payment-info__security
@@ -32,7 +32,7 @@
           .payment-info__question__message
             カードの裏面の番号とは？
         .payment-info__botton
-          = link_to "次へ進む", root_path, class: "payment-info__botton__link"
+          = link_to "次へ進む", root_path, class: "payment-info__botton__link", id: "token_submit"
   .payment-footer
     .payment-footer__list
       = link_to "#", class: "payment-footer__list__privacy" do
