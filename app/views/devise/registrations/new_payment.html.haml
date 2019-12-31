@@ -12,7 +12,7 @@
           カード番号
           .payment-info__nam__required
             必須
-        = f.text_field :postcode, class: 'payment-info__input', placeholder: '半角数字のみ', id: 'card_number'
+        = f.text_field :number, class: 'payment-info__input', placeholder: '半角数字のみ', id: 'card_number'
         = image_tag 'cards.jpg',  height: '35px', width: '300px', class: "payment-info__image"
         .payment-info__expiration
           有効期限
