@@ -19,9 +19,37 @@
           .payment-info__nam__required
             必須
         .payment-info__month
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, id: 'exp_month', date_separator:'%s'),'月') + '月'
+          %select#exp_month{name: "exp_month", type: "text"}
+            %option{value: "1"}01
+            %option{value: "2"}02
+            %option{value: "3"}03
+            %option{value: "4"}04
+            %option{value: "5"}05
+            %option{value: "6"}06
+            %option{value: "7"}07
+            %option{value: "8"}08
+            %option{value: "9"}09
+            %option{value: "10"}10
+            %option{value: "11"}11
+            %option{value: "12"}12
+          %i.card-form-expire-icon
+          %span{class: "month"} 月
         .payment-info__year
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:year,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+          %select#exp_year{name: "exp_year", type: "text"}
+            %option{value: "2019"}19
+            %option{value: "2020"}20
+            %option{value: "2021"}21
+            %option{value: "2022"}22
+            %option{value: "2023"}23
+            %option{value: "2024"}24
+            %option{value: "2025"}25
+            %option{value: "2026"}26
+            %option{value: "2027"}27
+            %option{value: "2028"}28
+            %option{value: "2029"}29
+          %i.card-form-expire-icon
+          %span{class:"year"} 年
+
         .payment-info__security
           セキュリティコード
           .payment-info__nam__required
