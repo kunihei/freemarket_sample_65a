@@ -53,14 +53,14 @@
         .payment-info__security
           セキュリティコード
           .payment-info__nam__required
-            必須
+            必須 
         = f.text_field :cvc, class: 'payment-info__input', placeholder: 'カード背面4行もしくは3行の番号', id: "cvc"
         .payment-info__question
           = icon("fas", "question-circle", class: "payment-info__icon")
           .payment-info__question__message
             カードの裏面の番号とは？
         .payment-info__botton
-          = link_to "次へ進む", root_path, class: "payment-info__botton__link", id: "token_submit"
+          = f.submit "次へ進む",class: "payment-info__botton__link", id: "token_submit"
   .payment-footer
     .payment-footer__list
       = link_to "#", class: "payment-footer__list__privacy" do
