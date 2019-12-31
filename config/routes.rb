@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     get 'finish', to: 'users/registrations#new_finish'
     post 'finish', to: 'users/registrations#create_finish'
   end
+
   root to: 'items#index'
 
   resources :items, only: [:show, :edit, :new]

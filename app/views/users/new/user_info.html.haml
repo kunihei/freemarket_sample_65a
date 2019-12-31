@@ -21,6 +21,7 @@
           %li.newuser__header--right__list
             %p 完了
             .newuser__header--right__progress-b
+
   .newuser__body
     .newuser__body__content
       %h2.newuser__body__content__head 会員情報入力
@@ -53,6 +54,7 @@
               %h1 本人確認
               %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
               
+
             .newuser__body__content__group
               %ul.newuser__body__content__group__top.flex
                 %li.newuser__body__content__group__name お名前(全角)
@@ -75,6 +77,7 @@
                 != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
               %p.gry__message ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
 
+
               .newuser__body__content__terms
                 「次へ進む」のボタンを押すことにより,
                 = link_to '利用規約' 
@@ -90,4 +93,19 @@
                 =link_to 'Terms of Service '
                 apply.
 
+  .login-footer
+    .login-footer__list
+      = link_to "#", class: "login-footer__list__privacy" do
+        .login-footer__message
+          プライバシーポリシー
+      = link_to "#", class: "login-footer__list__privacy" do
+        .login-footer__message
+          メルカリ利用規約
+      = link_to "#", class: "login-footer__list__privacy" do
+        .login-footer__message
+          特定商取引に関する表記
+    = link_to root_path, class: "login-footer__logo" do
+      = image_tag "logo_gray.svg", size: "200x90", class: "login-footer__logo__icon"
+    .login-footer__company
+      © Fmarket, Inc.
   
