@@ -54,7 +54,7 @@
           セキュリティコード
           .payment-info__nam__required
             必須
-        = f.text_field :postcode, class: 'payment-info__input', placeholder: 'カード背面4行もしくは3行の番号'
+        = f.text_field :cvc, class: 'payment-info__input', placeholder: 'カード背面4行もしくは3行の番号', id: "cvc"
         .payment-info__question
           = icon("fas", "question-circle", class: "payment-info__icon")
           .payment-info__question__message
