@@ -1,8 +1,26 @@
 .phone-container
-  .phone-header
-    .phone-header__left
-      = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
-    .phone-header__right
+  .newuser__header
+    .newuser__header__wrap.flex
+      .newuser__header--left.flex
+        = image_tag "logo_red.svg", alt: "アイコン",size: "50x50", class: 'mypage__icon'
+        = link_to 'Fmarket', root_path
+      .newuser__header--right
+        %ul.flex
+          %li.newuser__header--right__list
+            %p 会員情報
+            .newuser__header--right__progress-a#top3_1
+          %li.newuser__header--right__list
+            %p 電話番号認証
+            .newuser__header--right__progress-ab#top3_2_phone
+          %li.newuser__header--right__list
+            %p お届け先住所入力
+            .newuser__header--right__progress-ab
+          %li.newuser__header--right__list
+            %p 支払い方法
+            .newuser__header--right__progress-ab
+          %li.newuser__header--right__list
+            %p 完了
+            .newuser__header--right__progress-b
 
   .phone-main-content
     .phone-main-content__title
