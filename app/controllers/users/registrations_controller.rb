@@ -39,11 +39,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_address(@address.attributes)
     @user.save
-    render :new_payment
+    render :new_cards
+  end
+
+  def new_cards
   end
 
   
-  def create_payment
+  def create_cards
     render :new_finish
   end
 
