@@ -65,6 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         metadata: {user_id: current_user.id} # 記述しなくても大丈夫です
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      session["devise.regist_data4"] = {card: @card.attributes}
     end
     render :new_finish
   end
