@@ -1,7 +1,5 @@
 .exhibit
-  .exhibit__header
-    = link_to "#", class: "exhibit__header__link" do
-      = image_tag 'fmarket_logo_red.svg', class: "exhibit__header__image"
+  =render 'users/subheader'
   .exhibit__contents
     .exhibit__contents__center
       = form_for '#' do |f|
@@ -150,16 +148,4 @@
           .exhibit__contents__center__bottom__button-gray
             = f.submit '戻る', class: 'return-btn'
 
-  .exhibit__footer
-    .exhibit__footer__text
-      .exhibit__footer__text--left
-        = link_to "プライバシーポリシー", "#", class: "footer-link"
-      .exhibit__footer__text--center
-        = link_to "メルカリ利用規約", "#", class: "footer-link"
-      .exhibit__footer__text--right
-        = link_to "特定商取引に関する表記", "#", class: "footer-link"
-    .exhibit__footer__image
-      = link_to "#", class: "exhibit__footer__image__link" do
-        = image_tag 'logo_gray.svg', class: "exhibit__footer__image__logo"
-    .exhibit__footer__character
-      © Mercari,Inc.
+  =render 'users/subfooter'

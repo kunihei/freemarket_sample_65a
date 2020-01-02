@@ -41,18 +41,5 @@
           = image_tag "apple.png", size: "200x80", class: "toppage-logo"
         = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank", class: "registerdone-app" do
           = image_tag "google-play.png", size: "200x80", class: "toppge-logo"
-  .login-footer
-    .login-footer__list
-      = link_to "#", class: "login-footer__list__privacy" do
-        .login-footer__message
-          プライバシーポリシー
-      = link_to "#", class: "login-footer__list__privacy" do
-        .login-footer__message
-          メルカリ利用規約
-      = link_to "#", class: "login-footer__list__privacy" do
-        .login-footer__message
-          特定商取引に関する表記
-    = link_to root_path, class: "login-footer__logo" do
-      = image_tag "logo_gray.svg", size: "200x90", class: "login-footer__logo__icon"
-    .login-footer__company
-      © Fmarket, Inc.
+          
+  = render "subfooter"

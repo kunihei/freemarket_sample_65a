@@ -4,20 +4,6 @@
   background-color: rgb(245, 245, 245);
 }
 
-//ヘッダー部分
-.payment-header{
-  width: 100vw;
-  &__block{
-    height: 100px;
-    text-align: center;
-    padding-top: 20px;
-  }
-}
-.payment-wrap{
-  margin:  0 auto;
-  width: 700px;
-  background-color: white;  
-}
 //お支払い方法の全体
 .payment-body{
   margin:  0 auto;
@@ -93,17 +79,23 @@
         width: fit-content;
       }
     }
-  }
-}
 
-.payment-info__botton__link {
-      
+    &__botton{
+      cursor: pointer;
+      margin: 20px auto;
+      padding-top: 20px;
+      box-sizing: border-box;
       background-color: red;
-      margin-top: 52px;
-      width: 100%;
-      background: $FM-color-red;
-      border: 1px solid $FM-color-red;
       color: white;
-      height: 48px;
-      font-size: 16px;
+      width: 290px;
+      height: 50px;
+      &__link{
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        box-sizing: border-box;
+        font-size: 13px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
 }
