@@ -45,7 +45,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     #セッションの作成
     session["devise.regist_data3"] = {address: @address.attributes}
-    @card = @user.build_address
     render :new_cards
   end
 
