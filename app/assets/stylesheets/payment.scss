@@ -3,6 +3,7 @@
   width: 100vw;
   background-color: rgb(245, 245, 245);
 }
+
 //お支払い方法の全体
 .payment-body{
   margin:  0 auto;
@@ -78,6 +79,7 @@
         width: fit-content;
       }
     }
+
     &__botton{
       cursor: pointer;
       margin: 20px auto;

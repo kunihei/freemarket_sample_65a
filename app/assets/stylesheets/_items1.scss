@@ -35,6 +35,7 @@
         padding: 40px;
         &__group {
           display: flex;
+          height: 16px;
           &__name {
             font-size: 16px;
           }
@@ -48,6 +49,7 @@
             font-size: 12px;
             vertical-align: top;
             background: #ea352d;
+            margin-bottom: 5px;
           }
         }
         &__limit {
@@ -59,14 +61,20 @@
           width: 620px;
           margin-top: 16px;
           background-color: #F5F5F5;
-          border: 1px dashed #ccc;
           &__text {
             height: 82px;
             font-size: 14px;
             text-align: center;
             padding: 40px;
-            margin-top: 20px;
+            border: 1px dashed #ccc;
+            &--a{
+              margin-top: 20px;
+            }
           }
+          
+        }
+        &__file {
+          display: none;
         }
       }
       &__product {
@@ -124,6 +132,7 @@
               height: 110px;
               width: 596px;
               padding: 10px;
+              font-size: 16px;
             }
           }
         }
@@ -162,25 +171,43 @@
                   font-size: 12px;
                   vertical-align: top;
                   background: #ea352d;
+                  margin-bottom: 5px;
                 }
+              }
+            }
+            &--a {
+              position: relative;
+              select {
+                height: 48px;
+                width: 400px;
+                padding: 0px 16px;
+                background-color: white;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+              }
+              .form-btn {
+                position: absolute;top:40px; right:20px;
+                font-size: 25px;
+                color: grey;
               }
             }
             &--b {
               margin-top: 40px;
-            }
-            &__form {
-              height: 48px;
-              .category {
+              position: relative;
+              select {
                 height: 48px;
                 width: 400px;
                 padding: 0px 16px;
                 background-color: white;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
               }
-              .condition {
-                height: 48px;
-                width: 400px;
-                padding: 0px 16px;
-                background-color: white;
+              .form-btn {
+                position: absolute;top:40px; right:20px;
+                font-size: 25px;
+                color: grey;
               }
             }
           }
@@ -196,6 +223,9 @@
         &__information {
           font-size: 14px;
           color: #888;
+          .question-btn {
+            color:#0099E8;
+          }
         }
         &__list-group {
           width: 400px;
@@ -223,34 +253,61 @@
                   font-size: 12px;
                   vertical-align: top;
                   background: #ea352d;
+                  margin-bottom: 5px;
                 }
               }
             }
+            &--a {
+              position: relative;
+              select {
+              height: 48px;
+              width: 400px;
+              padding: 0px 16px;
+              background-color: white;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              }
+              .form-btn {
+                position: absolute;top:40px; right:20px;
+                font-size: 25px;
+                color: grey;
+              }
+            }
             &--b {
+              position: relative;
               margin-top: 40px;
+              select {
+              height: 48px;
+              width: 400px;
+              padding: 0px 16px;
+              background-color: white;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              }
+              .form-btn {
+                position: absolute;top:40px; right:20px;
+                font-size: 25px;
+                color: grey;
+              }
             }
             &--c {
+              position: relative;
               margin-top: 40px;
-            }
-            &__form {
+              select {
               height: 48px;
-              .postage {
-                height: 48px;
-                width: 400px;
-                padding: 0px 16px;
-                background-color: white;
+              width: 400px;
+              padding: 0px 16px;
+              background-color: white;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
               }
-              .area {
-                height: 48px;
-                width: 400px;
-                padding: 0px 16px;
-                background-color: white;
-              }
-              .days {
-                height: 48px;
-                width: 400px;
-                padding: 0px 16px;
-                background-color: white;
+              .form-btn {
+                position: absolute;top:40px; right:20px;
+                font-size: 25px;
+                color: grey;
               }
             }
           }
@@ -267,6 +324,9 @@
         &__information {
           font-size: 14px;
           color: #888;
+          .question-btn {
+            color:#0099E8;
+          }
         }
         &__list-group {
           width: 400px;
@@ -287,6 +347,7 @@
                   font-size: 12px;
                   vertical-align: top;
                   background: #ea352d;
+                  margin-bottom: 5px;
                 }
               }
             }
@@ -307,6 +368,7 @@
               .value_2 {
                 font-size: 34px;
                 float: right;
+
               }
             }
             &__form {
@@ -355,22 +417,26 @@
           }
         }
         &__button-red {
-          margin-top: 40px;
-          height: 50px;
-          width: 620px;
-          line-height: 50px;
-          text-align: center;
-          background-color: #EA352D;
-          color: white;
+          .exhibit-btn {
+            margin-top: 40px;
+            height: 50px;
+            width: 620px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #EA352D;
+            color: white;
+          }
         }
         &__button-gray {
-          margin: 24px 170.5px 0px;
-          height: 50px;
-          width: 279px;
-          line-height: 50px;
-          text-align: center;
-          background-color: #AAAAAA;
-          color: white;
+          .return-btn {
+            margin: 24px 170.5px 0px;
+            height: 50px;
+            width: 279px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #AAAAAA;
+            color: white;
+          }
         }
       }
     }

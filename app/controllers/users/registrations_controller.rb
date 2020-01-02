@@ -4,48 +4,65 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
 
   def new 
-    @user = User.new
+    @user = User.new                          #インスタンス作成
   end
 
-  def create
-    @user = User.new(sign_up_params)
-    unless @user.valid?
+  def create                                  #(ユーザー情報)
+    @user = User.new(sign_up_params)          #データの代入(ユーザー情報)
+    unless @user.valid?                       #バリデーション
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @number = PhoneNumber.new
+    @number = @user.build_phone_number        #インスタンス作成
     render :new_tellphone
   end
 
 
-
-  
-
-  def create_tellphone
-    @number = PhoneNumber.new(user_params)
-    session["devise.regist_data2"] = {phoneNumber: @number.attributes}
+  def create_tellphone                                     #(電話番号)
+    @number = PhoneNumber.new(user_params)                 #データの代入(電話番号)
+    session["devise.regist_data2"] = {phoneNumber: @number.attributes}#セッションの作成
     @user = User.new(session["devise.regist_data"]["user"])
-    @address = @user.build_address
+    @address = @user.build_address                         #インスタンス作成
     render :new_address
   end
-
   
 
-  def create_address
-    @user = User.new(session["devise.regist_data"]["user"])
-    @address = Address.new(address_params)
-    unless @address.valid?
+  def create_address   #(お届け先住所)
+    @user = User.new(session["devise.regist_data"]["user"])#セッションの代入(ユーザー情報)
+    @number = PhoneNumber.new(number: session["devise.regist_data2"])
+    @address = Address.new(address_params)                 #データの代入(お届け先住所)
+    unless @address.valid?                                 #バリデーション
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
     @user.build_address(@address.attributes)
     @user.save
-    render :new_payment
+    render :new_cards
   end
 
-  def create_payment
+  def new_cards
+  end
+
+  
+  def create_cards
+    Payjp.api_key = "sk_test_f67be4ad1051de6822903d38"
+    if params['payjp-token'].blank?
+      render 'mypages/create_card'
+    else
+      customer = Payjp::Customer.create( # ここで先ほど生成したトークンを顧客情報と紐付け、PAY.JP管理サイトに送信
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: {user_id: current_user.id} # 記述しなくても大丈夫です
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to cards_path
+      else
+        render 'mypages/create_card'
+      end
+    end
     render :new_finish
   end
 

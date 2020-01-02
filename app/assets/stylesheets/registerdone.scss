@@ -7,6 +7,7 @@
   margin: 0 auto;
   background-color: white;
   text-align: center;
+  width: 700px;
   &__word{
     font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
     font-size: 20px;
@@ -42,19 +43,19 @@
       font-size: 15px;
       position: absolute;
       top: 90px;
-      left: 70px;
+      left: 230px;
     }
     &__word2{
       font-size: 25px;
       position: absolute;
       top: 120px;
-      left: 50px;
+      left:200px;
     }
     &__word3{
       display: flex;
       position: absolute;
       top: 150px;
-      left: 5px;
+      left: 155px;
     }
   }
 }
