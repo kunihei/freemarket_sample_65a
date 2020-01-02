@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  #本人情報登録
+  #1本人情報登録
   def new 
     #インスタンス作成
     @user = User.new
@@ -23,10 +23,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_tellphone
   end
 
-  #電話番号確認(post)
+  #2電話番号確認(post)
   def create_tellphone                                                
     @number = PhoneNumber.new(user_params)                            #データの代入(電話番号)
-    session["devise.regist_data2"] = {phoneNumber: @number.attributes}#セッションの作成
+    #セッションの作成
+    session["devise.regist_data2"] = {phoneNumber: @number.attributes}
     @user = User.new(session["devise.regist_data"]["user"])
     @address = @user.build_address           
     #インスタンス作成
@@ -34,12 +35,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
 
-  #お届け先住所
+  #3お届け先住所(post)
   def create_address                                                 
     @user = User.new(session["devise.regist_data"]["user"])           # セッションの代入(ユーザー情報)
     @number = PhoneNumber.new(number: session["devise.regist_data2"])
     @address = Address.new(address_params)                            #データの代入(お届け先住所)
-    unless @address.valid?                                            #バリデーション
+    #バリデーション
+    unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
@@ -52,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
 
-  #お支払い方法
+  #4お支払い方法
   def create_cards
     Payjp.api_key = "sk_test_f67be4ad1051de6822903d38"
     if params['payjp-token'].blank?
@@ -73,10 +75,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_finish
   end
 
-  #完了ページ
+  #5完了ページ
   def create_finish
     @user = User.new(session["devise.regist_data"]["user"])#セッションの代入(ユーザー情報)
-    @number = PhoneNumber.new(number: session["devise.regist_data2"])
+    @number = PhoneNumber.new(number: session["devise.regist_data2"])#セッションの代入(電話番号)
   end
 
 
