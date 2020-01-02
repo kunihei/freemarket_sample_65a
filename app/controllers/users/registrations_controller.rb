@@ -43,6 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
+    #セッションの作成
     session["devise.regist_data3"] = {address: @address.attributes}
     @card = @user.build_address
     render :new_cards
@@ -64,19 +65,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
         metadata: {user_id: current_user.id} # 記述しなくても大丈夫です
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
-        redirect_to cards_path
-      else
-        render 'mypages/create_card'
-      end
     end
     render :new_finish
   end
 
   #5完了ページ
   def create_finish
-    @user = User.new(session["devise.regist_data"]["user"])          #セッションの代入(ユーザー情報)
-    @number = PhoneNumber.new(number: session["devise.regist_data2"])#セッションの代入(電話番号)
+    @user     = User.new(session["devise.regist_data"]["user"])        #1セッションの代入(ユーザー情報)
+    @number   = PhoneNumber.new(number: session["devise.regist_data2"])#2セッションの代入(電話番号)
+    @@address = Address.new(number: session["devise.regist_data3"])    #3セッションの代入(お届け先住所)
+    @card     = Card.new(card: session["devise.regist_data4"])         #4セッションの代入(お支払い情報)
   end
 
 
