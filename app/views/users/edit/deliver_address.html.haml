@@ -1,3 +1,4 @@
+=render 'items/header'
 .profile 
   .nav
     %ul
@@ -62,3 +63,5 @@
                   %li.delibver__tag.delibver__tag__arbitrary 任意
                 %li= f.text_field :tell, class: 'delibver__right__input', placeholder: '例)090-1234-5678'
                 = f.submit '変更する', class: 'profile__right__input__send'
+      
+=render 'items/footer'
