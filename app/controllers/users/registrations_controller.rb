@@ -36,17 +36,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
 
   #3お届け先住所(post)
-  def create_address                                                 
-    @user = User.new(session["devise.regist_data"]["user"])           # セッションの代入(ユーザー情報)
-    @number = PhoneNumber.new(number: session["devise.regist_data2"])
+  def create_address
     @address = Address.new(address_params)                            #データの代入(お届け先住所)
     #バリデーション
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
-    @user.build_address(@address.attributes)
-    @user.save
+    session["devise.regist_data3"] = {address: @address.attributes}
+    @card = @user.build_address
     render :new_cards
   end
 
@@ -77,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #5完了ページ
   def create_finish
-    @user = User.new(session["devise.regist_data"]["user"])#セッションの代入(ユーザー情報)
+    @user = User.new(session["devise.regist_data"]["user"])          #セッションの代入(ユーザー情報)
     @number = PhoneNumber.new(number: session["devise.regist_data2"])#セッションの代入(電話番号)
   end
 
