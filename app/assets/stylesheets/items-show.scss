@@ -1,10 +1,9 @@
 // 外の大枠
 .show-container{
   width:100%;
-  height:calc(100vh - 100px);
+  height:100%;
   background-color: #f5f5f5;
   padding-top:1px;
-  overflow: scroll;
   box-sizing: border-box;
 }
 

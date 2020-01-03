@@ -78,3 +78,4 @@ gem 'active_hash'
 gem 'erb2haml'
 gem 'pry-rails'
 gem 'payjp'
+gem "gretel"
