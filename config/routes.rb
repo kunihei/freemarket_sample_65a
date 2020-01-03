@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'card/new'
+  get 'card/show'
+  #resources :cards , only: [:new, :index, :create, :destroy]
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -26,5 +29,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   get 'users/new/:name', controller: 'users', action: 'create'
   get 'users/edit/:name', controller: 'users', action: 'edit'
+
+
+  
+
+  
 
 end
