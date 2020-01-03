@@ -2,14 +2,9 @@
 .profile 
   .nav
     /以下ナビゲーションバー
-    %ul
-      %li 
-        メルカリ
-        = icon('fas', 'angle-right') 
-      %li 
-        マイページ
-        = icon('fas', 'angle-right')
-      %li プロフィール
+    .nav__info
+      - breadcrumb :profile
+      = render "layouts/breadcrumbs"
   .profile__main
     .profile__container.flex 
       /以下サイドバーrender
