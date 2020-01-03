@@ -19,8 +19,9 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
-  resources :items, only: [:show, :edit, :new]
-
+  resources :items, only: [:show, :edit, :new, :create] do
+    resources :category, only: [:create]
+  end
 
   resources :users, only: [:index, :show, :new]
   get 'users/new/:name',controller: 'users', action: 'new'
