@@ -28,6 +28,12 @@
         %h2.profile__right__content__head お届け先住所入力
         .profile__right__content__form
           = form_for @address do |f|
+            - if @address.errors.any?
+              .chat-group-form__errors
+                %h2= "#{@address.errors.full_messages.count}件のエラーが発生しました。"
+                %ul
+                  - @address.errors.full_messages.each do |message|
+                    %li= message
             .delibver__right__content__group
               %ul.delibver__right__content__group__top.flex
                 %li.delibver__right__content__group__name お名前

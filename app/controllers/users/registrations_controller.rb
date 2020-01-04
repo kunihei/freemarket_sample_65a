@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #本人情報(post)
   def create                                  #(ユーザー情報)
     @user = User.new(sign_up_params)          #データの代入(ユーザー情報)
-    #バリデーション
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
@@ -20,18 +19,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     #インスタンス作成
-    @number = @user.build_phone_number        
+    @number = @user.build_number
     render :new_tellphone
   end
 
   #2電話番号確認(post)
   def create_tellphone                                                
-    @number = PhoneNumber.new(user_params)                            #データの代入(電話番号)
-    #セッションの作成
-    session["devise.regist_data2"] = {phoneNumber: @number.attributes}
-    @user = User.new(session["devise.regist_data"]["user"])
-    @address = @user.build_address           
-    #インスタンス作成
+    @user   = User.new(session["devise.regist_data"]["user"])
+    @number = Number.new(user_params)                            #データの代入(電話番号)
+    unless @number.valid?
+      flash.now[:alert] = @number.errors.full_messages
+      render :new_tellphone and return
+    end
+    session["devise.regist_data2"] = {number: @number.attributes}#セッションの作成
+    @user.build_number(@number.attributes)
+    @address = @user.build_address
     render :new_address
   end
   
@@ -39,18 +41,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #3お届け先住所(post)
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])           # セッションの代入(ユーザー情報)
-    @number = PhoneNumber.new(number: session["devise.regist_data2"])
-    @address = Address.new(address_params)                            #データの代入(お届け先住所)
-    #バリデーション
+    @address = Address.new(address_params)
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
-    #セッションの作成
-    session["devise.regist_data3"] = {address: @address.attributes}
-    @user.build_address(@address.attributes)
-    @user.save
-    sign_in(:user, @user)
+    session["devise.regist_data3"] = {address: @address.attributes}   #セッションの作成
     @card = Card.new
     render :new_cards
   end
@@ -58,39 +54,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #4お支払い方法
   # クレジットカード情報入力画面
-
-  def new_cards
-    redirect_to root_path unless user_signed_in?
-    if @card
-      redirect_to card_path unless @card
-    else
-    end
-  end
-
   def create_cards
-    Payjp.api_key = "sk_test_f67be4ad1051de6822903d38"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    @user = User.new(session["devise.regist_data"]["user"])
     if params['payjp-token'].blank?
       redirect_to root_path
     else
       customer = Payjp::Customer.create( # ここで先ほど生成したトークンを顧客情報と紐付け、PAY.JP管理サイトに送信
-        email: current_user.email,
+        email: @user.email,
         card: params['payjp-token'],
-        metadata: {user_id: current_user.id} # 記述しなくても大丈夫です
+        metadata: {user: @user}
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
-        redirect_to root_path
-      else
-      end
+      @card = Card.new(user: @user, customer_id: customer.id, card_id: customer.default_card)
+      @card.save
+
+      @number = Number.new(session["devise.regist_data2"]["number"])
+      @address = Address.new(session["devise.regist_data3"]["address"])
+      @user.build_address(@address.attributes)
+      @user.build_number(@number.attributes)
+      @user.save
+
+      render :new_finish
     end
   end
+
+  
   #5完了ページ
-  #def create_finish
-  #  @user     = User.new(session["devise.regist_data"]["user"])        #1セッションの代入(ユーザー情報)
-  #  @number   = PhoneNumber.new(number: session["devise.regist_data2"])#2セッションの代入(電話番号)
-  #  @@address = Address.new(number: session["devise.regist_data3"])    #3セッションの代入(お届け先住所)
-  #  @card     = Card.new(card: session["devise.regist_data4"])         #4セッションの代入(お支払い情報)
-  #end
+  def new_finish
+    
+  end
 
 
   protected
@@ -100,11 +92,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end    
 
   def user_params
-    params.require(:phone_number).permit(:number)
+    params.require(:number).permit(:tell)
   end
 
   def address_params
-    params.require(:address).permit(:postcode, :city, :block, :building, :tell)
+    params.require(:address).permit(:postcode, :city, :block, :building, :tell, :last_name, :first_name, :last_name_kana, :first_name_kana)
   end
 
   # before_action :configure_sign_up_params, only: [:create]

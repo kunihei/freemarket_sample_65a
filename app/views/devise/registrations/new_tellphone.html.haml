@@ -28,9 +28,15 @@
     .phone-main-content__body
       .phone-main-content__body__text-box
         = form_for @number, url: tellphone_path,method: :post do |f|
+          - if @number.errors.any?
+            .chat-group-form__errors
+              %h2= "#{@number.errors.full_messages.count}件のエラーが発生しました。"
+              %ul
+                - @number.errors.full_messages.each do |message|
+                  %li= message
           .phone-text-top
             携帯電話の番号
-          = f.text_field :number,class:'phone-main-content__body__text-box--boxing',placeholder: '携帯電話の番号を入力' 
+          = f.text_field :tell,class:'phone-main-content__body__text-box--boxing',placeholder: '携帯電話の番号を入力' 
           .phone-text-middle
             本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
           = f.submit '次へ進む', class: 'newuser__body__input__send'

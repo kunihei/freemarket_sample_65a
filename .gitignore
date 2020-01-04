@@ -40,3 +40,4 @@ config/routes.rb
 # *.scss
 app/assets/stylesheets/_users.scss
 
+.env
