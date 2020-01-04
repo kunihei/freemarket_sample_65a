@@ -11,6 +11,5 @@ class Address < ApplicationRecord
   validates :postcode, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :city, presence: true
   validates :block, presence: true
-  validates :building
   validates :tell, uniqueness: true, format: { with:  /\A\d{11}\z/ }
 end
