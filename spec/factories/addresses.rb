@@ -9,7 +9,7 @@ FactoryBot.define do
     city                  {"テスト"}
     block                 {"テスト"}
     building              {"テスト"}
-    tell                  {"12345678901"}
+    tell                  {Faker::Number.leading_zero_number(digits: 11)}
   end
 
 end
