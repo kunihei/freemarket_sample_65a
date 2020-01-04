@@ -117,6 +117,8 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
+    faker (2.10.0)
+      i18n (>= 1.6, < 1.8)
     ffi (1.11.3)
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
@@ -328,6 +330,7 @@ DEPENDENCIES
   dotenv-rails
   erb2haml
   factory_bot_rails
+  faker (~> 2.8)
   font-awesome-sass
   gretel
   haml-rails

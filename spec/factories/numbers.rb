@@ -1,8 +1,7 @@
 FactoryBot.define do
 
   factory :number do
-    tell              {"12345678901"}
-    user_id           {"1"}
+    tell              {Faker::Number.leading_zero_number(digits: 11)}
   end
 
 end
