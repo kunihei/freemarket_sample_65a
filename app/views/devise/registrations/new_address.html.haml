@@ -23,6 +23,8 @@
             .newuser__header--right__progress-b
 
   .newuser__body
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
     .profile__right__wrap
       .profile__right__content
         %h2.profile__right__content__head お届け先住所入力

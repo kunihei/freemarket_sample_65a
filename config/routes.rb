@@ -32,8 +32,4 @@ Rails.application.routes.draw do
   get 'users/edit/:name', controller: 'users', action: 'edit'
 
 
-  
-
-  
-
 end
