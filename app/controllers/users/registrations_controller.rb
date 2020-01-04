@@ -96,7 +96,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_params
-    params.require(:address).permit(:postcode, :city, :block, :building, :tell)
+    params.require(:address).permit(:postcode, :city, :block, :building, :tell, :last_name, :first_name, :last_name_kana, :first_name_kana)
   end
 
   # before_action :configure_sign_up_params, only: [:create]
