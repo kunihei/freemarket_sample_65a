@@ -27,9 +27,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_tellphone                                                
     @user   = User.new(session["devise.regist_data"]["user"])
     @number = Number.new(user_params)                            #データの代入(電話番号)
+    unless @number.valid?
+      flash.now[:alert] = @number.errors.full_messages
+      render :new_tellphone and return
+    end
     session["devise.regist_data2"] = {number: @number.attributes}#セッションの作成
-  
-
     @user.build_number(@number.attributes)
     @address = @user.build_address
     render :new_address
@@ -40,9 +42,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])           # セッションの代入(ユーザー情報)
     @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
     session["devise.regist_data3"] = {address: @address.attributes}   #セッションの作成
-    
-    
     @card = Card.new
     render :new_cards
   end
