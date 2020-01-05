@@ -22,8 +22,6 @@
       = link_to "#", target: "_blank" do
         = image_tag "image1.jpeg", height: "400px", width: "100%"
 
-
-
   .toppage__category
     .toppage__category__heading
       人気のカテゴリー
@@ -39,14 +37,59 @@
           レディース新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
-        -@items.each do |items|
+        -@items.each do |item|
           .toppage__block__goods
             = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
               = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
-                =items.name
+                =item.name
             .toppage__block__goods__price
-              ¥100,000
+              = converting_to_jpy(item.price)
+  .toppage-list
+    .tppage-container
+      .toppage__items
+        .toppage__items__name
+          メンズ新着アイテム
+        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
+      .toppage__block
+        -@items.each do |item|
+          .toppage__block__goods
+            = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              .toppage__block__goods__link__words
+                =item.name
+            .toppage__block__goods__price
+              = converting_to_jpy(item.price)
+  .toppage-list
+    .tppage-container
+      .toppage__items
+        .toppage__items__name
+          家電・スマホ・カメラ新着アイテム
+        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
+      .toppage__block
+        -@items.each do |item|
+          .toppage__block__goods
+            = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              .toppage__block__goods__link__words
+                =item.name
+            .toppage__block__goods__price
+              = converting_to_jpy(item.price)
+  .toppage-list
+    .tppage-container
+      .toppage__items
+        .toppage__items__name
+          おもちゃ・ホビー・グッズ新着アイテム
+        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
+      .toppage__block
+        -@items.each do |item|
+          .toppage__block__goods
+            = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              .toppage__block__goods__link__words
+                =item.name
+            .toppage__block__goods__price
+              = converting_to_jpy(item.price)
         
 
   .toppage__category
@@ -64,33 +107,13 @@
           シャネル新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
+        -@items.each do |item|
+          .toppage__block__goods
+            = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              .toppage__block__goods__link__words
+                =item.name
+            .toppage__block__goods__price
+              = converting_to_jpy(item.price)
 
 =render 'items/footer'
