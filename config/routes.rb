@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
-  resources :items, only: [:show, :edit, :new, :create] do
+  resources :items do
     resources :category, only: [:create]
   end
 

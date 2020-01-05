@@ -81,5 +81,7 @@ gem 'active_hash'
 gem 'erb2haml'
 gem 'pry-rails'
 gem 'payjp'
+gem 'carrierwave'
+gem 'mini_magick'
 gem "gretel"
 gem 'dotenv-rails'

@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 2020_01_04_094925) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "src"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "genre"
     t.integer "subgenre"
@@ -57,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_094925) do
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_day", default: 0, null: false
-    t.integer "pref", default: 0, null: false
+    t.integer "pref_id", default: 0, null: false
     t.integer "postage_selct", default: 0, null: false
     t.integer "price", null: false
     t.integer "size", default: 0
@@ -103,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_094925) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "images", "items"
   add_foreign_key "numbers", "users"
   add_foreign_key "phone_numbers", "users"
 end
