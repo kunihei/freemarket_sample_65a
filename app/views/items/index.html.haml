@@ -39,62 +39,15 @@
           レディース新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
+        -@items.each do |items|
+          .toppage__block__goods
+            = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              .toppage__block__goods__link__words
+                =items.name
+            .toppage__block__goods__price
+              ¥100,000
+        
 
   .toppage__category
     .toppage__category__heading
@@ -118,12 +71,12 @@
               カバン
           .toppage__block__goods__price
             ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
+        .toppage__block__goods
+          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
+            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+            .toppage__block__goods__link__words
               カバン
-          .toppage__block2__goods__price
+          .toppage__block__goods__price
             ¥100,000
         .toppage__block__goods
           = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
@@ -132,40 +85,12 @@
               カバン
           .toppage__block__goods__price
             ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
         .toppage__block__goods
           = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
             = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
             .toppage__block__goods__link__words
               カバン
           .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
             ¥100,000
 
 =render 'items/footer'
