@@ -38,26 +38,20 @@ describe User do
       user.valid?
       expect(user.errors[:first_name_kana]).to include("can't be blank")
     end
-
     it 'パスワードが7文字以上なら通過' do 
       user = build(:user, password: "1234567")
       user.valid?
       expect(user).to be_valid
     end
-
     it 'パスワードが6文字以下なら非通過' do
       user = build(:user, password: '123456')
       user.valid?
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
     end
-
-    
-
     it "正常値" do
       user = build(:user)
       expect(user).to be_valid
     end
-
   end
 
   describe '正規表現テスト' do 
@@ -66,49 +60,41 @@ describe User do
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'last_nameが[漢字、ひらがな、カタカナ]以外を含む場合非通過' do
       user = build(:user, last_name: 'testtes')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'first_nameが[漢字、ひらがな、カタカナ]以外を含む場合非通過' do
       user = build(:user, first_name: 'testtes')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'last_name_kanaが[漢字]を含む場合非通過' do
       user = build(:user, last_name_kana: '正規表現')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'first_name_kanaが[漢字]を含む場合非通過' do
       user = build(:user, first_name_kana: '正規表現')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'last_name_kanaが[ひらがな]を含む場合非通過' do
       user = build(:user, last_name_kana: 'せいきひょうげん')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'first_name_kanaが[ひらがな]を含む場合非通過' do
       user = build(:user, first_name_kana: 'せいきひょうげん')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'last_name_kanaが[英数字]を含む場合非通過' do
       user = build(:user, last_name_kana: 'test0')
       user.valid?
       expect(user).to be_invalid
     end
-
     it 'first_name_kanaが[英数字]を含む場合非通過' do
       user = build(:user, first_name_kana: 'test0')
       user.valid?

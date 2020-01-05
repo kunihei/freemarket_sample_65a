@@ -1,7 +1,5 @@
 require 'rails_helper'
-
 describe Number do
-
   describe '必須項目のテスト' do
     it 'tellが空白の場合非通過' do
       number = build(:number, tell: "")
@@ -13,7 +11,6 @@ describe Number do
       expect(number).to be_valid
     end
   end
-
  
   describe '正規表現のテスト' do
     it 'tellが10桁の場合非通過' do

@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :address do
     last_name             {"テスト"}
     first_name            {"テスト"}
@@ -11,7 +10,6 @@ FactoryBot.define do
     building              {"テスト"}
     tell                  {Faker::Number.leading_zero_number(digits: 11)}
   end
-
 end
 
 
