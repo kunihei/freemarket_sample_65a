@@ -14,27 +14,19 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
   def update
   end
 
   def destroy
   end
 
-  private
-
-  def item_params
-    params.require(:item).permit(:name, :price, images_attributes: [:src])
+  def create
+    Item.create(item_params)
   end
+
+  private
+    def item_params
+      params.require(:item).permit(:name,:text,:status,:postage_selct,:pref,:delivery_day,:price, images_attributes: [:src])
+      @category = Category.new
+    end
 end

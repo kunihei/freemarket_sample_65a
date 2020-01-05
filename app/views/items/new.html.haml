@@ -2,7 +2,7 @@
   =render 'users/subheader'
   .exhibit__contents
     .exhibit__contents__center
-      = form_for '@item' do |f|
+      = form_for @item do |f|
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image
@@ -53,9 +53,10 @@
                   %li.exhibit__contents__center__detail__list-group__group__name__list--required
                     必須
               %li
-                = f.label :category do
-                  = f.select :category,[["---","0"],["メンズ","1"],["レディース","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","6"],["コスメ・香水・美容","7"],["家電・スマホ・カメラ","8"],["スポーツ・レジャー","9"],["ハンドメイド","10"],["チケット","11"],["自動車・オートバイ","12"],["その他","13"]]
-                  = icon('fas', 'angle-down', class: 'form-btn')
+                =f.fields_for @category do |f|
+                  = f.label :genre do
+                    = f.select :genre,[["---","0"],["メンズ","1"],["レディース","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","6"],["コスメ・香水・美容","7"],["家電・スマホ・カメラ","8"],["スポーツ・レジャー","9"],["ハンドメイド","10"],["チケット","11"],["自動車・オートバイ","12"],["その他","13"]]
+                    = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__detail__list-group__group--b
               %li.exhibit__contents__center__detail__list-group__group__name
                 %ul.exhibit__contents__center__detail__list-group__group__name__list
