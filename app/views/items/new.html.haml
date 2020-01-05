@@ -2,7 +2,7 @@
   =render 'users/subheader'
   .exhibit__contents
     .exhibit__contents__center
-      = form_for '#' do |f|
+      = form_for '@item' do |f|
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image
@@ -13,14 +13,16 @@
               必須
           .exhibit__contents__center__image__limit
             最大10枚までアップロードできます
-          .exhibit__contents__center__image__upload
-            = f.label :image, class: 'exhibit__contents__center__image__upload' do
-              .exhibit__contents__center__image__upload__text
-                .exhibit__contents__center__image__upload__text--a
-                  ドラッグアンドドロップ
-                .exhibit__contents__center__image__upload__text--b
-                  またはクリックしてファイルをアップロード
-            = f.file_field :image, class: 'exhibit__contents__center__image__file'
+          #image-box-1
+            .item-num-0#image-box__container
+              = f.fields_for :item_images do |image|
+                = image.label :image, class: 'image__label' do
+                  = image.file_field :image, class: 'image__file', name: "item[images_attributes][][image_url]", type: 'file', style: "display:none"
+                  .upload__text
+                    .upload__text--a
+                      ドラッグアンドドロップ
+                    .upload__text--b
+                      またはクリックしてファイルをアップロード
         .exhibit__contents__center__product
           %ul.exhibit__contents__center__product__group
             %li.exhibit__contents__center__product__group__name
@@ -30,7 +32,7 @@
                 %li.exhibit__contents__center__product__group__name__list--required-a
                   必須
             %li.exhibit__contents__center__product__group__form
-              = f.text_field :description, placeholder: "商品名（必須 40文字まで)", class: "description", maxlength: "40"
+              = f.text_field :text, placeholder: "商品名（必須 40文字まで)", class: "description", maxlength: "40"
             %li.exhibit__contents__center__product__group__name
               %ul.exhibit__contents__center__product__group__name__list
                 %li.exhibit__contents__center__product__group__name__list__explanation
@@ -38,7 +40,7 @@
                 %li.exhibit__contents__center__product__group__name__list--required-b
                   必須
             %li.exhibit__contents__center__product__group__form
-              = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "explanation", maxlength: "1000"
+              = f.text_area :text, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "explanation", maxlength: "1000"
         .exhibit__contents__center__detail
           .exhibit__contents__center__detail__information
             商品の詳細
@@ -62,8 +64,8 @@
                   %li.exhibit__contents__center__detail__list-group__group__name__list--required
                     必須
               %li
-                = f.label :condition do
-                  = f.select :condition,[["---","0"],["新品・未使用","1"],["未使用品に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]]
+                = f.label :status do
+                  = f.select :status,[["---","0"],["新品・未使用","1"],["未使用品に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]]
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__delivery
           .exhibit__contents__center__delivery__information
@@ -79,8 +81,8 @@
                   %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                     必須
               %li
-                = f.label :postage do
-                  = f.select :postage,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
+                = f.label :postage_selct do
+                  = f.select :postage_selct,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--b
               %li.exhibit__contents__center__delivery__list-group__group__name
@@ -90,8 +92,8 @@
                   %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                     必須
               %li
-                = f.label :area do
-                  = f.collection_select :pref_id, Prefecture.all, :id, :name
+                = f.label :pref do
+                  = f.collection_select :pref, Prefecture.all, :id, :name
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--c
               %li.exhibit__contents__center__delivery__list-group__group__name
@@ -101,8 +103,8 @@
                   %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                     必須
               %li
-                = f.label :days do
-                  = f.select :category,[["---","0"],["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]]
+                = f.label :delivery_day do
+                  = f.select :delivery_day,[["---","0"],["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]]
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
@@ -119,7 +121,7 @@
                     必須
               %li.exhibit__contents__center__price__list-group__group__form
                 ¥
-                = f.text_field :price, placeholder: "例) 300", class: "price_calc"
+                %input.price_calc{placeholder: "例) 300", type: "number"}
             %ul.exhibit__contents__center__price__list-group__group--b
               %li.exhibit__contents__center__price__list-group__group__fee
                 販売手数料 (10%)

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_141034) do
+ActiveRecord::Schema.define(version: 2020_01_03_104901) do
+
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
     t.string "city", null: false
@@ -36,20 +37,24 @@ ActiveRecord::Schema.define(version: 2019_12_31_141034) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "src"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_method", default: 0, null: false
     t.integer "delivery_day", default: 0, null: false
-    t.integer "pref", default: 0, null: false
+    t.integer "pref_id", default: 0, null: false
     t.integer "postage_selct", default: 0, null: false
     t.integer "price", null: false
     t.integer "size", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "phone_numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +87,6 @@ ActiveRecord::Schema.define(version: 2019_12_31_141034) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "items", "users"
+  add_foreign_key "images", "items"
   add_foreign_key "phone_numbers", "users"
 end
