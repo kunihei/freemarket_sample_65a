@@ -63,14 +63,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
         metadata: {user: @user}
       )
       @card = Card.new(user: @user, customer_id: customer.id, card_id: customer.default_card)
-      @card.save  #カード情報のsave
-      #ユーザー情報のsave
+      #ユーザー情報の作成
       @number = Number.new(session["devise.regist_data2"]["number"])
       @address = Address.new(session["devise.regist_data3"]["address"])
       @user.build_address(@address.attributes)
       @user.build_number(@number.attributes)
-      @user.save  #ユーザー情報のsave
-      render :new_finish
+      if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
+        render :new_finish
+      else
+        edirect_to root_path
+      end
     end
   end
   
