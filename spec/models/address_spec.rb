@@ -1,7 +1,5 @@
 require 'rails_helper'
-
 describe Address do
-
   describe '必須項目のテスト' do 
     it 'last_nameが空白' do
       address = build(:address, last_name: "")
@@ -54,73 +52,61 @@ describe Address do
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'first_nameが[漢字、ひらがな、カタカナ]以外を含む場合非通過' do
       address = build(:address, first_name: 'testtes')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'last_name_kanaが[漢字]を含む場合非通過' do
       address = build(:address, last_name_kana: '正規表現')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'first_name_kanaが[漢字]を含む場合非通過' do
       address = build(:address, first_name_kana: '正規表現')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'last_name_kanaが[ひらがな]を含む場合非通過' do
       address = build(:address, last_name_kana: 'せいきひょうげん')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'first_name_kanaが[ひらがな]を含む場合非通過' do
       address = build(:address, first_name_kana: 'せいきひょうげん')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'last_name_kanaが[英数字]を含む場合非通過' do
       address = build(:address, last_name_kana: 'test0')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'first_name_kanaが[英数字]を含む場合非通過' do
       address = build(:address, first_name_kana: 'test0')
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'tellが10桁の場合非通過' do
       address = build(:address, tell: "1234567890")
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'tellが12桁の場合非通過' do
       address = build(:address, tell: "123456789012")
       address.valid?
       expect(address).to be_invalid
     end
-
     it 'tellが11桁の数字の場合通過' do
       address = build(:address, tell: "12345678901")
       address.valid?
       expect(address).to be_valid
     end
-
     it 'postcodeが[●●●-●●●●]なら通過' do
       address = build(:address, postcode: "123-4567")
       address.valid?
       expect(address).to be_valid
     end
-
     it 'postcodeが[-なしなら]なら非通過' do
       address = build(:address, postcode: "1234567")
       address.valid?
@@ -136,5 +122,4 @@ describe Address do
       expect(another_address.errors[:tell]).to include("has already been taken")
     end
   end
-
 end
