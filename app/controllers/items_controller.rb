@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.includes(:user).order("created_at DESC").limit(10)
   end
 
   def show
+    
   end
 
   def edit
