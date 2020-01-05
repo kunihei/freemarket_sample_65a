@@ -71,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
         render :new_finish
       else
-        edirect_to root_path
+        redirect_to root_path
       end
     end
   end
