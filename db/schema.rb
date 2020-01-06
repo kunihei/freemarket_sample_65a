@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_01_06_072750) do
-
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
@@ -65,17 +63,15 @@ ActiveRecord::Schema.define(version: 2020_01_06_072750) do
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_day", default: 0, null: false
-    t.integer "pref", default: 0, null: false
+    t.integer "pref_id", default: 0, null: false
     t.integer "postage_selct", default: 0, null: false
     t.integer "price", null: false
     t.integer "size", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.integer "genre"
     t.integer "deliver_method"
     t.integer "brand"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,11 +112,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_072750) do
   end
 
   add_foreign_key "cards", "users"
-
-  add_foreign_key "items", "users"
-
   add_foreign_key "images", "items"
   add_foreign_key "numbers", "users"
-
   add_foreign_key "phone_numbers", "users"
 end
