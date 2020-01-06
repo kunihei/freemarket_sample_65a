@@ -4,7 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   require 'payjp'
 
-
   #1本人情報登録
   def new 
     @user = User.new  #インスタンス作成
@@ -68,11 +67,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address = Address.new(session["devise.regist_data3"]["address"])
       @user.build_address(@address.attributes)
       @user.build_number(@number.attributes)
+
       if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
         render :new_finish
       else
         redirect_to root_path
       end
+
     end
   end
   

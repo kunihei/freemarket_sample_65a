@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_094925) do
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_day", default: 0, null: false
-    t.integer "pref_id", default: 0, null: false
+    t.integer "pref", default: 0, null: false
     t.integer "postage_selct", default: 0, null: false
     t.integer "price", null: false
     t.integer "size", default: 0
