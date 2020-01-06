@@ -16,8 +16,8 @@
           #image-box-1
             .item-num-0#image-box__container
               = f.fields_for :item_images do |image|
-                = image.label :image, class: 'image__label' do
-                  = image.file_field :image, class: 'image__file', name: "item[images_attributes][][image_url]", type: 'file', style: "display:none"
+                = image.label :src, class: 'image__label' do
+                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][][image_url]", type: 'file', style: "display:none"
                   .upload__text
                     .upload__text--a
                       ドラッグアンドドロップ
@@ -94,7 +94,7 @@
                     必須
               %li
                 = f.label :pref do
-                  = f.collection_select :pref, Prefecture.all, :id, :name
+                  = f.collection_select :pref_id, Prefecture.all, :id, :name
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--c
               %li.exhibit__contents__center__delivery__list-group__group__name
