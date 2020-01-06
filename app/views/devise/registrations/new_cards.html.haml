@@ -83,18 +83,5 @@
           .payment-info__botton
             #card_token
             = submit_tag "追加する", class: "card-form__box__add", id: "token_submit", type: 'button'
-    .payment-footer
-      .payment-footer__list
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            プライバシーポリシー
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            メルカリ利用規約
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            特定商取引に関する表記
-      = link_to root_path, class: "payment-footer__logo" do
-        = image_tag "logo_gray.svg", size: "200x90", class: "payment-footer__logo__icon"
-      .payment-footer__company
-        © Fmarket, Inc.
+  
+  =render 'users/subfooter'
