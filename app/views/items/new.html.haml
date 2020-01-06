@@ -94,7 +94,7 @@
                     必須
               %li
                 = f.label :pref do
-                = f.select :postage_selct,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
+                  = f.select :postage_selct,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
                   -# = f.collection_select :pref_id, Prefecture.all, :id, :name
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--c
