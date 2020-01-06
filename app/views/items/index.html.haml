@@ -42,14 +42,11 @@
         -@items.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
+              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
-
-
-
 
   .toppage-list
     .tppage-container
