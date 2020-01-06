@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one  :address
   has_one  :number
   has_many :cards
+  has_many :items
 
   mount_uploader :avatar_image, ImageUploader
 
