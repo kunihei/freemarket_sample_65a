@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'card/new'
   get 'card/show'
-  #resources :cards , only: [:new, :index, :create, :destroy]
+  
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
