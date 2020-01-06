@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_01_06_100506) do
 
-ActiveRecord::Schema.define(version: 2020_01_06_084922) do
 
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2020_01_06_084922) do
     t.string "tell"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pref_id"
     t.bigint "user_id"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
     t.string "first_name_kana"
+    t.integer "prefecture_id"
     t.index ["tell"], name: "index_addresses_on_tell", unique: true
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end

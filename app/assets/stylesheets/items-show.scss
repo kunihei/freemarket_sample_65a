@@ -90,6 +90,15 @@
     display: block;
   }
 }
+.item_gray{
+  a{
+    background-color: rgb(202, 201, 201);
+  }
+}
+.item_or{
+  text-align: center;
+  font-weight: 600;
+}
 
 // 購入画面に進むボタン下のメッセージ
 .sipping-message{
@@ -211,6 +220,7 @@
     flex-wrap: wrap;
     box-sizing: border-box;
     &__box{
+      margin-right: 33px;
       margin-bottom: 20px;
       &--image{
         display: block;
