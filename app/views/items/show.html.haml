@@ -6,9 +6,9 @@
     -# コメントまでの枠
     .showcontent-main
       %h1.item-name
-        新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン
+        = @item.name
       %p.item-wording
-        『新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン』は、295回の取引実績を持つみかんさんから出品されました。フェリシモ（マフラー/ショール/レディース）の商品で、岐阜県から1~2日で発送されます。
+        =@item.text
       -# 画像とテーブルの親
       .item-main-content
         -# 画像
@@ -28,7 +28,7 @@
         %table.item-main-content__table
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
-              出品者
+              =@item.user.nickname
             %td.item-main-content__table__row--data
               みかん
           %tr.item-main-content__table__row
