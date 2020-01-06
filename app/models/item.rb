@@ -9,5 +9,8 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
   mount_uploader :src, ImageUploader
 
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 end
 
