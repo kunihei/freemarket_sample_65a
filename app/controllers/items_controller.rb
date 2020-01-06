@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+
+
     @item.images.new
   end
 
@@ -46,15 +48,19 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+
   end
 
   def create
     Item.create(item_params)
+    redirect_to root_path
   end
 
   private
-    def item_params
-      params.require(:item).permit(:name,:text,:status,:postage_selct,:pref,:delivery_day,:price, images_attributes: [:src])
-      @category = Category.new
-    end
+
+  def item_params
+    params.require(:item).permit(:name,:text,:status,:postage_selct,:pref,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
+  end
+
+
 end
