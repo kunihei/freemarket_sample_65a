@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one  :number
   has_many :cards
 
+  mount_uploader :avatar_image, ImageUploader
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/ }
