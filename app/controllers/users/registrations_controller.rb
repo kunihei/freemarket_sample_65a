@@ -2,7 +2,9 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+
   require 'payjp'
+
 
   #1本人情報登録
   def new 

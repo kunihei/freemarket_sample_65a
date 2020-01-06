@@ -95,7 +95,7 @@
                     必須
               %li
                 = f.label :pref do
-                  = f.collection_select :pref_id, Prefecture.all, :id, :name
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--c
               %li.exhibit__contents__center__delivery__list-group__group__name

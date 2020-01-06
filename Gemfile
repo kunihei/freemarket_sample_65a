@@ -81,9 +81,11 @@ gem 'active_hash'
 gem 'erb2haml'
 gem 'pry-rails'
 gem 'payjp'
+gem "gretel"
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
-gem "gretel"
 gem 'dotenv-rails'
-
