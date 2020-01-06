@@ -14,12 +14,10 @@
             .newuser__header--right__progress-ab#top3_2
           %li.newuser__header--right__list
             %p お届け先住所入力
-            .newuser__header--right__progress-ab#top3_3
+            .newuser__header--right__progress-ab#top4_3
           %li.newuser__header--right__list
             %p 支払い方法
-
             .newuser__header--right__progress-ab#top4_4
-
           %li.newuser__header--right__list
             %p 完了
             .newuser__header--right__progress-b
@@ -53,6 +51,7 @@
               %option{value: "10"}10
               %option{value: "11"}11
               %option{value: "12"}12
+            = icon('fas', 'angle-down', class: 'payment-form')
             %i.card-form-expire-icon
             %span{class: "month"} 月
           .card-expire__select-year
@@ -68,6 +67,7 @@
               %option{value: "2027"}27
               %option{value: "2028"}28
               %option{value: "2029"}29
+            = icon('fas', 'angle-down', class: 'payment-form')
             %i.card-form-expire-icon
             %span{class:"year"} 年
 
@@ -83,18 +83,5 @@
           .payment-info__botton
             #card_token
             = submit_tag "追加する", class: "card-form__box__add", id: "token_submit", type: 'button'
-    .payment-footer
-      .payment-footer__list
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            プライバシーポリシー
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            メルカリ利用規約
-        = link_to "#", class: "payment-footer__list__privacy" do
-          .payment-footer__list__privacy__message
-            特定商取引に関する表記
-      = link_to root_path, class: "payment-footer__logo" do
-        = image_tag "logo_gray.svg", size: "200x90", class: "payment-footer__logo__icon"
-      .payment-footer__company
-        © Fmarket, Inc.
+  
+  =render 'users/subfooter'

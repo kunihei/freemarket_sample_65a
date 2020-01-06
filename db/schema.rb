@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_01_06_072750) do
+
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
-    t.string "tell", null: false
+    t.string "tell"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pref_id"
@@ -45,6 +47,12 @@ ActiveRecord::Schema.define(version: 2020_01_06_072750) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "src"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
   create_table "item_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "item_id"
     t.integer "category_id"
@@ -68,6 +76,14 @@ ActiveRecord::Schema.define(version: 2020_01_06_072750) do
     t.integer "deliver_method"
     t.integer "brand"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "tell"
+    t.index ["user_id"], name: "index_numbers_on_user_id"
   end
 
   create_table "phone_numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -100,6 +116,11 @@ ActiveRecord::Schema.define(version: 2020_01_06_072750) do
   end
 
   add_foreign_key "cards", "users"
+
   add_foreign_key "items", "users"
+
+  add_foreign_key "images", "items"
+  add_foreign_key "numbers", "users"
+
   add_foreign_key "phone_numbers", "users"
 end

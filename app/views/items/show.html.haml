@@ -6,9 +6,9 @@
     -# コメントまでの枠
     .showcontent-main
       %h1.item-name
-        新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン
+        = @item.name
       %p.item-wording
-        『新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン』は、295回の取引実績を持つみかんさんから出品されました。フェリシモ（マフラー/ショール/レディース）の商品で、岐阜県から1~2日で発送されます。
+        ="『#{@item.name}』は、920回の取引実績を持つ#{@item.user.nickname}さんから出品されました。セブントゥエルブサーティー（ブーツ/レディース）の商品で、#{@item.pref}から#{@imte.delivery_day}で発送されます。"
       -# 画像とテーブルの親
       .item-main-content
         -# 画像
@@ -30,12 +30,12 @@
             %th.item-main-content__table__row--title
               出品者
             %td.item-main-content__table__row--data
-              みかん
+              =@item.user
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               カテゴリー
             %td.item-main-content__table__row--data
-              レディース
+              /=@item.genre
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               ブランド
@@ -45,32 +45,32 @@
             %th.item-main-content__table__row--title
               商品の状態
             %td.item-main-content__table__row--data
-              新品、未使用
+              =@item.status
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送料の負担
             %td.item-main-content__table__row--data
-              送料込み(出品者負担)
+              =@item.postage_selct
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送の方法
             %td.item-main-content__table__row--data
-              ゆうゆうメルカリ便
+              /=@item.delivery_method
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送元地域
             %td.item-main-content__table__row--data
-              岐阜県
+              =@item.pref
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               発送日の目安
             %td.item-main-content__table__row--data
-              1~2日で発送
+              /=@imte.delivery_day
 
       -# 値段
       .item-price
         %span.item-price__fee
-          ¥2,400
+          = converting_to_jpy(@item.price)
         %span.item-price__taxin
           (税込)
         %span.item-price__taxin2
