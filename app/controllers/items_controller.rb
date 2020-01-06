@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(param)
+    @item = Item.find(params[:id])
   end
 
   def edit
