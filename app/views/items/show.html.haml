@@ -1,3 +1,5 @@
+=render 'items/header'
+
 %body
   -# 外の大枠
   .show-container
@@ -305,15 +307,9 @@
                 10
         
     -# ページ最下部のボタン
-    .bottom-item
-      %ul.bottom-button
-        %li.bottom-button--mercari
-          = link_to '#' do
-            メルカリ
-          >
-        %li 新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン
+    .nav
+      .nav__info
+        - breadcrumb :show
+        = render "layouts/breadcrumbs"
         
-
-
-
-        
+=render 'items/footer'

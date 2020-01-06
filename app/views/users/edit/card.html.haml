@@ -1,14 +1,10 @@
+=render 'items/header'
 .profile 
   /以下ナビゲーションバー
   .nav
-    %ul
-      %li 
-        メルカリ
-        = icon('fas', 'angle-right') 
-      %li 
-        マイページ
-        = icon('fas', 'angle-right')
-      %li 支払い方法
+    .nav__info
+      - breadcrumb :card
+      = render "layouts/breadcrumbs"
   .profile__main
     .profile__container.flex 
       /以下サイドバーrender
@@ -27,3 +23,5 @@
             .card__right__content__body__payment
               #card__right__content__body__payment__link
                 =link_to '支払い方法について ＞'
+            
+=render 'items/footer'

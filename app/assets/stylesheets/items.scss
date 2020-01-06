@@ -1,9 +1,8 @@
 .aside{
   height: 260px;
   color: rgb(255, 255, 255);
-  background-image: url(621_08.jpg);
+  background-color: greenyellow;
   background-size: 1450px 390px;
-  background-position: center center
 }
 
   .aside1{
@@ -82,18 +81,18 @@
       padding: 0px;
     }
       
-    ul{
-      list-style: none;
-      padding: 0px;
-      margin: 0px;
-    }
-     li{
-      line-height: 1.4em;
-      margin: 16px 0px 0px;
-      text-decoration: none;
+    // ul{
+    //   list-style: none;
+    //   padding: 0px;
+    //   margin: 0px;
+    // }
+    //  li{
+    //   line-height: 1.4em;
+    //   margin: 16px 0px 0px;
+    //   text-decoration: none;
       
       
-    }
+    // }
       .item{
       color: rgb(255, 255, 255);
       opacity: 0.7;
@@ -152,5 +151,5 @@
     .detail{
       text-align: center;
       padding-left: 300px;
-    width: 75%;
+      width: 75%;
     }

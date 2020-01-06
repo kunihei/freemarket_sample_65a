@@ -26,4 +26,18 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 app/assets/stylesheets/application.scss
+
+app/controllers/users_controller.rb
+app/controllers/users_controller.rb
+app/views/layouts/application.html.haml
+config/routes.rb
+config/routes.rb
+
+# *.rb
+app/assets/stylesheets/_users.scss
+app/controllers/users_controller.rb
+config/routes.rb
+# *.scss
+app/assets/stylesheets/_users.scss
+
 .env

@@ -1,0 +1,87 @@
+
+.phone-main-content{
+  width:700px;
+  background-color: #fff;
+  margin:0 auto;
+  box-sizing: border-box;
+  &__title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom:3px solid #f5f5f5;
+    padding:20px;
+  }
+  &__body{
+    padding:50px 180px;
+    &__text-box{
+      .phone-text-top{
+        font-size:12px;
+        font-weight: bold;
+      }
+      &--boxing{
+        box-sizing: border-box;
+        border: 2px solid #f5f5f5;
+        border-radius: 5px;
+        padding:7px;
+        width:100%;
+      }
+      .phone-text-middle{
+        font-size:15px;
+        margin-top:10px;
+        margin-bottom:30px;
+      }
+      &--btn{
+        width:100%;
+        padding:12px;
+        background-color: red;
+        color:white;
+      }
+      .phone-text-bottom{
+        font-size:15px;
+        margin-top:10px;
+        margin-bottom:30px;
+      }
+    }
+    &__under-link{
+      font-size:15px;
+      color: skyblue;
+      text-align: right;
+    }
+  }
+}
+
+#top3_2_phone{
+  background-color: red;
+  &:before{
+    background-color: red;
+  }
+}
+
+.login-footer{
+  text-align: center;
+  height: 200px;
+  &__list{
+    display: flex;
+    justify-content: center;
+    &__privacy{
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      line-height: 5px;
+      padding: 50px 3px 0 3px;
+      box-sizing: border-box;
+      font-size: 12px;
+      &:hover{
+        border-bottom: 1px solid;
+      }
+    }
+  }
+  &__logo{
+    &__icon{
+      padding-top: 30px;
+    }
+  }
+  &__company{
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+}

@@ -1,8 +1,9 @@
+=render 'items/header'
 .mypage__body
   .nav
-    %ul
-      %li メルカリ
-      %li マイページ
+    .nav__info
+      - breadcrumb :mypage
+      = render "layouts/breadcrumbs"
   
   .mypage__main
     /以下サイドバー（上部）
@@ -131,3 +132,4 @@
                   .mypage__content__no
                     %p 現在取り扱い中の~~はありません
                     
+=render 'items/footer'

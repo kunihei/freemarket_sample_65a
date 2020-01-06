@@ -43,7 +43,7 @@
       = link_to "お問い合わせ",      root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
   /以下サイドバー（中部）
-  %h3 メルペイ
+  %h3#side_title メルペイ
   %ul.mypage__container--side__list
     %li
       = link_to "売上・振込申請", root_path
@@ -52,7 +52,7 @@
       = link_to "ポイント",      root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
   /以下サイドバー（底部）
-  %h3 設定
+  %h3#side_title 設定
   %ul.mypage__container--side__list
     %li
       = link_to "プロフィール",{controller: "users", action: "edit", name: "profile"}

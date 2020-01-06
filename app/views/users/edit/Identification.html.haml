@@ -1,13 +1,9 @@
+=render 'items/header'
 .profile 
   .nav
-    %ul
-      %li 
-        メルカリ
-        = icon('fas', 'angle-right') 
-      %li 
-        マイページ
-        = icon('fas', 'angle-right')
-      %li 発送元・お届け先住所変更
+    .nav__info
+      - breadcrumb :identification
+      = render "layouts/breadcrumbs"
   .profile__main
     /以下サイドバー
     .profile__container.flex
@@ -75,3 +71,4 @@
                 %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103'
                 /送信ボタン
                 = f.submit '変更する', class: 'identification__right__input__send'
+=render 'items/footer'

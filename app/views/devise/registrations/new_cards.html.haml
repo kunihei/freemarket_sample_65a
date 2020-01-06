@@ -1,0 +1,87 @@
+.payment-main
+  .newuser__header
+    .newuser__header__wrap.flex
+      .newuser__header--left.flex
+        = image_tag "logo_red.svg", alt: "アイコン",size: "50x50", class: 'mypage__icon'
+        = link_to 'Fmarket', root_path
+      .newuser__header--right
+        %ul.flex
+          %li.newuser__header--right__list
+            %p 会員情報
+            .newuser__header--right__progress-a#top3_1
+          %li.newuser__header--right__list
+            %p 電話番号認証
+            .newuser__header--right__progress-ab#top3_2
+          %li.newuser__header--right__list
+            %p お届け先住所入力
+            .newuser__header--right__progress-ab#top4_3
+          %li.newuser__header--right__list
+            %p 支払い方法
+            .newuser__header--right__progress-ab#top4_4
+          %li.newuser__header--right__list
+            %p 完了
+            .newuser__header--right__progress-b
+  .payment-wrap
+    .payment-body
+      .payment-word
+        お支払い方法
+      .payment-info
+        = form_for @card, url: cards_path,method: :post,html: {id: 'charge-form', name: "inputForm"} do |f|
+          .payment-info__nam
+            カード番号
+            .payment-info__nam__required
+              必須
+          = text_field_tag "number", "", class: 'card-number--input', type: "text", id: 'card_number', maxlength: "16", placeholder: "半角数字のみ"
+          = image_tag 'cards.jpg',  height: '35px', width: '300px', class: "payment-info__image"
+          .payment-info__expiration
+            有効期限
+            .payment-info__nam__required
+              必須
+          .payment-info__month
+            %select#exp_month{name: "exp_month", type: "text"}
+              %option{value: "1"}01
+              %option{value: "2"}02
+              %option{value: "3"}03
+              %option{value: "4"}04
+              %option{value: "5"}05
+              %option{value: "6"}06
+              %option{value: "7"}07
+              %option{value: "8"}08
+              %option{value: "9"}09
+              %option{value: "10"}10
+              %option{value: "11"}11
+              %option{value: "12"}12
+            = icon('fas', 'angle-down', class: 'payment-form')
+            %i.card-form-expire-icon
+            %span{class: "month"} 月
+          .card-expire__select-year
+            %select#exp_year{name: "exp_year", type: "text"}
+              %option{value: "2019"}19
+              %option{value: "2020"}20
+              %option{value: "2021"}21
+              %option{value: "2022"}22
+              %option{value: "2023"}23
+              %option{value: "2024"}24
+              %option{value: "2025"}25
+              %option{value: "2026"}26
+              %option{value: "2027"}27
+              %option{value: "2028"}28
+              %option{value: "2029"}29
+            = icon('fas', 'angle-down', class: 'payment-form')
+            %i.card-form-expire-icon
+            %span{class:"year"} 年
+
+          .payment-info__security
+            セキュリティコード
+            .payment-info__nam__required
+              必須 
+          = text_field_tag "cvc", "", class: 'payment__security-code', type: "text", id: "cvc", maxlength: "4" ,placeholder: "カード背面４桁もしくは３桁の番号"
+          .payment-info__question
+            = icon("fas", "question-circle", class: "payment-info__icon")
+            .payment-info__question__message
+              カードの裏面の番号とは？
+          .payment-info__botton
+            #card_token
+            = submit_tag "追加する", class: "card-form__box__add", id: "token_submit", type: 'button'
+  
+  =render 'users/subfooter'

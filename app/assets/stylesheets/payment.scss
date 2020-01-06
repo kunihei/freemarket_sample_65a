@@ -1,0 +1,143 @@
+//ページ全体の指定
+.payment-main{
+  width: 100vw;
+  background-color: rgb(245, 245, 245);
+}
+.payment-wrap{
+  width: 700px;
+  height: 700px;
+  margin:  0 auto;
+  background-color: white;  
+}
+.payment-footer{
+  text-align: center;
+}
+//お支払い方法の全体
+.payment-body{
+  margin:  0 auto;
+  height: 580px;
+  width: 350px;
+  background-color: white;
+    select {
+      -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+      -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+      appearance: none; /* 標準のスタイルを無効にする */
+    }  
+    //お支払い方法
+    .payment-word{
+      height: 100px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      line-height: 100px;
+      text-align: center;
+      font-size: 30px;
+      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    }
+    //クレジットカードの情報入力欄
+    .payment-info{
+      padding-top: 30px;
+      &__nam{
+        display: flex;
+        padding: 0 0 5px 30px;
+        &__required{
+          background-color: red;
+          color: white;
+          margin-left: 10px;
+          padding: 1px 2px;
+          width: fit-content;
+        }
+      }
+      &__input{
+        height: 40px;
+        width: 285px;
+        margin-left: 30px;
+        padding-left: 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid gray;
+      }
+      &__image{
+        padding-left: 20px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+      }
+      &__expiration{
+        padding: 0 0 5px 30px;
+        display: flex;
+      }
+      &__month{
+        padding: 0 0 5px 30px;
+      .month{
+        height: 40px;
+        width: 80px;
+      }
+    }
+    &__year{
+      padding-left: 30px;
+      .year{
+        height: 40px;
+        width: 80px;
+      }
+    }
+    &__security{
+      padding: 40px 0 5px 30px;
+      display: flex;
+    }
+    &__question{
+      display: flex;
+      color: blue;
+      padding-top: 7px;
+      margin-left: 140px;
+      &:hover{
+        color: rgb(6, 91, 248);
+        border-bottom: 1px solid rgb(6, 91, 248);
+        width: fit-content;
+      }
+    }
+
+    &__botton{
+      &__link{
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        box-sizing: border-box;
+        font-size: 13px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}
+.card-number--input,.payment__security-code{
+  height: 30px;
+  width: 250px;
+  border: 1px solid #ccc;
+  margin-left: 30px;
+}
+
+#exp_month,#exp_year{
+  width: 100px;
+  height: 40px;
+  border-width: 2px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+.card-form__box__add{
+  cursor: pointer;
+  margin: 30px 0 0;
+  width: 100%;
+  background: $FM-color-red;
+  border: 1px solid $FM-color-red;
+  color: white;
+  height: 48px;
+  font-size: 16px;
+}
+.payment-info__month{
+  position: relative;
+}
+.card-expire__select-year{
+  padding: 0 0 5px 30px;
+  position: relative;
+}
+.payment-form{
+  position: absolute;
+  right: 230px;
+  bottom: 18px;
+}

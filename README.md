@@ -128,3 +128,8 @@ belongs_to :item
 |user_id    |integer|null false,foreign_key: true|<!-- user外部キー -->
 ### Association
 belongs_to :user
+
+
+
+user = User.new(nickname: "test", email: "testes", password: "123456", last_name:"test", first_name:"test", last_name_kana:"test", first_name_kana:"test", birthday:"2020-01-03")
+

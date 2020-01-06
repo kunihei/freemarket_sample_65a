@@ -1,0 +1,55 @@
+.payment-main
+  .newuser__header
+    .newuser__header__wrap.flex
+      .newuser__header--left.flex
+        = image_tag "logo_red.svg", alt: "アイコン",size: "50x50", class: 'mypage__icon'
+        = link_to 'Fmarket', root_path
+      .newuser__header--right
+        %ul.flex
+          %li.newuser__header--right__list
+            %p 会員情報
+            .newuser__header--right__progress-a#top3_1
+          %li.newuser__header--right__list
+            %p 電話番号認証
+            .newuser__header--right__progress-ab#top3_2
+          %li.newuser__header--right__list
+            %p お届け先住所入力
+            .newuser__header--right__progress-ab#top3_3
+          %li.newuser__header--right__list
+            %p 支払い方法
+            .newuser__header--right__progress-ab#top4_4
+          %li.newuser__header--right__list
+            %p 完了
+            .newuser__header--right__progress-b
+  .payment-body
+    .payment-word
+      お支払い方法
+    .payment-info
+      = form_for '#' do |f|
+        .payment-info__nam
+          カード番号
+          .payment-info__nam__required
+            必須
+        = f.text_field :postcode, class: 'payment-info__input', placeholder: '半角数字のみ'
+        = image_tag 'cards.jpg',  height: '35px', width: '300px', class: "payment-info__image"
+        .payment-info__expiration
+          有効期限
+          .payment-info__nam__required
+            必須
+        .payment-info__month
+          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:month,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '月'
+        .payment-info__year
+          != sprintf(f.date_select(:expiration_date,with_css_classes:'XXXXX', order:[:year,:day], prompt:"--", use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+        .payment-info__security
+          セキュリティコード
+          .payment-info__nam__required
+            必須
+        = f.text_field :postcode, class: 'payment-info__input', placeholder: 'カード背面4行もしくは3行の番号'
+        .payment-info__question
+          = icon("fas", "question-circle", class: "payment-info__icon")
+          .payment-info__question__message
+            カードの裏面の番号とは？
+        .payment-info__botton
+          = link_to "次へ進む", root_path, class: "payment-info__botton__link"
+          
+  =render 'subfooter'

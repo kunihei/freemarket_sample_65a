@@ -1,14 +1,10 @@
+=render 'items/header'
 .profile 
   /ナビゲーションバー
   .nav
-    %ul
-      %li 
-        メルカリ
-        = icon('fas', 'angle-right') 
-      %li 
-        マイページ
-        = icon('fas', 'angle-right')
-      %li ログアウト
+    .nav__info
+      - breadcrumb :logout
+      = render "layouts/breadcrumbs"
   /以下右側要素
   .profile__main
     .profile__container.flex 
@@ -21,3 +17,4 @@
             =link_to '#', class: 'logout__right__content__body__add__btn' do
               ログアウト
           
+=render 'items/footer'
