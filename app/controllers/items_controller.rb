@@ -31,11 +31,16 @@ class ItemsController < ApplicationController
   end
 
   def show
+    #選択されたitemの取得
     @item = Item.find(params[:id])
-    @user = @item.user
-    @user_items = Item.where(user_id: @user.id).limit(6)
-    @genre_items = Item.where(genre: @item.genre).limit(6)
+    #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
+    #選択されたitemのuser情報取得
+    @user = @item.user
+    #選択されたitemのuserが持つ出品情報取得
+    @user_items = Item.where(user_id: @user.id).limit(6)
+    #選択されたitemが持つカテゴリー情報取得
+    @genre_items = Item.where(genre: @item.genre).limit(6)
   end
 
   def edit
@@ -43,6 +48,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+
+
     @item.images.new
   end
 
