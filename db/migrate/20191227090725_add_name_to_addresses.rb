@@ -5,4 +5,5 @@ class AddNameToAddresses < ActiveRecord::Migration[5.2]
     add_column :addresses, :last_name_kana, :string
     add_column :addresses, :first_name_kana, :string
   end
+  
 end

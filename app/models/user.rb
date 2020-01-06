@@ -5,10 +5,6 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable, 
           :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
-  has_one :address
-  has_one :phone_number
-  has_many :cards
-
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
 
@@ -55,4 +51,20 @@ class User < ApplicationRecord
     end
     return { user: user ,sns: sns}
   end
+
+  has_one  :address
+  has_one  :number
+  has_many :cards
+  has_many :items
+
+  mount_uploader :avatar_image, ImageUploader
+
+  validates :nickname, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/ }
+  validates :password, presence: true, length: { minimum: 7 }
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
 end
