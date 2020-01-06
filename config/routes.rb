@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'card/show'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
     get 'tellphone', to: 'users/registrations#new_tellphone'

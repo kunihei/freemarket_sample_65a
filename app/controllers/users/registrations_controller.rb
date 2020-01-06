@@ -2,7 +2,9 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+
   require 'payjp'
+
 
   #1本人情報登録
   def new 
@@ -69,6 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.build_number(@number.attributes)
 
       if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
+        sign_in(:user, @user)
         render :new_finish
       else
         redirect_to root_path

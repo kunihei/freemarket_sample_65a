@@ -5,42 +5,37 @@
   .show-container
     -# コメントまでの枠
     .showcontent-main
-      %h1.item-name
+      %h1.item-name 
         = @item.name
       %p.item-wording
-        ="『#{@item.name}』は、920回の取引実績を持つ#{@item.user.nickname}さんから出品されました。セブントゥエルブサーティー（ブーツ/レディース）の商品で、#{@item.pref}から#{@imte.delivery_day}で発送されます。"
+        ="『#{@item.name}』は、920回の取引実績を持つ#{@item.user.nickname}さんから出品されました。セブントゥエルブサーティー（ブーツ/レディース）の商品で、#{@item.prefecture.name}から#{@item.delivery_day}で発送されます。"
       -# 画像とテーブルの親
-      .item-main-content
-        -# 画像
+      .item-main-content 
         .item-main-content__photo
-          = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"250x300"
+          = image_tag @item.images[0].src.to_s, size:"250x300"
           -# 下の複数画像
-          .photo
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
-            = image_tag "https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg", size:"50x50",class:"photo1"
+          .photo 
+            -@item_images.each do |image|
+              = image_tag image.src.to_s, size:"50x50",class:"photo1"
+            
         -# テーブル
         %table.item-main-content__table
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
-              出品者
+              出品者 
             %td.item-main-content__table__row--data
-              =@item.user
+              =@item.user.nickname
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               カテゴリー
             %td.item-main-content__table__row--data
-              /=@item.genre
-          %tr.item-main-content__table__row
-            %th.item-main-content__table__row--title
-              ブランド
-            %td.item-main-content__table__row--data
-              フェリシモ
+              =@item.genre
+          -if @item.brand.present?
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                ブランド
+              %td.item-main-content__table__row--data 
+                =@item.brand
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               商品の状態
@@ -55,17 +50,17 @@
             %th.item-main-content__table__row--title
               配送の方法
             %td.item-main-content__table__row--data
-              /=@item.delivery_method
+              =@item.deliver_method
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送元地域
             %td.item-main-content__table__row--data
-              =@item.pref
+              =@item.prefecture.name
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               発送日の目安
             %td.item-main-content__table__row--data
-              /=@imte.delivery_day
+              =@item.delivery_day
 
       -# 値段
       .item-price
@@ -75,38 +70,28 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-
-      -# 購入画面に進むボタン
-      .item-buy
-        = link_to '#',class:"item-buy__buying" do
-          購入画面に進む
+      -if @item.user.id 
+        / 購入画面に進むボタン 投稿者
+        .item-buy
+          = link_to '#',class:"item-buy__buying" do
+            商品の編集
+        %p.item_or or
+        .item-buy.item_gray
+          = link_to '#',class:"item-buy__buying" do
+            出品を一旦停止する
+        .item-buy.item_gray
+          = link_to '#',class:"item-buy__buying" do
+            この商品を削除する
+      -else
+        / 購入画面に進むボタン 購入者
+        .item-buy
+          = link_to '#',class:"item-buy__buying" do
+            購入画面に進む
       %p.sipping-message
         この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
       -# 商品の説明
       .item-description
-        新品未使用
-
-        フェリシモ スロウ
-        三角形 の 手編み ニット の
-        フリンジ ストール です。
-
-        ●フリンジの無い辺（フリンジを含めず）184
-        上記の辺から三角形の頂点まで （同上）77
-        フリンジの長さ 16
-        センチくらいです。
-
-        ●カラーは 優しい モスグリーン です。
-
-        中くらいの毛糸で編まれていて、
-        ふっくら優しい網目模様が素敵です(*´꒳`*)
-
-
-
-        自宅での保管です事、ご理解ください。
-
-
-
-        他のお品も出品してます！
+        =simple_format(@item.text)
       -# 下のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
       .item-button
         .item-button__left
@@ -176,135 +161,39 @@
     .other-items-container
       .other-items-title
         = link_to '#',class:"other-items-title__word" do
-          みかんさんのその他の商品
+          ="#{@item.user.nickname}さんのその他の商品"
       .user-other-items
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box.item-middle
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box.item-middle
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
+        -@user_items.each do |item|
+          .user-other-items__box
+            = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
+            .user-other-items__box__body
+              .user-other-items__box__body--name
+                =@item.status
+              .user-other-items__box__body--price
+                =converting_to_jpy(@item.price)
+                .user-other-items__box__body--price--heart
+                  = icon('fas' ,'heart',class:"icon-heart")
+                  10
+        
 
     -# 関連商品
     .other-items-container
       .other-items-title
         = link_to '#',class:"other-items-title__word" do
-          フェリシモのマフラー/ショール その他の商品
+          ="#{@item.genre}その他の商品"
       .user-other-items
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box.item-middle
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box.item-middle
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
-        .user-other-items__box
-          = link_to image_tag('https://bepo-blog.com/wp-content/uploads/2019/08/nikorun.jpg',size:'220x220',class:"user-other-items__box--image"),'#'
-          .user-other-items__box__body
-            .user-other-items__box__body--name
-              新品未使用
-            .user-other-items__box__body--price
-              ¥10,000
-              .user-other-items__box__body--price--heart
-                = icon('fas' ,'heart',class:"icon-heart")
-                10
+        -@genre_items.each do |item|
+          .user-other-items__box
+            = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
+            .user-other-items__box__body
+              .user-other-items__box__body--name
+                =@item.status
+              .user-other-items__box__body--price
+                =converting_to_jpy(@item.price)
+                .user-other-items__box__body--price--heart
+                  = icon('fas' ,'heart',class:"icon-heart")
+                  10
+        
         
     -# ページ最下部のボタン
     .nav

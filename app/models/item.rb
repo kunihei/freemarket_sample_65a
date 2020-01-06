@@ -48,5 +48,9 @@ class Item < ApplicationRecord
     ２〜３日で発送:2,
     ４〜７日で発送:3
   },_prefix: true
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
 end
 
