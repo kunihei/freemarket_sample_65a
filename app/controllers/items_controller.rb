@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(10)
-
     #レディースに関するインスタンス
     @items_women = Item.where(genre: '1').limit(10)
     #メンズに関するインスタンス
