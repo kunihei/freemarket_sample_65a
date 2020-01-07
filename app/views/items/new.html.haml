@@ -15,7 +15,7 @@
             最大10枚までアップロードできます
           #image-box-1
             .item-num-0#image-box__container
-              = f.fields_for :item_images do |image|
+              = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
                   = image.file_field :src, class: 'image__file', name: "item[images_attributes][][image_url]", type: 'file', style: "display:none"
                   .upload__text
@@ -32,7 +32,7 @@
                 %li.exhibit__contents__center__product__group__name__list--required-a
                   必須
             %li.exhibit__contents__center__product__group__form
-              = f.text_field :text, placeholder: "商品名（必須 40文字まで)", class: "description", maxlength: "40"
+              = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: "description", maxlength: "40"
             %li.exhibit__contents__center__product__group__name
               %ul.exhibit__contents__center__product__group__name__list
                 %li.exhibit__contents__center__product__group__name__list__explanation
