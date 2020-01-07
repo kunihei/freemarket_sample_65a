@@ -48,8 +48,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-
-
     @item.images.new
   end
 
@@ -61,14 +59,18 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
-    redirect_to root_path
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:text,:status,:postage_selct,:pref,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
   end
 
 
