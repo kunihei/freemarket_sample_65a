@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
 
-  resources :items, only: [:show, :edit, :new, :create] 
+  resources :items
 
 
   resources :users, only: [:index, :show, :new]
