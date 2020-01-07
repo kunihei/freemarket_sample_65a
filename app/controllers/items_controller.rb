@@ -46,16 +46,16 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if item.destroy
+      redirect_to root_path
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path , notice: '削除に成功しました。'
     else
-      render :new
+      render :show, alert: '削除に失敗しました。'
     end
   end
 
