@@ -39,7 +39,7 @@
       .toppage__block
         -@items_women.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -57,7 +57,7 @@
         /商品データ
         -@items_men.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -75,7 +75,7 @@
         /商品データ
         -@items_appliances.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -93,7 +93,7 @@
         /商品データ
         -@items_hobby.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -122,7 +122,7 @@
         /商品データ
         -@items_chanel.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -140,7 +140,7 @@
         /商品データ
         -@items_vuitton.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -158,7 +158,7 @@
         /商品データ
         -@items_supreme.each do |item|
           .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
@@ -177,7 +177,7 @@
         -@items_nike.each do |item|
           .toppage__block__goods
             /一枚目の画像取得
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
