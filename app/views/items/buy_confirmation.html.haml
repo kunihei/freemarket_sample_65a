@@ -6,17 +6,17 @@
       .purchase-body__verification
         購入内容の確認
       .purchase-body__payment
-        = image_tag "miniature-d.jpg", size: "60x80"
+        = image_tag @item.images[0].src.to_s, size: "60x80"
         .purchase-body__payment__info
           .purchase-body__payment__info__brand
-            NIKE
+            =@item.name
           .purchase-body__payment__info__money
-            ¥15,000  (税込)  送料込み
+          ="#{converting_to_jpy(@item.price)}  (税込)  送料込み"
       .purchase-body__total
         .purchase-body__total__price
           支払い金額
         .purchase-body__total__moeny2
-          ¥15,000
+          =converting_to_jpy(@item.price)
       .purchase-body__checkbox
         = check_box_tag :test1
         = label_tag :test1, "ポイントを使用(所持ポイント:P0)" 
@@ -28,19 +28,31 @@
             = icon("fas", "plus-circle")
             .purchase-body__total2__register__link__word
               登録してください
+        - if @card.present?
+          クレジットカード
+          %ul.content__credit-cards__list
+            %li
+              .content__credit-cards__list--pay-num
+                = "**** **** **** " + @card_information.last4
+              .content__credit-cards__list--pay-num
+                - exp_month = @card_information.exp_month.to_s
+                - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+            %li 
+              = image_tag @card_src, width: '28', height: '25', alt: @card_brand, id: "card_image"
       .purchase-body__delivery
         .purchase-body__delivery__area
           配送先
         = link_to "#", class: "purchase-body__delivery__change" do
           変更する
       .purchase-body__address
-        〒553-2222
+        ="〒#{@address.postcode}"
         %br
-        大阪府 大阪市中央区 豊洲4-14-2４
+        ="#{@address.prefecture.name} #{@address.city} #{@address.block} #{@address.building}"
         %br
-        瀬尾　誠
+        ="#{@address.last_name} #{@address.first_name}"
       .purchase-body__buy
-        = link_to "#", class: "purchase-body__buy__btn" do
+        = link_to pay_item_path(@item.id), method: :post, class: "purchase-body__buy__btn" do
           .purchase-body__buy__btn__button
             購入する
   =render 'users/subfooter'
