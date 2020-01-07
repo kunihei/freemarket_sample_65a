@@ -58,7 +58,7 @@
                 %li.delibver__right__content__group__name 都道府県
                 %li.delibver__tag.delibver__tag__require 必須
               %li.delibver__right__content__group__icon.flex
-                = f.collection_select :pref_id, Prefecture.all, :id, :name
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name
                 = icon('fas', 'chevron-down', class: 'mypage__container--side__icon')
             .delibver__right__content__group
               %ul.delibver__right__content__group__top.flex

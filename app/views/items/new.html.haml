@@ -55,7 +55,7 @@
               %li
 
                 = f.label :genre do
-                  = f.select :genre,[["---","0"],["メンズ","1"],["レディース","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","6"],["コスメ・香水・美容","7"],["家電・スマホ・カメラ","8"],["スポーツ・レジャー","9"],["ハンドメイド","10"],["チケット","11"],["自動車・オートバイ","12"],["その他","13"]]
+                  = f.select :genre, Item.genres.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
 
             %ul.exhibit__contents__center__detail__list-group__group--b
@@ -67,7 +67,7 @@
                     必須
               %li
                 = f.label :status do
-                  = f.select :status,[["---","0"],["新品・未使用","1"],["未使用品に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]]
+                  = f.select :status, Item.statuses.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__delivery
           .exhibit__contents__center__delivery__information
@@ -84,7 +84,7 @@
                     必須
               %li
                 = f.label :postage_selct do
-                  = f.select :postage_selct,[["---","0"],["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]]
+                  = f.select :postage_selct, Item.postage_selcts.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
             %ul.exhibit__contents__center__delivery__list-group__group--b
               %li.exhibit__contents__center__delivery__list-group__group__name
@@ -106,7 +106,7 @@
                     必須
               %li
                 = f.label :delivery_day do
-                  = f.select :delivery_day,[["---","0"],["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]]
+                  = f.select :delivery_day, Item.delivery_days.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information

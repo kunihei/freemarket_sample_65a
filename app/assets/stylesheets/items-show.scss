@@ -90,6 +90,15 @@
     display: block;
   }
 }
+.item_gray{
+  a{
+    background-color: rgb(202, 201, 201);
+  }
+}
+.item_or{
+  text-align: center;
+  font-weight: 600;
+}
 
 // 購入画面に進むボタン下のメッセージ
 .sipping-message{
@@ -100,12 +109,14 @@
 
 // 商品の説明
 .item-description{
-  font-size:20px;
+  padding-top: 30px;
+  font-size:18px;
   margin-bottom:10px;
 }
 
 // 下のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
 .item-button{
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   &__left{
@@ -180,7 +191,7 @@
     &__item{
       .icon-facebook{
         font-size:50px;
-        color: blue;
+        color: #0099e8;
       }
       .icon-twitter{
         font-size: 50px;
@@ -203,7 +214,7 @@
   .other-items-title{
     font-size:20px;
     &__word{
-      color:blue;
+      color:#0099e8;
     }
   }
   .user-other-items{
@@ -211,6 +222,7 @@
     flex-wrap: wrap;
     box-sizing: border-box;
     &__box{
+      margin-right: 33px;
       margin-bottom: 20px;
       &--image{
         display: block;
