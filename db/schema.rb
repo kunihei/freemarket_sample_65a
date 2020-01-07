@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_01_06_100506) do
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_day", default: 0, null: false
-
     t.integer "postage_selct", default: 0, null: false
     t.integer "price", null: false
     t.integer "size", default: 0
@@ -72,11 +71,9 @@ ActiveRecord::Schema.define(version: 2020_01_06_100506) do
     t.integer "genre"
     t.integer "deliver_method"
     t.integer "brand"
-
     t.bigint "user_id"
     t.integer "prefecture_id"
     t.index ["user_id"], name: "index_items_on_user_id"
-
   end
 
   create_table "numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
