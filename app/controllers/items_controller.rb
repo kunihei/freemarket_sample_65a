@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show :destroy]
+
   def index
     #レディースに関するインスタンス
     @items_women = Item.where(genre: '1').order('created_at DESC').limit(10)
@@ -20,8 +22,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #選択されたitemの取得
-    @item = Item.find(params[:id])
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
     #選択されたitemのuser情報取得
@@ -44,8 +44,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    if item.destroy
+    
+    if @item.destroy
       redirect_to root_path
     end
   end
@@ -60,6 +60,11 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+   #選択されたitemの取得
+   @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
