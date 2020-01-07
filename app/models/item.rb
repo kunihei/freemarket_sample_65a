@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   # belongs_to :category
   has_many :item_categories
   has_many :categories, through: :item_categories
-  mount_uploader :src, ImageUploader
 
   enum genre:{
     "---":0,
@@ -42,11 +41,31 @@ class Item < ApplicationRecord
     着払い（購入者負担）:2
   },_prefix: true
 
+  enum brand:{
+    "---":0,
+    シャネル:1,
+    ナイキ:2,
+    ルイヴィトン:3,
+    シュプリーム:4,
+    アディダス:5,
+  },_prefix: true
+
   enum delivery_day:{
     "---":0,
     １〜２日で発送:1,
     ２〜３日で発送:2,
     ４〜７日で発送:3
+  },_prefix: true
+
+  enum deliver_method:{
+    未定:0,
+    '小型サイズ - ネコポス（らくらくメルカリ便）':1,
+    '小型サイズ（A4）- ゆうパケット（ゆうゆうメルカリ便）':2,
+    ゆうメール:3,
+    ゆうパケット:4,
+    レターパック:5,
+    普通郵便（定形、定形外）:6,
+    クリックポスト:7
   },_prefix: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
