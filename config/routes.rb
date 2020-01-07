@@ -23,12 +23,8 @@ Rails.application.routes.draw do
   resources :items
   get 'items/buy',controller: 'items', action: 'buy'
 
+
   resources :users, only: [:index, :show, :new]
-  get 'users/new/:name',controller: 'users', action: 'new'
-
-
-  resources :users, only: [:index, :show]
-  get 'users/new/:name', controller: 'users', action: 'create'
   get 'users/edit/:name', controller: 'users', action: 'edit'
 
 

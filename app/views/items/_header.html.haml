@@ -93,8 +93,8 @@
         -if user_signed_in?
           =current_user.nickname
         -else
-          = link_to '/users/new/signup',class:"header-bottom__right--user" do
+          = link_to new_user_path,class:"header-bottom__right--user" do
             新規会員登録
-          = link_to '/users/sign_in',class:"header-bottom__right--rogin" do
+          = link_to new_user_session_path,class:"header-bottom__right--rogin" do
             ログイン
 
