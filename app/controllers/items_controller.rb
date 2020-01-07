@@ -1,23 +1,22 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.includes(:images).order('created_at DESC').limit(10)
     #レディースに関するインスタンス
-    @items_women = Item.where(genre: '1').limit(10)
+    @items_women = Item.where(genre: '1').order('created_at DESC').limit(10)
     #メンズに関するインスタンス
-    @items_men = Item.where(genre: '2').limit(10)
+    @items_men = Item.where(genre: '2').order('created_at DESC').limit(10)
     #家電に関するインスタンス
-    @items_appliances = Item.where(genre: '8').limit(10)
+    @items_appliances = Item.where(genre: '8').order('created_at DESC').limit(10)
     #ホビーに関するインスタンス
-    @items_hobby = Item.where(genre: '6').limit(10)
+    @items_hobby = Item.where(genre: '6').order('created_at DESC').limit(10)
     
     #ブランドに関するインスタンスの作成
-    @items_chanel =Item.where(brand: '1').limit(10)
+    @items_chanel =Item.where(brand: '1').order('created_at DESC').limit(10)
     #ルイヴィトンに関するインスタンス
-    @items_vuitton =Item.where(brand: '3').limit(10)
+    @items_vuitton =Item.where(brand: '3').order('created_at DESC').limit(10)
     #シュプリームに関するインスタンス
-    @items_supreme =Item.where(brand: '4').limit(10)
+    @items_supreme =Item.where(brand: '4').order('created_at DESC').limit(10)
     #ナイキに関するインスタンス
-    @items_nike =Item.where(brand: '2').limit(10)
+    @items_nike =Item.where(brand: '2').order('created_at DESC').limit(10)
   end
 
   def show
@@ -48,6 +47,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.destroy
       redirect_to root_path
+    end
   end
 
   def create
