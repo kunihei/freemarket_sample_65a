@@ -21,6 +21,7 @@
     .slider-images
       = link_to "#", target: "_blank" do
         = image_tag "image1.jpeg", height: "400px", width: "100%"
+  /カテゴリーに関する一覧
   .toppage__category
     .toppage__category__heading
       人気のカテゴリー
@@ -30,79 +31,15 @@
         =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
         =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
   /レディース商品
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          レディース新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        -@items_women.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_women ,genre: 'レディース'}
   /メンズ商品関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          メンズ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_men.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_men ,genre: 'メンズ'}
   /家電・スマホ・カメラ関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          家電・スマホ・カメラ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_appliances.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_appliances ,genre: '家電・スマホ・カメラ'}
   /おもちゃ・ホビー・グッズ関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          おもちゃ・ホビー・グッズ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_hobby.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_hobby ,genre: 'おもちゃ・ホビー・グッズ'}
         
-
-
+  /ブランドに関する一覧
   .toppage__category
     .toppage__category__heading
       人気のブランド
@@ -112,77 +49,13 @@
         =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn"
         =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn"
   /シャネル関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          シャネル新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_chanel.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_chanel ,genre: 'シャネル'}
   /ルイヴィトン関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          ルイヴィトン新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_vuitton.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_vuitton ,genre: 'ルイヴィトン'}
   /シュプリーム関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          シュプリーム新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_supreme.each do |item|
-          .toppage__block__goods
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              /一枚目の画像取得
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_supreme ,genre: 'シュプリーム'}
   /ナイキ関連商品一覧
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          ナイキ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        /商品データ
-        -@items_nike.each do |item|
-          .toppage__block__goods
-            /一枚目の画像取得
-            = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  = render partial: 'index', locals: { 'items': @items_nike ,genre: 'ナイキ'}
         
 
 =render 'items/footer'
