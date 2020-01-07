@@ -21,9 +21,6 @@
     .slider-images
       = link_to "#", target: "_blank" do
         = image_tag "image1.jpeg", height: "400px", width: "100%"
-
-
-
   .toppage__category
     .toppage__category__heading
       人気のカテゴリー
@@ -32,6 +29,7 @@
         =link_to "メンズ", '#', class: "toppage__category__heading__type__btn"
         =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
         =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
+  /レディース商品
   .toppage-list
     .tppage-container
       .toppage__items
@@ -42,12 +40,13 @@
         -@items_women.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
-
+  /メンズ商品関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -55,14 +54,17 @@
           メンズ新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_men.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
+  /家電・スマホ・カメラ関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -70,14 +72,17 @@
           家電・スマホ・カメラ新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_appliances.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
+  /おもちゃ・ホビー・グッズ関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -85,9 +90,11 @@
           おもちゃ・ホビー・グッズ新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_hobby.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
@@ -104,6 +111,7 @@
         =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn"
         =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn"
         =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn"
+  /シャネル関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -111,14 +119,17 @@
           シャネル新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_chanel.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
+  /ルイヴィトン関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -126,14 +137,17 @@
           ルイヴィトン新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_vuitton.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
+  /シュプリーム関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -141,14 +155,17 @@
           シュプリーム新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_supreme.each do |item|
           .toppage__block__goods
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
+              /一枚目の画像取得
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
                 =item.name
             .toppage__block__goods__price
               = converting_to_jpy(item.price)
+  /ナイキ関連商品一覧
   .toppage-list
     .tppage-container
       .toppage__items
@@ -156,8 +173,10 @@
           ナイキ新着アイテム
         =link_to "もっと見る ＞", '#', class: "toppage__items__button"
       .toppage__block
+        /商品データ
         -@items_nike.each do |item|
           .toppage__block__goods
+            /一枚目の画像取得
             = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
               = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
               .toppage__block__goods__link__words
