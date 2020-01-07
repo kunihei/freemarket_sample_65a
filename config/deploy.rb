@@ -34,3 +34,5 @@ namespace :deploy do
     invoke 'unicorn:start'
   end
 end
+
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
