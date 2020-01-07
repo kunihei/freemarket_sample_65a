@@ -14,7 +14,7 @@
           .login-input__fakebook__logo__word
             Facebookでログイン
       .login-input__google
-        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, target: "_blank", class: "login-input__google__logo" do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "login-input__google__logo" do
           = image_tag "G-icon.jpg", size: "19x19"
           .login-input__google__logo__word
             Googleでログイン
@@ -22,10 +22,8 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .login-input__info__email
             = f.email_field :email, class: 'login-input__info__email__word', autofocus: true, autocomplete: "email", placeholder: '例）tarou@gmail'
-            -# = f.email_field :content, class: 'login-input__info__email__word', placeholder: '例）tarou@gmail'
           .login-input__info__pass
             = f.password_field :password, class: 'login-input__info__pass__word', autocomplete: "current-password", placeholder: 'パスワードを入力'
-            -# = f.password_field :content, class: 'login-input__info__pass__word', placeholder: 'パスワードを入力'
           .login-input__info__verification
             = flash.now[:recaptcha_error]
             = recaptcha_tags
