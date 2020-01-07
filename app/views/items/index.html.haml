@@ -21,9 +21,7 @@
     .slider-images
       = link_to "#", target: "_blank" do
         = image_tag "image1.jpeg", height: "400px", width: "100%"
-
-
-
+  /カテゴリーに関する一覧
   .toppage__category
     .toppage__category__heading
       人気のカテゴリー
@@ -32,70 +30,16 @@
         =link_to "メンズ", '#', class: "toppage__category__heading__type__btn"
         =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
         =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          レディース新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        -@items.each do |item|
-          .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
-
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          メンズ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        -@items.each do |item|
-          .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          家電・スマホ・カメラ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        -@items.each do |item|
-          .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          おもちゃ・ホビー・グッズ新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        -@items.each do |item|
-          .toppage__block__goods
-            = link_to "/items/#{item.id}", target: "_blank", class: "toppage__block__goods__link" do
-              = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-              .toppage__block__goods__link__words
-                =item.name
-            .toppage__block__goods__price
-              = converting_to_jpy(item.price)
+  /レディース商品
+  = render partial: 'index', locals: { 'items': @items_women ,genre: 'レディース'}
+  /メンズ商品関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_men ,genre: 'メンズ'}
+  /家電・スマホ・カメラ関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_appliances ,genre: '家電・スマホ・カメラ'}
+  /おもちゃ・ホビー・グッズ関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_hobby ,genre: 'おもちゃ・ホビー・グッズ'}
         
-
-
+  /ブランドに関する一覧
   .toppage__category
     .toppage__category__heading
       人気のブランド
@@ -104,68 +48,14 @@
         =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn"
         =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn"
         =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn"
-  .toppage-list
-    .tppage-container
-      .toppage__items
-        .toppage__items__name
-          シャネル新着アイテム
-        =link_to "もっと見る ＞", '#', class: "toppage__items__button"
-      .toppage__block
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
-        .toppage__block__goods
-          = link_to "#", target: "_blank", class: "toppage__block__goods__link" do
-            = image_tag "image4.jpg", class: "toppage__block__goods__link__image"
-            .toppage__block__goods__link__words
-              カバン
-          .toppage__block__goods__price
-            ¥100,000
-        .toppage__block2__goods
-          = link_to "#", target: "_blank", class: "toppage__block2__goods__link" do
-            = image_tag "image4.jpg", size: "60×60", class: "toppage__block2__goods__link__image"
-            .toppage__block2__goods__link__words
-              カバン
-          .toppage__block2__goods__price
-            ¥100,000
+  /シャネル関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_chanel ,genre: 'シャネル'}
+  /ルイヴィトン関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_vuitton ,genre: 'ルイヴィトン'}
+  /シュプリーム関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_supreme ,genre: 'シュプリーム'}
+  /ナイキ関連商品一覧
+  = render partial: 'index', locals: { 'items': @items_nike ,genre: 'ナイキ'}
+        
 
 =render 'items/footer'
