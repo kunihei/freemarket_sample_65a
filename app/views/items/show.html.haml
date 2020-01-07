@@ -1,68 +1,77 @@
 =render 'items/header'
 
 %body
-  -# 外の大枠
+  /外の大枠
   .show-container
-    -# コメントまでの枠
+    /コメントまでの枠
     .showcontent-main
       %h1.item-name 
         = @item.name
+      /画像説明
       %p.item-wording
-        ="『#{@item.name}』は、920回の取引実績を持つ#{@item.user.nickname}さんから出品されました。セブントゥエルブサーティー（ブーツ/レディース）の商品で、#{@item.prefecture.name}から#{@item.delivery_day}で発送されます。"
-      -# 画像とテーブルの親
+        ="『#{@item.name}』は、920回の取引実績を持つ#{@item.user.nickname}さんから出品されました。#{@item.genre}の商品で、#{@item.prefecture.name}から#{@item.delivery_day}で発送されます。"
+      /画像一覧
       .item-main-content 
+        /画像一覧(ピックアップ)
         .item-main-content__photo
           = image_tag @item.images[0].src.to_s, size:"250x300"
-          -# 下の複数画像
+          /画像一覧(その他)
           .photo 
             -@item_images.each do |image|
-              = image_tag image.src.to_s, size:"50x50",class:"photo1"
-            
-        -# テーブル
+              = image_tag image.src.to_s, size:"50x50",class:"photo1"  
+        /商品データ
         %table.item-main-content__table
+          /商品出品者 
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               出品者 
             %td.item-main-content__table__row--data
               =@item.user.nickname
+          /商品カテゴリー
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               カテゴリー
             %td.item-main-content__table__row--data
               =@item.genre
+          /商品ブランド（入力していれば表示）
           -if @item.brand.present?
             %tr.item-main-content__table__row
               %th.item-main-content__table__row--title
                 ブランド
               %td.item-main-content__table__row--data 
                 =@item.brand
+          /商品状態
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               商品の状態
             %td.item-main-content__table__row--data
               =@item.status
+          /配送料の負担
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送料の負担
             %td.item-main-content__table__row--data
               =@item.postage_selct
+          /配送の方法
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送の方法
             %td.item-main-content__table__row--data
               =@item.deliver_method
+          /配送元地域
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               配送元地域
             %td.item-main-content__table__row--data
               =@item.prefecture.name
+          /発送日の目安
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               発送日の目安
             %td.item-main-content__table__row--data
               =@item.delivery_day
 
-      -# 値段
+      /商品価格
       .item-price
         %span.item-price__fee
           = converting_to_jpy(@item.price)
@@ -70,29 +79,30 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-      -if @item.user.id 
-        / 購入画面に進むボタン 投稿者
+      -if @item.user.id  ==  current_user.id
+        / ボタン 投稿者用
         .item-buy
           = link_to '#',class:"item-buy__buying" do
-            商品の編集
+            商品の編集 
         %p.item_or or
         .item-buy.item_gray
           = link_to '#',class:"item-buy__buying" do
-            出品を一旦停止する
+            出品を一旦停止する 
         .item-buy.item_gray
           = link_to '#',class:"item-buy__buying" do
-            この商品を削除する
+            この商品を削除する 
       -else
-        / 購入画面に進むボタン 購入者
+        / ボタン 購入者用
         .item-buy
           = link_to '#',class:"item-buy__buying" do
             購入画面に進む
-      %p.sipping-message
-        この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
-      -# 商品の説明
+      -if @item.deliver_method == 2
+        %p.sipping-message
+          この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+      / 商品の説明欄
       .item-description
         =simple_format(@item.text)
-      -# 下のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
+      / 底部のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
       .item-button
         .item-button__left
           = link_to '#' ,class:"item-button__left__like" do
@@ -110,8 +120,7 @@
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
-
-    -# 商品に対する顧客のコメント
+    /商品に対する顧客のコメント
     .comment-item-container
       %ul.item-contents
         %li.item-comments__comment
@@ -133,7 +142,7 @@
               %span.item-comments__comment__body__time--date
                 10000日前
 
-    -# 左、右ボタン
+    /左、右ボタン
     %ul.nav-item
       %li.nav-item__left
         = link_to '#' ,class:"nav-item__left__tereport-le" do
@@ -143,8 +152,7 @@
         = link_to '#' ,class:"nav-item__right__tereport-ri" do
           右
           = icon('fas' ,'arrow-right')
-          
-    -# Twitterなどのアイコン
+    /SNSアイコン
     .media-box
       %ul.media-box__container
         %li.media-box__container__item
@@ -156,19 +164,21 @@
         %li.media-box__container__item
           = link_to '#',class:".media-box__container__item--pinterest" do
             = icon('fab' ,'pinterest-square',class:"icon-pinterest")
-
-    -# 商品出品者のその他の商品
+    /商品出品者に関連する商品
     .other-items-container
       .other-items-title
         = link_to '#',class:"other-items-title__word" do
           ="#{@item.user.nickname}さんのその他の商品"
+      /商品一覧
       .user-other-items
         -@user_items.each do |item|
           .user-other-items__box
+            /1枚目の画像のみ表示
             = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
             .user-other-items__box__body
               .user-other-items__box__body--name
                 =@item.status
+              /商品価格
               .user-other-items__box__body--price
                 =converting_to_jpy(@item.price)
                 .user-other-items__box__body--price--heart
@@ -176,7 +186,7 @@
                   10
         
 
-    -# 関連商品
+    /関連商品に関する出品
     .other-items-container
       .other-items-title
         = link_to '#',class:"other-items-title__word" do
@@ -184,10 +194,12 @@
       .user-other-items
         -@genre_items.each do |item|
           .user-other-items__box
+            /1枚目の画像のみ表示
             = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
             .user-other-items__box__body
               .user-other-items__box__body--name
                 =@item.status
+              /商品価格
               .user-other-items__box__body--price
                 =converting_to_jpy(@item.price)
                 .user-other-items__box__body--price--heart
@@ -195,7 +207,7 @@
                   10
         
         
-    -# ページ最下部のボタン
+    /ページ最下部のボタン
     .nav
       .nav__info
         - breadcrumb :show
