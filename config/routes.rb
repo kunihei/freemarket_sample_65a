@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
 
   resources :items do
+    collection do 
+      get 'categories/:name',  controller: 'items', action: 'categories'
+    end
     member do
       get 'buy_confirmation'
       post 'pay'
