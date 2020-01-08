@@ -62,6 +62,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def categories
+    
+    #レディースに関するインスタンス
+    @items_women = Item.where(genre: '1').order('created_at DESC').limit(10)
+    #メンズに関するインスタンス
+    @items_men = Item.where(genre: '2').order('created_at DESC').limit(10)
+    #家電に関するインスタンス
+    @items_appliances = Item.where(genre: '8').order('created_at DESC').limit(10)
+    #ホビーに関するインスタンス
+    @items_hobby = Item.where(genre: '6').order('created_at DESC').limit(10)
+    render "items/categories/#{params[:name]}"
+  end
 
   def buy_confirmation
     @address = @item.user.address
