@@ -1,36 +1,15 @@
-=render 'items/header'
-
-.toppage-body
-  .toppage-slider
-    .slider-images
-      = image_tag "image2.jpeg", height: "400px", width: "100%"
-      .slider-images__messages
-        .slider-images__messages__message1
-          スマホで  かんたん
-          %br
-          フリマアプリ
-        .slider-images__messages__message2
-          フリマはスマホカメラからすぐに出品できる
-          %br
-          購入時も安心な独自システムのアプリです
-        .slider-images__messages__message3
-          = link_to "https://apps.apple.com/jp/app/id667861049?l=ja", target: "_blank", class: "toppage-app" do
-            = image_tag "apple.png", size: "200x80", class: "toppage-logo"
-          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank", class: "toppage-app" do
-            = image_tag "google-play.png", size: "200x80", class: "toppge-logo"
-    .slider-images
-      = link_to "#", target: "_blank" do
-        = image_tag "image1.jpeg", height: "400px", width: "100%"
-  /カテゴリーに関する一覧
-  .toppage__category
-    .toppage__category__heading
-      人気のカテゴリー
-      .toppage__category__heading__type
-        =link_to "レディース", '#', class: "toppage__category__heading__type__btn"
-        =link_to "メンズ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
-  /レディース商品
-  = render partial: 'categories', locals: { 'items': @items_men ,genre: 'レディース'}
-
-=render 'items/footer'
+.toppage-list
+  .tppage-container
+    .toppage__items
+      .toppage__items__name
+        ="#{genre}の商品一覧"
+    .toppage__block
+      -items.each do |item|
+        .toppage__block__goods
+          = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
+            /一枚目の画像取得
+            = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
+            .toppage__block__goods__link__words
+              =item.name
+          .toppage__block__goods__price
+            = converting_to_jpy(item.price)
