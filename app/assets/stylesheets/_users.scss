@@ -932,3 +932,54 @@ $FM-color-gry:#eee;
 
   background-color: red;
 }
+
+
+/*--------------------------------------- ページネート --------------------------------------- */
+
+
+.pagination{
+  width: 1040px;
+  margin: 40px auto ;
+  position: relative;
+}
+
+.page,.first,.prev,.next,.last {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 42px;
+  font-size: 14px;
+  text-align: center;
+  
+}
+
+.page{
+  text-align: center;
+}
+
+.current{
+  background-color: #ea352d;
+  color: white;
+}
+.first,.prev,.next,.last{
+  font-weight: 900;
+}
+
+.next{
+  position: absolute;
+  right: 52px;
+}
+
+.page_number{
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.last{
+  position: absolute;
+  right: 0;
+}
