@@ -103,6 +103,8 @@ class ItemsController < ApplicationController
     end
   end
 
+  
+
   private
 
   def set_item
