@@ -17,7 +17,7 @@
             .item-num-0#image-box__container
               = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
-                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][0][src]", type: 'file', style: "display:none"
+                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][][src]", type: 'file', style: "display:none"
                   .upload__text
                     .upload__text--a
                       ドラッグアンドドロップ
@@ -123,7 +123,7 @@
                     必須
               %li.exhibit__contents__center__price__list-group__group__form
                 ¥
-                %input.price_calc{placeholder: "例) 300", type: "number"}
+                %input.price_calc{placeholder: "例) 300", type: "text"}
             %ul.exhibit__contents__center__price__list-group__group--b
               %li.exhibit__contents__center__price__list-group__group__fee
                 販売手数料 (10%)

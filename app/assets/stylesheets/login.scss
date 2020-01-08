@@ -116,27 +116,27 @@
         margin: 20px auto;
         padding-top: 15px;
         box-sizing: border-box;
-        background-color: red;
-        color: white;
         width: 320px;
         height: 50px;
-        cursor: pointer;
         &__link{
           font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          padding: 15px 135px 15px 130px;
           box-sizing: border-box;
           font-size: 13px;
           text-align: center;
           display: block;
+          cursor: pointer;
+          background-color: red;
+          color: white;
         }
       }
       &__forget{
         font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         font-size: 14px;
-        margin-left: 70px;
-        line-height: 40px;
+        margin: 50px 0 0 70px;
         &:hover{
           color: rgb(141, 204, 230);
-          display: inline-block;
+          width: fit-content;
           border-bottom: 1px solid rgb(141, 204, 230);
         }
         &__link{

@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   end
   def create
-
-    render "users/new/#{params[:name]}"
+  
   end
 
   def show
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
   end
   
   def new
-    render "users/new/#{params[:name]}"
+  
   end
 
   def edit

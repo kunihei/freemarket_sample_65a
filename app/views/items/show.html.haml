@@ -89,12 +89,12 @@
           = link_to '#',class:"item-buy__buying" do
             出品を一旦停止する 
         .item-buy.item_gray
-          = link_to '#',class:"item-buy__buying" do
+          = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
             この商品を削除する 
       -else
         / ボタン 購入者用
         .item-buy
-          = link_to '#',class:"item-buy__buying" do
+          = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む
       -if @item.deliver_method == 2
         %p.sipping-message
@@ -195,13 +195,13 @@
         -@genre_items.each do |item|
           .user-other-items__box
             /1枚目の画像のみ表示
-            = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
+            = link_to image_tag(item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image")
             .user-other-items__box__body
               .user-other-items__box__body--name
-                =@item.status
+                =item.status
               /商品価格
               .user-other-items__box__body--price
-                =converting_to_jpy(@item.price)
+                =converting_to_jpy(item.price)
                 .user-other-items__box__body--price--heart
                   = icon('fas' ,'heart',class:"icon-heart")
                   10

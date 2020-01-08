@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'card/new'
   get 'card/show'
   devise_for :users, controllers: {
+    sessions: 'users/sessions',
     registrations: 'users/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks' 
   }
   devise_scope :user do
     get 'tellphone', to: 'users/registrations#new_tellphone'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
 
-  resources :items, only: [:show, :edit, :new, :create] 
+
 
 
   resources :users, only: [:index, :show, :new] do
@@ -30,11 +31,19 @@ Rails.application.routes.draw do
       get :item_buyed
     end
   end
+
+  resources :items do
+    member do
+      get 'buy_confirmation'
+      post 'pay'
+    end
+  end
+  
+
+
   get 'users/new/:name',controller: 'users', action: 'new'
 
-
-  resources :users, only: [:index, :show]
-  get 'users/new/:name', controller: 'users', action: 'create'
+  resources :users, only: [:index, :show, :new]
   get 'users/edit/:name', controller: 'users', action: 'edit'
 
 

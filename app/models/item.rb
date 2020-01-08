@@ -73,5 +73,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+
+  validates :name, :text, :genre, :status, :postage_selct, :prefecture_id, :delivery_day, :price, presence: true
+
 end
 
