@@ -31,9 +31,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path , notice: '削除に成功しました。'
+      redirect_to root_path
     else
-      render :show, alert: '削除に失敗しました。'
+      render :new
     end
   end
 
