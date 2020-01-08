@@ -2,5 +2,5 @@
 
 .toppage-body
   = render partial: 'categories', locals: { 'items': @items ,genre: @category }
-  = paginate(@items)
+  = paginate(@items,:window => 1)
 =render 'items/footer'
