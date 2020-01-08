@@ -1,0 +1,45 @@
+.buysell__main{
+  margin: 40px auto 0;
+  width:1024px;
+  height: 100%;
+}
+.buysell__container{
+
+}
+.buysell--right{
+  width:100%;
+  &__head{
+    background-color: #fafafa;
+    &__message{
+      line-height: 72px;
+      font-weight: bold;
+    }
+  }
+  &__items{
+    display:flex;
+    &--item{
+      background-color: #eee;
+      text-align: center;
+      width: 100%;
+      font-size: 16px;
+      line-height: 72px;
+      margin: 0;
+    }
+  }
+  &__body{
+    background-color: white;
+    padding: 16px;
+    &--item{
+      text-align: center;
+    }
+  }
+}
+.click{
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 72px;
+  margin: 0;
+  background-color: white;
+  border-top: 2px solid #ea352d;
+}
