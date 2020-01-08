@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     member do
       get 'buy_confirmation'
       post 'pay'
+      get 'categories',  controller: 'items', action: 'categories'
     end
   end
   
