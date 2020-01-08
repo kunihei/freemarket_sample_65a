@@ -28,10 +28,6 @@ Rails.application.routes.draw do
     end
   end
   
-  
-  resources :users, only: [:index, :show, :new]
-  get 'users/new/:name',controller: 'users', action: 'new'
-
   resources :users, only: [:index, :show, :new]
   get 'users/edit/:name', controller: 'users', action: 'edit'
 
