@@ -30,11 +30,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path , notice: '削除に成功しました。'
-    else
-      render :show, alert: '削除に失敗しました。'
-    end
+    @item.save
   end
 
   def show
@@ -63,16 +59,13 @@ class ItemsController < ApplicationController
   end
 
   def categories
-    
-    #レディースに関するインスタンス
-    @items_women = Item.where(genre: '1').order('created_at DESC').limit(10)
-    #メンズに関するインスタンス
-    @items_men = Item.where(genre: '2').order('created_at DESC').limit(10)
-    #家電に関するインスタンス
-    @items_appliances = Item.where(genre: '8').order('created_at DESC').limit(10)
-    #ホビーに関するインスタンス
-    @items_hobby = Item.where(genre: '6').order('created_at DESC').limit(10)
-    render "items/categories/#{params[:name]}"
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(2)
+    if @items.present?
+      @item = @items[0]
+      @category = @item.genre
+    else
+      redirect_to root_path
+    end
   end
 
   def buy_confirmation
