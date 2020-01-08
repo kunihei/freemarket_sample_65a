@@ -76,37 +76,16 @@
           background-color: #F5F5F5;
           border: 1px dashed #ccc;
           .upload__text {
-            height: 82px;
+            height: 100%;
             font-size: 14px;
             text-align: center;
-            padding: 40px;
+            padding: 7%;
             
             &--a{
               margin-top: 20px;
             }
           }
         }
-        // &__upload {
-        //   height: 162px;
-        //   width: 620px;
-        //   margin-top: 16px;
-        //   background-color: #F5F5F5;
-        //   border: 1px dashed #ccc;
-        //   &__text {
-        //     height: 82px;
-        //     font-size: 14px;
-        //     text-align: center;
-        //     padding: 40px;
-            
-        //     &--a{
-        //       margin-top: 20px;
-        //     }
-        //   }
-          
-        // }
-        // &__file {
-        //   // display: none;
-        // }
       }
       &__product {
         box-sizing: border-box;
