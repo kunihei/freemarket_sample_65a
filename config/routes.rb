@@ -21,6 +21,17 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
 
+
+
+
+  resources :users, only: [:index, :show, :new] do
+    member do
+      get :item_exhibit
+      get :item_negotiate
+      get :item_buyed
+    end
+  end
+
   resources :items do
     member do
       get 'buy_confirmation'
@@ -29,8 +40,8 @@ Rails.application.routes.draw do
     end
   end
   
-  
-  resources :users, only: [:index, :show, :new]
+
+
   get 'users/new/:name',controller: 'users', action: 'new'
 
   resources :users, only: [:index, :show, :new]

@@ -12,6 +12,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+  belongs_to :buyer, class_name: "User"
+
   enum genre:{
     "---":0,
     レディース:1,
@@ -236,5 +238,8 @@ class Item < ApplicationRecord
     '事務/店舗用品':136,
     その他:137,
   },_prefix: true
+
+  validates :name, :text, :genre, :status, :postage_selct, :prefecture_id, :delivery_day, :price, presence: true
+
 end
 
