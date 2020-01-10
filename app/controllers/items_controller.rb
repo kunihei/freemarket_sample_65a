@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       Payjp::Charge.create(
         amount: @item.price, #支払金額
         customer: @card.customer_id, #顧客ID
