@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   def update
      @user = User.find(params[:id])
      @user.update(nickname:  user_params[:nickname],introduction: user_params[:introduction])
-     binding.pry
      redirect_to root_path
   end
 
@@ -33,6 +32,7 @@ class UsersController < ApplicationController
   
   def item_buyed
     @user = User.find(params[:id])
+    asdfghj
   end
 
   private
