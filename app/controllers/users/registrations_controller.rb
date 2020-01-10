@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #4お支払い方法
   def create_cards
-    Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     @user = User.new(session["devise.regist_data"]["user"])
     if params['payjp-token'].blank?
       redirect_to root_path
@@ -86,6 +86,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
   end
 
+  
   protected
 
   def configure_sign_up_params
@@ -97,6 +98,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def address_params
     params.require(:address).permit(:postcode, :city, :block, :building, :tell, :last_name, :first_name, :last_name_kana, :first_name_kana)
   end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

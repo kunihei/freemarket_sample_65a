@@ -1,0 +1,6 @@
+=render 'items/header'
+
+.toppage-body
+  = render partial: 'categories', locals: { 'items': @items_nike ,genre: 'ナイキ' }
+  = paginate(@items_nike)
+=render 'items/footer'

@@ -62,6 +62,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def categories
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(2)
+    if @items.present?
+      @item = @items[0]
+      @category = @item.genre
+    else
+      redirect_to root_path
+    end
+  end
 
   def buy_confirmation
     @address = @item.user.address
@@ -115,9 +124,9 @@ class ItemsController < ApplicationController
   end
 
   def set_card
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
-
+  #商品出品の際のparams
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
   end

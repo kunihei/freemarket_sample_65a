@@ -1,6 +1,9 @@
 =render 'items/header'
 
 .toppage-body
+  =link_to new_item_path, class:"items-new--exhibit" do
+    %p 出品
+    = icon('fas', 'camera', class: 'icon-camera')
   .toppage-slider
     .slider-images
       = image_tag "image2.jpeg", height: "400px", width: "100%"
@@ -26,36 +29,36 @@
     .toppage__category__heading
       人気のカテゴリー
       .toppage__category__heading__type
-        =link_to "レディース", '#', class: "toppage__category__heading__type__btn"
-        =link_to "メンズ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
+        =link_to "レディース", '#', class: "toppage__category__heading__type__btn" ,id:'women'
+        =link_to "メンズ", '#', class: "toppage__category__heading__type__btn",id:'men'
+        =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn",id:'api'
+        =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn",id:'hobby'
   /レディース商品
-  = render partial: 'index', locals: { 'items': @items_women ,genre: 'レディース'}
+  = render partial: 'index', locals: { 'items': @items_women ,genre: 'レディース', category: '1'}
   /メンズ商品関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_men ,genre: 'メンズ'}
+  = render partial: 'index', locals: { 'items': @items_men ,genre: 'メンズ', category: '2'}
   /家電・スマホ・カメラ関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_appliances ,genre: '家電・スマホ・カメラ'}
+  = render partial: 'index', locals: { 'items': @items_appliances ,genre: '家電・スマホ・カメラ', category: '8'}
   /おもちゃ・ホビー・グッズ関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_hobby ,genre: 'おもちゃ・ホビー・グッズ'}
+  = render partial: 'index', locals: { 'items': @items_hobby ,genre: 'おもちゃ・ホビー・グッズ', category: '6'}
         
   /ブランドに関する一覧
   .toppage__category
     .toppage__category__heading
       人気のブランド
       .toppage__category__heading__type
-        =link_to "シャネル", '#', class: "toppage__category__heading__type__btn"
-        =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn"
-        =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn"
-        =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn"
+        =link_to "シャネル", '#', class: "toppage__category__heading__type__btn",id:'chanel'
+        =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn",id:'vuitton'
+        =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn",id:'shup'
+        =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn",id:'nike'
   /シャネル関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_chanel ,genre: 'シャネル'}
+  = render partial: 'index', locals: { 'items': @items_chanel ,genre: 'シャネル', category: 'chanel'}
   /ルイヴィトン関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_vuitton ,genre: 'ルイヴィトン'}
+  = render partial: 'index', locals: { 'items': @items_vuitton ,genre: 'ルイヴィトン', category: 'vuitton'}
   /シュプリーム関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_supreme ,genre: 'シュプリーム'}
+  = render partial: 'index', locals: { 'items': @items_supreme ,genre: 'シュプリーム', category: 'supreme'}
   /ナイキ関連商品一覧
-  = render partial: 'index', locals: { 'items': @items_nike ,genre: 'ナイキ'}
+  = render partial: 'index', locals: { 'items': @items_nike ,genre: 'ナイキ', category: 'nike'}
         
 
 =render 'items/footer'

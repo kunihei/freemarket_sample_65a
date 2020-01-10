@@ -21,22 +21,29 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
 
+
+
+  get 'users/edit/:name/:id', controller: 'users', action: 'edit'
+  resources :users do
+    member do
+      get :item_exhibit
+      get :item_negotiate
+      get :item_buyed
+    end
+  end
+
+  
   resources :items do
     member do
       get 'buy_confirmation'
       post 'pay'
+      get 'categories',  controller: 'items', action: 'categories'
     end
     collection do
       get 'search'
     end
   end
   
-  resources :users, only: [:index, :show, :new]
-  get 'users/new/:name',controller: 'users', action: 'new'
-
-  resources :users, only: [:index, :show, :new]
-  get 'users/edit/:name', controller: 'users', action: 'edit'
-
 
 
 end
