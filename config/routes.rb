@@ -26,14 +26,17 @@ Rails.application.routes.draw do
       get 'buy_confirmation'
       post 'pay'
     end
+    collection do
+      get 'search'
+    end
   end
-  
   
   resources :users, only: [:index, :show, :new]
   get 'users/new/:name',controller: 'users', action: 'new'
 
   resources :users, only: [:index, :show, :new]
   get 'users/edit/:name', controller: 'users', action: 'edit'
+
 
 
 end
