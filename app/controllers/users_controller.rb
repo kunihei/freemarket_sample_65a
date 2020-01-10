@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   
   def item_buyed
     @user = User.find(params[:id])
-    asdfghj
   end
 
   private
