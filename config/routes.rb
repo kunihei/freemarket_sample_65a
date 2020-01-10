@@ -39,7 +39,11 @@ Rails.application.routes.draw do
       post 'pay'
       get 'categories',  controller: 'items', action: 'categories'
     end
+    collection do
+      get 'search'
+    end
   end
   
+
 
 end
