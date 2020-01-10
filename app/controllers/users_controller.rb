@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
+  def item_buyed
+    @user = User.find(params[:id])
+  end
+
+
   private
 
   def user_params
@@ -40,4 +46,5 @@ class UsersController < ApplicationController
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
+
 end

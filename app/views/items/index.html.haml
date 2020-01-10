@@ -1,6 +1,9 @@
 =render 'items/header'
 
 .toppage-body
+  =link_to new_item_path, class:"items-new--exhibit" do
+    %p 出品
+    = icon('fas', 'camera', class: 'icon-camera')
   .toppage-slider
     .slider-images
       = image_tag "image2.jpeg", height: "400px", width: "100%"

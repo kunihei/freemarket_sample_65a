@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #4お支払い方法
   def create_cards
-    Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     @user = User.new(session["devise.regist_data"]["user"])
     if params['payjp-token'].blank?
       redirect_to root_path

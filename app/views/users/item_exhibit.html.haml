@@ -20,11 +20,29 @@
             = link_to item_buyed_user_path do
               %h3 売却済み
         .buysell--right__body
-          .buysell--right__body--item
-            -if(@user.selling_items) then
-              = @user.items.images.src
+          .buysell--right__body--item{class:"#{"item-yes" if @user.selling_items.present?}"}
+            -if @user.selling_items.present?
+              - @user.selling_items.each do |item|
+                .buysell--right__body--item--yes
+                  .buysell--right__body--item--yes--content
+                    =image_tag item.images[0].src.to_s,size:"100x100",class:"item-image"
+                    .item-name
+                      =item.name
+                    .item-status 出品中
+                    %p.item-link 
+                      =link_to '#' do
+                        >
             -else
-              = image_tag('fmarket_logo_red.svg',size:"134x36")
-              %p 出品中の商品がありません
+              .buysell--right__body--item--no
+                = image_tag('logo_gray.svg',size:"150x100")
+                %p 出品中の商品がありません
+
+        .bottom-button
+          %button.left-button 
+            = link_to item_buyed_user_path do
+              <
+          %button.right-button 
+            = link_to item_negotiate_user_path do
+              >
 
 =render 'items/footer'

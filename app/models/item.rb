@@ -9,10 +9,14 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
 
 
+  belongs_to :buyer, class_name: "User", optional: true
+
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
-  belongs_to :buyer, class_name: "User"
+ 
+
 
   enum genre:{
     "---":0,
