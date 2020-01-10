@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2020_01_09_104224) do
     t.bigint "user_id"
     t.integer "prefecture_id"
     t.integer "buyer_id"
-    t.integer "sold"
     t.integer "sub_genre", default: 0
+    t.integer "sold"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
