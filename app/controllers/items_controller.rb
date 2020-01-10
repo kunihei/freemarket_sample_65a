@@ -74,6 +74,7 @@ class ItemsController < ApplicationController
 
   def buy_confirmation
     @address = @item.user.address
+    
     if @card.present?
       Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
