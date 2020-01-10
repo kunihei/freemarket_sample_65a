@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
     @address = @item.user.address
     
     if @card.present?
-      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
 
