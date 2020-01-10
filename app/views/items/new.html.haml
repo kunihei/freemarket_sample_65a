@@ -15,6 +15,7 @@
             最大10枚までアップロードできます
           #image-box-1
             .item-num-0#image-box__container
+              // imagesテーブルに画像を保存
               = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
                   = image.file_field :src, class: 'image__file', name: "item[images_attributes][][src]", type: 'file', style: "display:none"
