@@ -122,7 +122,7 @@ class ItemsController < ApplicationController
   end
 
   def set_card
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
   #商品出品の際のparams
   def item_params
