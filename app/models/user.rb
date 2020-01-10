@@ -73,12 +73,14 @@ class User < ApplicationRecord
 
 
 
+
   # 商品出品中
   has_many :selling_items, -> { where("buyer_id is NULL") }, class_name: "Item"
   # 交渉中
   has_many :nagotiations_items, -> { where("buyer_id is not NULL && sold is NULL")}, class_name: "Item"
   # 商品売却済
   has_many :sold_items, -> { where("buyer_id is not NULL && sold is not NULL") }, class_name: "Item"
+
   
 
 end

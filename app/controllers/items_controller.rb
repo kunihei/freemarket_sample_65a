@@ -62,6 +62,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def categories
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(2)
+    if @items.present?
+      @item = @items[0]
+      @category = @item.genre
+    else
+      redirect_to root_path
+    end
+  end
 
   def buy_confirmation
     @address = @item.user.address
