@@ -156,7 +156,8 @@
       -# ユーザーの会員登録とログイン
       .header-bottom__right
         -if user_signed_in?
-          =current_user.nickname
+          = link_to user_path(current_user.id) do
+            =current_user.nickname
         -else
           = link_to new_user_path,class:"header-bottom__right--user" do
             新規会員登録

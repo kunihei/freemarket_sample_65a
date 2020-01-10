@@ -94,3 +94,4 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'rails-i18n', '~> 5.1'
 gem 'fog-aws'
 gem 'kaminari'
+gem 'gon'

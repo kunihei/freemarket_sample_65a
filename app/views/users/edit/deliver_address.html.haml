@@ -18,45 +18,77 @@
                   %li.delibver__right__content__group__name お名前
                   %li.delibver__tag.delibver__tag__require 必須
                 %ul
-                  %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田'
-                  %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩'
+                  -if @user.last_name.present?
+                    %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田',value: @user.last_name
+                  -else
+                    %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田'
+                  -if @user.first_name.present?
+                    %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩',value: @user.first_name
+                  -else
+                    %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name お名前カナ
                   %li.delibver__tag.delibver__tag__require 必須
                 %ul
-                  %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ'
-                  %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ'
+                  -if @user.last_name_kana.present?
+                    %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ',value: @user.last_name_kana
+                  -else
+                    %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ'
+                  -if @user.last_name_kana.present?
+                    %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ',value: @user.first_name_kana
+                  -else
+                    %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 郵便番号
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.text_field :postcode, class: 'delibver__right__input', placeholder: '例)123-4567'
+                -if @address.postcode.present?
+                  %li= f.text_field :postcode, class: 'delibver__right__input', placeholder: '例)123-4567',value: @address.postcode
+                -else
+                  %li= f.text_field :postcode, class: 'delibver__right__input', placeholder: '例)123-4567'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 都道府県
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.select  :prefecture_id, class: 'delibver__right__input', placeholder: '例)!!!!!!!!!'
+                -if @address.prefecture_id.present?
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name,value: @address.prefecture_id
+                  = icon('fas', 'chevron-down', class: 'mypage__container--side__icon')
+                -else
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                  = icon('fas', 'chevron-down', class: 'mypage__container--side__icon')
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 市区町村
                   %li.delibver__tag.delibver__tag__require  必須
-                %li= f.text_field :city , class: 'delibver__right__input', placeholder: '例)横浜市緑区'
+                -if @address.city.present?
+                  %li= f.text_field :city , class: 'delibver__right__input', placeholder: '例)横浜市緑区',value: @address.city
+                -else
+                  %li= f.text_field :city , class: 'delibver__right__input', placeholder: '例)横浜市緑区'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 番地 
                   %li.delibver__tag.delibver__tag__require 必須
-                %li= f.text_field :block , class: 'delibver__right__input', placeholder: '例)青山1-1-1'
+                -if @address.block.present?
+                  %li= f.text_field :block , class: 'delibver__right__input', placeholder: '例)青山1-1-1',value: @address.block
+                -else
+                  %li= f.text_field :block , class: 'delibver__right__input', placeholder: '例)青山1-1-1'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 建物名 
                   %li.delibver__tag.delibver__tag__arbitrary 任意
-                %li= f.text_field :building , class: 'delibver__right__input', placeholder: '例)柳ビル103'
+                -if @address.building.present?
+                  %li= f.text_field :building , class: 'delibver__right__input', placeholder: '例)柳ビル103',value: @address.building
+                -else
+                  %li= f.text_field :building , class: 'delibver__right__input', placeholder: '例)柳ビル103'
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 電話
                   %li.delibver__tag.delibver__tag__arbitrary 任意
-                %li= f.text_field :tell, class: 'delibver__right__input', placeholder: '例)090-1234-5678'
+                -if @address.tell.present?
+                  %li= f.text_field :tell, class: 'delibver__right__input', placeholder: '例)090-1234-5678',value: @address.tell
+                -else
+                  %li= f.text_field :tell, class: 'delibver__right__input', placeholder: '例)090-1234-5678'
                 = f.submit '変更する', class: 'profile__right__input__send'
       
 =render 'items/footer'

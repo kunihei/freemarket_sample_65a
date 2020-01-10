@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
 
 
-
-  resources :users, only: [:index, :show, :new] do
+  get 'users/edit/:name/:id', controller: 'users', action: 'edit'
+  resources :users do
     member do
       get :item_exhibit
       get :item_negotiate
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
+  
   resources :items do
     member do
       get 'buy_confirmation'
@@ -40,12 +41,5 @@ Rails.application.routes.draw do
     end
   end
   
-
-
-  get 'users/new/:name',controller: 'users', action: 'new'
-
-  resources :users, only: [:index, :show, :new]
-  get 'users/edit/:name', controller: 'users', action: 'edit'
-
 
 end

@@ -26,10 +26,10 @@
     .toppage__category__heading
       人気のカテゴリー
       .toppage__category__heading__type
-        =link_to "レディース", '#', class: "toppage__category__heading__type__btn"
-        =link_to "メンズ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn"
-        =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn"
+        =link_to "レディース", '#', class: "toppage__category__heading__type__btn" ,id:'women'
+        =link_to "メンズ", '#', class: "toppage__category__heading__type__btn",id:'men'
+        =link_to "家電・スマホ・カメラ", '#', class: "toppage__category__heading__type__btn",id:'api'
+        =link_to "おもちゃ・ホビー・グッズ", '#', class: "toppage__category__heading__type__btn",id:'hobby'
   /レディース商品
   = render partial: 'index', locals: { 'items': @items_women ,genre: 'レディース', category: '1'}
   /メンズ商品関連商品一覧
@@ -44,10 +44,10 @@
     .toppage__category__heading
       人気のブランド
       .toppage__category__heading__type
-        =link_to "シャネル", '#', class: "toppage__category__heading__type__btn"
-        =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn"
-        =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn"
-        =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn"
+        =link_to "シャネル", '#', class: "toppage__category__heading__type__btn",id:'chanel'
+        =link_to "ルイヴィトン", '#', class: "toppage__category__heading__type__btn",id:'vuitton'
+        =link_to "シュプリーム", '#', class: "toppage__category__heading__type__btn",id:'shup'
+        =link_to "ナイキ", '#', class: "toppage__category__heading__type__btn",id:'nike'
   /シャネル関連商品一覧
   = render partial: 'index', locals: { 'items': @items_chanel ,genre: 'シャネル', category: 'chanel'}
   /ルイヴィトン関連商品一覧
