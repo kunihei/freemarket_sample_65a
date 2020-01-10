@@ -16,8 +16,10 @@ class UsersController < ApplicationController
   end
 
   def update
-     current_user.update(user_params)
+     @user = User.find(params[:id])
+     @user.update(nickname:  user_params[:nickname],introduction: user_params[:introduction])
      binding.pry
+     redirect_to root_path
   end
 
 
@@ -28,12 +30,6 @@ class UsersController < ApplicationController
   def item_negotiate
     @user = User.find(params[:id])
   end
-
-
-  def item_buyed
-    @user = User.find(params[:id])
-  end
-
 
   private
 
@@ -46,5 +42,4 @@ class UsersController < ApplicationController
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
-
 end
