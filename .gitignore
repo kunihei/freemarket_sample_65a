@@ -43,4 +43,4 @@ app/assets/stylesheets/_users.scss
 .env
 
 db/migrate/20200106083916_remove_pref_from_items.rb
-public
+/public/uploads
