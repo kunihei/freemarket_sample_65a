@@ -26,20 +26,23 @@
             %th.item-main-content__table__row--title
               出品者 
             %td.item-main-content__table__row--data
-              =@item.user.nickname
+              = link_to '#' do
+                =@item.user.nickname
           /商品カテゴリー
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
               カテゴリー
             %td.item-main-content__table__row--data
-              =@item.genre
+              = link_to categories_item_path(@item.genre) do
+                =@item.genre
           /商品ブランド（入力していれば表示）
           -if @item.brand.present?
             %tr.item-main-content__table__row
               %th.item-main-content__table__row--title
                 ブランド
               %td.item-main-content__table__row--data 
-                =@item.brand
+                = link_to '#' do
+                  =@item.brand
           /商品状態
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
@@ -174,13 +177,13 @@
         -@user_items.each do |item|
           .user-other-items__box
             /1枚目の画像のみ表示
-            = link_to image_tag(@item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
+            = link_to image_tag(item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image"),'#'
             .user-other-items__box__body
               .user-other-items__box__body--name
-                =@item.status
+                =item.name
               /商品価格
               .user-other-items__box__body--price
-                =converting_to_jpy(@item.price)
+                =converting_to_jpy(item.price)
                 .user-other-items__box__body--price--heart
                   = icon('fas' ,'heart',class:"icon-heart")
                   10
@@ -198,7 +201,7 @@
             = link_to image_tag(item.images[0].src.to_s,size:'220x220',class:"user-other-items__box--image")
             .user-other-items__box__body
               .user-other-items__box__body--name
-                =item.status
+                =item.name
               /商品価格
               .user-other-items__box__body--price
                 =converting_to_jpy(item.price)

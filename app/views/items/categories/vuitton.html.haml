@@ -1,0 +1,6 @@
+=render 'items/header'
+
+.toppage-body
+  = render partial: 'categories', locals: { 'items': @items_vuitton ,genre: 'ヴィトン' }
+  = paginate(@items_vuitton)
+=render 'items/footer'

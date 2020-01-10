@@ -3,7 +3,7 @@
     .toppage__items
       .toppage__items__name
         ="#{genre}新着アイテム"
-      =link_to "もっと見る ＞", '#', class: "toppage__items__button"
+      =link_to "もっと見る ＞", categories_item_path(category), class: "toppage__items__button"
     .toppage__block
       -items.each do |item|
         .toppage__block__goods
