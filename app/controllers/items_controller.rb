@@ -64,14 +64,14 @@ class ItemsController < ApplicationController
   #カテゴリーでの検索機能
   def categories
     @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
-    @items.present?
-    @item = @items[0]
+    @item  = @items[0]
     @category = @item.genre
-    
   end
 
-  def prefecture 
-    @items = Item.where(prefecture: params[:id]).page(params[:page]).per(20)
+  def prefectures
+    @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
+    @item  = @items[0]
+    @prefecture = @item.prefecture.name
   end
   
   #購入確認画面
