@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     member do 
       get 'transaction'
       post'transaction_update'
+      post'evaluation_update'
     end
     collection do
       get 'search'

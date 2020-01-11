@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update]
+  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
   require 'payjp'
 
@@ -85,6 +85,12 @@ class ItemsController < ApplicationController
     @item.update(send_params)
     redirect_to root_path
   end
+
+  def evaluation_update
+    @item.update(evaluation_params)
+    redirect_to root_path
+  end
+
   #購入確認画面
   def buy_confirmation
     @address = @item.user.address
@@ -151,6 +157,10 @@ class ItemsController < ApplicationController
 
   def send_params
     params.require(:item).permit(:send_id)
+  end
+
+  def evaluation_params
+    params.require(:item).permit(:evaluation ,:sold)
   end
 
 
