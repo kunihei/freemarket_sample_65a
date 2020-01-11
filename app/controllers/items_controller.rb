@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay]
+  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
   require 'payjp'
 
@@ -49,9 +49,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
+
   end
 
   def destroy
@@ -67,13 +69,22 @@ class ItemsController < ApplicationController
     @item  = @items[0]
     @category = @item.genre
   end
-
+  #都道府県での検索機能
   def prefectures
     @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
     @item  = @items[0]
     @prefecture = @item.prefecture.name
   end
-  
+
+  #取引画面
+  def transaction
+    
+  end
+
+  def transaction_update
+    @item.update(send_params)
+    redirect_to root_path
+  end
   #購入確認画面
   def buy_confirmation
     @address = @item.user.address
@@ -136,6 +147,10 @@ class ItemsController < ApplicationController
   #商品出品の際のparams
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
+  end
+
+  def send_params
+    params.require(:item).permit(:send_id)
   end
 
 
