@@ -15,6 +15,15 @@
         /画像一覧(ピックアップ)
         .item-main-content__photo
           = image_tag @item.images[0].src.to_s, size:"250x300"
+          /画像の販売状況
+          - if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+            .item-main-content__message
+            .item-main-content__stutas
+              SOLD
+          - elsif @item.user_id.present? && @item.buyer_id.present? 
+            .item-main-content__message
+            .item-main-content__stutas
+              交渉中
           /画像一覧(その他)
           .photo 
             -@item_images.each do |image|
@@ -83,7 +92,17 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-      -if @item.user.id  ==  current_user.id
+      -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+        / ボタン 購入者用
+        .item-buy
+          .item-buy__buying__gray
+            売り切れました
+      -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
+        / ボタン 購入者用
+        .item-buy
+          = link_to '#',class:"item-buy__buying" do
+            取引画面に進む
+      -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
         / ボタン 投稿者用
         .item-buy
           = link_to '#',class:"item-buy__buying" do
@@ -95,8 +114,7 @@
         .item-buy.item_gray
           = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
             この商品を削除する 
-      -else
-        / ボタン 購入者用
+      -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む

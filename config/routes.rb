@@ -1,27 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'card/new'
-  get 'card/show'
+  root to: 'items#index'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks' 
   }
   devise_scope :user do
-    get 'tellphone', to: 'users/registrations#new_tellphone'
+    get 'tellphone',  to: 'users/registrations#new_tellphone'
     post 'tellphone', to: 'users/registrations#create_tellphone'
-    get 'addresses', to: 'users/registrations#new_address'
+    get 'addresses',  to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
-    get 'cards', to: 'users/registrations#new_cards'
-    post 'cards', to: 'users/registrations#create_cards'
-    get 'finish', to: 'users/registrations#new_finish'
-    post 'finish', to: 'users/registrations#create_finish'
+    get 'cards',      to: 'users/registrations#new_cards'
+    post 'cards',     to: 'users/registrations#create_cards'
+    get 'finish',     to: 'users/registrations#new_finish'
+    post 'finish',    to: 'users/registrations#create_finish'
   end
-
-  root to: 'items#index'
-
-
-
 
   get 'users/edit/:name/:id', controller: 'users', action: 'edit'
   resources :users do
@@ -32,13 +27,17 @@ Rails.application.routes.draw do
     end
   end
 
-  
   resources :items do
     member do
       get 'buy_confirmation'
-      post 'pay'
+      post'pay'
       get 'categories',  controller: 'items', action: 'categories'
       get 'prefectures',  controller: 'items', action: 'prefectures'
+    end
+    member do 
+      get 'transaction'
+      post'transaction_update'
+      post'evaluation_update'
     end
     collection do
       get 'search'
