@@ -5,16 +5,38 @@
     .purchase-body__list#tansaction__list
       .purchase-body__verification
         取引画面
-      .purchase-body__payment
-        = image_tag @item.images[0].src.to_s, size: "60x80"
-        .purchase-body__payment__info
-          .purchase-body__payment__info__brand
-            =@item.name
-          .purchase-body__payment__info__money
-          ="#{converting_to_jpy(@item.price)}  (税込)  送料込み"
-      /
-      /= render partial: 'send', locals: {'item': @item}
-      /= render partial: 'acceptance_wait', locals: {'item': @item}
-      = render partial: 'acceptance', locals: {'item': @item}
-      /
+      -# .purchase-body__payment
+      -#   = image_tag @item.images[0].src.to_s, size: "60x80"
+      -#   .purchase-body__payment__info
+      -#     .purchase-body__payment__info__brand
+      -#       =@item.name
+      -#     .purchase-body__payment__info__money
+      -#     ="#{converting_to_jpy(@item.price)}  (税込)  送料込み"
+      - if @item.sold.present?
+        test
+      - elsif @item.user_id == current_user.id
+        -if @item.send_id.blank?
+          = render partial: 'send', locals: {'item': @item}
+        -elsif @item.send_id.present?
+          = render partial: 'acceptance_wait', locals: {'item': @item}
+      - elsif @item.buyer_id == current_user.id
+        -if send_id.blank?
+          = render partial: 'send_wait', locals: {'item': @item}
+        -elsif send_id.present?
+          = render partial: 'acceptance', locals: {'item': @item}
+      .transaction__item.flex
+        = image_tag @item.images[0].src.to_s, size: "80x100"
+        .transaction__item__name
+          =@item.name
+      .transaction__item__info
+        .transaction__item--price
+          = "商品代金 #{converting_to_jpy(@item.price)}"
+        .transaction__item--commission
+          = "販売手数料 #{converting_to_jpy((@item.price*0.1).floor)}"
+        .transaction__item--profit
+          = "販売利益 #{converting_to_jpy((@item.price - @item.price*0.1).ceil )}"
+        .transaction__item--postage_selct
+          = "送料 #{@item.postage_selct}"
+        .transaction__item--day
+          = "購入日時 #{@item.created_at.strftime("%m月%d日 %H:%M")}"
 =render 'users/subfooter'
