@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def item_negotiate
     @user = User.find(params[:id])
   end
-  
+
   def item_buyed
     @user = User.find(params[:id])
   end
