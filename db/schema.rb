@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_11_113030) do
+ActiveRecord::Schema.define(version: 2020_01_11_130556) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_01_11_113030) do
     t.integer "sub_genre", default: 0
     t.integer "sold"
     t.integer "send_id"
+    t.integer "evaluation"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
