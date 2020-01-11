@@ -1,0 +1,20 @@
+.purchase-main
+  =render 'users/subheader'
+  //ボディーの部分
+  .purchase-body#tansaction__body
+    .purchase-body__list#tansaction__list
+      .purchase-body__verification
+        取引画面
+      .purchase-body__payment
+        = image_tag @item.images[0].src.to_s, size: "60x80"
+        .purchase-body__payment__info
+          .purchase-body__payment__info__brand
+            =@item.name
+          .purchase-body__payment__info__money
+          ="#{converting_to_jpy(@item.price)}  (税込)  送料込み"
+      /
+      /= render partial: 'send', locals: {'item': @item}
+      /= render partial: 'acceptance_wait', locals: {'item': @item}
+      = render partial: 'acceptance', locals: {'item': @item}
+      /
+=render 'users/subfooter'
