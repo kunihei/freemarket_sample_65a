@@ -61,17 +61,20 @@ class ItemsController < ApplicationController
       render :show, alert: '削除に失敗しました。'
     end
   end
-
+  #カテゴリーでの検索機能
   def categories
-    @items = Item.where(genre: params[:id]).page(params[:page]).per(2)
-    if @items.present?
-      @item = @items[0]
-      @category = @item.genre
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
+    @items.present?
+    @item = @items[0]
+    @category = @item.genre
+    
   end
 
+  def prefecture 
+    @items = Item.where(prefecture: params[:id]).page(params[:page]).per(20)
+  end
+  
+  #購入確認画面
   def buy_confirmation
     @address = @item.user.address
     
@@ -97,7 +100,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-
+  #購入機能
   def pay
     if @card.blank?
       redirect_to action: "new"
@@ -116,6 +119,9 @@ class ItemsController < ApplicationController
   def search
     @items = Item.search(params[:keyword])
   end
+
+
+
 
   private
 

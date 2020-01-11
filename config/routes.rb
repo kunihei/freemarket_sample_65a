@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'buy_confirmation'
       post 'pay'
       get 'categories',  controller: 'items', action: 'categories'
+      get 'sprefectures',  controller: 'items', action: 'prefectures'
     end
     collection do
       get 'search'
