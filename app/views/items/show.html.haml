@@ -114,8 +114,7 @@
         .item-buy.item_gray
           = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
             この商品を削除する 
-      -else
-        / ボタン 購入者用
+      -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む
