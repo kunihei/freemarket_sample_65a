@@ -1,7 +1,0 @@
-=render 'items/header'
-
-.toppage-body
-  /レディース商品
-  = render partial: 'categories', locals: { 'items': @items_appliances ,genre: '家電・スマホ・カメラ' }
-  = paginate(@items_appliances)
-=render 'items/footer'
