@@ -15,6 +15,10 @@
         /画像一覧(ピックアップ)
         .item-main-content__photo
           = image_tag @item.images[0].src.to_s, size:"250x300"
+          /画像の販売状況
+          .item-main-content__message
+          .item-main-content__stutas
+            SOLD
           /画像一覧(その他)
           .photo 
             -@item_images.each do |image|
