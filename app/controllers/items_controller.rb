@@ -63,12 +63,14 @@ class ItemsController < ApplicationController
       render :show, alert: '削除に失敗しました。'
     end
   end
+
   #カテゴリーでの検索機能
   def categories
     @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
     @item  = @items[0]
     @category = @item.genre
   end
+
   #都道府県での検索機能
   def prefectures
     @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
@@ -78,43 +80,52 @@ class ItemsController < ApplicationController
 
   #取引画面
   def transaction
-    
+    @user = @item.user
+    if @item.user_id == current_user.id || @item.buyer_id == current_user.id
+      render :transaction
+    else
+      redirect_to root_path
+    end
   end
 
   def transaction_update
     @item.update(send_params)
-    redirect_to root_path
+    redirect_to transaction_item_path(@item.id)
   end
 
   def evaluation_update
     @item.update(evaluation_params)
-    redirect_to root_path
+    redirect_to transaction_item_path(@item.id)
   end
 
   #購入確認画面
   def buy_confirmation
     @address = @item.user.address
-    
-    if @card.present?
-      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_information = customer.cards.retrieve(@card.card_id)
+    if @item.user_id != current_user.id
+      if @card.present?
+        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @card_information = customer.cards.retrieve(@card.card_id)
 
-      @card_brand = @card_information.brand      
-      case @card_brand
-      when "Visa"
-        @card_src = "visa.png"
-      when "JCB"
-        @card_src = "jcb.png"
-      when "MasterCard"
-        @card_src = "master-card.png"
-      when "American Express"
-        @card_src = "american_express.png"
-      when "Diners Club"
-        @card_src = "dinersclub.png"
-      when "Discover"
-        @card_src = "discover.png"
+        @card_brand = @card_information.brand      
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.png"
+        when "JCB"
+          @card_src = "jcb.png"
+        when "MasterCard"
+          @card_src = "master-card.png"
+        when "American Express"
+          @card_src = "american_express.png"
+        when "Diners Club"
+          @card_src = "dinersclub.png"
+        when "Discover"
+          @card_src = "discover.png"
+        end
       end
+    else
+      flash[:alert] = '出品者様は購入できません'
+      redirect_to root_path
     end
   end
   #購入機能
@@ -129,6 +140,7 @@ class ItemsController < ApplicationController
         customer: @card.customer_id, #顧客ID
         currency: 'jpy', #日本円
         )
+      @item.update(buyer_id: current_user.id)
       redirect_to root_path
     end
   end
