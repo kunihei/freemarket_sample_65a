@@ -1,7 +1,7 @@
 =render 'items/header'
 .search-container
   .sidebar
-    = form_for "#" do |f|
+    = form_for "@item" do |f|
       .sidebar-top
         = f.select :order, Item.orders.keys, {} 
         = icon('fas', 'angle-down', class: 'form-btn')
@@ -142,7 +142,15 @@
     .search-result
       100件検索結果
     .item-box-picture
-      
+      - @items.each do |item|
+        .item-box-picture__goods
+          = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+            /一枚目の画像取得
+            = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+            .item-box-picture__goods__link__words
+              =item.name
+          .item-box-picture__goods__price
+            = converting_to_jpy(item.price)
 
 
 
