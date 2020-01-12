@@ -70,7 +70,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address = Address.new(session["devise.regist_data3"]["address"])
       @user.build_address(@address.attributes)
       @user.build_number(@number.attributes)
-      binding.pry
       if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
         sign_in(:user, @user)
         render :new_finish
