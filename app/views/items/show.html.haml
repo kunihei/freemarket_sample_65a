@@ -100,7 +100,7 @@
       -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
         / ボタン 購入者用
         .item-buy
-          = link_to '#',class:"item-buy__buying" do
+          = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
             取引画面に進む
       -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
         / ボタン 投稿者用

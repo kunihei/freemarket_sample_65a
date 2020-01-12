@@ -2,16 +2,19 @@
   &__title{
     width: 100%;
     height: 120px;
-    background-color: #fbff1593;
+    text-align: left;
+    padding-top: 20px;
+    background-color: #FFFACD;
+    
     &__top{
-      padding: 10px 0 10px 130px;
       font-size: 30px;
       font-weight: 500;
+      margin-left: 10%;
     }
     &__bottom{
-      margin-left: 130px;
       font-size: 20px;
       font-weight: 300;
+      margin-left: 10%;
       p{
         margin-bottom: 5px;
       }
@@ -101,3 +104,9 @@
   height: 800px;
 }
 /*----------------------- 取引画 item詳細 -----------------------*/
+.tansaction{
+  &__itemname{
+    padding: 130px 0 30px;
+   font-size: 25px;
+  }
+}
