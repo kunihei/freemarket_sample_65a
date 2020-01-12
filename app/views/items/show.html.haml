@@ -131,6 +131,7 @@
             = icon('fas' ,'heart',class:"icon-heart")
             %span.item-button__left__like--good
               いいね！
+            = render partial: 'like', locals: {'item': @item}
             %span.item-button__left__like--number
               10000
           = link_to '#' ,class:"item-button__left__reports" do
