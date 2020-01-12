@@ -14,7 +14,7 @@
         .profile__right__content
           %h2.profile__right__content__head プロフィール
           /以下右側 ユーザー情報編集form
-          = form_for(current_user) do |f|
+          = form_for @user do |f|
             .profile__right__content__edit
               .profile__right__content__edit__nickname.flex
                 = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
