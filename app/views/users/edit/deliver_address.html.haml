@@ -12,18 +12,18 @@
         .profile__right__content
           %h2.profile__right__content__head 発送元・お届け先住所変更
           .profile__right__content__form
-            = form_for '#' do |f|
+            = form_for @address,url: address_update_user_path(@user.id) ,method: :post do |f|
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name お名前
                   %li.delibver__tag.delibver__tag__require 必須
                 %ul
                   -if @user.last_name.present?
-                    %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田',value: @user.last_name
+                    %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田',value: @address.last_name
                   -else
                     %li= f.text_field :last_name,  class: 'delibver__right__input', placeholder: '例)山田'
                   -if @user.first_name.present?
-                    %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩',value: @user.first_name
+                    %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩',value: @address.first_name
                   -else
                     %li= f.text_field :first_name, class: 'delibver__right__input', placeholder: '例)彩'
               .delibver__right__content__group
@@ -32,11 +32,11 @@
                   %li.delibver__tag.delibver__tag__require 必須
                 %ul
                   -if @user.last_name_kana.present?
-                    %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ',value: @user.last_name_kana
+                    %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ',value: @address.last_name_kana
                   -else
                     %li= f.text_field :last_name_kana,  class: 'delibver__right__input', placeholder: '例)ヤマダ'
                   -if @user.last_name_kana.present?
-                    %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ',value: @user.first_name_kana
+                    %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ',value: @address.first_name_kana
                   -else
                     %li= f.text_field :first_name_kana, class: 'delibver__right__input', placeholder: '例)アヤ'
               .delibver__right__content__group
