@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
+  before_action :set_user, only: [:show, :transaction]
   require 'payjp'
 
   def index
@@ -41,8 +42,6 @@ class ItemsController < ApplicationController
   def show
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
-    #選択されたitemのuser情報取得
-    @user = @item.user
     #選択されたitemのuserが持つ出品情報取得
     @user_items = Item.where(user_id: @user.id).limit(6)
     #選択されたitemが持つカテゴリー情報取得
@@ -116,7 +115,6 @@ class ItemsController < ApplicationController
 
   #取引画面
   def transaction
-    @user = @item.user
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
@@ -154,16 +152,7 @@ class ItemsController < ApplicationController
 
 
   private
-
-  def set_item
-   #選択されたitemの取得
-   @item = Item.find(params[:id])
-  end
-
-  def set_card
-    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
-  end
-  #商品出品の際のparams
+  # ストロングパラメーター
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
   end
@@ -176,5 +165,16 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:evaluation ,:sold)
   end
 
+  # before_action
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
+  def set_card
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
+  end
+  
+  def set_user
+    @user = @item.user
+  end
 end
