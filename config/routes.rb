@@ -24,12 +24,12 @@ Rails.application.routes.draw do
       get :item_exhibit
       get :item_negotiate
       get :item_buyed
-      post :address_update
-      post :identification_update
-      post :password_update
-      post :tell_update
     end
   end
+  resources :user_addresses,        only: [:update]
+  resources :user_identifications, only: [:update]
+  resources :user_pass,       only: [:update]
+  resources :user_tells,            only: [:update]
 
   resources :items do
     resources :likes, only: [:create, :destroy]
