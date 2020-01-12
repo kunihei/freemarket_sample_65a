@@ -24,6 +24,10 @@ Rails.application.routes.draw do
       get :item_exhibit
       get :item_negotiate
       get :item_buyed
+      post :address_update
+      post :identification_update
+      post :password_update
+      post :tell_update
     end
   end
 
