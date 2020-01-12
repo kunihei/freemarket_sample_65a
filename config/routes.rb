@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     end
   end
   resources :user_addresses,        only: [:update]
-  resources :user_identifications, only: [:update]
-  resources :user_pass,       only: [:update]
+  resources :user_identifications,  only: [:update]
+  resources :user_pass,             only: [:update]
   resources :user_tells,            only: [:update]
 
   resources :items do

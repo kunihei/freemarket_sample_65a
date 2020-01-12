@@ -1,4 +1,5 @@
 class UserPassController < ApplicationController
+  include SetUser
   before_action :set_user
   
   def update
@@ -9,10 +10,6 @@ class UserPassController < ApplicationController
 
 
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def user_password_params
     params.require(:user).permit(:email, :password)
   end

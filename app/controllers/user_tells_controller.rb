@@ -1,4 +1,5 @@
 class UserTellsController < ApplicationController
+  include SetUser
   before_action :set_user
   
   def update
@@ -9,9 +10,6 @@ class UserTellsController < ApplicationController
 
 
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_tell_params
     params.require(:number).permit(:tell)

@@ -1,5 +1,5 @@
 class UserIdentificationsController < ApplicationController
-
+  include SetUser
   before_action :set_user
 
   def update
@@ -9,9 +9,6 @@ class UserIdentificationsController < ApplicationController
 
 
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_identification_params
     params.require(:user).permit(:postcode, :prefecture_id, :city, :block, :buildin)
