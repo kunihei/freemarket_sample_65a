@@ -1,15 +1,22 @@
 class Item < ApplicationRecord
+  # アソシエーション
   has_one :address
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :user
+  belongs_to :buyer, class_name: "User", optional: true
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  has_many :likes, dependent: :destroy
+  has_many :liked_items, through: :likes, source: :item
 
   # belongs_to :category
   has_many :item_categories
   has_many :categories, through: :item_categories
 
-  # image validates
+  # バリデーション
   validates :name, :text, :price, presence: true
+  validates :images, presence: true
   # validates :genre, :status, :postage_selct, :prefecture_id, :delivery_day, inclusion: { in: [0] }
   validate :price_limit
   validates_associated :images
@@ -23,16 +30,6 @@ class Item < ApplicationRecord
       errors.add(:price, ": out")
     end
   end
-
-  validates :images, presence: true
-
-  belongs_to :buyer, class_name: "User", optional: true
-
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
-
- 
 
 
   enum genre:{
