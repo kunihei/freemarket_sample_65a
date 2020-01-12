@@ -14,7 +14,7 @@
           %h2.profile__right__content__head 本人情報の登録
           .identification__right__content__form
             /以下form欄
-            = form_for '#' do |f|
+            = form_for @user, url:  identification_update_user_path(@user.id) ,method: :post do |f|
               .identification__right__content__middle
                 %p お客さまの本人情報をご登録ください。
                 %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
@@ -41,8 +41,8 @@
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 郵便番号
                   %li.identification__tag.identification__tag__arbitrary 任意
-                -if @address.postcode.present?
-                  %li= f.text_field :postcode, class: 'identification__right__input', placeholder: '例)123-4567', value:@address.postcode
+                -if @user.postcode.present?
+                  %li= f.text_field :postcode, class: 'identification__right__input', placeholder: '例)123-4567', value:@user.postcode
                 -else
                   %li= f.text_field :postcode, class: 'identification__right__input', placeholder: '例)123-4567'
               /都道府県選択
@@ -52,15 +52,19 @@
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li
                   = f.label :pref_id  do
-                    = f.collection_select :pref_id, Prefecture.all, :id, :name, class: 'identification__right__input'
-                    = icon('fas', 'angle-down', class: 'identification__rarrow_bottom')
+                    -if @address.prefecture_id.present?
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name,value: @address.prefecture_id
+                      = icon('fas', 'chevron-down', class: 'identification__rarrow_bottom')
+                    -else
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                      = icon('fas', 'chevron-down', class: 'identification__rarrow_bottom')
               /市町村
               .identification__right__content__group
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 市区町村
                   %li.identification__tag.identification__tag__arbitrary 任意
-                -if @address.city.present?
-                  %li= f.text_field :city , class: 'identification__right__input', placeholder: '例)横浜市緑区', value:@address.city
+                -if @user.city.present?
+                  %li= f.text_field :city , class: 'identification__right__input', placeholder: '例)横浜市緑区', value:@user.city
                 -else
                   %li= f.text_field :city , class: 'identification__right__input', placeholder: '例)横浜市緑区'
               /番地
@@ -68,8 +72,8 @@
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 番地 
                   %li.identification__tag.identification__tag__arbitrary 任意
-                -if @address.block.present?
-                  %li= f.text_field :block , class: 'identification__right__input', placeholder: '例)青山1-1-1', value:@address.block
+                -if @user.block.present?
+                  %li= f.text_field :block , class: 'identification__right__input', placeholder: '例)青山1-1-1', value:@user.block
                 -else
                   %li= f.text_field :block , class: 'identification__right__input', placeholder: '例)青山1-1-1'
               /建物名
@@ -77,8 +81,8 @@
                 %ul.identification__right__content__group__top.flex
                   %li.identification__right__content__group__name 建物名 
                   %li.identification__tag.identification__tag__arbitrary 任意
-                -if @address.building.present?
-                  %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103', value:@address.building
+                -if @user.building.present?
+                  %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103', value:@user.building
                 -else
                   %li= f.text_field :building , class: 'identification__right__input', placeholder: '例)柳ビル103'
                 /送信ボタン
