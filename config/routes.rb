@@ -18,14 +18,10 @@ Rails.application.routes.draw do
     post 'finish',    to: 'users/registrations#create_finish'
   end
 
+  
+  resources :users , except: [:edit]
   get 'users/edit/:name/:id', controller: 'users', action: 'edit'
-  resources :users do
-    member do
-      get :item_exhibit
-      get :item_negotiate
-      get :item_buyed
-    end
-  end
+  get 'users/mypage/:name/:id', controller: 'users', action: 'mypage'
   resources :user_addresses,        only: [:update]
   resources :user_identifications,  only: [:update]
   resources :user_pass,             only: [:update]
