@@ -28,13 +28,12 @@ Rails.application.routes.draw do
   end
 
   resources :items do
+    resources :likes, only: [:create, :destroy]
     member do
       get 'buy_confirmation'
       post'pay'
-      get 'categories',  controller: 'items', action: 'categories'
-      get 'prefectures',  controller: 'items', action: 'prefectures'
-    end
-    member do 
+      get 'categories'
+      get 'prefectures'
       get 'transaction'
       post'transaction_update'
       post'evaluation_update'
@@ -43,7 +42,4 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  
-
-
 end
