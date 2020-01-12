@@ -52,8 +52,8 @@
                   %li.identification__tag.identification__tag__arbitrary 任意
                 %li
                   = f.label :pref_id  do
-                    -if @address.prefecture_id.present?
-                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name,value: @address.prefecture_id
+                    -if @user.prefecture_id.present?
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name,value: @user.prefecture_id
                       = icon('fas', 'chevron-down', class: 'identification__rarrow_bottom')
                     -else
                       = f.collection_select :prefecture_id, Prefecture.all, :id, :name
