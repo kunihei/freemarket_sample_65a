@@ -23,11 +23,12 @@ class ItemsController < ApplicationController
     @items_nike =Item.where(brand: '2').order('created_at DESC').limit(10)
   end
 
+  #item作成ページ
   def new
     @item = Item.new
     @item.images.new
   end
-  
+  #item新規登録
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -36,7 +37,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  #itme詳細
   def show
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
@@ -46,6 +47,8 @@ class ItemsController < ApplicationController
     @user_items = Item.where(user_id: @user.id).limit(6)
     #選択されたitemが持つカテゴリー情報取得
     @genre_items = Item.where(genre: @item.genre).limit(6)
+    #likeのインスタンス作成
+    @like = Like.new
   end
 
   def edit
@@ -64,18 +67,51 @@ class ItemsController < ApplicationController
     end
   end
 
-  #カテゴリーでの検索機能
-  def categories
-    @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
-    @item  = @items[0]
-    @category = @item.genre
+  #購入確認画面
+  def buy_confirmation
+    @address = @item.user.address
+    if @item.user_id != current_user.id
+      if @card.present?
+        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @card_information = customer.cards.retrieve(@card.card_id)    
+        @card_brand = @card_information.brand      
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.png"
+        when "JCB"
+          @card_src = "jcb.png"
+        when "MasterCard"
+          @card_src = "master-card.png"
+        when "American Express"
+          @card_src = "american_express.png"
+        when "Diners Club"
+          @card_src = "dinersclub.png"
+        when "Discover"
+          @card_src = "discover.png"
+        end
+      end
+    else
+      flash[:alert] = '出品者様は購入できません'
+      redirect_to root_path
+    end
   end
 
-  #都道府県での検索機能
-  def prefectures
-    @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
-    @item  = @items[0]
-    @prefecture = @item.prefecture.name
+  #購入機能
+  def pay
+    if @card.blank?
+      redirect_to action: "new"
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
+    else
+      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      Payjp::Charge.create(
+        amount: @item.price, #支払金額
+        customer: @card.customer_id, #顧客ID
+        currency: 'jpy', #日本円
+        )
+      @item.update(buyer_id: current_user.id)
+      redirect_to root_path
+    end
   end
 
   #取引画面
@@ -98,57 +134,22 @@ class ItemsController < ApplicationController
     redirect_to transaction_item_path(@item.id)
   end
 
-  #購入確認画面
-  def buy_confirmation
-    @address = @item.user.address
-    if @item.user_id != current_user.id
-      if @card.present?
-        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @card_information = customer.cards.retrieve(@card.card_id)
-
-        @card_brand = @card_information.brand      
-        case @card_brand
-        when "Visa"
-          @card_src = "visa.png"
-        when "JCB"
-          @card_src = "jcb.png"
-        when "MasterCard"
-          @card_src = "master-card.png"
-        when "American Express"
-          @card_src = "american_express.png"
-        when "Diners Club"
-          @card_src = "dinersclub.png"
-        when "Discover"
-          @card_src = "discover.png"
-        end
-      end
-    else
-      flash[:alert] = '出品者様は購入できません'
-      redirect_to root_path
-    end
-  end
-  #購入機能
-  def pay
-    if @card.blank?
-      redirect_to action: "new"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
-    else
-      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
-      Payjp::Charge.create(
-        amount: @item.price, #支払金額
-        customer: @card.customer_id, #顧客ID
-        currency: 'jpy', #日本円
-        )
-      @item.update(buyer_id: current_user.id)
-      redirect_to root_path
-    end
-  end
-
   def search
     @items = Item.search(params[:keyword])
   end
 
+  #カテゴリーでの検索機能
+  def categories
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
+    @item  = @items[0]
+    @category = @item.genre
+  end
+  #都道府県での検索機能
+  def prefectures
+    @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
+    @item  = @items[0]
+    @prefecture = @item.prefecture.name
+  end
 
 
 
