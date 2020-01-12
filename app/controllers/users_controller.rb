@@ -20,16 +20,6 @@ class UsersController < ApplicationController
      @user.update(user_params)
      redirect_to root_path
   end
-  # お届け先住所更新
-  def address_update
-    @address.update(user_address_params)
-    redirect_to root_path
-  end
-  # 本人情報更新
-  def identification_update
-    @user.update(user_identification_params)
-    redirect_to root_path
-  end
   # パスワード/メールアドレス更新
   def password_update
     @user.update(user_password_params)
@@ -71,7 +61,7 @@ class UsersController < ApplicationController
 
   def user_tell_params
     params.require(:number).permit(:tell)
-
+  end
   # before_action
   def set_user
     @user = User.find(params[:id])
