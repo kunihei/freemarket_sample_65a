@@ -51,7 +51,9 @@ class ItemsController < ApplicationController
     #選択されたitemが持つカテゴリー情報取得
     @genre_items = Item.where(genre: @item.genre).limit(6)
     #likeのインスタンス作成
-    @like = Like.new
+    @like = @item.likes.find_by(user_id: current_user.id)
+
+    @like = Like.new unless @like.present?
   end
 
   def edit
@@ -139,7 +141,7 @@ class ItemsController < ApplicationController
         currency: 'jpy', #日本円
         )
       @item.update(buyer_id: current_user.id)
-      redirect_to root_path
+      redirect_to transaction_item_path(@item.id)
     end
   end
 
@@ -166,6 +168,7 @@ class ItemsController < ApplicationController
     @item  = @items[0]
     @category = @item.genre
   end
+  
   #都道府県での検索機能
   def prefectures
     @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
@@ -185,10 +188,10 @@ class ItemsController < ApplicationController
     params.require(:registered_images_ids).permit({ids: []})
   end
 
-
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
+  
   def send_params
     params.require(:item).permit(:send_id)
   end
