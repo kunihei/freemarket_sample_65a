@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  include SetUser
-  before_action :set_user
+  include SetUser 
+  before_action :set_user, except: [:new]
   
   def show
   end
