@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_06_100506) do
+ActiveRecord::Schema.define(version: 2020_01_12_112206) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
@@ -73,7 +73,21 @@ ActiveRecord::Schema.define(version: 2020_01_06_100506) do
     t.integer "brand"
     t.bigint "user_id"
     t.integer "prefecture_id"
+    t.integer "buyer_id"
+    t.integer "sub_genre", default: 0
+    t.integer "sold"
+    t.integer "send_id"
+    t.integer "evaluation"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -118,6 +132,11 @@ ActiveRecord::Schema.define(version: 2020_01_06_100506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "tell"
+    t.string "postcode"
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "block"
+    t.string "building"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -125,6 +144,8 @@ ActiveRecord::Schema.define(version: 2020_01_06_100506) do
   add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
   add_foreign_key "numbers", "users"
   add_foreign_key "phone_numbers", "users"
   add_foreign_key "sns_credentials", "users"

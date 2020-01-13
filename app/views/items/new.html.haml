@@ -15,6 +15,7 @@
             最大10枚までアップロードできます
           #image-box-1
             .item-num-0#image-box__container
+              // imagesテーブルに画像を保存
               = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
                   = image.file_field :src, class: 'image__file', name: "item[images_attributes][][src]", type: 'file', style: "display:none"
@@ -53,10 +54,67 @@
                   %li.exhibit__contents__center__detail__list-group__group__name__list--required
                     必須
               %li
-
                 = f.label :genre do
-                  = f.select :genre, Item.genres.keys, {}
+                  = f.select :genre, Item.genres.keys, {}, id:'genre_form'
                   = icon('fas', 'angle-down', class: 'form-btn')
+              
+              
+              -# %li.active_genre1.show_sub
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.women.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre2
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.men.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre3
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.babies.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre4
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.interiors.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre5
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.books.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre6
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.hobbies.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %l.active_genre7
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.cosmetics.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre8
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.appliances.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre9
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.sports.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre10
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.hand_mades.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre11
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.tickets, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %li.active_genre12
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.motorcycles.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+              -# %l.active_genre13
+              -#   = f.label :sub_genre do
+              -#     = f.select :sub_genre, Item.others.keys, {}, id:'subgenre_form'
+              -#     = icon('fas', 'angle-down', class: 'form-btn')
+
+
+
+
 
             %ul.exhibit__contents__center__detail__list-group__group--b
               %li.exhibit__contents__center__detail__list-group__group__name
@@ -123,7 +181,7 @@
                     必須
               %li.exhibit__contents__center__price__list-group__group__form
                 ¥
-                %input.price_calc{placeholder: "例) 300", type: "number"}
+                = f.text_field :price, placeholder: "例) 300", class: 'price_calc'
             %ul.exhibit__contents__center__price__list-group__group--b
               %li.exhibit__contents__center__price__list-group__group__fee
                 販売手数料 (10%)

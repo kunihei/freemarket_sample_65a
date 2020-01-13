@@ -70,7 +70,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address = Address.new(session["devise.regist_data3"]["address"])
       @user.build_address(@address.attributes)
       @user.build_number(@number.attributes)
-
       if @card.save && @user.save  #ユーザー情報のsaveとカード情報のsave
         sign_in(:user, @user)
         render :new_finish
@@ -86,6 +85,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
   end
 
+  
   protected
 
   def configure_sign_up_params
@@ -95,8 +95,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:number).permit(:tell)
   end
   def address_params
-    params.require(:address).permit(:postcode, :city, :block, :building, :tell, :last_name, :first_name, :last_name_kana, :first_name_kana)
+    params.require(:address).permit(:postcode,:prefecture_id, :city, :block, :building, :tell, :last_name, :first_name, :last_name_kana, :first_name_kana)
   end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

@@ -1,0 +1,122 @@
+.buysell__main{
+  margin: 40px auto 0;
+  width:1024px;
+  height: 100%;
+}
+.buysell__container{
+
+}
+.buysell--right{
+  width:700px;
+  &__head{
+    background-color: #fafafa;
+    &__message{
+      line-height: 72px;
+      font-weight: bold;
+    }
+  }
+  &__items{
+    display:flex;
+    &--item{
+      background-color: #eee;
+      text-align: center;
+      width: 100%;
+      font-size: 16px;
+      line-height: 72px;
+      margin: 0;
+    }
+  }
+  &__body{
+    background-color: white;
+    padding: 16px;
+    &--item{
+      overflow: scroll;
+      &--yes{
+        &--content{
+          position: relative;
+          margin-bottom: 5px;
+          display: flex;
+          .item-image{
+            height:100px;
+          }
+          .item-name{
+          }
+          .item-status{
+            position: absolute;
+            left:120px;
+            bottom:0;
+            padding:5px;
+            color: white;
+            background-color: skyblue;
+            border-radius: 5px;
+          }
+          .item-link{
+            position: absolute;
+            top:50px;
+            right:10px;
+            font-size:20px;
+          }
+        }
+      }
+      &--no{
+        height:200px;
+        line-height: 50px;
+        text-align: center;
+        opacity: 0.5;
+        font-weight: bold;
+      }
+    }
+  }
+}
+.item-yes{
+  height:700px;
+}
+.click{
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 72px;
+  margin: 0;
+  background-color: white;
+  border-top: 2px solid #ea352d;
+}
+
+.bottom-button{
+  position: relative;
+  .left-button{
+    position: absolute;
+    left:0;
+    top:10px;
+    font-size:20px;
+    border-radius: 5px;
+  }
+  .right-button{
+    position: absolute;
+    right:0;
+    top:10px;
+    font-size:20px;
+    border-radius: 5px;
+  }
+}
+
+
+// 出品ボタン
+
+
+.items-new--exhibit{
+  display: block;
+  background-color: red;
+  position: absolute;
+  right:40px;
+  bottom:0;
+  z-index: 1;
+  padding:30px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 50px;
+  color: antiquewhite;
+  position: fixed;
+}
+
+
+

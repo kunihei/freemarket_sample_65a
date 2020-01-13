@@ -1,0 +1,61 @@
+.purchase-main
+  =render 'users/subheader'
+  //ボディーの部分
+  .purchase-body#tansaction__body#__evaluation__body
+    .purchase-body__list#tansaction__list
+      .purchase-body__verification
+        取引画面
+      - if @item.sold.present?
+        test
+      - elsif @item.user_id == current_user.id
+        -if @item.send_id.blank?
+          = render partial: 'send', locals: {'item': @item}
+        -elsif @item.send_id.present?
+          = render partial: 'acceptance_wait', locals: {'item': @item}
+      - elsif @item.buyer_id == current_user.id
+        -if send_id.blank?
+          = render partial: 'send_wait', locals: {'item': @item}
+        -elsif send_id.present?
+          = render partial: 'acceptance', locals: {'item': @item}
+      %h1.tansaction__itemname
+        = @item.name
+      /画像一覧
+      .item-main-content 
+        /画像一覧(ピックアップ)
+        .item-main-content__photo
+          = image_tag @item.images[0].src.to_s, size:"210x230"
+        -if @item.user_id == current_user.id
+          /商品データ
+          %table.item-main-content__table
+            /商品出品者 
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                商品代金
+              %td.item-main-content__table__row--data
+                = converting_to_jpy(@item.price)
+            /商品カテゴリー
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                販売手数料
+              %td.item-main-content__table__row--data
+                = converting_to_jpy((@item.price*0.1).floor)
+            /商品状態
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                販売利益
+              %td.item-main-content__table__row--data
+                =converting_to_jpy((@item.price - @item.price*0.1).ceil )
+            /配送料の負担
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                配送料の負担
+              %td.item-main-content__table__row--data
+                =@item.postage_selct
+            /配送の方法
+            %tr.item-main-content__table__row
+              %th.item-main-content__table__row--title
+                購入日時
+              %td.item-main-content__table__row--data
+                =@item.created_at.strftime("%m月%d日 %H:%M")
+        - elsif @item.buyer_id == current_user.id
+=render 'users/subfooter'

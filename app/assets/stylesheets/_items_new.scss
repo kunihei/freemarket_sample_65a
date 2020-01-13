@@ -9,14 +9,14 @@
 
     }
     &__image {
-      height: 49px;
+      height: 100%;
       width: 185px;
       margin-top: 40px;
     }
   }
 
   &__contents {
-    height: calc(100% - 128px - 220px);
+    height: 100%;
     width: 700px;
     background-color: white;
     margin: 0 auto;
@@ -89,7 +89,7 @@
       }
       &__product {
         box-sizing: border-box;
-        height: 355px;
+        height: 100%;
         border-bottom: solid 2px #EEEEEE;
         padding: 40px;
         &__group {
@@ -148,7 +148,7 @@
         }
       }
       &__detail {
-        height: 261px;
+        height: 100%;
         border-bottom: solid 2px #EEEEEE;
         box-sizing: border-box;
         padding: 40px;
@@ -159,7 +159,7 @@
           color: #888;
         }
         &__list-group {
-          height: 180px;
+          height: 100%;
           width: 400px;
           &__group {
             &__name {
@@ -224,7 +224,7 @@
         }
       }
       &__delivery {
-        height: 371px;
+        height: 100%;
         border-bottom: solid 2px #EEEEEE;
         box-sizing: border-box;
         padding: 40px;
@@ -479,4 +479,16 @@
       font-size: 13px;
     }
   }
+}
+#sub_genre{
+  margin-top: 10px;
+  position: relative;
+}
+.subform-btn{
+  position: absolute;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+  color: grey;
 }
