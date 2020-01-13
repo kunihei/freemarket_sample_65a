@@ -192,7 +192,8 @@ class ItemsController < ApplicationController
 
   def new_image_params
     params.require(:new_images).permit({images: []})
-
+  end
+  
   def send_params
     params.require(:item).permit(:send_id)
   end

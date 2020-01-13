@@ -72,6 +72,7 @@ class UsersController < ApplicationController
   def user_tell_params
     params.require(:number).permit(:tell)
   end
+
   # before_action
   def set_user
     @user = User.find(params[:id])
