@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item= Item.find(params[:id])
     gon.item = @item
     gon.images = @item.images
   end
