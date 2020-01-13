@@ -8,8 +8,8 @@
         = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
       -# 右のフォーム
       .header-top__right-form
-        = form_for '#' do |f|
-          = f.text_field '#',class:'header-top__right-form__message',placeholder: '何かお探しですか？' 
+        =  form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |f|
+          = f.text_field :keyword,class:'header-top__right-form__message',placeholder: '何かお探しですか？',value: @keyword
           %button.header-top__right-form__btn
             -# 検索画面のアイコン
             = icon('fas', 'search', class: 'icon-search')
@@ -156,7 +156,7 @@
       -# ユーザーの会員登録とログイン
       .header-bottom__right
         -if user_signed_in?
-          = link_to user_path(current_user.id) do
+          = link_to "/users/mypage/mypage/#{current_user.id}" do
             =current_user.nickname
         -else
           = link_to new_user_path,class:"header-bottom__right--user" do

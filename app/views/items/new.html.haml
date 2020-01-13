@@ -181,7 +181,7 @@
                     必須
               %li.exhibit__contents__center__price__list-group__group__form
                 ¥
-                %input.price_calc{placeholder: "例) 300", type: "text"}
+                = f.text_field :price, placeholder: "例) 300", class: 'price_calc'
             %ul.exhibit__contents__center__price__list-group__group--b
               %li.exhibit__contents__center__price__list-group__group__fee
                 販売手数料 (10%)

@@ -15,11 +15,12 @@
   margin-top:40px;
   padding: 30px;
   .item-name{
-    margin:0 auto;
+    margin:0 auto 15px;
     text-align: center;
     font-size:25px;
   }
   .item-wording{
+    margin:0 auto 15px;
     color:#888;
   }
 }
@@ -30,6 +31,25 @@
   justify-content: space-around;
   &__photo{
     position: relative;
+  }
+  &__stutas{
+    position: absolute;
+    top: 30px;
+    font-size: 28px;
+    transform: rotate(-45deg);
+    
+    color: white;
+    
+  }
+  &__message::after{
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    content: "";
+    border-style: solid;
+    border-width: 120px 120px 0 0;
+    border-color: #ea352d transparent transparent transparent;
   }
   &__table{
     border:1px solid #f5f5f5;
@@ -91,6 +111,14 @@
     font-weight: bold;
     padding:15px;
     display: block;
+    &__gray{
+      background-color: rgb(151, 150, 150);
+      color:white;
+      font-size:20px;
+      font-weight: bold;
+      padding:15px;
+      display: block;
+    }
   }
 }
 .item_gray{

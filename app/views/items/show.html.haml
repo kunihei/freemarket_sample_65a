@@ -15,6 +15,15 @@
         /画像一覧(ピックアップ)
         .item-main-content__photo
           = image_tag @item.images[0].src.to_s, size:"250x300"
+          /画像の販売状況
+          - if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+            .item-main-content__message
+            .item-main-content__stutas
+              SOLD
+          - elsif @item.user_id.present? && @item.buyer_id.present? 
+            .item-main-content__message
+            .item-main-content__stutas
+              交渉中
           /画像一覧(その他)
           .photo 
             -@item_images.each do |image|
@@ -66,7 +75,8 @@
             %th.item-main-content__table__row--title
               配送元地域
             %td.item-main-content__table__row--data
-              =@item.prefecture.name
+              = link_to  prefectures_item_path(@item.prefecture_id) do
+                =@item.prefecture.name
           /発送日の目安
           %tr.item-main-content__table__row
             %th.item-main-content__table__row--title
@@ -82,10 +92,20 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-      -if @item.user.id  ==  current_user.id
+      -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+        / ボタン 購入者用
+        .item-buy
+          .item-buy__buying__gray
+            売り切れました
+      -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
+        / ボタン 購入者用
+        .item-buy
+          = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
+            取引画面に進む
+      -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
         / ボタン 投稿者用
         .item-buy
-          = link_to '#',class:"item-buy__buying" do
+          = link_to edit_item_path,class:"item-buy__buying" do
             商品の編集 
         %p.item_or or
         .item-buy.item_gray
@@ -94,8 +114,7 @@
         .item-buy.item_gray
           = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
             この商品を削除する 
-      -else
-        / ボタン 購入者用
+      -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む
@@ -106,18 +125,20 @@
       .item-description
         =simple_format(@item.text)
       / 底部のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
-      .item-button
-        .item-button__left
-          = link_to '#' ,class:"item-button__left__like" do
-            = icon('fas' ,'heart',class:"icon-heart")
-            %span.item-button__left__like--good
-              いいね！
-            %span.item-button__left__like--number
-              10000
-          = link_to '#' ,class:"item-button__left__reports" do
-            = icon('fas' ,'flag',class:"icon-flag")
-            %span.item-button__left__reports--report
-              不適切な商品の報告
+      .item-button-container
+        .item-button-container__left{id: "like-#{@item.id}"}
+          = render partial: 'likes/like', locals: { item: @item, items: @items, likes: @likes, like: @like}
+          -# = link_to '#' ,class:"item-button__left__like" do
+          -#   = icon('fas' ,'heart',class:"icon-heart")
+          -#   %span.item-button__left__like--good
+          -#     いいね！
+          -#   = render partial: 'like', locals: {'item': @item}
+          -#   %span.item-button__left__like--number
+          -# -#     10000
+          -# = link_to '#' ,class:"item-button__left__reports" do
+          -#   = icon('fas' ,'flag',class:"icon-flag")
+          -#   %span.item-button__left__reports--report
+          -#     不適切な商品の報告
         .item-button__right
           = link_to '#' ,class:"item-button__right__safety" do
             = icon('fas' ,'lock',class:"icon-lock")
@@ -210,7 +231,7 @@
     /ページ最下部のボタン
     .nav
       .nav__info
-        - breadcrumb :show
+        - breadcrumb :show, @item
         = render "layouts/breadcrumbs"
         
 =render 'items/footer'

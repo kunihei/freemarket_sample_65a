@@ -1,0 +1,195 @@
+=render 'items/header'
+.search-container
+  .sidebar
+    = form_for "@item" do |f|
+      .sidebar-top
+        = f.select :order, Item.orders.keys, {} 
+        = icon('fas', 'angle-down', class: 'form-btn')
+      .sidebar-content
+        .details
+          詳細検索
+        .addkeyword
+          -#キーワード
+          .addkeyword__word
+            = icon('fas', 'fas fa-plus', class: 'keyword-btn')
+            キーワードを追加
+          .addkeyword__form
+            = f.text_field :name, placeholder: "例)値下げ", class: "text-form", value: @keyword
+        .addcategory
+          -#ブランド
+          .addcategory__word
+            = icon('fas', 'fas fa-list-ul', class: 'category-btn')
+            カテゴリーを選択する
+          .addcategory__form
+            = f.select :search_genre, Item.search_genres.keys, {}
+            = icon('fas', 'angle-down', class: 'form-btn')
+        .addbrand
+          -#ブランド
+          .addbrand__word
+            = icon('fas', 'fas fa-tag', class: 'brand-btn')
+            ブランド名から探す
+          .addbrand__form
+            = f.text_field :name, placeholder: "例)シャネル", class: "text-form"
+        .addsize
+          -#サイズ
+          .addsize__word
+            = icon('fas', 'fas fa-vector-square', class: 'size-btn')
+            サイズを指定する
+          .addsize__form
+            = f.select :search_size, Item.search_sizes.keys, {}
+            = icon('fas', 'angle-down', class: 'form-btn')
+        .addprice
+          -#価格
+          .addprice__word
+            = icon('fas', 'fas fa-coins', class: 'price-btn')
+            価格
+          .addprice__form
+            = f.select :search_price, Item.search_prices.keys, {}
+            = icon('fas', 'angle-down', class: 'form-btn')
+          .addprice__text
+            .addprice__text__top
+              = f.text_field :price_min, placeholder: "¥Min", class: "min-form"
+            .addprice__text__middle
+              〜
+            .addprice__text__bottom
+              = f.text_field :price_max, placeholder: "¥Max", class: "max-form"
+        .product-status
+          -#商品
+          .product-status__word
+            = icon('fas', 'fas fa-star', class: 'status-btn')
+            商品の状態
+          .product-status__form
+            .product-status__form__top
+              .product-status__form__top__left
+                = f.label :search_all, class: "check_box_label" do
+                  = f.check_box :search_all ,{class: "check_box"}, "true", "false"
+                  すべて
+              .product-status__form__top__right
+                = f.label :search_condition_1, class: "check_box_label" do
+                  = f.check_box :search_condition_1 ,{class: "check_box"}, "true", "false"
+                  新品、未使用
+            .product-status__form__middletop
+              .product-status__form__middletop__left
+                = f.label :search_condition_2, class: "check_box_label" do
+                  = f.check_box :search_condition_2 ,{class: "check_box"}, "true", "false"
+                  未使用品に近い
+              .product-status__form__middletop__right
+                = f.label :search_condition_3, class: "check_box_label" do
+                  = f.check_box :search_condition_3 ,{class: "check_box"}, "true", "false"
+                  目立った傷や汚れなし
+            .product-status__form__middlebottom
+              .product-status__form__middlebottom__left
+                = f.label :search_condition_4, class: "check_box_label" do
+                  = f.check_box :search_condition_4 ,{class: "check_box"}, "true", "false"
+                  やや傷や汚れあり
+              .product-status__form__middlebottom__right
+                = f.label :search_condition_5, class: "check_box_label" do
+                  = f.check_box :search_condition_5 ,{class: "check_box"}, "true", "false"
+                  傷や汚れあり
+            .product-status__form__bottom
+              = f.label :search_condition_6, class: "check_box_label" do
+                = f.check_box :search_condition_6 ,{class: "check_box"}, "true", "false"
+                全体的に状態が悪い
+
+        .postage-burden
+          -#負担
+          .postage-burden__word
+            = icon('fas', 'fas fa-truck', class: 'burden-btn')
+            配送料の負担
+          .postage-burden__form
+            .postage-burden__form__top
+              .postage-burden__form__top__left
+                = f.label :search_burden_1, class: "check_box_label" do
+                  = f.check_box :search_burden_1 ,{class: "check_box"}, "true", "false"
+                  すべて
+              .postage-burden__form__top__right
+                = f.label :search_burden_2, class: "check_box_label" do
+                  = f.check_box :search_burden_2 ,{class: "check_box"}, "true", "false"
+                  着払い(購入者負担)
+            .postage-burden__form__bottom
+              = f.label :search_burden_3, class: "check_box_label" do
+                = f.check_box :search_burden_3 ,{class: "check_box"}, "true", "false"
+                送料込み(出品者負担)
+            
+        .sale-status
+          -#商品状態
+          .sale-status__word
+            = icon('fas', 'fas fa-shopping-cart', class: 'sale-btn')
+            販売状況
+          .sale-status__form
+            .sale-status__form__top
+              .sale-status__form__top__left
+                = f.label :search_sale_1, class: "check_box_label" do
+                  = f.check_box :search_sale_1 ,{class: "check_box"}, "true", "false"
+                  すべて
+              .sale-status__form__top__right
+                = f.label :search_sale_2, class: "check_box_label" do
+                  = f.check_box :search_sale_2 ,{class: "check_box"}, "true", "false"
+                  販売中
+            .sale-status__form__bottom
+              = f.label :search_sale_3, class: "check_box_label" do
+                = f.check_box :search_sale_3 ,{class: "check_box"}, "true", "false"
+                売り切れ
+        .button
+          -#クリア完了ボタン作成
+          .button__delite
+            = f.submit 'クリア', class: 'delite-btn'
+          .button__done
+            = f.submit '完了', class: 'done-btn'
+  .item-box-container
+    - if @keyword.empty?
+      .search-word
+        新着商品
+      .search-result
+        = @count
+        件表示
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
+    - elsif @keyword.present? && @count == 0
+      .search-word
+        = @keyword
+        の検索結果
+      .search-result
+        該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+      .search-word-bottom
+        新着商品
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
+    - else
+      .search-word
+        = @keyword
+        の検索結果
+      .search-result
+        = @count
+        件表示
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
+
+
+
+
+=render 'items/footer'

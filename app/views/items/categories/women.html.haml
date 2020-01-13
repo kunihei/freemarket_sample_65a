@@ -1,7 +1,0 @@
-=render 'items/header'
-
-.toppage-body
-  /レディース商品
-  = render partial: 'categories', locals: { 'items': @items_women ,genre: 'レディース' }
-  = paginate(@items_women)
-=render 'items/footer'

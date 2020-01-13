@@ -5,7 +5,7 @@
 //= require_self
 //= require_tree ./channels
 
-(function() {
+(window).on("turbolinks:load",function() {
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
