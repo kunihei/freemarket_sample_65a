@@ -1,4 +1,4 @@
-$(function()  {
+$(window).on("turbolinks:load",function()  {
   // タブのDOM要素を取得し、変数で定義
   let tabs = $(".mypage__item");
 
