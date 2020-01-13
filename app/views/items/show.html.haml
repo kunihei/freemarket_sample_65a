@@ -233,7 +233,7 @@
     /ページ最下部のボタン
     .nav
       .nav__info
-        - breadcrumb :show
+        - breadcrumb :show, @item
         = render "layouts/breadcrumbs"
         
 =render 'items/footer'
