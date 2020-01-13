@@ -1,0 +1,76 @@
+=render 'items/header'
+.mypage__body
+  .nav
+    .nav__info
+      -# - breadcrumb :mypage
+      = render "layouts/breadcrumbs"
+
+  .personal-container
+    .personal-container__body
+      .personal-container__body--image
+        = image_tag "https://beiz.jp/images_T/twinkle/twinkle_00025.jpg",class:"background-image",size:'700x323' 
+        - if @user.avatar_image.present?
+          = link_to "#",class:"personal-link" do
+            = @user.avatar_image
+            %p.personal-name 
+              = @user.nickname
+        - else
+          = link_to "#",class:"personal-link" do
+            = image_tag "http://画像まとめ.com/wp-content/uploads/2016/06/%E3%83%AF%E3%83%B3%E3%82%B3%E3%82%92%E6%8E%A2%E3%81%99%E7%94%BB%E5%83%8F16.jpg", class:"personal-image",size:'180x180'
+            %p.personal-name 
+              = @user.nickname
+        %span.image-bottom 評価
+        %span.image-bottom.item-count 
+          出品数
+          = @user.items.count
+      .personal-container__body--evaluation
+        = icon('far','smile',class:"face",id:"icon-smile") 
+        10
+        = icon('far','meh',class:"face",id:"icon-meh")
+        10
+        = icon('far','frown',class:"face",id:"icon-frown")
+        10
+      .personal-container__body--main
+        初めまして。@(・●・)@です。
+        <br>
+        仕事をしている為、お返事が遅くなります。
+        <br>
+        <br>
+        ☆返品交換は一切受け付けることができません。
+        <br>
+        ☆多少の見落としはございますので気になさる方は購入を控えてください。
+        <br>
+        ☆お値下げ、コメントや質問等お待ちしております。ぜひお声掛けください！
+        <br>
+        ☆ご購入の前にコメントしていただきたいです。
+        <br>
+        <br>
+        気持ちの良いお取り引き目指しております！
+        <br>
+        どうぞよろしくお願いいたします！
+      .media-box.boxsize
+        %ul.media-box__container
+          %li.media-box__container__item
+            = link_to '#',class:".media-box__container__item--facebook" do
+              = icon('fab' ,'facebook-square',class:"icon-facebook")
+          %li.media-box__container__item
+            = link_to '#',class:".media-box__container__item--twitter" do
+              = icon('fab' ,'twitter-square',class:"icon-twitter")
+          %li.media-box__container__item
+            = link_to '#',class:".media-box__container__item--pinterest" do
+              = icon('fab' ,'pinterest-square',class:"icon-pinterest")
+      .other-items-container
+        .other-items-title この出品者の商品
+        .user-other-items
+          -@user.items.each do |item|
+            .user-other-items__box
+              = link_to image_tag(item.images[0].src.to_s,size:'211x211',class:"user-other-items__box--image"),item_path(item.id)
+              .user-other-items__box__body
+                .user-other-items__box__body--name
+                  =item.name
+                .user-other-items__box__body--price
+                  =converting_to_jpy(item.price)
+                  .user-other-items__box__body--price--heart
+                    = icon('fas' ,'heart',class:"icon-heart")
+                    10
+=render 'items/footer'

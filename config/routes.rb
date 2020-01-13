@@ -29,11 +29,13 @@ Rails.application.routes.draw do
       get :item_exhibit
       get :item_negotiate
       get :item_buyed
+      get :personal_details
     end
   end
 
   
   resources :items do
+    resources :comments, only: :create
     member do
       get 'buy_confirmation'
       post 'pay'

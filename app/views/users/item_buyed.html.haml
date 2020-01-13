@@ -20,7 +20,7 @@
             = link_to item_buyed_user_path do
               %h3 売却済み
         .buysell--right__body
-          .buysell--right__body--item
+          .buysell--right__body--item{class:"#{"item-yes" if @user.sold_items.present?}"}
             -if @user.sold_items.present?
               - @user.sold_items.each do |item|
                 .buysell--right__body--item--yes

@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :user
+  has_many :comments
 
   # belongs_to :category
   has_many :item_categories
@@ -256,7 +257,8 @@ class Item < ApplicationRecord
     その他:137,
   },_prefix: true
 
-  validates :name, :text, :genre, :status, :postage_selct, :prefecture_id, :delivery_day, :price, presence: true
+  validates :genre, :status, :postage_selct, exclusion: { in: ['---'] }
+  validates :prefecture_id, exclusion: { in: [1] }
 
 end
 

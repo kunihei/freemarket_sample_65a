@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, only: [:new]
   before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay]
   before_action :set_card, only: [:buy_confirmation, :pay]
   require 'payjp'
@@ -38,6 +39,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    #コメント作成のためのインスタンス
+    @comment = Comment.new
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
     #選択されたitemのuser情報取得
@@ -127,6 +130,10 @@ class ItemsController < ApplicationController
   #商品出品の際のparams
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 
 

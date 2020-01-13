@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(current_user.id) 
   end
 
 
@@ -17,20 +17,23 @@ class UsersController < ApplicationController
 
   def update
      current_user.update(user_params)
-     binding.pry
   end
 
 
   def item_exhibit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def item_negotiate
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
 
   def item_buyed
+    @user = User.find(current_user.id)
+  end
+
+  def personal_details
     @user = User.find(params[:id])
   end
 
@@ -41,10 +44,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :introduction)
   end
 
-  protected
-
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
 
 end
