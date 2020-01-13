@@ -1,8 +1,9 @@
+
 - if user_signed_in?
   -#ログインしているユーザーがすでに「いいね」しているかどうか
   - if item.likes.find_by(user_id: current_user.id)
     .item-button-container__left__dislike
-      =link_to item_like_path(item.id), method: "DELETE", remote: true do
+      =link_to item_like_path(item.id, like.id), method: "DELETE", remote: true do
         %i.fas.fa-heart
         %span いいね！取り消し
         %span 
@@ -19,3 +20,4 @@
     %i.fas.fa-heart
       %span いいね！
       %span = item.like_count
+
