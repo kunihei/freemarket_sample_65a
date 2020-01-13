@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   # バリデーション
   validates :name, :text, :price, presence: true
   validates :images, presence: true
-  # validates :genre, inclusion: { in: [0] }
+
   validate :price_limit
   validates_associated :images
 
@@ -31,11 +31,7 @@ class Item < ApplicationRecord
     end
   end
 
-  # validates :genre,
-  # presence: {
-  #   if: proc { |d| d.genre == "---" },
-  #   message: 'を選択してください' 
-  # }
+
 
   enum genre:{
     "---":0,

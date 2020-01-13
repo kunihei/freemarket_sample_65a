@@ -136,9 +136,7 @@ class ItemsController < ApplicationController
     @keyword = params[:keyword]
     @items = Item.search(@keyword).order("created_at DESC")
     @count = @items.count
-    if @count == 0
-      @items = Item.all
-    end
+    @items = Item.all if @items.count == 0
   end
 
   #カテゴリーでの検索機能
