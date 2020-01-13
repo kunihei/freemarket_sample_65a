@@ -85,9 +85,14 @@ $FM-color-gry:#eee;
       }
       li{
         border-top: 1px solid $FM-color-gry;
-        line-height: 18px;
+        line-height: 30px;
+        height: 60px;
         display: flex;
         justify-content: space-between;
+        a{
+          width: 100%;
+          height: 100%;
+        }
       }
       /*  サイドバー(ホバー時の(>)のアクション) */
       li:hover{
@@ -110,15 +115,17 @@ $FM-color-gry:#eee;
 #side_title{
   margin-top: 15px;
 }
+#small_point{
+  font-size: 13px;
+}
 
 .mypage__container--side__icon{
   padding-right: 16px;
   transition: all 0.5s;
   opacity: 0.3;
   font-size: 20px;
-  line-height: 50px;
+  line-height: 60px;
   display: block;
-  padding-top: 15px;
 }
 
 .mypage{
@@ -331,10 +338,9 @@ $FM-color-gry:#eee;
         border: 1px solid $FM-color-red;
         color: white;
         height: 48px;
-        font-size: 16px;
+        font-size: 16px
       }
     }
-
     &__content{
       /*  右側最上部タイトル 'プロフィール' */
       &__head{
@@ -923,6 +929,18 @@ $FM-color-gry:#eee;
 
   background-color: red;
 }
+#top5_3{
+  background-color: red;
+}
+
+#top5_3::before{
+
+  background-color: red;
+}
+#top5_3::after{
+
+  background-color: red;
+}
 
 #top5_5{
   background-color: red;
@@ -931,4 +949,69 @@ $FM-color-gry:#eee;
 #top5_5::before{
 
   background-color: red;
+}
+
+
+/*--------------------------------------- ページネート --------------------------------------- */
+
+
+.pagination{
+  width: 1040px;
+  margin: 40px auto ;
+  position: relative;
+}
+
+.page,.first,.prev,.next,.last {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 42px;
+  font-size: 14px;
+  text-align: center;
+  
+}
+
+.page{
+  text-align: center;
+}
+
+.current{
+  background-color: #ea352d;
+  color: white;
+}
+.first,.prev,.next,.last{
+  font-weight: 900;
+}
+
+.next{
+  position: absolute;
+  right: 52px;
+}
+
+.page_number{
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.last{
+  position: absolute;
+  right: 0;
+}
+
+.active_genre1,.active_genre2,.active_genre3,.active_genre4,.active_genre5{
+  display: none;
+}
+
+.active_genre6,.active_genre7,.active_genre8,.active_genre9,.active_genre10{
+  display: none;
+}
+.active_genre11,.active_genre12,.active_genre13{
+  display: none;
+}
+.show_sub{
+  display: block;
 }

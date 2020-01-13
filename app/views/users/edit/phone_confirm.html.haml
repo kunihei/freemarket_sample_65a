@@ -1,8 +1,26 @@
 =render 'items/header'
-/以下ナビゲーションバー
-.nav
-  .nav__info
-    - breadcrumb :phone_confirm
-    = render "layouts/breadcrumbs"
-
+.profile 
+  .nav
+    .nav__info
+      - breadcrumb :deliver_address
+      = render "layouts/breadcrumbs"
+  .profile__main
+    /以下サイドバー（上部）
+    .profile__container.flex
+      =render "sidebar"
+      .profile__right__wrap
+        .profile__right__content
+          %h2.profile__right__content__head 携帯番号の変更
+          .profile__right__content__form
+            = form_for @number,url: tell_update_user_path(@user.id) ,method: :post do |f|
+              .delibver__right__content__group
+                %ul.delibver__right__content__group__top.flex
+                  %li.delibver__right__content__group__name 携帯番号
+                %ul
+                  -if @user.number.tell.present?
+                    %li= f.text_field :tell,class:'delibver__right__input',placeholder: '携帯電話の番号を入力' ,value: @user.number.tell
+                  -else
+                    %li= f.text_field :tell,class:'delibver__right__input',placeholder: '携帯電話の番号を入力' 
+                = f.submit '変更する', class: 'profile__right__input__send'
+      
 =render 'items/footer'

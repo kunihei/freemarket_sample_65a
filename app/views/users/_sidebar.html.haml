@@ -1,6 +1,6 @@
 .mypage__container--side
   %ul.mypage__container--side__list
-    %li.mypage__container--side__list__top
+    %li
       = link_to "マイページ",      root_path 
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
@@ -16,13 +16,13 @@
       = link_to "出品する",      root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "出品した商品・出品中",      root_path
+      = link_to "出品した商品・出品中", root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "出品した商品・取引中",      root_path
+      = link_to "出品した商品・取引中", root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "出品した商品・売却済み",      root_path
+      = link_to "出品した商品・売却済み", root_path
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
       = link_to "購入した商品・取引中",      root_path
@@ -55,24 +55,24 @@
   %h3#side_title 設定
   %ul.mypage__container--side__list
     %li
-      = link_to "プロフィール",{controller: "users", action: "edit", name: "profile"}
+      = link_to "プロフィール",{controller: "users", action: "edit", name: "profile", id:@user.id}
+      = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
+    %li#small_point
+      = link_to "送元・お届け先住所お届け先住所変更",{controller: "users", action: "edit", name: "deliver_address", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "送元・お届け先住所お届け先住所変更",{controller: "users", action: "edit", name: "deliver_address"}
+      = link_to "支払い方法",{controller: "users", action: "edit", name: "card", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "支払い方法",{controller: "users", action: "edit", name: "card"}
+      = link_to "メール/パスワード",{controller: "users", action: "edit", name: "email_password", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "メール/パスワード",{controller: "users", action: "edit", name: "email_password"}
+      = link_to "本人情報",{controller: "users", action: "edit", name: "identification", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "本人情報",{controller: "users", action: "edit", name: "identification"}
+      = link_to "電話番号の確認",{controller: "users", action: "edit", name: "phone_confirm", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "電話番号の確認",{controller: "users", action: "edit", name: "phone_confirm"}
-      = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
-    %li
-      = link_to "ログアウト",{controller: "users", action: "edit", name: "logout"}
+      = link_to "ログアウト",{controller: "users", action: "edit", name: "logout", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
      

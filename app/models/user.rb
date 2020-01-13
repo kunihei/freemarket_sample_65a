@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :sns_credentials, dependent: :destroy 
-  
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, 
@@ -56,6 +57,10 @@ class User < ApplicationRecord
     return { user: user ,sns: sns}
   end 
 
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
+
   has_one  :address
   has_one  :number
   has_many :cards
@@ -66,10 +71,23 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/ }
-  validates :password, presence: true, length: { minimum: 7 }
+  validates :password, presence: true, length: { minimum: 7 }, on: :create
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+
+
+
+
+  # 商品出品中
+  has_many :selling_items, -> { where("buyer_id is NULL") }, class_name: "Item"
+  # 交渉中
+  has_many :nagotiations_items, -> { where("buyer_id is not NULL && sold is NULL")}, class_name: "Item"
+  # 商品売却済
+  has_many :sold_items, -> { where("buyer_id is not NULL && sold is not NULL") }, class_name: "Item"
+
+  
 
 end

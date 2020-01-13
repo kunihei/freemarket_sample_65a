@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
+  before_action :set_user, only: [:show, :transaction]
   require 'payjp'
 
   def index
@@ -23,11 +24,12 @@ class ItemsController < ApplicationController
     @items_nike =Item.where(brand: '2').order('created_at DESC').limit(10)
   end
 
+  #item作成ページ
   def new
     @item = Item.new
     @item.images.new
   end
-  
+  #item新規登録
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -36,16 +38,16 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  #itme詳細
   def show
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
-    #選択されたitemのuser情報取得
-    @user = @item.user
     #選択されたitemのuserが持つ出品情報取得
     @user_items = Item.where(user_id: @user.id).limit(6)
     #選択されたitemが持つカテゴリー情報取得
     @genre_items = Item.where(genre: @item.genre).limit(6)
+    #likeのインスタンス作成
+    @like = Like.new
   end
 
   def edit
@@ -92,58 +94,93 @@ class ItemsController < ApplicationController
     end
   end
 
-
+  #購入確認画面
   def buy_confirmation
     @address = @item.user.address
-    if @card.present?
-      Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_information = customer.cards.retrieve(@card.card_id)
-
-      @card_brand = @card_information.brand      
-      case @card_brand
-      when "Visa"
-        @card_src = "visa.png"
-      when "JCB"
-        @card_src = "jcb.png"
-      when "MasterCard"
-        @card_src = "master-card.png"
-      when "American Express"
-        @card_src = "american_express.png"
-      when "Diners Club"
-        @card_src = "dinersclub.png"
-      when "Discover"
-        @card_src = "discover.png"
+    if @item.user_id != current_user.id
+      if @card.present?
+        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @card_information = customer.cards.retrieve(@card.card_id)    
+        @card_brand = @card_information.brand      
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.png"
+        when "JCB"
+          @card_src = "jcb.png"
+        when "MasterCard"
+          @card_src = "master-card.png"
+        when "American Express"
+          @card_src = "american_express.png"
+        when "Diners Club"
+          @card_src = "dinersclub.png"
+        when "Discover"
+          @card_src = "discover.png"
+        end
       end
+    else
+      flash[:alert] = '出品者様は購入できません'
+      redirect_to root_path
     end
   end
 
+  #購入機能
   def pay
     if @card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       Payjp::Charge.create(
         amount: @item.price, #支払金額
         customer: @card.customer_id, #顧客ID
         currency: 'jpy', #日本円
         )
+      @item.update(buyer_id: current_user.id)
       redirect_to root_path
     end
   end
 
+  #取引画面
+  def transaction
+    if @item.user_id == current_user.id || @item.buyer_id == current_user.id
+      render :transaction
+    else
+      redirect_to root_path
+    end
+  end
+
+  def transaction_update
+    @item.update(send_params)
+    redirect_to transaction_item_path(@item.id)
+  end
+
+  def evaluation_update
+    @item.update(evaluation_params)
+    redirect_to transaction_item_path(@item.id)
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
+  #カテゴリーでの検索機能
+  def categories
+    @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
+    @item  = @items[0]
+    @category = @item.genre
+  end
+  #都道府県での検索機能
+  def prefectures
+    @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
+    @item  = @items[0]
+    @prefecture = @item.prefecture.name
+  end
+
+
+
   private
-
-  def set_item
-   #選択されたitemの取得
-   @item = Item.find(params[:id])
-  end
-
-  def set_card
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-  end
-
+  # ストロングパラメーター
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
@@ -154,6 +191,25 @@ class ItemsController < ApplicationController
 
   def new_image_params
     params.require(:new_images).permit({images: []})
+
+  def send_params
+    params.require(:item).permit(:send_id)
   end
 
+  def evaluation_params
+    params.require(:item).permit(:evaluation ,:sold)
+  end
+
+  # before_action
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
+  end
+  
+  def set_user
+    @user = @item.user
+  end
 end

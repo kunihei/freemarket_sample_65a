@@ -1,0 +1,409 @@
+.search-container {
+  width: 1020px;
+  margin: 40px auto 0;
+  display: flex;
+  padding-bottom: 40px;
+  .sidebar {
+    margin-right: 40px;
+    .sidebar-top {
+      width: 280px;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+      select {
+        height: 48px;
+        width: 280px;
+        padding: 0px 16px;
+        background-color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+      .form-btn {
+        position: absolute;top:14px; right:20px;
+        font-size: 25px;
+        color: grey;
+      }
+    }
+    .sidebar-content {
+      box-sizing: border-box;
+      width: 280px;
+      background-color: white;
+      margin-top: 40px;
+      padding: 16px;
+      .details {
+        font-weight: 700;
+        font-size: 16px;
+        font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        color: #333333;
+        line-height: 16px;
+      }
+      .addkeyword {
+        margin-top: 24px;
+        &__word {
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          .keyword-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          margin: 8px 0px 0px;
+          .text-form {
+            width: 212px;
+            height: 26px;
+            padding: 10px 16px 8px;
+          }
+        }
+      }
+      .addcategory {
+        margin-top: 40px;
+        position: relative;
+        &__word {
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          .category-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          margin: 8px 0px 0px;
+          select {
+            height: 48px;
+            width: 248px;
+            padding: 0px 16px;
+            background-color: white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+          }
+          .form-btn {
+            position: absolute;top:35px; right:20px;
+            font-size: 25px;
+            color: grey;
+          }
+        }
+      }
+      .addbrand {
+        margin-top: 40px;
+        &__word {
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          .keyword-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          margin: 8px 0px 0px;
+          .text-form {
+            width: 212px;
+            height: 26px;
+            padding: 10px 16px 8px;
+          }
+        }
+      }
+      .addsize {
+        margin-top: 40px;
+        position: relative;
+        &__word {
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          .category-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          margin: 8px 0px 0px;
+          select {
+            height: 48px;
+            width: 248px;
+            padding: 0px 16px;
+            background-color: white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+          }
+          .form-btn {
+            position: absolute;top:35px; right:20px;
+            font-size: 25px;
+            color: grey;
+          }
+        }
+      }
+      .addprice {
+        margin-top: 40px;
+        position: relative;
+        &__word {
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          .category-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          margin: 8px 0px 0px;
+          select {
+            height: 48px;
+            width: 248px;
+            padding: 0px 16px;
+            background-color: white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+          }
+          .form-btn {
+            position: absolute;top:35px; right:20px;
+            font-size: 25px;
+            color: grey;
+          }
+        }
+        &__text {
+          display: flex;
+          margin: 8px 0px 0px;
+          &__top {
+            .min-form {
+              width: 75.59px;
+              height: 26px;
+              padding: 10px 16px 8px;
+            }
+          }
+          &__middle {
+            width: 24.8px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+          }
+          &__bottom {
+            .max-form {
+              width: 75.59px;
+              height: 26px;
+              padding: 10px 16px 8px;
+            }
+          }
+        }
+      }
+      .product-status {
+        margin-top: 40px;
+        &__word {
+          font-weight: 700;
+          font-size: 16px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          line-height: 16px;
+          .status-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          font-size: 14px;
+          font-weight: 400;
+          &__top {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+          &__middletop {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+
+          }
+          &__middlebottom {
+            display: flex;
+            margin-top: 16px;
+
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+
+          }
+          &__bottom {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+        }
+      }
+      .postage-burden {
+        margin-top: 40px;
+        &__word {
+          font-weight: 700;
+          font-size: 16px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          line-height: 16px;
+          .burden-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          font-size: 14px;
+          font-weight: 400;
+          &__top {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+          &__bottom {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+        }
+      }
+      .sale-status {
+        margin-top: 40px;
+        &__word {
+          font-weight: 700;
+          font-size: 16px;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          color: #333333;
+          line-height: 16px;
+          .sale-btn {
+            color: #888888;
+          }
+        }
+        &__form {
+          font-size: 14px;
+          font-weight: 400;
+          &__top {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+          &__bottom {
+            display: flex;
+            margin-top: 16px;
+            &__left {
+              width: 119.5px;
+            }
+            &__right {
+              width: 119.5px;
+            }
+          }
+        }
+      }
+      .button {
+        height: 50px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        &__delite {
+          line-height: 50px;
+          .delite-btn {
+            width: 111.59px;
+            height: 50px;
+            background-color: #aaaaaa;
+            color: white;
+          }
+        }
+        &__done {
+          line-height: 50px;
+          .done-btn {
+            width: 111.59px;
+            height: 50px;
+            background-color: #ea352c;
+          }
+        }
+      }
+    }
+  }
+  .item-box-container {
+    width: 720px;
+    box-sizing: border-box;
+    .search-word {
+      font-size: 18px;
+      margin-left: 4px;
+    }
+    .search-result {
+      margin: 16px 0px;
+    }
+    .item-box-picture {
+      width: 720px;
+      display: flex;
+      flex-wrap: wrap;
+      &__goods {
+        position: relative;
+        margin: 0px 20px 20px 0px;
+        &__link {
+          &__image {
+            height: 160px;
+            width: 160px;
+          }
+          &__words {
+            height: 42px;
+            padding: 8px 12px;
+            background-color: white;
+            font-size: 14px;
+          }
+        }
+        &__price {
+          -webkit-box-align: center;
+          bottom: 70px;
+          align-items: center;
+          background: rgba(0,0,0,.4);
+          border-radius: 0 14px 14px 0;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          color: #fff;
+          display: inline-flex;
+          font-size: 17px;
+          height: 32px;
+          height: 28px;
+          letter-spacing: .02em;
+          margin: 0;
+          padding: 0 12px;
+          position: absolute;
+          z-index: 2;
+        }
+      }
+    }
+
+  }
+}

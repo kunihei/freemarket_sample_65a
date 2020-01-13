@@ -8,8 +8,8 @@
         = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
       -# 右のフォーム
       .header-top__right-form
-        = form_for '#' do |f|
-          = f.text_field '#',class:'header-top__right-form__message',placeholder: '何かお探しですか？' 
+        =  form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |f|
+          = f.text_field :keyword,class:'header-top__right-form__message',placeholder: '何かお探しですか？'#,value: @search_params[:keyword]
           %button.header-top__right-form__btn
             -# 検索画面のアイコン
             = icon('fas', 'search', class: 'icon-search')
@@ -23,7 +23,7 @@
           カテゴリーから探す
         %ul.header-bottom__left--dropdownfirst
           %li.header-bottom__left--dropdownfirst--children1
-            レディース
+            = link_to 'レディース', categories_item_path(1)
             %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
               %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
                 トップス
@@ -39,37 +39,102 @@
                     Tシャツ3
                   %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2--dropdownthird--children3
                     Tシャツ4
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'パンツ', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'スカート', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'ワンピース', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to '靴', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'ルームウェア', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to '帽子', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'バッグ', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'アクセサリー', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to 'ヘアアクセサリー', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to '小物', root_path
+              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                = link_to '時計', root_path
           %li.header-bottom__left--dropdownfirst--children1
-            メンズ
+            = link_to 'メンズ' , root_path
             %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
-              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
-                トップス2
-              %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
-                ジャケット/アウター2
+              -Item.men.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            ベビー・キッズ
+            = link_to 'ベビー・キッズ', categories_item_path(3)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.babies.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            インテリア・住まい・小物
+            = link_to 'インテリア・住まい・小物', categories_item_path(4)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.interiors.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            本・音楽・・ゲーム
+            = link_to '本・音楽・・ゲーム', categories_item_path(5)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.books.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            おもちゃ・ホビー・グッズ
+            = link_to 'おもちゃ・ホビー・グッズ', categories_item_path(6)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.hobbies.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            コスメ・香水・美容
+            = link_to 'コスメ・香水・美容', categories_item_path(7)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.cosmetics.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            家電・スマホ・カメラ
+            = link_to '家電・スマホ・カメラ', categories_item_path(8)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.appliances.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            スポーツ・レジャー
+            = link_to 'スポーツ・レジャー', categories_item_path(9)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.sports.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            ハンドメイド
+            = link_to 'ハンドメイド', categories_item_path(10)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.hand_mades.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            チケット
+            = link_to 'チケット', categories_item_path(11)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.tickets.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            自動車・オートバイ
+            = link_to '自動車・オートバイ', categories_item_path(12)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.motorcycles.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            その他
+            = link_to 'その他', categories_item_path(13)
+            %ul.header-bottom__left--dropdownfirst--children1--dropdownsecond
+              -Item.others.each do |key,value|
+                %li.header-bottom__left--dropdownfirst--children1--dropdownsecond--children2
+                  = link_to "#{key}", categories_item_path(value)
           %li.header-bottom__left--dropdownfirst--children1
-            カテゴリー一覧
+            = link_to 'カテゴリー一覧', categories_item_path(14)
         -# ブランドから探すボタン
         = link_to '#',class:"header-bottom__left--brand" do
           = icon('fas', 'tag', class: 'icon-tag')
@@ -91,7 +156,8 @@
       -# ユーザーの会員登録とログイン
       .header-bottom__right
         -if user_signed_in?
-          =current_user.nickname
+          = link_to user_path(current_user.id) do
+            =current_user.nickname
         -else
           = link_to new_user_path,class:"header-bottom__right--user" do
             新規会員登録
