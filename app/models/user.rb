@@ -4,7 +4,6 @@ class User < ApplicationRecord
 
   has_many :sns_credentials, dependent: :destroy 
   has_many :likes
-  has_many :liked_users, through: :likes, source: :user
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, 

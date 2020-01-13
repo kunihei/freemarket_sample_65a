@@ -125,19 +125,20 @@
       .item-description
         =simple_format(@item.text)
       / 底部のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
-      .item-button
-        .item-button__left
-          = link_to '#' ,class:"item-button__left__like" do
-            = icon('fas' ,'heart',class:"icon-heart")
-            %span.item-button__left__like--good
-              いいね！
-            = render partial: 'like', locals: {'item': @item}
-            %span.item-button__left__like--number
-              10000
-          = link_to '#' ,class:"item-button__left__reports" do
-            = icon('fas' ,'flag',class:"icon-flag")
-            %span.item-button__left__reports--report
-              不適切な商品の報告
+      .item-button-container
+        .item-button-container__left{id: "like-#{@item.id}"}
+          = render partial: 'likes/like', locals: { item: @item, items: @items, likes: @likes, like: @like}
+          -# = link_to '#' ,class:"item-button__left__like" do
+          -#   = icon('fas' ,'heart',class:"icon-heart")
+          -#   %span.item-button__left__like--good
+          -#     いいね！
+          -#   = render partial: 'like', locals: {'item': @item}
+          -#   %span.item-button__left__like--number
+          -# -#     10000
+          -# = link_to '#' ,class:"item-button__left__reports" do
+          -#   = icon('fas' ,'flag',class:"icon-flag")
+          -#   %span.item-button__left__reports--report
+          -#     不適切な商品の報告
         .item-button__right
           = link_to '#' ,class:"item-button__right__safety" do
             = icon('fas' ,'lock',class:"icon-lock")
