@@ -14,7 +14,7 @@
             = icon('fas', 'fas fa-plus', class: 'keyword-btn')
             キーワードを追加
           .addkeyword__form
-            = f.text_field :name, placeholder: "例)値下げ", class: "text-form"
+            = f.text_field :name, placeholder: "例)値下げ", class: "text-form", value: @keyword
         .addcategory
           -#ブランド
           .addcategory__word
@@ -137,20 +137,57 @@
           .button__done
             = f.submit '完了', class: 'done-btn'
   .item-box-container
-    .search-word
-      の検索結果
-    .search-result
-      100件検索結果
-    .item-box-picture
-      - @items.each do |item|
-        .item-box-picture__goods
-          = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
-            /一枚目の画像取得
-            = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
-            .item-box-picture__goods__link__words
-              =item.name
-          .item-box-picture__goods__price
-            = converting_to_jpy(item.price)
+    - if @keyword.empty?
+      .search-word
+        新着商品
+      .search-result
+        = @count
+        件表示
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
+    - elsif @keyword.present? && @count == 0
+      .search-word
+        = @keyword
+        の検索結果
+      .search-result
+        該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+      .search-word-bottom
+        新着商品
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
+    - else
+      .search-word
+        = @keyword
+        の検索結果
+      .search-result
+        = @count
+        件表示
+      .item-box-picture
+        - @items.each do |item|
+          .item-box-picture__goods
+            = link_to item_path(item.id), target: "_blank", class: "item-box-picture__goods__link" do
+              /一枚目の画像取得
+              = image_tag item.images[0].src.to_s, class: "item-box-picture__goods__link__image"
+              .item-box-picture__goods__link__words
+                =item.name
+            .item-box-picture__goods__price
+              = converting_to_jpy(item.price)
 
 
 
