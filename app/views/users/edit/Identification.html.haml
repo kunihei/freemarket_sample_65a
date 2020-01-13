@@ -14,7 +14,7 @@
           %h2.profile__right__content__head 本人情報の登録
           .identification__right__content__form
             /以下form欄
-            = form_for @user, url:  identification_update_user_path(@user.id) ,method: :post do |f|
+            = form_for @user, url:  user_identification_path(@user.id) do |f|
               .identification__right__content__middle
                 %p お客さまの本人情報をご登録ください。
                 %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。

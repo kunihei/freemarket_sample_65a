@@ -7,8 +7,11 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
   has_many :likes, dependent: :destroy
-  has_many :liked_items, through: :likes, source: :item
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
 
   # belongs_to :category
   has_many :item_categories
@@ -29,6 +32,12 @@ class Item < ApplicationRecord
     elsif price > 10000000
       errors.add(:price, ": out")
     end
+  end
+
+
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 
 
@@ -146,16 +155,6 @@ class Item < ApplicationRecord
     スノーボードのサイズ:14
   },_prefix: true
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
-
-  def self.search(search)
-    if search
-      Item.where('name LIKE(?)', "%#{search}%")
-    else
-      Item.all
-    end
-  end
   enum women:{
     "---":100,
     トップス:0,

@@ -1,11 +1,19 @@
 class LikesController < ApplicationController
   def create
-    @like = current_user.likes.create(item_id: params[:item_id])
-    redirect_back(fallback_location: root_path)
+    @item = Item.find(params[:item_id])
+    @like = Like.create(user_id: current_user.id, item_id: params[:item_id])
+    @likes = Like.where(item_id: params[:item_id])
   end
+
+
   def destroy
-    @like = Like.find_by(item_id: params[:item_id], user_id: current_user.id)
+    @item = Item.find(params[:id])
+    @like = Like.find_by(user_id: current_user.id, item_id: params[:item_id])
     @like.destroy
-    redirect_back(fallback_location: root_path)
+    @likes = Like.where(item_id: params[:item_id])
+  end
+
+  def get_item
+    @item = Product.find(params[:item_id])
   end
 end

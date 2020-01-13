@@ -1,0 +1,53 @@
+/出品中の商品
+=render 'items/header'
+.mypage__body
+  .nav
+    .nav__info
+  .buysell__main
+    .buysell__container.flex 
+      =render "sidebar"
+      .buysell--right
+        .buysell--right__head
+          %h2.buysell--right__head__message 出品した商品
+        %ul.buysell--right__items
+          %li.buysell--right__items--item.click
+            = link_to "/users/mypage/exhibit/#{@user.id}"  do
+              %h3 出品中
+          %li.buysell--right__items--item
+            = link_to "/users/mypage/negotiate/#{@user.id}" do
+              %h3 取引中
+          %li.buysell--right__items--item
+            = link_to "/users/mypage/buyed/#{@user.id}" do
+              %h3 売却済み
+        .buysell--right__body
+          .buysell--right__body--item{class:"#{"item-yes" if @user.selling_items.present?}"}
+            -# method: 'selling_items'
+            -if @user.selling_items.present?
+              - @user.selling_items.each do |item|
+                .buysell--right__body--item--yes
+                  .buysell--right__body--item--yes--content
+                    =image_tag item.images[0].src.to_s,size:"100x100",class:"item-image"
+                    .item-name
+                      =item.name
+                    -# stutas: '出品中'
+                    .item-status 出品中
+                    %p.item-link 
+                      =link_to '#' do
+                        >
+            -else
+              .buysell--right__body--item--no
+                = image_tag('logo_gray.svg',size:"150x100")
+                -# noiitem: '出品中の商品がありません'
+                %p 出品中の商品がありません 
+
+        .bottom-button
+          %button.left-button 
+            -# link1: ''
+            = link_to "/users/mypage/buyed/#{@user.id}"  do
+              <
+          %button.right-button 
+            -# link2: ''
+            = link_to "/users/mypage/negotiate/#{@user.id}"  do
+              >
+
+=render 'items/footer'

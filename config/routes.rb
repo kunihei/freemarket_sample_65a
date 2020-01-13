@@ -18,18 +18,14 @@ Rails.application.routes.draw do
     post 'finish',    to: 'users/registrations#create_finish'
   end
 
+  
+  resources :users , except: [:edit]
   get 'users/edit/:name/:id', controller: 'users', action: 'edit'
-  resources :users do
-    member do
-      get :item_exhibit
-      get :item_negotiate
-      get :item_buyed
-      post :address_update
-      post :identification_update
-      post :password_update
-      post :tell_update
-    end
-  end
+  get 'users/mypage/:name/:id', controller: 'users', action: 'mypage'
+  resources :user_addresses,        only: [:update]
+  resources :user_identifications,  only: [:update]
+  resources :user_pass,             only: [:update]
+  resources :user_tells,            only: [:update]
 
   resources :items do
     resources :likes, only: [:create, :destroy]
@@ -39,11 +35,11 @@ Rails.application.routes.draw do
       get 'categories'
       get 'prefectures'
       get 'transaction'
-      post'transaction_update'
-      post'evaluation_update'
     end
     collection do
       get 'search'
     end
   end
+  resources :item_transactions,   only: [:update]
+  resources :item_evaluations,    only: [:update]
 end

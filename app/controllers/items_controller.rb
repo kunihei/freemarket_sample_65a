@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
+
+  include SetItem
+  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
+
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
   require 'payjp'
@@ -13,7 +16,6 @@ class ItemsController < ApplicationController
     @items_appliances = Item.where(genre: '8').order('created_at DESC').limit(10)
     #ホビーに関するインスタンス
     @items_hobby = Item.where(genre: '6').order('created_at DESC').limit(10)
-    
     #ブランドに関するインスタンスの作成
     @items_chanel =Item.where(brand: '1').order('created_at DESC').limit(10)
     #ルイヴィトンに関するインスタンス
@@ -148,16 +150,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def transaction_update
-    @item.update(send_params)
-    redirect_to transaction_item_path(@item.id)
-  end
 
-  def evaluation_update
-    @item.update(evaluation_params)
-    redirect_to transaction_item_path(@item.id)
-  end
-  #キーワードで検索機能
   def search
     @keyword = params[:keyword]
     @items = Item.search(@keyword).order("created_at DESC")
@@ -190,23 +183,11 @@ class ItemsController < ApplicationController
     params.require(:registered_images_ids).permit({ids: []})
   end
 
+
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
   
-  def send_params
-    params.require(:item).permit(:send_id)
-  end
-
-  def evaluation_params
-    params.require(:item).permit(:evaluation ,:sold)
-  end
-
-  # before_action
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
