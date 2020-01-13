@@ -187,6 +187,9 @@ class ItemsController < ApplicationController
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
+  def send_params
+    params.require(:item).permit(:send_id)
+  end
   
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
@@ -195,4 +198,5 @@ class ItemsController < ApplicationController
   def set_user
     @user = @item.user
   end
+
 end
