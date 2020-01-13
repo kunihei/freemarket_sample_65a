@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   # バリデーション
   validates :name, :text, :price, presence: true
   validates :images, presence: true
-  # validates :genre, :status, :postage_selct, :prefecture_id, :delivery_day, inclusion: { in: [0] }
+
   validate :price_limit
   validates_associated :images
 
@@ -30,6 +30,7 @@ class Item < ApplicationRecord
       errors.add(:price, ": out")
     end
   end
+
 
 
   enum genre:{
