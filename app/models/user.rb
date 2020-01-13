@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :sns_credentials, dependent: :destroy 
+  
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, 
@@ -61,6 +62,7 @@ class User < ApplicationRecord
   has_many :items
 
   mount_uploader :avatar_image, ImageUploader
+  mount_uploader :image, ImageUploader
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/ }

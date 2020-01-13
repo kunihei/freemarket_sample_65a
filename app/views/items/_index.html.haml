@@ -7,7 +7,7 @@
     .toppage__block
       -items.each do |item|
         .toppage__block__goods
-          = link_to item_path(item.id), target: "_blank", class: "toppage__block__goods__link" do
+          = link_to item_path(item.id), class: "toppage__block__goods__link" do
             /一枚目の画像取得
             = image_tag item.images[0].src.to_s, class: "toppage__block__goods__link__image"
             .toppage__block__goods__link__words

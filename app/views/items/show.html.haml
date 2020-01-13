@@ -82,7 +82,7 @@
       -if @item.user.id  ==  current_user.id
         / ボタン 投稿者用
         .item-buy
-          = link_to '#',class:"item-buy__buying" do
+          = link_to edit_item_path,class:"item-buy__buying" do
             商品の編集 
         %p.item_or or
         .item-buy.item_gray
