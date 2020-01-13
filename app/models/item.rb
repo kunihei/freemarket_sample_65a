@@ -17,9 +17,10 @@ class Item < ApplicationRecord
   # バリデーション
   validates :name, :text, :price, presence: true
   validates :images, presence: true
-
   validate :price_limit
   validates_associated :images
+  validates :genre, :status, :postage_selct, exclusion: { in: ['---'] }
+  validates :prefecture_id, exclusion: { in: [1] }
 
   def price_limit
     if price >= 0 && price <= 300
@@ -30,8 +31,6 @@ class Item < ApplicationRecord
       errors.add(:price, ": out")
     end
   end
-
-
 
   enum genre:{
     "---":0,
@@ -333,8 +332,6 @@ class Item < ApplicationRecord
     '事務/店舗用品':136,
     その他:137,
   },_prefix: true
-
-  validates :name, :text, :genre, :status, :postage_selct, :prefecture_id, :delivery_day, :price, presence: true
 
 end
 
