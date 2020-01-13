@@ -131,9 +131,14 @@ class ItemsController < ApplicationController
     @item.update(evaluation_params)
     redirect_to transaction_item_path(@item.id)
   end
-
+  #キーワードで検索機能
   def search
-    @items = Item.search(params[:keyword])
+    @keyword = params[:keyword]
+    @items = Item.search(@keyword).order("created_at DESC")
+    @count = @items.count
+    if @count == 0
+      @items = Item.all
+    end
   end
 
   #カテゴリーでの検索機能
