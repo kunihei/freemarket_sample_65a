@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_number, only: [:edit, :tell_update]
+  before_action :set_address, only: [:edit, :address_update]
   include SetUser 
   before_action :set_user, except: [:new]
   
