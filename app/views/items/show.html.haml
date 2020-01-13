@@ -92,29 +92,34 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-      -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
-        / ボタン 購入者用
-        .item-buy
-          .item-buy__buying__gray
-            売り切れました
-      -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
-        / ボタン 購入者用
-        .item-buy
-          = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
-            取引画面に進む
-      -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
-        / ボタン 投稿者用
-        .item-buy
-          = link_to edit_item_path,class:"item-buy__buying" do
-            商品の編集 
-        %p.item_or or
-        .item-buy.item_gray
-          = link_to '#',class:"item-buy__buying" do
-            出品を一旦停止する 
-        .item-buy.item_gray
-          = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
-            この商品を削除する 
-      -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
+      -if user_signed_in?
+        -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+          / ボタン 購入者用
+          .item-buy
+            .item-buy__buying__gray
+              売り切れました
+        -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
+          / ボタン 購入者用
+          .item-buy
+            = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
+              取引画面に進む
+        -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
+          / ボタン 投稿者用
+          .item-buy
+            = link_to edit_item_path,class:"item-buy__buying" do
+              商品の編集 
+          %p.item_or or
+          .item-buy.item_gray
+            = link_to '#',class:"item-buy__buying" do
+              出品を一旦停止する 
+          .item-buy.item_gray
+            = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
+              この商品を削除する 
+        -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
+          .item-buy
+            = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
+              購入画面に進む
+      - else
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む

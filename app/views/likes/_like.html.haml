@@ -5,7 +5,7 @@
     .item-button-container__left__dislike
       =link_to item_like_path(item.id, like.id), method: "DELETE", remote: true do
         %i.fas.fa-heart
-        %span いいね！取り消し
+        %span いいね！
         %span 
           = item.likes_count
   - else
