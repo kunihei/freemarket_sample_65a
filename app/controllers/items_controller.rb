@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include SetItem
   before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
@@ -13,7 +14,6 @@ class ItemsController < ApplicationController
     @items_appliances = Item.where(genre: '8').order('created_at DESC').limit(10)
     #ホビーに関するインスタンス
     @items_hobby = Item.where(genre: '6').order('created_at DESC').limit(10)
-    
     #ブランドに関するインスタンスの作成
     @items_chanel =Item.where(brand: '1').order('created_at DESC').limit(10)
     #ルイヴィトンに関するインスタンス
@@ -122,16 +122,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def transaction_update
-    @item.update(send_params)
-    redirect_to transaction_item_path(@item.id)
-  end
-
-  def evaluation_update
-    @item.update(evaluation_params)
-    redirect_to transaction_item_path(@item.id)
-  end
-
   def search
     @items = Item.search(params[:keyword])
   end
@@ -158,14 +148,7 @@ class ItemsController < ApplicationController
   end
 
   
-
-  
-
-  # before_action
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
+  # before_actio
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end

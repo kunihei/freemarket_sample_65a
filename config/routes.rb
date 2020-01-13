@@ -35,13 +35,11 @@ Rails.application.routes.draw do
       get 'categories'
       get 'prefectures'
       get 'transaction'
-      post'transaction_update'
-      post'evaluation_update'
     end
     collection do
       get 'search'
     end
   end
-  resources :item_transactions,  only: [:update]
-  resources :item_evaluations,   only: [:update]
+  resources :item_transactions,   only: [:update]
+  resources :item_evaluations,    only: [:update]
 end

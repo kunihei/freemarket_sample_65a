@@ -9,6 +9,6 @@
     %p 商品が売れた後の流れ>
     %p 出品者のよくある質問>
 .tansaction__send
-  =form_for @item,url: transaction_update_item_path(@item.id) do |f|
+  =form_for @item,url: item_transaction_path(@item.id) do |f|
     = f.hidden_field :send_id ,value: 1
     = f.submit '商品の発送をしたので、発送通知発送通知をする',class: 'tansaction__btn'
