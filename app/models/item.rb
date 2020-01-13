@@ -35,6 +35,14 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
 
 
   def like_user(user_id)
