@@ -11,7 +11,7 @@
 .tansaction__evaluation
   .tansaction__evaluation__message
     %p 評価
-  =form_for @item,url: evaluation_update_item_path(@item.id) , method: :post do |f|
+  =form_for @item,url: evaluation_update_item_path(@item.id) do |f|
     .tansaction__evaluation__confirmation.flex
       =f.check_box :sold ,value: 1 
       %p 商品の中身を確認しました

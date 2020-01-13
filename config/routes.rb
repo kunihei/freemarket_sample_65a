@@ -42,4 +42,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :item_transactions,  only: [:update]
+  resources :item_evaluations,   only: [:update]
 end

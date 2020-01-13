@@ -157,13 +157,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src]).merge(user_id: current_user.id)
   end
 
-  def send_params
-    params.require(:item).permit(:send_id)
-  end
+  
 
-  def evaluation_params
-    params.require(:item).permit(:evaluation ,:sold)
-  end
+  
 
   # before_action
   def set_item
