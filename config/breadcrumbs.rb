@@ -41,9 +41,14 @@ crumb :phone_confirm do
   parent :mypage
 end
 
-crumb :show do
-  link "新品未使用★フェリシモ★スロウ★三角ニットストール★グリーン", '/items/show'
+crumb :show do |item|
+  link item.name, '/items/show'
   parent :root
+end
+
+crumb :edit do |item|
+  link item.name, '/items/show'
+  parent :mypage
 end
 
 # crumb :projects do
