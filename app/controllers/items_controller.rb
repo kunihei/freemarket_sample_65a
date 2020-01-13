@@ -150,7 +150,7 @@ class ItemsController < ApplicationController
     end
   end
 
-
+#検索機能
   def search
     @keyword = params[:keyword]
     @items = Item.search(@keyword).order("created_at DESC")
