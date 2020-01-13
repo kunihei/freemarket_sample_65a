@@ -12,7 +12,7 @@
         .profile__right__content
           %h2.profile__right__content__head 携帯番号の変更
           .profile__right__content__form
-            = form_for @number,url: tell_update_user_path(@user.id) ,method: :post do |f|
+            = form_for @number,url: user_tell_path(@user.id) do |f|
               .delibver__right__content__group
                 %ul.delibver__right__content__group__top.flex
                   %li.delibver__right__content__group__name 携帯番号
