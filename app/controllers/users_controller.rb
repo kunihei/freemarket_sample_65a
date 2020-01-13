@@ -30,15 +30,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  # def item_exhibit
-  # end
-
-  # def item_negotiate
-  # end
-
-  # def item_buyed
-  # end
-
 
   private
 

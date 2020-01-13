@@ -5,7 +5,7 @@ class UserAddressesController < ApplicationController
   def update
     @address = @user.address
     @address.update(user_address_params)
-    redirect_to root_path
+    redirect_to "/users/mypage/mypage/#{current_user.id}"
   end
 
 

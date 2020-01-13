@@ -3,8 +3,11 @@ class UserIdentificationsController < ApplicationController
   before_action :set_user
 
   def update
-    @user.update(user_identification_params)
-    redirect_to root_path
+    if @user.update(user_identification_params)
+      redirect_to "/users/mypage/mypage/#{current_user.id}"
+    else
+      redirect_to root_path, alert: '情報更新に失敗しました。'
+    end
   end
 
 
