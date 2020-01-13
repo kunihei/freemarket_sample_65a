@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :user_tells,            only: [:update]
 
   resources :items do
+    resources :comments, only: :create
     resources :likes, only: [:create, :destroy]
     member do
       get 'buy_confirmation'

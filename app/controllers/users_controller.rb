@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:new]
   
   def show
+    @user = User.find(current_user.id) 
   end
 
   
@@ -20,11 +21,29 @@ class UsersController < ApplicationController
 
   # プロフィール更新
   def update
-     @user.update(user_params)
-     redirect_to root_path
+    @user.update(user_params)
+    redirect_to root_path
+  end
+
+
+  def item_exhibit
+    @user = User.find(current_user.id)
+  end
+
+  def item_negotiate
+    @user = User.find(current_user.id)
   end
   
 
+
+  def item_buyed
+    @user = User.find(current_user.id)
+  end
+
+  def personal_details
+    @user = User.find(params[:id])
+  end
+  
   def mypage
     if @user.id == current_user.id
       render "users/mypage/#{params[:name]}" 

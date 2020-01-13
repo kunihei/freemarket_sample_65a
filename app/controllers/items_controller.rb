@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, only: [:new]
 
   include SetItem
   before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
-
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
   require 'payjp'
@@ -42,6 +42,8 @@ class ItemsController < ApplicationController
   end
   #itme詳細
   def show
+    #コメント作成のためのインスタンス
+    @comment = Comment.new
     #選択されたitemの持つ画像を全て取得
     @item_images = @item.images
     #選択されたitemのuserが持つ出品情報取得
@@ -198,5 +200,10 @@ class ItemsController < ApplicationController
   def set_user
     @user = @item.user
   end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+
 
 end
