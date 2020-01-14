@@ -1,19 +1,19 @@
 .mypage__container--side
   %ul.mypage__container--side__list
     %li
-      = link_to "マイページ",{controller: "users", action: "mypage", name: "mypage", id:@user.id}
+      = link_to "マイページ",{controller: "users", action: "mypage", name: "mypage", id:@user.id}, data: {"turbolinks" => false}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "お知らせ",      root_path
+      = link_to "お知らせ"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "やる事リスト",      root_path
+      = link_to "やる事リスト"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "いいね！一覧",      root_path
+      = link_to "いいね！一覧"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "出品する",      root_path
+      = link_to "出品する"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
       = link_to "出品した商品・出品中",{controller: "users", action: "mypage", name: "exhibit", id:@user.id}
@@ -25,31 +25,31 @@
       = link_to "出品した商品・売却済み",{controller: "users", action: "mypage", name: "buyed", id:@user.id}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "購入した商品・取引中",      root_path
+      = link_to "購入した商品・取引中"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "購入した商品・過去の取引", root_path
+      = link_to "購入した商品・過去の取引"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "ニュース一覧",           root_path
+      = link_to "ニュース一覧"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "評価一案",              root_path
+      = link_to "評価一案"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "ガイド",                root_path
+      = link_to "ガイド"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "お問い合わせ",      root_path
+      = link_to "お問い合わせ"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
   /以下サイドバー（中部）
   %h3#side_title メルペイ
   %ul.mypage__container--side__list
     %li
-      = link_to "売上・振込申請", root_path
+      = link_to "売上・振込申請"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
-      = link_to "ポイント",      root_path
+      = link_to "ポイント"
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
   /以下サイドバー（底部）
   %h3#side_title 設定

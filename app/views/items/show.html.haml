@@ -50,7 +50,7 @@
               %th.item-main-content__table__row--title
                 ブランド
               %td.item-main-content__table__row--data 
-                = link_to '#' do
+                = link_to '#', class: 'link2' do
                   =@item.brand
           /商品状態
           %tr.item-main-content__table__row
@@ -92,29 +92,34 @@
           (税込)
         %span.item-price__taxin2
           送料込み
-      -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
-        / ボタン 購入者用
-        .item-buy
-          .item-buy__buying__gray
-            売り切れました
-      -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
-        / ボタン 購入者用
-        .item-buy
-          = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
-            取引画面に進む
-      -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
-        / ボタン 投稿者用
-        .item-buy
-          = link_to edit_item_path,class:"item-buy__buying" do
-            商品の編集 
-        %p.item_or or
-        .item-buy.item_gray
-          = link_to '#',class:"item-buy__buying" do
-            出品を一旦停止する 
-        .item-buy.item_gray
-          = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
-            この商品を削除する 
-      -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
+      -if user_signed_in?
+        -if @item.user_id.present? && @item.buyer_id.present? && @item.sold.present?
+          / ボタン 購入者用
+          .item-buy
+            .item-buy__buying__gray
+              売り切れました
+        -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
+          / ボタン 購入者用
+          .item-buy
+            = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
+              取引画面に進む
+        -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
+          / ボタン 投稿者用
+          .item-buy
+            = link_to edit_item_path, data: {turbolinks: false}, class:"item-buy__buying" do
+              商品の編集 
+          %p.item_or or
+          .item-buy.item_gray
+            = link_to '#',class:"item-buy__buying link2" do
+              出品を一旦停止する 
+          .item-buy.item_gray
+            = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
+              この商品を削除する 
+        -elsif @item.buyer_id.blank? && @item.user_id !=  current_user.id
+          .item-buy
+            = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
+              購入画面に進む
+      - else
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む
@@ -125,22 +130,13 @@
       .item-description
         =simple_format(@item.text)
       / 底部のボタン（いいね！、不適切な商品の報告、あんしんあんぜんへの取り組み）
-      .item-button-container
+      .item-button-container.flex
         .item-button-container__left{id: "like-#{@item.id}"}
           = render partial: 'likes/like', locals: { item: @item, items: @items, likes: @likes, like: @like}
-          -# = link_to '#' ,class:"item-button__left__like" do
-          -#   = icon('fas' ,'heart',class:"icon-heart")
-          -#   %span.item-button__left__like--good
-          -#     いいね！
-          -#   = render partial: 'like', locals: {'item': @item}
-          -#   %span.item-button__left__like--number
-          -# -#     10000
-          -# = link_to '#' ,class:"item-button__left__reports" do
-          -#   = icon('fas' ,'flag',class:"icon-flag")
-          -#   %span.item-button__left__reports--report
-          -#     不適切な商品の報告
+        %span.item-button__left__reports--report
+          不適切な商品の報告
         .item-button__right
-          = link_to '#' ,class:"item-button__right__safety" do
+          = link_to '#' ,class:"item-button__right__safety link2" do
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
@@ -166,29 +162,29 @@
     /左、右ボタン
     %ul.nav-item
       %li.nav-item__left
-        = link_to '#' ,class:"nav-item__left__tereport-le" do
+        = link_to '#' ,class:"nav-item__left__tereport-le link2" do
           = icon('fas' ,'arrow-left')
           左
       %li.nav-item__right
-        = link_to '#' ,class:"nav-item__right__tereport-ri" do
+        = link_to '#' ,class:"nav-item__right__tereport-ri link2" do
           右
           = icon('fas' ,'arrow-right')
     /SNSアイコン
     .media-box
       %ul.media-box__container
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--facebook" do
+          = link_to '#',class:".media-box__container__item--facebook link2" do
             = icon('fab' ,'facebook-square',class:"icon-facebook")
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--twitter" do
+          = link_to '#',class:".media-box__container__item--twitter link2" do
             = icon('fab' ,'twitter-square',class:"icon-twitter")
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--pinterest" do
+          = link_to '#',class:".media-box__container__item--pinterest link2" do
             = icon('fab' ,'pinterest-square',class:"icon-pinterest")
     /商品出品者に関連する商品
     .other-items-container
       .other-items-title
-        = link_to '#',class:"other-items-title__word" do
+        = link_to '#',class:"other-items-title__word link2" do
           ="#{@item.user.nickname}さんのその他の商品"
       /商品一覧
       .user-other-items
@@ -210,7 +206,7 @@
     /関連商品に関する出品
     .other-items-container
       .other-items-title
-        = link_to '#',class:"other-items-title__word" do
+        = link_to '#',class:"other-items-title__word link2" do
           ="#{@item.genre}その他の商品"
       .user-other-items
         -@genre_items.each do |item|

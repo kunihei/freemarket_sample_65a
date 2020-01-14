@@ -151,6 +151,9 @@
   display: flex;
   justify-content: space-between;
   &__left{
+    &__reports--report{
+      margin-right: 20px;
+    }
     &__like{
       background-color: #f5f5f5;
       padding:7px;
@@ -166,6 +169,13 @@
   &__right{
     &__safety{
       color:skyblue;
+    }
+  }
+  &-container{
+    margin-top: 20px;
+    &__left{
+      margin-right: 20px;
+      
     }
   }
 }
@@ -309,4 +319,12 @@
     margin:0 auto;
     margin-bottom:10px;
   }
+}
+// 良いね
+#show-hert-red{
+  color: red;
+}
+
+#show-hert-gray{
+  color: gray;
 }

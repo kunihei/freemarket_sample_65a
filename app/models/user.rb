@@ -65,6 +65,7 @@ class User < ApplicationRecord
   has_many :cards
   has_many :items, -> { order('created_at DESC') }
   has_many :comments
+  has_many :t_comments
 
   mount_uploader :avatar_image, ImageUploader
 
@@ -86,7 +87,4 @@ class User < ApplicationRecord
   has_many :nagotiations_items, -> { where("buyer_id is not NULL && sold is NULL")}, class_name: "Item"
   # 商品売却済
   has_many :sold_items, -> { where("buyer_id is not NULL && sold is not NULL") }, class_name: "Item"
-
-  
-
 end
