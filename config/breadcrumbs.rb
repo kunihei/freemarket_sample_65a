@@ -51,6 +51,21 @@ crumb :edit do |item|
   parent :mypage
 end
 
+crumb :item_negotiate do
+  link "出品した商品-出品中", '/users/item_negotiate'
+  parent :mypage
+end
+
+crumb :item_exhibit do
+  link "出品した商品-取引中", '/users/item_exhibit'
+  parent :mypage
+end
+
+crumb :item_buyed do
+  link "出品した商品-売却済み", '/users/item_buyed'
+  parent :mypage
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

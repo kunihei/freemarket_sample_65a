@@ -37,8 +37,10 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+
       flash[:alert] = "出品に失敗しました"
-      render :new
+      render "/items/new", data: {turbolinks: false}
+
     end
   end
   #itme詳細

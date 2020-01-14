@@ -18,7 +18,7 @@
               // imagesテーブルに画像を保存
               = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
-                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][0][src]", type: 'file', style: "display:none"
+                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][][src]", type: 'file', style: "display:none"
                   .upload__text
                     .upload__text--a
                       ドラッグアンドドロップ
@@ -58,64 +58,6 @@
                   = f.select :genre, Item.genres.keys, {}, id:'genre_form'
                   = icon('fas', 'angle-down', class: 'form-btn')
               
-              
-              -# %li.active_genre1.show_sub
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.women.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre2
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.men.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre3
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.babies.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre4
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.interiors.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre5
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.books.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre6
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.hobbies.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %l.active_genre7
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.cosmetics.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre8
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.appliances.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre9
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.sports.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre10
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.hand_mades.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre11
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.tickets, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %li.active_genre12
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.motorcycles.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-              -# %l.active_genre13
-              -#   = f.label :sub_genre do
-              -#     = f.select :sub_genre, Item.others.keys, {}, id:'subgenre_form'
-              -#     = icon('fas', 'angle-down', class: 'form-btn')
-
-
-
-
-
             %ul.exhibit__contents__center__detail__list-group__group--b
               %li.exhibit__contents__center__detail__list-group__group__name
                 %ul.exhibit__contents__center__detail__list-group__group__name__list
@@ -130,7 +72,7 @@
         .exhibit__contents__center__delivery
           .exhibit__contents__center__delivery__information
             配送について
-            = link_to "#", class: "question-link" do
+            = link_to "#", class: "question-link link2" do
               = icon('fas', 'question-circle', class: 'question-btn')
           .exhibit__contents__center__delivery__list-group
             %ul.exhibit__contents__center__delivery__list-group__group--a
@@ -180,7 +122,7 @@
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
             販売価格(300〜9,999,999)
-            = link_to "#", class: "question-link" do
+            = link_to "#", class: "question-link link2" do
               = icon('fas', 'question-circle', class: 'question-btn')
           .exhibit__contents__center__price__list-group
             %ul.exhibit__contents__center__price__list-group__group--a
@@ -204,17 +146,17 @@
                 .value_2
         .exhibit__contents__center__bottom
           %p.exhibit__contents__center__bottom__text-a
-            = link_to "禁止されている出品", "＃", class: "link"
+            = link_to "禁止されている出品", "＃", class: "link link2"
             、
-            = link_to "行為", "＃", class: "link"
+            = link_to "行為", "＃", class: "link link2"
             を必ずご確認ください。
           %p.exhibit__contents__center__bottom__text-b
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            = link_to "偽ブランドの販売", "＃", class: "link"
+            = link_to "偽ブランドの販売", "＃", class: "link link2"
             は犯罪であり処罰される可能性があります。
           %p.exhibit__contents__center__bottom__text-c
             また、出品をもちまして
-            = link_to "加盟店規約", "＃", class: "link"
+            = link_to "加盟店規約", "＃", class: "link link2"
             に同意したことになります。
           .exhibit__contents__center__bottom__button-red
             = f.submit '出品する', class: 'exhibit-btn'
