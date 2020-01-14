@@ -37,7 +37,10 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+
+      flash[:alert] = "出品に失敗しました"
       render "/items/new", data: {turbolinks: false}
+
     end
   end
   #itme詳細
@@ -92,9 +95,11 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      redirect_to root_path , notice: '削除に成功しました。'
+      flash[:notice] = "削除に成功しました。"
+      redirect_to root_path 
     else
-      render :show, alert: '削除に失敗しました。'
+      flash[:alert] = "投稿の削除に失敗しました。"
+      render :show
     end
   end
 
@@ -152,6 +157,7 @@ class ItemsController < ApplicationController
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
+      flash[:alert] = '該当ユーザーではありません'
       redirect_to root_path
     end
   end
@@ -187,7 +193,7 @@ class ItemsController < ApplicationController
   end
   
   def item_params
-    params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:deliver_method,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def registered_image_params
@@ -197,11 +203,6 @@ class ItemsController < ApplicationController
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
-  
-  def send_params
-    params.require(:item).permit(:send_id)
-  end
-  
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end

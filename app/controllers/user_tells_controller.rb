@@ -5,9 +5,11 @@ class UserTellsController < ApplicationController
   def update
     if  @number = @user.number
       @number.update(user_tell_params)
+      flash[:notice] = "変更を保存しました"
       redirect_to "/users/mypage/mypage/#{current_user.id}"
     else
-      redirect_to root_path, alert: '情報更新に失敗しました。'
+      flash[:alert] = "編集の保存に失敗しました"
+      redirect_back(fallback_location: root_path)
     end
   end
 
