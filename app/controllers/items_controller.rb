@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      flash[:alert] = "出品に失敗しました"
       render :new
     end
   end
@@ -92,9 +93,11 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      redirect_to root_path , notice: '削除に成功しました。'
+      flash[:notice] = "削除に成功しました。"
+      redirect_to root_path 
     else
-      render :show, alert: '削除に失敗しました。'
+      flash[:alert] = "投稿の削除に失敗しました。"
+      render :show
     end
   end
 
@@ -152,6 +155,7 @@ class ItemsController < ApplicationController
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
+      flash[:alert] = '該当ユーザーではありません'
       redirect_to root_path
     end
   end

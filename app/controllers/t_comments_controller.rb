@@ -1,7 +1,11 @@
 class TCommentsController < ApplicationController
   def create
-    comment = TComment.create(comment_params)
-    redirect_back(fallback_location: root_path)
+    if comment = TComment.create(comment_params)
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "コメントの送信に失敗しました"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
