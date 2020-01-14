@@ -2,3 +2,6 @@
   .subheader__block
     = link_to root_path, data: {"turbolinks" => false}, class: "subheader__block__link" do
       = image_tag "fmarket_logo_red.svg", size: "200x55"
+  .notifications
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)

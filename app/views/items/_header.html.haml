@@ -164,4 +164,6 @@
             新規会員登録
           = link_to new_user_session_path,class:"header-bottom__right--rogin" do
             ログイン
-
+  .notifications
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)
