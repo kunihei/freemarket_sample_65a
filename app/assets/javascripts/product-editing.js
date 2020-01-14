@@ -15,7 +15,7 @@ $(function() {
     var new_image_files = [];
     // 消すデータ
     destroy_images_ids = [];
-  
+    
   
     // 登録済画像のプレビュー表示
     gon.images.forEach(function(image, index){
@@ -280,7 +280,7 @@ $(function() {
       }
     })
   }
-
+  
   $('#edit-btn').on('submit', function(e){
     // 通常のsubmitイベントを止める
     e.preventDefault();

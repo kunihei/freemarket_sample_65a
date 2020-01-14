@@ -55,6 +55,13 @@ class Item < ApplicationRecord
 
 
 
+
+
+
+
+  
+
+
   enum genre:{
     "---":0,
     レディース:1,
