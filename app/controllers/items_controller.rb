@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     else
 
       flash[:alert] = "出品に失敗しました"
-      render "/items/new", data: {turbolinks: false}
+      redirect_to "/items/new", data: {turbolinks: false}
 
     end
   end
