@@ -3,6 +3,8 @@
 .mypage__body
   .nav
     .nav__info
+      - breadcrumb :item_exhibit
+      = render "layouts/breadcrumbs"
   .buysell__main
     .buysell__container.flex 
       =render "sidebar"
