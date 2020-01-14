@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
     @address = @item.user.address
     if @item.user_id != current_user.id
       if @card.present?
-        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+        Payjp.api_key =  ENV['PAYJP_SECRET_KEY']
         customer = Payjp::Customer.retrieve(@card.customer_id)
         @card_information = customer.cards.retrieve(@card.card_id)    
         @card_brand = @card_information.brand      
@@ -134,7 +134,7 @@ class ItemsController < ApplicationController
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      Payjp.api_key =  ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
         amount: @item.price, #支払金額
         customer: @card.customer_id, #顧客ID
@@ -147,6 +147,8 @@ class ItemsController < ApplicationController
 
   #取引画面
   def transaction
+    #コメント作成のためのインスタンス
+    @comment = TComment.new
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
