@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
   #取引画面
   def transaction
     #コメント作成のためのインスタンス
-    @comment = Comment.new
+    @comment = TComment.new
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
