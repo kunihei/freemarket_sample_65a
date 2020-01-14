@@ -50,7 +50,7 @@
               %th.item-main-content__table__row--title
                 ブランド
               %td.item-main-content__table__row--data 
-                = link_to '#' do
+                = link_to '#', class: 'link2' do
                   =@item.brand
           /商品状態
           %tr.item-main-content__table__row
@@ -110,7 +110,7 @@
               商品の編集 
           %p.item_or or
           .item-buy.item_gray
-            = link_to '#',class:"item-buy__buying" do
+            = link_to '#',class:"item-buy__buying link2" do
               出品を一旦停止する 
           .item-buy.item_gray
             = link_to item_path(@item.id), method: :delete,class:"item-buy__buying" do
@@ -136,7 +136,7 @@
         %span.item-button__left__reports--report
           不適切な商品の報告
         .item-button__right
-          = link_to '#' ,class:"item-button__right__safety" do
+          = link_to '#' ,class:"item-button__right__safety link2" do
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
@@ -162,29 +162,29 @@
     /左、右ボタン
     %ul.nav-item
       %li.nav-item__left
-        = link_to '#' ,class:"nav-item__left__tereport-le" do
+        = link_to '#' ,class:"nav-item__left__tereport-le link2" do
           = icon('fas' ,'arrow-left')
           左
       %li.nav-item__right
-        = link_to '#' ,class:"nav-item__right__tereport-ri" do
+        = link_to '#' ,class:"nav-item__right__tereport-ri link2" do
           右
           = icon('fas' ,'arrow-right')
     /SNSアイコン
     .media-box
       %ul.media-box__container
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--facebook" do
+          = link_to '#',class:".media-box__container__item--facebook link2" do
             = icon('fab' ,'facebook-square',class:"icon-facebook")
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--twitter" do
+          = link_to '#',class:".media-box__container__item--twitter link2" do
             = icon('fab' ,'twitter-square',class:"icon-twitter")
         %li.media-box__container__item
-          = link_to '#',class:".media-box__container__item--pinterest" do
+          = link_to '#',class:".media-box__container__item--pinterest link2" do
             = icon('fab' ,'pinterest-square',class:"icon-pinterest")
     /商品出品者に関連する商品
     .other-items-container
       .other-items-title
-        = link_to '#',class:"other-items-title__word" do
+        = link_to '#',class:"other-items-title__word link2" do
           ="#{@item.user.nickname}さんのその他の商品"
       /商品一覧
       .user-other-items
@@ -206,7 +206,7 @@
     /関連商品に関する出品
     .other-items-container
       .other-items-title
-        = link_to '#',class:"other-items-title__word" do
+        = link_to '#',class:"other-items-title__word link2" do
           ="#{@item.genre}その他の商品"
       .user-other-items
         -@genre_items.each do |item|

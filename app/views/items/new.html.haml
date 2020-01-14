@@ -130,7 +130,7 @@
         .exhibit__contents__center__delivery
           .exhibit__contents__center__delivery__information
             配送について
-            = link_to "#", class: "question-link" do
+            = link_to "#", class: "question-link link2" do
               = icon('fas', 'question-circle', class: 'question-btn')
           .exhibit__contents__center__delivery__list-group
             %ul.exhibit__contents__center__delivery__list-group__group--a
@@ -169,7 +169,7 @@
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
             販売価格(300〜9,999,999)
-            = link_to "#", class: "question-link" do
+            = link_to "#", class: "question-link link2" do
               = icon('fas', 'question-circle', class: 'question-btn')
           .exhibit__contents__center__price__list-group
             %ul.exhibit__contents__center__price__list-group__group--a
@@ -193,17 +193,17 @@
                 .value_2
         .exhibit__contents__center__bottom
           %p.exhibit__contents__center__bottom__text-a
-            = link_to "禁止されている出品", "＃", class: "link"
+            = link_to "禁止されている出品", "＃", class: "link link2"
             、
-            = link_to "行為", "＃", class: "link"
+            = link_to "行為", "＃", class: "link link2"
             を必ずご確認ください。
           %p.exhibit__contents__center__bottom__text-b
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            = link_to "偽ブランドの販売", "＃", class: "link"
+            = link_to "偽ブランドの販売", "＃", class: "link link2"
             は犯罪であり処罰される可能性があります。
           %p.exhibit__contents__center__bottom__text-c
             また、出品をもちまして
-            = link_to "加盟店規約", "＃", class: "link"
+            = link_to "加盟店規約", "＃", class: "link link2"
             に同意したことになります。
           .exhibit__contents__center__bottom__button-red
             = f.submit '出品する', class: 'exhibit-btn'
