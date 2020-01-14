@@ -21,27 +21,7 @@
           %li.buysell--right__items--item
             = link_to "/users/mypage/buyed/#{@user.id}" do
               %h3 売却済み
-        .buysell--right__body
-          .buysell--right__body--item
-            -# method: 'nagotiations_items'
-            -if @user.nagotiations_items.present?
-              - @user.nagotiations_items.each do |item|
-                .buysell--right__body--item--yes
-                  .buysell--right__body--item--yes--content
-                    =image_tag item.images[0].src.to_s,size:"100x100",class:"item-image"
-                    .item-name
-                      =item.name
-                    -# stutas: '取引中'
-                    .item-status 取引中
-                    %p.item-link 
-                      =link_to '#' do
-                        >
-            -else
-              .buysell--right__body--item--no
-                = image_tag('logo_gray.svg',size:"150x100")
-                -# noiitem: '取引中の商品がありません'
-                %p 取引中の商品がありません
-
+        = render partial: 'users/mypage/item-buysell', locals: { 'user_items':@user.nagotiations_items ,status: '取引中' ,noitem: '取引中の商品がありません'}
         .bottom-button
           %button.left-button 
             -# link1: ''

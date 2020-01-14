@@ -1,0 +1,19 @@
+.buysell--right__body
+  .buysell--right__body--item{class:"#{"item-yes" if user_items.present?}"}
+    -if user_items.present?
+      - user_items.each do |item|
+        .buysell--right__body--item--yes
+          .buysell--right__body--item--yes--content
+            =image_tag item.images[0].src.to_s,size:"100x100",class:"item-image"
+            .item-name
+              =item.name
+            .item-status 
+              = "#{status}"
+            %p.item-link 
+              =link_to '#' do
+                >
+    -else
+      .buysell--right__body--item--no
+        = image_tag('logo_gray.svg',size:"150x100")
+        %p #{noitem}
+
