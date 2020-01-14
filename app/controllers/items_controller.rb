@@ -37,10 +37,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-
       flash[:alert] = "出品に失敗しました"
       redirect_to "/items/new", data: {turbolinks: false}
-
     end
   end
   #itme詳細
@@ -172,16 +170,26 @@ class ItemsController < ApplicationController
 
   #カテゴリーでの検索機能
   def categories
-    @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
-    @item  = @items[0]
-    @category = @item.genre
+    unless params[:id].to_i == 0 || params[:id].to_i > 13
+      @items = Item.where(genre: params[:id]).page(params[:page]).per(20)
+      @item  = @items[0]
+      @category = @item.genre if @item.present?
+    else
+      flash[:alert] = '存在しないURLです'
+      redirect_to root_path
+    end
   end
   
   #都道府県での検索機能
   def prefectures
-    @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
-    @item  = @items[0]
-    @prefecture = @item.prefecture.name
+    unless params[:id].to_i == 0 || params[:id].to_i > 48
+      @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
+      @item  = @items[0]
+      @prefecture = @item.prefecture.name if @item.present?
+    else
+      flash[:alert] = '存在しないURLです'
+      redirect_to root_path
+    end
   end
 
 
