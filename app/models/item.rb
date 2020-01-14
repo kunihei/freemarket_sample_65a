@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :user
   has_many :comments
+  has_many :t_comments
   belongs_to :buyer, class_name: "User", optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture

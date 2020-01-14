@@ -65,6 +65,7 @@ class User < ApplicationRecord
   has_many :cards
   has_many :items, -> { order('created_at DESC') }
   has_many :comments
+  has_many :t_comments
 
   mount_uploader :avatar_image, ImageUploader
 

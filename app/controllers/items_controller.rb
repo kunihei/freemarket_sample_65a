@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:new]
 
   include SetItem
-  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
   require 'payjp'
@@ -51,7 +51,9 @@ class ItemsController < ApplicationController
     #選択されたitemが持つカテゴリー情報取得
     @genre_items = Item.where(genre: @item.genre).limit(6)
     #likeのインスタンス作成
-    @like = Like.new
+    @like = @item.likes.find_by(user_id: current_user.id)
+
+    @like = Like.new unless @like.present?
   end
 
   def edit
@@ -101,7 +103,7 @@ class ItemsController < ApplicationController
     @address = @item.user.address
     if @item.user_id != current_user.id
       if @card.present?
-        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+        Payjp.api_key =  ENV['PAYJP_SECRET_KEY']
         customer = Payjp::Customer.retrieve(@card.customer_id)
         @card_information = customer.cards.retrieve(@card.card_id)    
         @card_brand = @card_information.brand      
@@ -132,19 +134,21 @@ class ItemsController < ApplicationController
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      Payjp.api_key =  ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
         amount: @item.price, #支払金額
         customer: @card.customer_id, #顧客ID
         currency: 'jpy', #日本円
         )
       @item.update(buyer_id: current_user.id)
-      redirect_to root_path
+      redirect_to transaction_item_path(@item.id)
     end
   end
 
   #取引画面
   def transaction
+    #コメント作成のためのインスタンス
+    @comment = TComment.new
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
@@ -166,6 +170,7 @@ class ItemsController < ApplicationController
     @item  = @items[0]
     @category = @item.genre
   end
+  
   #都道府県での検索機能
   def prefectures
     @items = Item.where(prefecture_id: params[:id]).page(params[:page]).per(20)
@@ -177,6 +182,10 @@ class ItemsController < ApplicationController
 
   private
   # ストロングパラメーター
+  def set_item
+    @item= Item.find(params[:id])
+  end
+  
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
@@ -185,10 +194,10 @@ class ItemsController < ApplicationController
     params.require(:registered_images_ids).permit({ids: []})
   end
 
-
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
+  
   def send_params
     params.require(:item).permit(:send_id)
   end
