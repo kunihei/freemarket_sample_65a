@@ -166,6 +166,17 @@
                 = f.label :delivery_day do
                   = f.select :delivery_day, Item.delivery_days.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
+            %ul.exhibit__contents__center__delivery__list-group__group--c
+              %li.exhibit__contents__center__delivery__list-group__group__name
+                %ul.exhibit__contents__center__delivery__list-group__group__name__list
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list__days
+                    配送方法
+                  %li.exhibit__contents__center__delivery__list-group__group__name__list--required
+                    必須
+              %li
+                = f.label :delivery_day do
+                  = f.select :delivery_day, Item.deliver_methods.keys, {}
+                  = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
             販売価格(300〜9,999,999)
