@@ -24,7 +24,7 @@
         .purchase-body__total2__method
           支払い方法
         .purchase-body__total2__register
-          = link_to "#", class: "purchase-body__total2__register__link" do
+          = link_to "#", class: "purchase-body__total2__register__link link2" do
             = icon("fas", "plus-circle")
             .purchase-body__total2__register__link__word
               登録してください
@@ -43,7 +43,7 @@
       .purchase-body__delivery
         .purchase-body__delivery__area
           配送先
-        = link_to "#", class: "purchase-body__delivery__change" do
+        = link_to "#", class: "purchase-body__delivery__change link2" do
           変更する
       .purchase-body__address
         ="〒#{@address.postcode}"
