@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.create(comment_params)
-    redirect_to item_path(comment.item.id)
+    redirect_back(fallback_location: root_path)
   end
 
   private

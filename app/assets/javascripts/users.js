@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load",function()  {
+$(function() {
   // タブのDOM要素を取得し、変数で定義
   let tabs = $(".mypage__item");
 
@@ -28,8 +28,7 @@ $(window).on("turbolinks:load",function()  {
 
 
 
-
-$(function()  {
+$(function(){
   // タブのDOM要素を取得し、変数で定義
   let tabs = $(".mypage__item__bottom");
 
@@ -58,16 +57,18 @@ $(function()  {
   tabs.click(tabSwitch);    
 });
 
+
+
 $(function(){
     $('.newuser__body__content__reveal__space').toggle();
   $('#check1').click(function(){
     $('.newuser__body__content__reveal__space').toggle();
   });
-
 });
 
 
-$(function() {
+
+$(function(){
   var $input = $('#input');
   var $output = $('#output');
   $input.on('input', function(event) {

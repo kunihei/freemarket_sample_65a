@@ -1,6 +1,6 @@
 .subfooter
   .subfooter__list
-    = link_to root_path, class: "subfooter__list__privacy link2" do
+    = link_to root_path, data: { no_turbolink: true }, class: "subfooter__list__privacy link2" do
       .subfooter__list__privacy__message
         プライバシーポリシー
     = link_to root_path, class: "subfooter__list__privacy link2" do

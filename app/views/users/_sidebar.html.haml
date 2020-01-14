@@ -1,7 +1,7 @@
 .mypage__container--side
   %ul.mypage__container--side__list
     %li
-      = link_to "マイページ",{controller: "users", action: "mypage", name: "mypage", id:@user.id}
+      = link_to "マイページ",{controller: "users", action: "mypage", name: "mypage", id:@user.id}, data: {"turbolinks" => false}
       = icon('fas', 'angle-right', class: 'mypage__container--side__icon')
     %li
       = link_to "お知らせ"

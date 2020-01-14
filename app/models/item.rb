@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :user
   has_many :comments
+  has_many :t_comments
   belongs_to :buyer, class_name: "User", optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
 
   # バリデーション
-  validates :name, :text, :price, presence: true
+  validates :name, :text, presence: true
   validates :images, presence: true
   validate :price_limit
   validates_associated :images
@@ -27,11 +28,13 @@ class Item < ApplicationRecord
   validates :prefecture_id, exclusion: { in: [1] }
 
   def price_limit
-    if price >= 0 && price <= 300
+    if price == nil
       errors.add(:price, ": out")
     elsif price < 0
       errors.add(:price, ": out")
     elsif price > 10000000
+      errors.add(:price, ": out")
+    elsif price >= 0 && price < 300
       errors.add(:price, ": out")
     end
   end

@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render "/items/new", data: {turbolinks: false}
     end
   end
   #itme詳細
@@ -147,6 +147,8 @@ class ItemsController < ApplicationController
 
   #取引画面
   def transaction
+    #コメント作成のためのインスタンス
+    @comment = TComment.new
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       render :transaction
     else
