@@ -2,7 +2,7 @@
   =render 'users/subheader'
   .exhibit__contents
     .exhibit__contents__center
-      = form_for @item do |f|
+      = form_for @item,id: 'edit-btn' do |f|
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image

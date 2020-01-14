@@ -3,7 +3,7 @@ class ItemTransactionsController < ApplicationController
   before_action :set_item
   def update
     @item.update(send_params)
-    redirect_to transaction_item_path(@item.id)
+    redirect_to transaction_item_path(@item.id), data: {"turbolinks" => false} 
   end
 
   private
