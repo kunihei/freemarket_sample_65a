@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load",function(){
+$(function(){
   $('.price_calc').on('input', function(){
     var data = $('.price_calc').val();
     var profit = Math.round(data * 0.9)

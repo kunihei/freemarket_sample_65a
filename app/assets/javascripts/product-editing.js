@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load", function() {
+$(function() {
   if (document.location.href.match(/\/items\/\d+\/edit/)){
     var dropzone = $(".item__img__dropzone__input");
     var dropzone2 = $(".item__img__dropzone2__input2");

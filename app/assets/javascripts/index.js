@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load",function(){
+$(function(){
   $('#women').click(function(e){
     e.preventDefault();
     $('html, body').animate({

@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load",function(){
+$(function(){
   $(".toppage-slider").slick({
     autoplay: true,
     autoplaySpeed: 5000,
