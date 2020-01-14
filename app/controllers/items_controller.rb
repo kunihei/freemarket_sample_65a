@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render "/items/new", data: {turbolinks: false}
     end
   end
   #itme詳細
