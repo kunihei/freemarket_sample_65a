@@ -18,7 +18,7 @@
               // imagesテーブルに画像を保存
               = f.fields_for :images do |image|
                 = image.label :src, class: 'image__label' do
-                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][][src]", type: 'file', style: "display:none"
+                  = image.file_field :src, class: 'image__file', name: "item[images_attributes][0][src]", type: 'file', style: "display:none"
                   .upload__text
                     .upload__text--a
                       ドラッグアンドドロップ
