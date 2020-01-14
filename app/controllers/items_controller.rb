@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:new]
 
   include SetItem
-  before_action :set_item, only: [:show, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
   require 'payjp'
@@ -180,6 +180,10 @@ class ItemsController < ApplicationController
 
   private
   # ストロングパラメーター
+  def set_item
+    @item= Item.find(params[:id])
+  end
+  
   def item_params
     params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
