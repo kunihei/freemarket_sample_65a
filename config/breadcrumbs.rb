@@ -62,7 +62,7 @@ crumb :item_exhibit do
 end
 
 crumb :item_buyed do
-  link "電話番号の確認", '/users/item_buyed'
+  link "出品した商品-売却済み", '/users/item_buyed'
   parent :mypage
 end
 
