@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
     @comment = Comment.create(comment_params)
     respond_to do |format|
-      format.html { redirect_to item_path(comment.item.id) }
+      format.html { redirect_to item_path(@comment.item.id) }
       format.json
     end
   end

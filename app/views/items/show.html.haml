@@ -140,6 +140,9 @@
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
+
+
+              
     /商品に対する顧客のコメント
     .comment-item-container
       - @item.comments.each do|comment|
@@ -158,6 +161,11 @@
       = form_for @comment,url:item_comments_path(@item.id),id: "new_comment" do |f|
         =f.text_area :text, rows:"5",class:"comment-message"
         =f.submit "コメントする",class:"comment-submit"
+
+
+
+
+
 
     /左、右ボタン
     %ul.nav-item
