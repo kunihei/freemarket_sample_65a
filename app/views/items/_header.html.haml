@@ -5,7 +5,8 @@
     .header-top
       -# 左のメルカリのアイコン
       .header-top__left-icon
-        = link_to image_tag('fmarket_logo_red.svg',size:"134x36"),'/'
+        = link_to root_path, data: { no_turbolink: true } do
+          =image_tag('fmarket_logo_red.svg',size:"134x36")
       -# 右のフォーム
       .header-top__right-form
         =  form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |f|

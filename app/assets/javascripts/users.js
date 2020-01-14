@@ -64,7 +64,6 @@ $(window).on("turbolinks:load",function()  {
   $('#check1').click(function(){
     $('.newuser__body__content__reveal__space').toggle();
   });
-
 });
 
 
