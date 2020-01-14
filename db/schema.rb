@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_01_13_053422) do
     t.bigint "user_id"
     t.integer "prefecture_id"
     t.integer "buyer_id"
-    t.integer "sub_genre", default: 0
     t.integer "sold"
+    t.integer "sub_genre", default: 0
     t.integer "send_id"
     t.integer "evaluation"
     t.integer "likes_count"

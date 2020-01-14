@@ -19,27 +19,7 @@
           %li.buysell--right__items--item.click
             = link_to "/users/mypage/buyed/#{@user.id}" do
               %h3 売却済み
-        .buysell--right__body
-          .buysell--right__body--item
-            -# method: 'sold_items'
-            -if @user.sold_items.present?
-              - @user.sold_items.each do |item|
-                .buysell--right__body--item--yes
-                  .buysell--right__body--item--yes--content
-                    =image_tag item.images[0].src.to_s,size:"100x100",class:"item-image"
-                    .item-name
-                      =item.name
-                    -# stutas: '売却済み'
-                    .item-status 売却済み
-                    %p.item-link 
-                      =link_to '#' do
-                        >
-            -else
-              .buysell--right__body--item--no
-                = image_tag('logo_gray.svg',size:"150x100")
-                -# noiitem: '売却済みの商品がありません'
-                %p 売却済みの商品がありません
-
+        = render partial: 'users/mypage/item-buysell', locals: { 'user_items':@user.sold_items ,status: '売却済み' ,noitem: '売却済みの商品がありません'}
         .bottom-button
           %button.left-button 
             -# link1: ''
