@@ -20,7 +20,7 @@
                 = f.label :avatar_image, class: "file", id: 'user_img' do
                   -if @user.avatar_image.present?
                     .view_box.flex
-                      = image_tag @user.avatar_image, alt: "顔写真2",size: "60x60", class: 'mypage__icon', id: :img_prev
+                      = image_tag @user.avatar_image.to_s, alt: "顔写真2",size: "60x60", class: 'mypage__icon', id: :img_prev
                       = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
                   -else 
                     .view_box.flex
