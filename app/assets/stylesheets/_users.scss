@@ -156,13 +156,16 @@ $FM-color-gry:#eee;
     width: 700px;
     height: 200px;
     background-color: rgb(218, 177, 218);
-    background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    position: relative;
     a{
+      position: absolute;
       display: block;
       padding: 16px;
+      top: 40px;
+      left: 40%;
     }
     &__icon{
       margin: 0 auto;
@@ -375,17 +378,18 @@ $FM-color-gry:#eee;
       }
 
       &__edit{
-        padding: 72px 16px 24px;
-        background: url(d2132ab97f92c4f271afe801ea0939f4_m.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         text-align: center;
         height: 64px;
         opacity: 0.8;
-
+        position: relative;
         &__nickname{
+          position: absolute;
           display: block;
           margin: 0 auto;
+          top: 50%;
+          left: 28%;
         }
       }
       /*  右側底部タイトル padding */
