@@ -103,7 +103,7 @@ class Item < ApplicationRecord
   },_prefix: true
 
   enum deliver_method:{
-    未定:0,
+    "---":0,
     '小型サイズ - ネコポス（らくらくメルカリ便）':1,
     '小型サイズ（A4）- ゆうパケット（ゆうゆうメルカリ便）':2,
     ゆうメール:3,

@@ -191,7 +191,7 @@ class ItemsController < ApplicationController
   end
   
   def item_params
-    params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:text,:status,:postage_selct,:prefecture_id,:deliver_method,:delivery_day,:price,:genre,:size,:deliver_method,:brand, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def registered_image_params
@@ -201,11 +201,6 @@ class ItemsController < ApplicationController
   def new_image_params
     params.require(:new_images).permit({images: []})
   end
-  
-  def send_params
-    params.require(:item).permit(:send_id)
-  end
-  
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
