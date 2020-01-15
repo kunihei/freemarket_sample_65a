@@ -76,6 +76,7 @@ class Item < ApplicationRecord
     その他:13
   },_prefix: true
 
+  
   enum status:{
     "---":0,
     新品・未使用:1,
@@ -108,17 +109,7 @@ class Item < ApplicationRecord
     ４〜７日で発送:3
   },_prefix: true
 
-  enum deliver_method:{
-    "---":0,
-    '小型サイズ - ネコポス（らくらくメルカリ便）':1,
-    '小型サイズ（A4）- ゆうパケット（ゆうゆうメルカリ便）':2,
-    ゆうメール:3,
-    ゆうパケット:4,
-    レターパック:5,
-    普通郵便（定形、定形外）:6,
-    クリックポスト:7
-  },_prefix: true
-
+  
   enum order:{
     並び替え:0,
     価格の安い順:1,

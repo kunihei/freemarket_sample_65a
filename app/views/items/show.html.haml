@@ -204,11 +204,16 @@
               .user-other-items__box__body--name
                 =item.name
               /商品価格
-              .user-other-items__box__body--price
+              .user-other-items__box__body--price.flex
                 =converting_to_jpy(item.price)
-                .user-other-items__box__body--price--heart
-                  = icon('fas' ,'heart',class:"icon-heart")
-                  10
+                .item-button-container__left{id: "like-#{item.id}"}
+                  .item-button-container__right
+                    %i.fas.fa-heart#show-hert-red
+                    %span 
+                      - if item.likes_count.present?
+                        = item.likes_count
+                      - else
+                        0
         
 
     /関連商品に関する出品
@@ -225,11 +230,16 @@
               .user-other-items__box__body--name
                 =item.name
               /商品価格
-              .user-other-items__box__body--price
+              .user-other-items__box__body--price.flex
                 =converting_to_jpy(item.price)
-                .user-other-items__box__body--price--heart
-                  = icon('fas' ,'heart',class:"icon-heart")
-                  10
+                .item-button-container__left{id: "like-#{item.id}"}
+                  .item-button-container__right
+                    %i.fas.fa-heart#show-hert-red
+                    %span 
+                      - if item.likes_count.present?
+                        = item.likes_count
+                      - else
+                        0
         
         
     /ページ最下部のボタン
