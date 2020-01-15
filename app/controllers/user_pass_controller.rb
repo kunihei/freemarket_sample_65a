@@ -1,7 +1,11 @@
 class UserPassController < ApplicationController
   include SetUser
+  include UserConfirmation
   before_action :set_user
+  before_action :user_confirmation
+
   
+  #パスワード/メールアドレスの編集機能
   def update
     if  @user.update(user_password_params)
       sign_in(@user, bypass: true) 
@@ -12,7 +16,6 @@ class UserPassController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
 
   private
   def user_password_params

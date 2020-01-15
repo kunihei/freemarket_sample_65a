@@ -1,7 +1,10 @@
 class UserIdentificationsController < ApplicationController
   include SetUser
+  include UserConfirmation
   before_action :set_user
+  before_action :user_confirmation
 
+  #本人情報編集機能
   def update
     if @user.update(user_identification_params)
       flash[:notice] = "変更を保存しました"
@@ -12,9 +15,7 @@ class UserIdentificationsController < ApplicationController
     end
   end
 
-
   private
-
   def user_identification_params
     params.require(:user).permit(:postcode, :prefecture_id, :city, :block, :buildin)
   end

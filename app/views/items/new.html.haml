@@ -3,6 +3,12 @@
   .exhibit__contents
     .exhibit__contents__center
       = form_for @item do |f|
+        - if @item.errors.any?
+          .chat-group-form__errors
+            %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @item.errors.full_messages.each do |message|
+                %li= message
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image
@@ -116,8 +122,8 @@
                   %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                     必須
               %li
-                = f.label :delivery_day do
-                  = f.select :delivery_day, Item.deliver_methods.keys, {}
+                = f.label :deliver_method do
+                  = f.select :deliver_method, Item.deliver_methods.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
@@ -142,7 +148,7 @@
             %ul.exhibit__contents__center__price__list-group__group--c
               %li.exhibit__contents__center__price__list-group__group__profit
                 販売利益
-                = f.number_field :price, style: "display: none", id: "price"
+                %input{type: "number", style: "display: none", id: "price"}
                 .value_2
         .exhibit__contents__center__bottom
           %p.exhibit__contents__center__bottom__text-a

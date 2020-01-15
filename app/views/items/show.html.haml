@@ -140,6 +140,9 @@
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
+
+
+              
     /商品に対する顧客のコメント
     .comment-item-container
       - @item.comments.each do|comment|
@@ -158,6 +161,11 @@
       = form_for @comment,url:item_comments_path(@item.id),id: "new_comment" do |f|
         =f.text_area :text, rows:"5",class:"comment-message"
         =f.submit "コメントする",class:"comment-submit"
+
+
+
+
+
 
     /左、右ボタン
     %ul.nav-item
@@ -196,11 +204,16 @@
               .user-other-items__box__body--name
                 =item.name
               /商品価格
-              .user-other-items__box__body--price
+              .user-other-items__box__body--price.flex
                 =converting_to_jpy(item.price)
-                .user-other-items__box__body--price--heart
-                  = icon('fas' ,'heart',class:"icon-heart")
-                  10
+                .item-button-container__left{id: "like-#{item.id}"}
+                  .item-button-container__right
+                    %i.fas.fa-heart#show-hert-red
+                    %span 
+                      - if item.likes_count.present?
+                        = item.likes_count
+                      - else
+                        0
         
 
     /関連商品に関する出品
@@ -217,11 +230,16 @@
               .user-other-items__box__body--name
                 =item.name
               /商品価格
-              .user-other-items__box__body--price
+              .user-other-items__box__body--price.flex
                 =converting_to_jpy(item.price)
-                .user-other-items__box__body--price--heart
-                  = icon('fas' ,'heart',class:"icon-heart")
-                  10
+                .item-button-container__left{id: "like-#{item.id}"}
+                  .item-button-container__right
+                    %i.fas.fa-heart#show-hert-red
+                    %span 
+                      - if item.likes_count.present?
+                        = item.likes_count
+                      - else
+                        0
         
         
     /ページ最下部のボタン

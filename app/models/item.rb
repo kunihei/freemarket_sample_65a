@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   validates :images, presence: true
   validate :price_limit
   validates_associated :images
-  validates :genre, :status, :postage_selct, exclusion: { in: ['---'] }
+  validates :genre, :status, :postage_selct, :deliver_method, exclusion: { in: ['---'] }
   validates :prefecture_id, exclusion: { in: [1] }
 
   def price_limit
@@ -55,6 +55,10 @@ class Item < ApplicationRecord
 
 
 
+
+  
+
+
   enum genre:{
     "---":0,
     レディース:1,
@@ -72,6 +76,17 @@ class Item < ApplicationRecord
     その他:13
   },_prefix: true
 
+  enum deliver_method:{
+    "---":0,
+    '小型サイズ - ネコポス（らくらくメルカリ便）':1,
+    '小型サイズ（A4）- ゆうパケット（ゆうゆうメルカリ便）':2,
+    ゆうメール:3,
+    ゆうパケット:4,
+    レターパック:5,
+    普通郵便（定形、定形外）:6,
+    クリックポスト:7
+  },_prefix: true
+  
   enum status:{
     "---":0,
     新品・未使用:1,

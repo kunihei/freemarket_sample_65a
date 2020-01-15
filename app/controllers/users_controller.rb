@@ -1,53 +1,41 @@
 class UsersController < ApplicationController
+  # before_action :move_to_index, only: [:mypage]
   before_action :set_number, only: [:tell_update]
   before_action :set_address, only: [:address_update]
   
   include SetUser 
+  include SetUser 
   before_action :set_user, except: [:new]
-  before_action :Guard_clause, only: [:update, :mypage, :item_exhibit, :item_negotiate, :item_buyed]
+
+  before_action :Guard_clause
+  before_action :user_confirmation, only: [:update]
   
   def show
-    @user = User.find(current_user.id) 
+    @user = User.find(params[:id])
   end
-
+  
   
   def edit
     @number = @user.number
     @address = @user.address
-    if @user.id == current_user.id
       render "users/edit/#{params[:name]}" 
-    else
-      flash[:alert]= 'ユーザーが違います'
-      redirect_to root_path
     end
   end
 
   # プロフィール更新
   def update
-    @user.update(user_params)
+   if @user.update(user_params)
+      flash[:notice] = "変更を保存しました"
+      redirect_to "/users/mypage/mypage/#{current_user.id}"
+    else
+      flash[:alert] = "編集の保存に失敗しました"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 
-  def item_exhibit
-    @user = User.find(current_user.id)
-  end
-
-  def item_negotiate
-    @user = User.find(current_user.id)
-  end
-  
-
-
-  def item_buyed
-    @user = User.find(current_user.id)
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-  
   def mypage
-    
+    render "users/mypage/#{params[:name]}" 
   end
 
   private
@@ -57,9 +45,7 @@ class UsersController < ApplicationController
   end
 
   def Guard_clause
-    if @user.id == current_user.id
-      render "users/mypage/#{params[:name]}"
-    else
+    if @user.id != current_user.id
       flash[:alert]= 'ユーザーが違います'
       redirect_to root_path
     end
