@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
+  include UserSignedIn
+  before_action :user_signed_in?
   def create
-    if user_signed_in?
-      @comment = Comment.create(comment_params)
-      respond_to do |format|
-        format.html { redirect_to item_path(@comment.item.id) }
-        format.json
-      end
+    @comment = Comment.create(comment_params)
+    respond_to do |format|
+      format.html { redirect_to item_path(@comment.item.id) }
+      format.json
     end
   end
 
