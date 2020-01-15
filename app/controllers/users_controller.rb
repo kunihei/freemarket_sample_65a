@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # before_action :move_to_index, only: [:mypage]
   before_action :set_number, only: [:tell_update]
   before_action :set_address, only: [:address_update]
   
@@ -45,6 +46,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :introduction,:avatar_image)
+  end
+
+  def move_to_index
+    redirect_to root_path unless user_signed_in?
   end
 
 end

@@ -52,8 +52,11 @@ class ItemsController < ApplicationController
     #選択されたitemが持つカテゴリー情報取得
     @genre_items = Item.where(genre: @item.genre).limit(6)
     #likeのインスタンス作成
-    @like = @item.likes.find_by(user_id: current_user.id)
-    
+
+    if user_signed_in?
+      @like = @item.likes.find_by(user_id: current_user.id)
+    end
+
     @like = Like.new unless @like.present?
   end
 
