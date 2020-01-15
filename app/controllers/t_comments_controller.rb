@@ -1,7 +1,11 @@
 class TCommentsController < ApplicationController
   def create
-    comment = TComment.create(comment_params)
-    redirect_back(fallback_location: root_path)
+
+    @comment = TComment.create(comment_params)
+    respond_to do |format|
+      format.html { redirect_to transaction_item_path(@comment.item.id) }
+      format.json
+    end
   end
 
   private

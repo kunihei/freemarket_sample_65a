@@ -103,9 +103,9 @@
                 = icon('fas' ,'clock',class:"icon-clock")
                 %span.item-comments__comment__body__time--date
                   = comment.created_at.strftime('%Y/%m/%d')
-
+    .comment-message-container#container-width
       .comment-note 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = form_for @comment,url:item_t_comments_path(@item.id) do |f|
-        =f.text_area :text, rows:"5",class:"comment-message"
-        =f.submit "コメントする",class:"comment-submit"
+      = form_for @comment ,url:item_t_comments_path(@item.id) do |f|
+        =f.text_area :text, rows:"5",class:"comment-message2"
+        =f.submit "コメントする",class:"comment-submit2"
 =render 'users/subfooter'

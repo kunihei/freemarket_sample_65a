@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:new]
   
   def show
-    @user = User.find(current_user.id) 
+    @user = User.find(params[:id])
   end
-
+  
   
   def edit
     @number = @user.number
@@ -17,39 +17,27 @@ class UsersController < ApplicationController
     if @user.id == current_user.id
       render "users/edit/#{params[:name]}" 
     else
+      flash[:alert] = "該当ユーザーではありません"
       redirect_to root_path
     end
   end
 
   # プロフィール更新
   def update
-    @user.update(user_params)
-    redirect_to root_path
+    if @user.update(user_params)
+      flash[:notice] = "変更を保存しました"
+      redirect_to "/users/mypage/mypage/#{current_user.id}"
+    else
+      flash[:alert] = "編集の保存に失敗しました"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
-
-  def item_exhibit
-    @user = User.find(current_user.id)
-  end
-
-  def item_negotiate
-    @user = User.find(current_user.id)
-  end
-  
-
-
-  def item_buyed
-    @user = User.find(current_user.id)
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-  
   def mypage
     if @user.id == current_user.id
       render "users/mypage/#{params[:name]}" 
     else
+      flash[:alert] = "該当ユーザーではありません"
       redirect_to root_path
     end
   end
@@ -57,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :introduction)
+    params.require(:user).permit(:nickname, :introduction,:avatar_image)
   end
 
   def move_to_index

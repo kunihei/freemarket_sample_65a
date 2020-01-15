@@ -1,4 +1,7 @@
-$(window).on(“turbolinks:load”, function() {
+
+
+$(window).on("turbolinks:load",function() {
+
   if (document.location.href.match(/\/items\/\d+\/edit/)){
     var dropzone = $(".item__img__dropzone__input");
     var dropzone2 = $(".item__img__dropzone2__input2");
@@ -15,7 +18,7 @@ $(window).on(“turbolinks:load”, function() {
     var new_image_files = [];
     // 消すデータ
     destroy_images_ids = [];
-  
+    
   
     // 登録済画像のプレビュー表示
     gon.images.forEach(function(image, index){
@@ -280,8 +283,8 @@ $(window).on(“turbolinks:load”, function() {
       }
     })
   }
-
-  $('.edit_item').on('submit', function(e){
+  
+  $('#edit_btn').on('submit', function(e){
     // 通常のsubmitイベントを止める
     e.preventDefault();
     // images以外のform情報をformDataに追加

@@ -2,7 +2,7 @@
   =render 'users/subheader'
   .exhibit__contents
     .exhibit__contents__center
-      = form_for @item do |f|
+      = form_for @item, html: { id: :edit_btn} do |f|
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image
@@ -27,7 +27,7 @@
             #preview2-edit
             -# ６〜１０枚目プレビュー表示
             .item__img__dropzone2__input2
-              = f.label :image, for: "upload-image" do
+              = f.label :image, for: "aaupload-image" do
                 .input_area
                   ドラッグアンドドロップ
                   %br

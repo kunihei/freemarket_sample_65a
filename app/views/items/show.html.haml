@@ -101,7 +101,7 @@
         -elsif @item.user_id.present? && @item.buyer_id.present? && (@item.user_id == current_user.id || @item.buyer_id == current_user.id)
           / ボタン 購入者用
           .item-buy
-            = link_to transaction_item_path(@item.id),class:"item-buy__buying" do
+            = link_to transaction_item_path(@item.id), data: {"turbolinks" => false} ,class:"item-buy__buying" do
               取引画面に進む
         -elsif @item.buyer_id.blank? && @item.user.id  ==  current_user.id
           / ボタン 投稿者用
@@ -140,6 +140,9 @@
             = icon('fas' ,'lock',class:"icon-lock")
             %span.item-button__right__safety--word
               あんしん・あんぜんへの取り組み
+
+
+              
     /商品に対する顧客のコメント
     .comment-item-container
       - @item.comments.each do|comment|
@@ -158,6 +161,11 @@
       = form_for @comment,url:item_comments_path(@item.id),id: "new_comment" do |f|
         =f.text_area :text, rows:"5",class:"comment-message"
         =f.submit "コメントする",class:"comment-submit"
+
+
+
+
+
 
     /左、右ボタン
     %ul.nav-item

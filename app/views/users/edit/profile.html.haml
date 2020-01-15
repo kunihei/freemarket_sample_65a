@@ -16,13 +16,22 @@
           /以下右側 ユーザー情報編集form
           = form_for @user do |f|
             .profile__right__content__edit
+              = image_tag"d2132ab97f92c4f271afe801ea0939f4_m.jpg", alt: "顔写真2",size: "700x100", class: 'profile__backimage'
               .profile__right__content__edit__nickname.flex
-                = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
-                = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
+                = f.label :avatar_image, class: "file", id: 'user_img' do
+                  -if @user.avatar_image.present?
+                    .view_box.flex
+                      = image_tag @user.avatar_image.to_s, alt: "顔写真2",size: "60x60", class: 'mypage__icon', id: :img_prev
+                      = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
+                  -else 
+                    .view_box.flex
+                      = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
+                      = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
+              = f.file_field :avatar_image,class: 'file'
+
             /以下右側 ユーザー情報編集form(自己紹介文)    
             .profile__right__content__bottom
               .profile__right__content__profile
-                = f.text_area :introduction, class: 'profile__right__input__introduction', size: "81x16", placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+                = f.text_area :introduction, class: 'profile__right__input__introduction', size: "72x16", placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
                 = f.submit '変更する', class: 'profile__right__input__send'
-
 =render 'items/footer'
