@@ -46,9 +46,9 @@ crumb :show do |item|
   parent :root
 end
 
-crumb :edit do |item|
-  link item.name, '/items/show'
-  parent :mypage
+crumb :personal do |user|
+  link user.nickname, '/users/show'
+  parent :root
 end
 
 crumb :item_negotiate do
@@ -58,6 +58,11 @@ end
 
 crumb :item_exhibit do
   link "出品した商品-取引中", '/users/item_exhibit'
+  parent :mypage
+end
+
+crumb :item_buyed do
+  link "出品した商品-売却済み", '/users/item_buyed'
   parent :mypage
 end
 
