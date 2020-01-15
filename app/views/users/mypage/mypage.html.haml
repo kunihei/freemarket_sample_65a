@@ -91,46 +91,9 @@
             .mypage__select__body
               %ul
                 %li.mypage__content__bottom.show
-                  %ul.mypage__content__list
-                    %li
-                      = link_to root_path do
-                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                        .mypage__select__body__text
-                          事務局から個別メッセージ『ログイン機能』
-                          .mypage__select__bod__text__time
-                            ● 21時間前
-                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
-                    %li
-                      = link_to root_path do
-                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                        .mypage__select__body__text
-                          事務局から個別メッセージ『ログイン機能』
-                          .mypage__select__bod__text__time
-                            ● 21時間前
-                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
-                    %li
-                      = link_to root_path do
-                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                        .mypage__select__body__text
-                          事務局から個別メッセージ『ログイン機能』
-                          .mypage__select__bod__text__time
-                            ● 21時間前
-                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
-                    %li
-                      = link_to root_path do
-                        = image_tag "logo_red.svg", alt: "顔写真2",size: "48x48", class: 'news__icon'
-                        .mypage__select__body__text
-                          事務局から個別メッセージ『ログイン機能』
-                          .mypage__select__bod__text__time
-                            ● 21時間前
-                        = icon('fas', 'angle-right', class: 'mypage__content__list__icon')
-                    %li.go__index
-                      = link_to root_path  do
-                        .go__index__area
-                          一覧を見る
+                  = render partial: 'users/mypage/item-buysell', locals: { 'user_items':@user.nagotiations_items ,status: '取引中' ,noitem: '取引中の商品がありません'}
                 %li.mypage__content__bottom
                   /メインコンテンツ タブ選択(過去の取引)の内容
-                  .mypage__content__no
-                    %p 現在取り扱い中の~~はありません
+                  = render partial: 'users/mypage/item-buysell', locals: { 'user_items':@user.buyed_items ,status: '購入済み' ,noitem: '購入済みの商品がありません'}
                     
 =render 'items/footer'
