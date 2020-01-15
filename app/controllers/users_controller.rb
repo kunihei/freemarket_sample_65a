@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   before_action :set_address, only: [:address_update]
   
   include SetUser 
+  include SetUser 
   before_action :set_user, except: [:new]
+  before_action :user_confirmation, only: [:update]
   
   def show
     @user = User.find(params[:id])

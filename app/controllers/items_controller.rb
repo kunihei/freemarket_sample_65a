@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
+  before_action :not_item_user, only: [:edit, :update, :destroy]  #itemの出品者現在のユーザーの認証
+  before_action :sold_out, only: [:buy_confirmation, :pay]        #売却済確認メソッド
+  before_action :not_buy, only:  [:buy_confirmation, :pay]        #出品者の購入を防ぐメソッド
   require 'payjp'
 
   def index
@@ -31,6 +34,8 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
   end
+
+
   #item新規登録
   def create
     @item = Item.new(item_params)
@@ -41,6 +46,7 @@ class ItemsController < ApplicationController
       redirect_to "/items/new", data: {turbolinks: false}
     end
   end
+
   #itme詳細
   def show
     #コメント作成のためのインスタンス
@@ -60,7 +66,7 @@ class ItemsController < ApplicationController
     @like = Like.new unless @like.present?
   end
 
-  def edit
+  def edit 
     gon.item = @item
     gon.images = @item.images
   end
@@ -106,35 +112,31 @@ class ItemsController < ApplicationController
   end
 
   #購入確認画面
-  def buy_confirmation
-    @address = @item.user.address
-    if @item.user_id != current_user.id
-      if @card.present?
-        Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @card_information = customer.cards.retrieve(@card.card_id)    
-        @card_brand = @card_information.brand      
-        case @card_brand
-        when "Visa"
-          @card_src = "visa.png"
-        when "JCB"
-          @card_src = "jcb.png"
-        when "MasterCard"
-          @card_src = "master-card.png"
-        when "American Express"
-          @card_src = "american_express.png"
-        when "Diners Club"
-          @card_src = "dinersclub.png"
-        when "Discover"
-          @card_src = "discover.png"
-        end
+  def buy_confirmation 
+    if @card.present?
+      Payjp.api_key =  Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)    
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.png"
+      when "JCB"
+        @card_src = "jcb.png"
+      when "MasterCard"
+        @card_src = "master-card.png"
+      when "American Express"
+        @card_src = "american_express.png"
+      when "Diners Club"
+        @card_src = "dinersclub.png"
+      when "Discover"
+        @card_src = "discover.png"
       end
-    else
-      flash[:alert] = '出品者様は購入できません'
-      redirect_to root_path
+      @address = @item.user.address
     end
   end
 
+  
   #購入機能
   def pay
     if @card.blank?
@@ -152,6 +154,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   #取引画面
   def transaction
     #コメント作成のためのインスタンス
@@ -164,13 +167,15 @@ class ItemsController < ApplicationController
     end
   end
 
-#検索機能
+
+  #検索機能
   def search
     @keyword = params[:keyword]
     @items = Item.search(@keyword).order("created_at DESC")
     @count = @items.count
     @items = Item.all.order("created_at DESC") if @items.count == 0
   end
+
 
   #カテゴリーでの検索機能
   def categories
@@ -183,6 +188,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
   
   #都道府県での検索機能
   def prefectures
@@ -195,6 +201,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
 
 
 
@@ -227,5 +234,26 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
+  #ガード節
+  def not_item_user
+    if @item.user_id != current_user.id 
+      flash[:alert] = "該当ユーザーではありません"
+      redirect_to root_path
+    end 
+  end
+
+  def sold_out
+    if @item.buyer_id.present?
+      flash[:alert] = "該当の商品は売却済です"
+      redirect_to root_path
+    end
+  end
+
+  def not_buy
+    if @item.user_id == current_user.id
+      flash[:alert] = '出品者様は購入できません'
+      redirect_to root_path
+    end
+  end
 
 end

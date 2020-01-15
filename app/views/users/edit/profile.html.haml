@@ -25,7 +25,7 @@
                       = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
                   -else 
                     .view_box.flex
-                      = image_tag "miniature-d.jpg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
+                      = image_tag "noimage.jpeg", alt: "顔写真2",size: "60x60", class: 'mypage__icon'
                       = f.text_field :nickname, class: 'profile__right__input__nickname',value: @user.nickname
               = f.file_field :avatar_image,class: 'file'
 
