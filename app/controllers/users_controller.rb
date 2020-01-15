@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   include SetUser 
   include SetUser 
   before_action :set_user, except: [:new]
+
+  before_action :Guard_clause
   before_action :user_confirmation, only: [:update]
   
   def show
@@ -16,17 +18,13 @@ class UsersController < ApplicationController
   def edit
     @number = @user.number
     @address = @user.address
-    if @user.id == current_user.id
       render "users/edit/#{params[:name]}" 
-    else
-      flash[:alert] = "該当ユーザーではありません"
-      redirect_to root_path
     end
   end
 
   # プロフィール更新
   def update
-    if @user.update(user_params)
+   if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
       redirect_to "/users/mypage/mypage/#{current_user.id}"
     else
@@ -35,13 +33,9 @@ class UsersController < ApplicationController
     end
   end
 
+
   def mypage
-    if @user.id == current_user.id
-      render "users/mypage/#{params[:name]}" 
-    else
-      flash[:alert] = "該当ユーザーではありません"
-      redirect_to root_path
-    end
+    render "users/mypage/#{params[:name]}" 
   end
 
   private
@@ -50,8 +44,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :introduction,:avatar_image)
   end
 
-  def move_to_index
-    redirect_to root_path unless user_signed_in?
+  def Guard_clause
+    if @user.id != current_user.id
+      flash[:alert]= 'ユーザーが違います'
+      redirect_to root_path
+    end
   end
 
 end
