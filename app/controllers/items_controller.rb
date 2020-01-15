@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:new]
 
   include SetItem
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction,:transaction_update ,:evaluation_update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]
   require 'payjp'
@@ -88,6 +88,7 @@ class ItemsController < ApplicationController
         end
       end
     end
+    flash[:notice] = "商品の編集に成功しました"
     redirect_to item_path(@item), data: {turbolinks: false}
   end
 
