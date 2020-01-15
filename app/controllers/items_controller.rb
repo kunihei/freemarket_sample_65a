@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = "出品に失敗しました"
-      redirect_to "/items/new", data: {turbolinks: false}
+      render :new, data: {turbolinks: false}
     end
   end
   #itme詳細

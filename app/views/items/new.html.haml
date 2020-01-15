@@ -3,6 +3,12 @@
   .exhibit__contents
     .exhibit__contents__center
       = form_for @item do |f|
+        - if @item.errors.any?
+          .chat-group-form__errors
+            %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @item.errors.full_messages.each do |message|
+                %li= message
         .exhibit__contents__center__information
           商品の情報を入力
         .exhibit__contents__center__image
