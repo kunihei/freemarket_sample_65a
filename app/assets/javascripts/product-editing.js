@@ -281,7 +281,7 @@ $(window).on("turbolinks:load",function() {
     })
   }
   
-  $('#edit_item_45').on('submit', function(e){
+  $('#edit_btn').on('submit', function(e){
     // 通常のsubmitイベントを止める
     e.preventDefault();
     // images以外のform情報をformDataに追加
