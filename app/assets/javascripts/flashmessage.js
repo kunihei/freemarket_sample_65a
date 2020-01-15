@@ -1,3 +1,3 @@
 $(function(){
-  setTimeout("$('.notifications').fadeOut('slow')", 1000) 
+  setTimeout("$('.notifications').fadeOut('slow')", 2000) 
 })

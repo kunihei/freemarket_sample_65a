@@ -116,8 +116,8 @@
                   %li.exhibit__contents__center__delivery__list-group__group__name__list--required
                     必須
               %li
-                = f.label :delivery_day do
-                  = f.select :delivery_day, Item.deliver_methods.keys, {}
+                = f.label :deliver_method do
+                  = f.select :deliver_method, Item.deliver_methods.keys, {}
                   = icon('fas', 'angle-down', class: 'form-btn')
         .exhibit__contents__center__price
           .exhibit__contents__center__price__information
