@@ -1,10 +1,14 @@
 class TCommentsController < ApplicationController
   def create
-
-    @comment = TComment.create(comment_params)
-    respond_to do |format|
-      format.html { redirect_to transaction_item_path(@comment.item.id) }
-      format.json
+    if @item.user_id == current_user.id || @item.buyer_id == current_user.id
+      @comment = TComment.create(comment_params)
+      respond_to do |format|
+        format.html { redirect_to transaction_item_path(@comment.item.id) }
+        format.json
+      end
+    else
+      flash[:alert] = "該当ユーザーではありません"
+      redirect_to root_path
     end
   end
 
