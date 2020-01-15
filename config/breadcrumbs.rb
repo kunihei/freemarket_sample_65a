@@ -66,6 +66,11 @@ crumb :item_buyed do
   parent :mypage
 end
 
+crumb :item_buyed do
+  link "出品した商品-売却済み", '/users/item_buyed'
+  parent :mypage
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
