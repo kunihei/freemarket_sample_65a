@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   include SetUser 
   before_action :set_user, except: [:new]
 
-  before_action :Guard_clause
+  before_action :Guard_clause, except: [:new, :show]
   before_action :user_confirmation, only: [:update]
   
   def show
@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     @number = @user.number
     @address = @user.address
       render "users/edit/#{params[:name]}" 
-    end
   end
 
   # プロフィール更新
