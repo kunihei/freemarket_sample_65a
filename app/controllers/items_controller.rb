@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @like = @item.likes.find_by(user_id: current_user.id)
     end
-
+    
     @like = Like.new unless @like.present?
   end
 

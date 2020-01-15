@@ -295,6 +295,7 @@
         background-color: #fff;
         &--price{
           position: relative;
+          justify-content: space-between;
           &--heart{
             position: absolute;
             right:0;
