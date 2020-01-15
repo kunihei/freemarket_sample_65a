@@ -46,9 +46,9 @@ crumb :show do |item|
   parent :root
 end
 
-crumb :edit do |item|
-  link item.name, '/items/show'
-  parent :mypage
+crumb :personal do |user|
+  link user.nickname, '/users/show'
+  parent :root
 end
 
 crumb :item_negotiate do

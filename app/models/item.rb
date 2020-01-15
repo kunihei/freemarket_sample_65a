@@ -25,7 +25,6 @@ class Item < ApplicationRecord
   validate :price_limit
   validates_associated :images
   validates :genre, :status, :postage_selct, exclusion: { in: ['---'] }
-  validates :deliver_method, exclusion: { in: ['---'] }
   validates :prefecture_id, exclusion: { in: [1] }
 
   def price_limit
