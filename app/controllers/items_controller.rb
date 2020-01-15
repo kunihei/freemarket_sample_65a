@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: [:new]
-
   include SetItem
+  include UserSignedIn, except: [:index, :show]
+  before_action :user_signed_in?
   before_action :set_item, only: [:show, :edit, :update, :destroy, :buy_confirmation, :pay, :transaction]
   before_action :set_card, only: [:buy_confirmation, :pay]
   before_action :set_user, only: [:show, :transaction]

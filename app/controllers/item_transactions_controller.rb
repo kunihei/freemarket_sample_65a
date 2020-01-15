@@ -1,5 +1,7 @@
 class ItemTransactionsController < ApplicationController
   include SetItem
+  include UserSignedIn
+  before_action :user_signed_in?
   before_action :set_item
   def update
     if @item.update(send_params)

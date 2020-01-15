@@ -1,6 +1,9 @@
 class ItemEvaluationsController < ApplicationController
   include SetItem
+  include UserSignedIn
+  before_action :user_signed_in?
   before_action :set_item
+
   def update
     if @item.update(evaluation_params)
       redirect_to transaction_item_path(@item.id), data: {"turbolinks" => false} 

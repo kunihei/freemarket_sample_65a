@@ -1,5 +1,7 @@
 class LikesController < ApplicationController
   include SetItem
+  include UserSignedIn
+  before_action :user_signed_in?
   before_action :set_item
   before_action :not_user_like
 

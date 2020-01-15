@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  include UserSignedIn
+  before_action :user_signed_in?
   def create
-
     @comment = Comment.create(comment_params)
     respond_to do |format|
       format.html { redirect_to item_path(@comment.item.id) }

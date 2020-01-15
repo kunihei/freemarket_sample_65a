@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-  # before_action :move_to_index, only: [:mypage]
-  before_action :set_number, only: [:tell_update]
-  before_action :set_address, only: [:address_update]
-  
   include SetUser 
-  include SetUser 
+  include UserSignedIn
+  before_action :user_signed_in?
   before_action :set_user, except: [:new]
   before_action :user_confirmation, only: [:update]
+  before_action :set_number, only: [:tell_update]
+  before_action :set_address, only: [:address_update]
   
   def show
     @user = User.find(params[:id])
