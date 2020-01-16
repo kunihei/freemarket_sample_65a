@@ -1,6 +1,6 @@
 class TCommentsController < ApplicationController
   include UserSignedIn
-  before_action :user_signed_in?
+  before_action :user_signed_in
   def create
     if @item.user_id == current_user.id || @item.buyer_id == current_user.id
       @comment = TComment.create(comment_params)

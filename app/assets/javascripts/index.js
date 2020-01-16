@@ -26,7 +26,7 @@ $(function(){
   $('#hobby').click(function(e){
     e.preventDefault();
     $('html, body').animate({
-      scrollTop: 3540
+      scrollTop: 2240
     }, 1000);
   })
 })

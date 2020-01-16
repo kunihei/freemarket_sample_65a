@@ -1,7 +1,7 @@
 class ItemEvaluationsController < ApplicationController
   include SetItem
   include UserSignedIn
-  before_action :user_signed_in?
+  before_action :user_signed_in
   before_action :set_item
   before_action :buyer?
 

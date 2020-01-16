@@ -119,7 +119,11 @@
           .item-buy
             = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
               購入画面に進む
-      - else
+      - elsif @item.user_id.present? && @item.buyer_id.present?
+        .item-buy
+          = link_to transaction_item_path(@item.id), data: {"turbolinks" => false} ,class:"item-buy__buying" do
+            取引中の商品です
+      - elsif @item.buyer_id.blank?
         .item-buy
           = link_to buy_confirmation_item_path(@item.id),class:"item-buy__buying" do
             購入画面に進む

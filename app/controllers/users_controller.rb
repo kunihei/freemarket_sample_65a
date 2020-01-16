@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SetUser 
   include UserSignedIn
-  before_action :user_signed_in?
+  before_action :user_signed_in, except: [:new]
   before_action :set_user, except: [:new]
 
   before_action :Guard_clause, except: [:new, :show]

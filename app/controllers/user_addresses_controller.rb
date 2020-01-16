@@ -2,7 +2,7 @@ class UserAddressesController < ApplicationController
   include SetUser
   include UserConfirmation
   include UserSignedIn
-  before_action :user_signed_in?
+  before_action :user_signed_in
   before_action :set_user
   before_action :user_confirmation
   
