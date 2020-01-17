@@ -132,5 +132,3 @@ belongs_to :user
 
 
 user = User.new(nickname: "test", email: "test@dokomo.ne.jp", password: "1223456", last_name:"甲坂", first_name:"甲坂", last_name_kana:"コウサカ", first_name_kana:"コウサカ", birthday:"2020-01-03")
-
-test
